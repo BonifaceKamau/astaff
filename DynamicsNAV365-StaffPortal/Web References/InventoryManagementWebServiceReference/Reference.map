@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/InventoryManagementWS" filename="InventoryManagementWS.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

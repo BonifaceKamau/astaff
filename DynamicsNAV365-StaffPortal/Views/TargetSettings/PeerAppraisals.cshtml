@@ -1,0 +1,120 @@
+@model System.Collections.Generic.List<OdataRef.Peer_Appraisal_Header>
+
+@{
+    ViewBag.Title = "Peer Appraisal";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" style="position:fixed;z-index: 1090;width:70%;margin-left:350px" role="alert">
+            @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        var Error = TempData["Error"] as string;
+        <div class="alert alert-danger alert-dismissible fade show" style="position:fixed;z-index: 1090;width:70%;margin-left:400px" role="alert">
+            <p>@Html.Raw(Error)</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Peer Appraisal selection</i>
+                                    </h4>
+                                </div>
+                                @*<div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewPeerAppraisal")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Peer Appraisal Selection
+                                        </strong>
+                                    </a>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Workplan Date</th>
+                                                <th>Staff No</th>
+                                                <th>Period</th>
+                                                <th>Directorate</th>
+                                                <th>Staff Department</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var staffTargetObjectives in Model)
+                                            {
+                                                <tr>
+                                                    <td>@staffTargetObjectives.No</td>
+                                                    <td>@staffTargetObjectives.Created_On</td>
+                                                    <td>@staffTargetObjectives.Staff_No</td>
+                                                    <td>@staffTargetObjectives.Period</td>
+                                                    <td>@staffTargetObjectives.Directorate</td>
+                                                    <td>@staffTargetObjectives.Department</td>
+                                                    <td>
+                                                        @if (ViewBag.Editable == null || ViewBag.Editable == true)
+                                                        {
+                                                            <a href="@Url.Action("ViewPeerAppraisal", new { no = staffTargetObjectives.No })" class="">
+                                                                <b>View</b>
+                                                            </a>
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#PeerAppraisals").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

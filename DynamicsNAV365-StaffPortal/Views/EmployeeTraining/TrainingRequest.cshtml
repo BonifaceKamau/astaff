@@ -1,0 +1,98 @@
+@model System.Collections.Generic.List<OdataRef.Training_Request>
+
+@{
+    ViewBag.Title = "training Requests";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Training Requests</i></h4>
+                                </div>
+                                <div class="col-md-8">
+                                    @*<a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewTrainingNeedApplication", "EmployeeTraining")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New TrainingNeed Application
+                                        </strong>
+                                    </a>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table id="TrainingListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Request_No.</th>
+                                                    <th>Employee_Name</th>
+                                                    <th>Request_Date</th>
+                                                    <th>Total_Cost</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{         var editUrl = "";
+                                                    var viewUrl = "";
+                                                    var approverUrl = "";
+                                                    foreach (var t in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@t.Request_No</td>
+                                                            <td>@t.Employee_Name</td>
+                                                            <td>@t.Request_Date</td>
+                                                            <td>@t.Total_Cost</td>
+                                                            <td>
+                                                                <a href="@viewUrl" class=""><b>View</b></a>
+                                                            </td>
+                                                            <td>
+                                                                @*
+                                                                <a href="@approverUrl" style="color:red" class="fa fa-check"><b>Approver(s)</b></a>
+                                                            *@
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	$("#TrainingRequestHistoryMenuItem").addClass("active");
+
+        	$("#TrainingListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,94 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PayrollModels.EmployeeP9Model
+@{
+    ViewBag.Title = "Employee P9";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Payroll Sidebar-->
+    @{Html.RenderAction("_PayrollSidebar", "PayrollHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title"><i>Employee P9</i></h4>
+                        </div>
+                        @using (Html.BeginForm("PrintEmployeeP9", "EmployeeP9", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.EmployeeNo)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @id = "EndDateLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.StartDate, Model.PayrollPeriods, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @id = "EndDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @id = "EndDateLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.EndDate, Model.PayrollPeriods, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @id = "EndDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <input type="button" class="btn btn-xs pull-right ladda-button" value="Preview P9 Report" onclick="GenerateP9();" />
+                                        @*<button class="btn btn-xs pull-right ladda-button" type="submit" formtarget="_blank" data-style="slide-right" data-background-color="login_card">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-print"></i>
+                                                Preview P9
+                                            </span>
+                                        </button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#PrintEmployeeP9").addClass("active");
+            window.onblur = function () {
+                Ladda.stopAll();
+            }
+        });
+        var GenerateP9 = function () {
+            var StartDate = $("#StartDate").val();
+            var EndDate = $("#EndDate").val();
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ StartDate: StartDate, EndDate: EndDate }),
+
+                url: '@Url.Action("GenerateP9")',
+                success: function (data) {
+                    window.open(data.message, '_blank').focus();
+                    //window.alert(data.message);
+                    //window.location.reload();
+                }
+            });
+        };
+    </script>
+}
+

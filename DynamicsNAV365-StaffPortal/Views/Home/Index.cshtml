@@ -1,0 +1,366 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    var _dcodataServices = new BCODATAServices("");
+    var portalModulesEnumerable = _dcodataServices.BCOData.PortalModules.Execute().ToList();
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+<aside class="right-side" style="margin-left:0px;">
+<!-- Main content -->
+<section class="content" style="padding-top:10px">
+<div class="col-md-3">
+    <div class="row">
+        <div class="col-md-12">
+            <!--Render Employee _DisciplinaryStatus Widget-->
+            @{ Html.RenderAction("_DisciplinaryStatusWidget", "HumanResourceHome"); }
+        </div>
+    </div>
+    @if (portalModulesEnumerable.Any(c => c.Name == "Finance Module" && c.Enabled == true))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <!--Render Employee Leave Balance Widget-->
+                @{ Html.RenderAction("_EmployeeBalanceWidget", "FinanceHome"); }
+            </div>
+        </div>
+    }
+    @if (portalModulesEnumerable.Any(c => c.Name == "HR Module" && c.Enabled == true))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <!--Render Employee Leave Balance Widget-->
+                @{ Html.RenderAction("_EmployeeLeaveBalanceWidget", "HumanResourceHome"); }
+            </div>
+        </div>
+    }
+
+</div>
+<div class="col-md-9">
+<div class="row">
+@if (portalModulesEnumerable.Any(c => c.Name == "Profile Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box" style="background-color: #ed7c31 ">
+            <div class="inner">
+                <a href="@Url.Action("EmployeeProfile", "Account")" style="color:white">
+                    <h3 style="font-size:128%">
+                        My Profile
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("EmployeeProfile", "Account")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "HR Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box bg-light-blue">
+            <div class="inner">
+                <a href="@Url.Action("HumanResourceInfo", "HumanResourceHome")" style="color:white">
+                    <h3 style="font-size:128%">
+                        HR Services
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class=""></i>
+            </div>
+            <a href="@Url.Action("HumanResourceInfo", "HumanResourceHome")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Payroll Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box" style="background-color: #669999">
+            <div class="inner">
+                <a href="@Url.Action("PayrollInfo", "PayrollHome")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Payroll Services
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("PayrollInfo", "PayrollHome")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Finance Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box" style="background-color: #ffbf00">
+            <div class="inner">
+                <a href="@Url.Action("FinanceInfo", "FinanceHome")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Finance Services
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("FinanceInfo", "FinanceHome")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Procurement Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box bg-olive">
+            <div class="inner">
+                <a href="@Url.Action("ProcurementInfo", "ProcurementHome")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Procurement
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("ProcurementInfo", "ProcurementHome")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+
+@if (portalModulesEnumerable.Any(c => c.Name == "Approvals Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <a href="@Url.Action("OpenEntries", "Approval")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Approval Services
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("OpenEntries", "Approval")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Files Modules" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <a href="@Url.Action("ViewDocuments", "Documents")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Shared Documents
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("ViewDocuments", "Documents")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Performance Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="small-box" style="background-color: #22bf9a">
+            <div class="inner">
+                <a href="@Url.Action("PerformanceInfo", "TargetSettings")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Performance Management
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("PerformanceInfo", "TargetSettings")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Administration Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6" style="text-align:left;">
+        <div class="small-box" style="background-color: #10798a">
+            <div class="inner">
+                <a href="@Url.Action("AdministrationInfo", "Administration")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Admin
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("AdministrationInfo", "Administration")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+@if (portalModulesEnumerable.Any(c => c.Name == "Administration Module" && c.Enabled == true))
+{
+    <div class="col-md-3 col-sm-6 col-xs-6" style="text-align:left;">
+        <div class="small-box" style="background-color: #10798a">
+            <div class="inner">
+                <a href="@Url.Action("AdministrationInfo", "")" style="color:white">
+                    <h3 style="font-size:128%">
+                        Admin
+                    </h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                </a>
+            </div>
+            <div class="icon">
+                <i class="" style="text-align:center"></i>
+            </div>
+            <a href="@Url.Action("AdministrationInfo", "Administration")" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+}
+</div>
+</div>
+@*<div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6">
+               <div class="small-box bg-blue">
+                   <div class="inner">
+                       <a href="@Url.Action("StoreRequisitionHistory", "StoreRequisition")" style="color:white">
+                           <h3>
+                               Store Requisitions
+                           </h3>
+                           <p>
+                               &nbsp;
+                           </p>
+                       </a>
+                   </div>
+                   <div class="icon">
+                       <i class="" style="text-align:center"></i>
+                   </div>
+                   <a href="@Url.Action("StoreRequisitionHistory", "StoreRequisition")" class="small-box-footer">
+                       More info <i class="fa fa-arrow-circle-right"></i>
+                   </a>
+               </div>
+            </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <a href="@Url.Action("OpenEntries", "Approval")" style="color:white">
+                        <h3>
+                            Approval Services
+                        </h3>
+                        <p>
+                            &nbsp;
+                        </p>
+                    </a>
+                </div>
+                <div class="icon">
+                    <i class="" style="text-align:center"></i>
+                </div>
+                <a href="@Url.Action("OpenEntries", "Approval")" class="small-box-footer">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="small-box bg-maroon">
+                <div class="inner">
+                    <a href="@Url.Action("ProjectInfo", "ProjectHome")" style="color:white">
+                        <h3>
+                            Project Management
+                        </h3>
+                        <p>
+                            &nbsp;
+                        </p>
+                    </a>
+                </div>
+                <div class="icon">
+                    <i class="" style="text-align:center"></i>
+                </div>
+                <a href="@Url.Action("ProjectInfo", "ProjectHome")" class="small-box-footer">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>*@
+@*<div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <a href="@Url.Action("PerformanceInfo", "PerformanceHome")" style="color:white">
+                        <h3>
+                            Performance Mgmt
+                        </h3>
+                        <p>
+                            &nbsp;
+                        </p>
+                    </a>
+                </div>
+                <div class="icon">
+                    <i class="" style="text-align:center"></i>
+                </div>
+                <a href="@Url.Action("PerformanceInfo", "PerformanceHome")" class="small-box-footer">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        </div>*@
+
+
+</section>
+</aside>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#toggleSideMenu").hide();
+        });
+	</script>
+}

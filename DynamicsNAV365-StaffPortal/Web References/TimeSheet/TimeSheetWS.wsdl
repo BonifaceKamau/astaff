@@ -1,0 +1,1977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="UpdateTimeSheetEntry">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="ledgerNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="hrs" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="tasks" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateTimeSheetEntry_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendToSupervisor">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendToSupervisor_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateTimeSheetReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="month" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="year" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateTimeSheetReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReturnToEmployee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="comments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReturnToEmployee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveTimesheet">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveTimesheet_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateTasks">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="listofTasks" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateTasks_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTimesheetTasks">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="taskUndertaken" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="programCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="hours" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lnNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTimesheetTasks_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteTimesheetTasks">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mth" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="yR" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lnNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteTimesheetTasks_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertDocAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="base64String" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableID" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="ext" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filename" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertDocAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertPicture">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="picture" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertPicture_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertSignature">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="picture" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertSignature_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPassportPic">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPassportPic_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateEmployeeDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="phoneNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mobilePhoneNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="emailAddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="workEmailAddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bankName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bankBranchName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bankAccountNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobTitle" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="nationalIDNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pINNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="nSSFNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="nHIFNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="citizenship" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="religion" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="city" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="countyName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="doB" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="manager" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="gender" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="mstatus" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateEmployeeDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSignature">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSignature_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateTravelReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateTravelReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePurchaseRequestReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePurchaseRequestReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdatePurchaseRequestHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="globalDimension" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdatePurchaseRequestHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateActivityReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateActivityReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocumentAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="recID" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocumentAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="tableID" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docID" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachment_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DeleteMaintainaceLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMaintainaceLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GeneratePettyCashReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePettyCashReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePettyCashSurrenderReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePettyCashSurrenderReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteFleetLogLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="entryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteFleetLogLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitFleetApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitFleetApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="EditFleeLogLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="entryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vehicleNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startTime" type="time" />
+            <element minOccurs="1" maxOccurs="1" name="endTime" type="time" />
+            <element minOccurs="1" maxOccurs="1" name="from" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="to" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="odometerStart" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="odometerEnd" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="litres" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="date" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditFleeLogLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertFleeLogLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vehicleNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startTime" type="time" />
+            <element minOccurs="1" maxOccurs="1" name="endTime" type="time" />
+            <element minOccurs="1" maxOccurs="1" name="from" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="to" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="odometerStart" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="odometerEnd" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="litres" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="date" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertFleeLogLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateFleetReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateFleetReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateNewFleetCard">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateNewFleetCard_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CreateNewVehicleRepair">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateNewVehicleRepair_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateImprestRequestHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateImprestRequestHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateVehicleRepairsHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="serviceProvider" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="serviceType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="regNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="duration" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="serviceDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="odometerReading" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="serviceMileage" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateVehicleRepairsHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateBidAnalysisReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateBidAnalysisReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePurchaseOrderReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePurchaseOrderReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateClaimsRequestHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateClaimsRequestHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleRepairLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="header_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="descriptin" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="cost" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleRepairLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="EditVehicleRepairLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="header_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="line_No" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="cost" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditVehicleRepairLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DeleteMaintainanceLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMaintainanceLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="VehicleRepairsSendApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleRepairsSendApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="VehicleRepairsCancelApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleRepairsCancelApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CopyFixedAsset">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="faNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="noOfCopies" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="firstFANo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="useFaNumberSeries" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CopyFixedAsset_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="NewAssetTransfer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NewAssetTransfer_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditAssetTransfer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transferDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditAssetTransfer_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="NewAssetTransferLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="transfer_no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="asset_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="current_Holder_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employee_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NewAssetTransferLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DeleteAssetTransferLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAssetTransferLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="EditAssetTransferLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="line_No" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="asset_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="current_Holder_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employee_No" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditAssetTransferLine_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="IssueAssetTransfer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="IssueAssetTransfer_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="RecieveAssetTransfer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecieveAssetTransfer_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="EditFixedAsset">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="classCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subClassCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="location" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="program" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="budgetAsset" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="serialNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="assetTagNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mainAssetComponent" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="inactive" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="blocked" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="acquired" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="vendor" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="maintainanceVendor" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="underMaintaince" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="nextServiceDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="warranteDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="insured" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="responsibleEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditFixedAsset_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="NewFixedAsset">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NewFixedAsset_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NewDepreciationBook">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NewDepreciationBook_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditDepreciationBook">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postingGroup" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="depMethod" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="depStartDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="noOfDepYears" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="depEndDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="depTableCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userHaveYearConvertion" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EditDepreciationBook_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehiclelastOdometer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vehicleNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehiclelastOdometer_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleLastToo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vehicleNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleLastToo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateMaintainanceHeaderAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docno" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateMaintainanceHeaderAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="UpdateTimeSheetEntry">
+    <part name="parameters" element="tns:UpdateTimeSheetEntry" />
+  </message>
+  <message name="UpdateTimeSheetEntry_Result">
+    <part name="parameters" element="tns:UpdateTimeSheetEntry_Result" />
+  </message>
+  <message name="SendToSupervisor">
+    <part name="parameters" element="tns:SendToSupervisor" />
+  </message>
+  <message name="SendToSupervisor_Result">
+    <part name="parameters" element="tns:SendToSupervisor_Result" />
+  </message>
+  <message name="GenerateTimeSheetReport">
+    <part name="parameters" element="tns:GenerateTimeSheetReport" />
+  </message>
+  <message name="GenerateTimeSheetReport_Result">
+    <part name="parameters" element="tns:GenerateTimeSheetReport_Result" />
+  </message>
+  <message name="ReturnToEmployee">
+    <part name="parameters" element="tns:ReturnToEmployee" />
+  </message>
+  <message name="ReturnToEmployee_Result">
+    <part name="parameters" element="tns:ReturnToEmployee_Result" />
+  </message>
+  <message name="ApproveTimesheet">
+    <part name="parameters" element="tns:ApproveTimesheet" />
+  </message>
+  <message name="ApproveTimesheet_Result">
+    <part name="parameters" element="tns:ApproveTimesheet_Result" />
+  </message>
+  <message name="UpdateTasks">
+    <part name="parameters" element="tns:UpdateTasks" />
+  </message>
+  <message name="UpdateTasks_Result">
+    <part name="parameters" element="tns:UpdateTasks_Result" />
+  </message>
+  <message name="InsertTimesheetTasks">
+    <part name="parameters" element="tns:InsertTimesheetTasks" />
+  </message>
+  <message name="InsertTimesheetTasks_Result">
+    <part name="parameters" element="tns:InsertTimesheetTasks_Result" />
+  </message>
+  <message name="DeleteTimesheetTasks">
+    <part name="parameters" element="tns:DeleteTimesheetTasks" />
+  </message>
+  <message name="DeleteTimesheetTasks_Result">
+    <part name="parameters" element="tns:DeleteTimesheetTasks_Result" />
+  </message>
+  <message name="InsertDocAttachment">
+    <part name="parameters" element="tns:InsertDocAttachment" />
+  </message>
+  <message name="InsertDocAttachment_Result">
+    <part name="parameters" element="tns:InsertDocAttachment_Result" />
+  </message>
+  <message name="InsertPicture">
+    <part name="parameters" element="tns:InsertPicture" />
+  </message>
+  <message name="InsertPicture_Result">
+    <part name="parameters" element="tns:InsertPicture_Result" />
+  </message>
+  <message name="InsertSignature">
+    <part name="parameters" element="tns:InsertSignature" />
+  </message>
+  <message name="InsertSignature_Result">
+    <part name="parameters" element="tns:InsertSignature_Result" />
+  </message>
+  <message name="GetPassportPic">
+    <part name="parameters" element="tns:GetPassportPic" />
+  </message>
+  <message name="GetPassportPic_Result">
+    <part name="parameters" element="tns:GetPassportPic_Result" />
+  </message>
+  <message name="UpdateEmployeeDetails">
+    <part name="parameters" element="tns:UpdateEmployeeDetails" />
+  </message>
+  <message name="UpdateEmployeeDetails_Result">
+    <part name="parameters" element="tns:UpdateEmployeeDetails_Result" />
+  </message>
+  <message name="GetSignature">
+    <part name="parameters" element="tns:GetSignature" />
+  </message>
+  <message name="GetSignature_Result">
+    <part name="parameters" element="tns:GetSignature_Result" />
+  </message>
+  <message name="GenerateTravelReport">
+    <part name="parameters" element="tns:GenerateTravelReport" />
+  </message>
+  <message name="GenerateTravelReport_Result">
+    <part name="parameters" element="tns:GenerateTravelReport_Result" />
+  </message>
+  <message name="GeneratePurchaseRequestReport">
+    <part name="parameters" element="tns:GeneratePurchaseRequestReport" />
+  </message>
+  <message name="GeneratePurchaseRequestReport_Result">
+    <part name="parameters" element="tns:GeneratePurchaseRequestReport_Result" />
+  </message>
+  <message name="UpdatePurchaseRequestHeader">
+    <part name="parameters" element="tns:UpdatePurchaseRequestHeader" />
+  </message>
+  <message name="UpdatePurchaseRequestHeader_Result">
+    <part name="parameters" element="tns:UpdatePurchaseRequestHeader_Result" />
+  </message>
+  <message name="GenerateActivityReport">
+    <part name="parameters" element="tns:GenerateActivityReport" />
+  </message>
+  <message name="GenerateActivityReport_Result">
+    <part name="parameters" element="tns:GenerateActivityReport_Result" />
+  </message>
+  <message name="GetDocumentAttachment">
+    <part name="parameters" element="tns:GetDocumentAttachment" />
+  </message>
+  <message name="GetDocumentAttachment_Result">
+    <part name="parameters" element="tns:GetDocumentAttachment_Result" />
+  </message>
+  <message name="DeleteDocumentAttachment">
+    <part name="parameters" element="tns:DeleteDocumentAttachment" />
+  </message>
+  <message name="DeleteDocumentAttachment_Result">
+    <part name="parameters" element="tns:DeleteDocumentAttachment_Result" />
+  </message>
+  <message name="DeleteMaintainaceLine">
+    <part name="parameters" element="tns:DeleteMaintainaceLine" />
+  </message>
+  <message name="DeleteMaintainaceLine_Result">
+    <part name="parameters" element="tns:DeleteMaintainaceLine_Result" />
+  </message>
+  <message name="GeneratePettyCashReport">
+    <part name="parameters" element="tns:GeneratePettyCashReport" />
+  </message>
+  <message name="GeneratePettyCashReport_Result">
+    <part name="parameters" element="tns:GeneratePettyCashReport_Result" />
+  </message>
+  <message name="GeneratePettyCashSurrenderReport">
+    <part name="parameters" element="tns:GeneratePettyCashSurrenderReport" />
+  </message>
+  <message name="GeneratePettyCashSurrenderReport_Result">
+    <part name="parameters" element="tns:GeneratePettyCashSurrenderReport_Result" />
+  </message>
+  <message name="DeleteFleetLogLine">
+    <part name="parameters" element="tns:DeleteFleetLogLine" />
+  </message>
+  <message name="DeleteFleetLogLine_Result">
+    <part name="parameters" element="tns:DeleteFleetLogLine_Result" />
+  </message>
+  <message name="SubmitFleetApprovalRequest">
+    <part name="parameters" element="tns:SubmitFleetApprovalRequest" />
+  </message>
+  <message name="SubmitFleetApprovalRequest_Result">
+    <part name="parameters" element="tns:SubmitFleetApprovalRequest_Result" />
+  </message>
+  <message name="EditFleeLogLine">
+    <part name="parameters" element="tns:EditFleeLogLine" />
+  </message>
+  <message name="EditFleeLogLine_Result">
+    <part name="parameters" element="tns:EditFleeLogLine_Result" />
+  </message>
+  <message name="InsertFleeLogLine">
+    <part name="parameters" element="tns:InsertFleeLogLine" />
+  </message>
+  <message name="InsertFleeLogLine_Result">
+    <part name="parameters" element="tns:InsertFleeLogLine_Result" />
+  </message>
+  <message name="GenerateFleetReport">
+    <part name="parameters" element="tns:GenerateFleetReport" />
+  </message>
+  <message name="GenerateFleetReport_Result">
+    <part name="parameters" element="tns:GenerateFleetReport_Result" />
+  </message>
+  <message name="CreateNewFleetCard">
+    <part name="parameters" element="tns:CreateNewFleetCard" />
+  </message>
+  <message name="CreateNewFleetCard_Result">
+    <part name="parameters" element="tns:CreateNewFleetCard_Result" />
+  </message>
+  <message name="CreateNewVehicleRepair">
+    <part name="parameters" element="tns:CreateNewVehicleRepair" />
+  </message>
+  <message name="CreateNewVehicleRepair_Result">
+    <part name="parameters" element="tns:CreateNewVehicleRepair_Result" />
+  </message>
+  <message name="UpdateImprestRequestHeader">
+    <part name="parameters" element="tns:UpdateImprestRequestHeader" />
+  </message>
+  <message name="UpdateImprestRequestHeader_Result">
+    <part name="parameters" element="tns:UpdateImprestRequestHeader_Result" />
+  </message>
+  <message name="UpdateVehicleRepairsHeader">
+    <part name="parameters" element="tns:UpdateVehicleRepairsHeader" />
+  </message>
+  <message name="UpdateVehicleRepairsHeader_Result">
+    <part name="parameters" element="tns:UpdateVehicleRepairsHeader_Result" />
+  </message>
+  <message name="GenerateBidAnalysisReport">
+    <part name="parameters" element="tns:GenerateBidAnalysisReport" />
+  </message>
+  <message name="GenerateBidAnalysisReport_Result">
+    <part name="parameters" element="tns:GenerateBidAnalysisReport_Result" />
+  </message>
+  <message name="GeneratePurchaseOrderReport">
+    <part name="parameters" element="tns:GeneratePurchaseOrderReport" />
+  </message>
+  <message name="GeneratePurchaseOrderReport_Result">
+    <part name="parameters" element="tns:GeneratePurchaseOrderReport_Result" />
+  </message>
+  <message name="UpdateClaimsRequestHeader">
+    <part name="parameters" element="tns:UpdateClaimsRequestHeader" />
+  </message>
+  <message name="UpdateClaimsRequestHeader_Result">
+    <part name="parameters" element="tns:UpdateClaimsRequestHeader_Result" />
+  </message>
+  <message name="VehicleRepairLine">
+    <part name="parameters" element="tns:VehicleRepairLine" />
+  </message>
+  <message name="VehicleRepairLine_Result">
+    <part name="parameters" element="tns:VehicleRepairLine_Result" />
+  </message>
+  <message name="EditVehicleRepairLine">
+    <part name="parameters" element="tns:EditVehicleRepairLine" />
+  </message>
+  <message name="EditVehicleRepairLine_Result">
+    <part name="parameters" element="tns:EditVehicleRepairLine_Result" />
+  </message>
+  <message name="DeleteMaintainanceLine">
+    <part name="parameters" element="tns:DeleteMaintainanceLine" />
+  </message>
+  <message name="DeleteMaintainanceLine_Result">
+    <part name="parameters" element="tns:DeleteMaintainanceLine_Result" />
+  </message>
+  <message name="VehicleRepairsSendApproval">
+    <part name="parameters" element="tns:VehicleRepairsSendApproval" />
+  </message>
+  <message name="VehicleRepairsSendApproval_Result">
+    <part name="parameters" element="tns:VehicleRepairsSendApproval_Result" />
+  </message>
+  <message name="VehicleRepairsCancelApproval">
+    <part name="parameters" element="tns:VehicleRepairsCancelApproval" />
+  </message>
+  <message name="VehicleRepairsCancelApproval_Result">
+    <part name="parameters" element="tns:VehicleRepairsCancelApproval_Result" />
+  </message>
+  <message name="CopyFixedAsset">
+    <part name="parameters" element="tns:CopyFixedAsset" />
+  </message>
+  <message name="CopyFixedAsset_Result">
+    <part name="parameters" element="tns:CopyFixedAsset_Result" />
+  </message>
+  <message name="NewAssetTransfer">
+    <part name="parameters" element="tns:NewAssetTransfer" />
+  </message>
+  <message name="NewAssetTransfer_Result">
+    <part name="parameters" element="tns:NewAssetTransfer_Result" />
+  </message>
+  <message name="EditAssetTransfer">
+    <part name="parameters" element="tns:EditAssetTransfer" />
+  </message>
+  <message name="EditAssetTransfer_Result">
+    <part name="parameters" element="tns:EditAssetTransfer_Result" />
+  </message>
+  <message name="NewAssetTransferLine">
+    <part name="parameters" element="tns:NewAssetTransferLine" />
+  </message>
+  <message name="NewAssetTransferLine_Result">
+    <part name="parameters" element="tns:NewAssetTransferLine_Result" />
+  </message>
+  <message name="DeleteAssetTransferLine">
+    <part name="parameters" element="tns:DeleteAssetTransferLine" />
+  </message>
+  <message name="DeleteAssetTransferLine_Result">
+    <part name="parameters" element="tns:DeleteAssetTransferLine_Result" />
+  </message>
+  <message name="EditAssetTransferLine">
+    <part name="parameters" element="tns:EditAssetTransferLine" />
+  </message>
+  <message name="EditAssetTransferLine_Result">
+    <part name="parameters" element="tns:EditAssetTransferLine_Result" />
+  </message>
+  <message name="IssueAssetTransfer">
+    <part name="parameters" element="tns:IssueAssetTransfer" />
+  </message>
+  <message name="IssueAssetTransfer_Result">
+    <part name="parameters" element="tns:IssueAssetTransfer_Result" />
+  </message>
+  <message name="RecieveAssetTransfer">
+    <part name="parameters" element="tns:RecieveAssetTransfer" />
+  </message>
+  <message name="RecieveAssetTransfer_Result">
+    <part name="parameters" element="tns:RecieveAssetTransfer_Result" />
+  </message>
+  <message name="EditFixedAsset">
+    <part name="parameters" element="tns:EditFixedAsset" />
+  </message>
+  <message name="EditFixedAsset_Result">
+    <part name="parameters" element="tns:EditFixedAsset_Result" />
+  </message>
+  <message name="NewFixedAsset">
+    <part name="parameters" element="tns:NewFixedAsset" />
+  </message>
+  <message name="NewFixedAsset_Result">
+    <part name="parameters" element="tns:NewFixedAsset_Result" />
+  </message>
+  <message name="NewDepreciationBook">
+    <part name="parameters" element="tns:NewDepreciationBook" />
+  </message>
+  <message name="NewDepreciationBook_Result">
+    <part name="parameters" element="tns:NewDepreciationBook_Result" />
+  </message>
+  <message name="EditDepreciationBook">
+    <part name="parameters" element="tns:EditDepreciationBook" />
+  </message>
+  <message name="EditDepreciationBook_Result">
+    <part name="parameters" element="tns:EditDepreciationBook_Result" />
+  </message>
+  <message name="VehiclelastOdometer">
+    <part name="parameters" element="tns:VehiclelastOdometer" />
+  </message>
+  <message name="VehiclelastOdometer_Result">
+    <part name="parameters" element="tns:VehiclelastOdometer_Result" />
+  </message>
+  <message name="VehicleLastToo">
+    <part name="parameters" element="tns:VehicleLastToo" />
+  </message>
+  <message name="VehicleLastToo_Result">
+    <part name="parameters" element="tns:VehicleLastToo_Result" />
+  </message>
+  <message name="UpdateMaintainanceHeaderAmount">
+    <part name="parameters" element="tns:UpdateMaintainanceHeaderAmount" />
+  </message>
+  <message name="UpdateMaintainanceHeaderAmount_Result">
+    <part name="parameters" element="tns:UpdateMaintainanceHeaderAmount_Result" />
+  </message>
+  <portType name="TimeSheetWS_Port">
+    <operation name="UpdateTimeSheetEntry">
+      <input name="UpdateTimeSheetEntry" message="tns:UpdateTimeSheetEntry" />
+      <output name="UpdateTimeSheetEntry_Result" message="tns:UpdateTimeSheetEntry_Result" />
+    </operation>
+    <operation name="SendToSupervisor">
+      <input name="SendToSupervisor" message="tns:SendToSupervisor" />
+      <output name="SendToSupervisor_Result" message="tns:SendToSupervisor_Result" />
+    </operation>
+    <operation name="GenerateTimeSheetReport">
+      <input name="GenerateTimeSheetReport" message="tns:GenerateTimeSheetReport" />
+      <output name="GenerateTimeSheetReport_Result" message="tns:GenerateTimeSheetReport_Result" />
+    </operation>
+    <operation name="ReturnToEmployee">
+      <input name="ReturnToEmployee" message="tns:ReturnToEmployee" />
+      <output name="ReturnToEmployee_Result" message="tns:ReturnToEmployee_Result" />
+    </operation>
+    <operation name="ApproveTimesheet">
+      <input name="ApproveTimesheet" message="tns:ApproveTimesheet" />
+      <output name="ApproveTimesheet_Result" message="tns:ApproveTimesheet_Result" />
+    </operation>
+    <operation name="UpdateTasks">
+      <input name="UpdateTasks" message="tns:UpdateTasks" />
+      <output name="UpdateTasks_Result" message="tns:UpdateTasks_Result" />
+    </operation>
+    <operation name="InsertTimesheetTasks">
+      <input name="InsertTimesheetTasks" message="tns:InsertTimesheetTasks" />
+      <output name="InsertTimesheetTasks_Result" message="tns:InsertTimesheetTasks_Result" />
+    </operation>
+    <operation name="DeleteTimesheetTasks">
+      <input name="DeleteTimesheetTasks" message="tns:DeleteTimesheetTasks" />
+      <output name="DeleteTimesheetTasks_Result" message="tns:DeleteTimesheetTasks_Result" />
+    </operation>
+    <operation name="InsertDocAttachment">
+      <input name="InsertDocAttachment" message="tns:InsertDocAttachment" />
+      <output name="InsertDocAttachment_Result" message="tns:InsertDocAttachment_Result" />
+    </operation>
+    <operation name="InsertPicture">
+      <input name="InsertPicture" message="tns:InsertPicture" />
+      <output name="InsertPicture_Result" message="tns:InsertPicture_Result" />
+    </operation>
+    <operation name="InsertSignature">
+      <input name="InsertSignature" message="tns:InsertSignature" />
+      <output name="InsertSignature_Result" message="tns:InsertSignature_Result" />
+    </operation>
+    <operation name="GetPassportPic">
+      <input name="GetPassportPic" message="tns:GetPassportPic" />
+      <output name="GetPassportPic_Result" message="tns:GetPassportPic_Result" />
+    </operation>
+    <operation name="UpdateEmployeeDetails">
+      <input name="UpdateEmployeeDetails" message="tns:UpdateEmployeeDetails" />
+      <output name="UpdateEmployeeDetails_Result" message="tns:UpdateEmployeeDetails_Result" />
+    </operation>
+    <operation name="GetSignature">
+      <input name="GetSignature" message="tns:GetSignature" />
+      <output name="GetSignature_Result" message="tns:GetSignature_Result" />
+    </operation>
+    <operation name="GenerateTravelReport">
+      <input name="GenerateTravelReport" message="tns:GenerateTravelReport" />
+      <output name="GenerateTravelReport_Result" message="tns:GenerateTravelReport_Result" />
+    </operation>
+    <operation name="GeneratePurchaseRequestReport">
+      <input name="GeneratePurchaseRequestReport" message="tns:GeneratePurchaseRequestReport" />
+      <output name="GeneratePurchaseRequestReport_Result" message="tns:GeneratePurchaseRequestReport_Result" />
+    </operation>
+    <operation name="UpdatePurchaseRequestHeader">
+      <input name="UpdatePurchaseRequestHeader" message="tns:UpdatePurchaseRequestHeader" />
+      <output name="UpdatePurchaseRequestHeader_Result" message="tns:UpdatePurchaseRequestHeader_Result" />
+    </operation>
+    <operation name="GenerateActivityReport">
+      <input name="GenerateActivityReport" message="tns:GenerateActivityReport" />
+      <output name="GenerateActivityReport_Result" message="tns:GenerateActivityReport_Result" />
+    </operation>
+    <operation name="GetDocumentAttachment">
+      <input name="GetDocumentAttachment" message="tns:GetDocumentAttachment" />
+      <output name="GetDocumentAttachment_Result" message="tns:GetDocumentAttachment_Result" />
+    </operation>
+    <operation name="DeleteDocumentAttachment">
+      <input name="DeleteDocumentAttachment" message="tns:DeleteDocumentAttachment" />
+      <output name="DeleteDocumentAttachment_Result" message="tns:DeleteDocumentAttachment_Result" />
+    </operation>
+    <operation name="DeleteMaintainaceLine">
+      <input name="DeleteMaintainaceLine" message="tns:DeleteMaintainaceLine" />
+      <output name="DeleteMaintainaceLine_Result" message="tns:DeleteMaintainaceLine_Result" />
+    </operation>
+    <operation name="GeneratePettyCashReport">
+      <input name="GeneratePettyCashReport" message="tns:GeneratePettyCashReport" />
+      <output name="GeneratePettyCashReport_Result" message="tns:GeneratePettyCashReport_Result" />
+    </operation>
+    <operation name="GeneratePettyCashSurrenderReport">
+      <input name="GeneratePettyCashSurrenderReport" message="tns:GeneratePettyCashSurrenderReport" />
+      <output name="GeneratePettyCashSurrenderReport_Result" message="tns:GeneratePettyCashSurrenderReport_Result" />
+    </operation>
+    <operation name="DeleteFleetLogLine">
+      <input name="DeleteFleetLogLine" message="tns:DeleteFleetLogLine" />
+      <output name="DeleteFleetLogLine_Result" message="tns:DeleteFleetLogLine_Result" />
+    </operation>
+    <operation name="SubmitFleetApprovalRequest">
+      <input name="SubmitFleetApprovalRequest" message="tns:SubmitFleetApprovalRequest" />
+      <output name="SubmitFleetApprovalRequest_Result" message="tns:SubmitFleetApprovalRequest_Result" />
+    </operation>
+    <operation name="EditFleeLogLine">
+      <input name="EditFleeLogLine" message="tns:EditFleeLogLine" />
+      <output name="EditFleeLogLine_Result" message="tns:EditFleeLogLine_Result" />
+    </operation>
+    <operation name="InsertFleeLogLine">
+      <input name="InsertFleeLogLine" message="tns:InsertFleeLogLine" />
+      <output name="InsertFleeLogLine_Result" message="tns:InsertFleeLogLine_Result" />
+    </operation>
+    <operation name="GenerateFleetReport">
+      <input name="GenerateFleetReport" message="tns:GenerateFleetReport" />
+      <output name="GenerateFleetReport_Result" message="tns:GenerateFleetReport_Result" />
+    </operation>
+    <operation name="CreateNewFleetCard">
+      <input name="CreateNewFleetCard" message="tns:CreateNewFleetCard" />
+      <output name="CreateNewFleetCard_Result" message="tns:CreateNewFleetCard_Result" />
+    </operation>
+    <operation name="CreateNewVehicleRepair">
+      <input name="CreateNewVehicleRepair" message="tns:CreateNewVehicleRepair" />
+      <output name="CreateNewVehicleRepair_Result" message="tns:CreateNewVehicleRepair_Result" />
+    </operation>
+    <operation name="UpdateImprestRequestHeader">
+      <input name="UpdateImprestRequestHeader" message="tns:UpdateImprestRequestHeader" />
+      <output name="UpdateImprestRequestHeader_Result" message="tns:UpdateImprestRequestHeader_Result" />
+    </operation>
+    <operation name="UpdateVehicleRepairsHeader">
+      <input name="UpdateVehicleRepairsHeader" message="tns:UpdateVehicleRepairsHeader" />
+      <output name="UpdateVehicleRepairsHeader_Result" message="tns:UpdateVehicleRepairsHeader_Result" />
+    </operation>
+    <operation name="GenerateBidAnalysisReport">
+      <input name="GenerateBidAnalysisReport" message="tns:GenerateBidAnalysisReport" />
+      <output name="GenerateBidAnalysisReport_Result" message="tns:GenerateBidAnalysisReport_Result" />
+    </operation>
+    <operation name="GeneratePurchaseOrderReport">
+      <input name="GeneratePurchaseOrderReport" message="tns:GeneratePurchaseOrderReport" />
+      <output name="GeneratePurchaseOrderReport_Result" message="tns:GeneratePurchaseOrderReport_Result" />
+    </operation>
+    <operation name="UpdateClaimsRequestHeader">
+      <input name="UpdateClaimsRequestHeader" message="tns:UpdateClaimsRequestHeader" />
+      <output name="UpdateClaimsRequestHeader_Result" message="tns:UpdateClaimsRequestHeader_Result" />
+    </operation>
+    <operation name="VehicleRepairLine">
+      <input name="VehicleRepairLine" message="tns:VehicleRepairLine" />
+      <output name="VehicleRepairLine_Result" message="tns:VehicleRepairLine_Result" />
+    </operation>
+    <operation name="EditVehicleRepairLine">
+      <input name="EditVehicleRepairLine" message="tns:EditVehicleRepairLine" />
+      <output name="EditVehicleRepairLine_Result" message="tns:EditVehicleRepairLine_Result" />
+    </operation>
+    <operation name="DeleteMaintainanceLine">
+      <input name="DeleteMaintainanceLine" message="tns:DeleteMaintainanceLine" />
+      <output name="DeleteMaintainanceLine_Result" message="tns:DeleteMaintainanceLine_Result" />
+    </operation>
+    <operation name="VehicleRepairsSendApproval">
+      <input name="VehicleRepairsSendApproval" message="tns:VehicleRepairsSendApproval" />
+      <output name="VehicleRepairsSendApproval_Result" message="tns:VehicleRepairsSendApproval_Result" />
+    </operation>
+    <operation name="VehicleRepairsCancelApproval">
+      <input name="VehicleRepairsCancelApproval" message="tns:VehicleRepairsCancelApproval" />
+      <output name="VehicleRepairsCancelApproval_Result" message="tns:VehicleRepairsCancelApproval_Result" />
+    </operation>
+    <operation name="CopyFixedAsset">
+      <input name="CopyFixedAsset" message="tns:CopyFixedAsset" />
+      <output name="CopyFixedAsset_Result" message="tns:CopyFixedAsset_Result" />
+    </operation>
+    <operation name="NewAssetTransfer">
+      <input name="NewAssetTransfer" message="tns:NewAssetTransfer" />
+      <output name="NewAssetTransfer_Result" message="tns:NewAssetTransfer_Result" />
+    </operation>
+    <operation name="EditAssetTransfer">
+      <input name="EditAssetTransfer" message="tns:EditAssetTransfer" />
+      <output name="EditAssetTransfer_Result" message="tns:EditAssetTransfer_Result" />
+    </operation>
+    <operation name="NewAssetTransferLine">
+      <input name="NewAssetTransferLine" message="tns:NewAssetTransferLine" />
+      <output name="NewAssetTransferLine_Result" message="tns:NewAssetTransferLine_Result" />
+    </operation>
+    <operation name="DeleteAssetTransferLine">
+      <input name="DeleteAssetTransferLine" message="tns:DeleteAssetTransferLine" />
+      <output name="DeleteAssetTransferLine_Result" message="tns:DeleteAssetTransferLine_Result" />
+    </operation>
+    <operation name="EditAssetTransferLine">
+      <input name="EditAssetTransferLine" message="tns:EditAssetTransferLine" />
+      <output name="EditAssetTransferLine_Result" message="tns:EditAssetTransferLine_Result" />
+    </operation>
+    <operation name="IssueAssetTransfer">
+      <input name="IssueAssetTransfer" message="tns:IssueAssetTransfer" />
+      <output name="IssueAssetTransfer_Result" message="tns:IssueAssetTransfer_Result" />
+    </operation>
+    <operation name="RecieveAssetTransfer">
+      <input name="RecieveAssetTransfer" message="tns:RecieveAssetTransfer" />
+      <output name="RecieveAssetTransfer_Result" message="tns:RecieveAssetTransfer_Result" />
+    </operation>
+    <operation name="EditFixedAsset">
+      <input name="EditFixedAsset" message="tns:EditFixedAsset" />
+      <output name="EditFixedAsset_Result" message="tns:EditFixedAsset_Result" />
+    </operation>
+    <operation name="NewFixedAsset">
+      <input name="NewFixedAsset" message="tns:NewFixedAsset" />
+      <output name="NewFixedAsset_Result" message="tns:NewFixedAsset_Result" />
+    </operation>
+    <operation name="NewDepreciationBook">
+      <input name="NewDepreciationBook" message="tns:NewDepreciationBook" />
+      <output name="NewDepreciationBook_Result" message="tns:NewDepreciationBook_Result" />
+    </operation>
+    <operation name="EditDepreciationBook">
+      <input name="EditDepreciationBook" message="tns:EditDepreciationBook" />
+      <output name="EditDepreciationBook_Result" message="tns:EditDepreciationBook_Result" />
+    </operation>
+    <operation name="VehiclelastOdometer">
+      <input name="VehiclelastOdometer" message="tns:VehiclelastOdometer" />
+      <output name="VehiclelastOdometer_Result" message="tns:VehiclelastOdometer_Result" />
+    </operation>
+    <operation name="VehicleLastToo">
+      <input name="VehicleLastToo" message="tns:VehicleLastToo" />
+      <output name="VehicleLastToo_Result" message="tns:VehicleLastToo_Result" />
+    </operation>
+    <operation name="UpdateMaintainanceHeaderAmount">
+      <input name="UpdateMaintainanceHeaderAmount" message="tns:UpdateMaintainanceHeaderAmount" />
+      <output name="UpdateMaintainanceHeaderAmount_Result" message="tns:UpdateMaintainanceHeaderAmount_Result" />
+    </operation>
+  </portType>
+  <binding name="TimeSheetWS_Binding" type="tns:TimeSheetWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="UpdateTimeSheetEntry">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateTimeSheetEntry" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateTimeSheetEntry">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateTimeSheetEntry_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendToSupervisor">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:SendToSupervisor" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendToSupervisor">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendToSupervisor_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateTimeSheetReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GenerateTimeSheetReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateTimeSheetReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateTimeSheetReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReturnToEmployee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:ReturnToEmployee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReturnToEmployee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReturnToEmployee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveTimesheet">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:ApproveTimesheet" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveTimesheet">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveTimesheet_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateTasks">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateTasks" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateTasks">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateTasks_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertTimesheetTasks">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:InsertTimesheetTasks" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertTimesheetTasks">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertTimesheetTasks_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteTimesheetTasks">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteTimesheetTasks" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteTimesheetTasks">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteTimesheetTasks_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertDocAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:InsertDocAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertDocAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertDocAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertPicture">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:InsertPicture" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertPicture">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertPicture_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertSignature">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:InsertSignature" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertSignature">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertSignature_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPassportPic">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GetPassportPic" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPassportPic">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPassportPic_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateEmployeeDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateEmployeeDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateEmployeeDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateEmployeeDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSignature">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GetSignature" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSignature">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSignature_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateTravelReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GenerateTravelReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateTravelReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateTravelReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePurchaseRequestReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GeneratePurchaseRequestReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePurchaseRequestReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePurchaseRequestReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdatePurchaseRequestHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdatePurchaseRequestHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdatePurchaseRequestHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdatePurchaseRequestHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateActivityReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GenerateActivityReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateActivityReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateActivityReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetDocumentAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GetDocumentAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDocumentAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDocumentAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteDocumentAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteDocumentAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDocumentAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDocumentAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteMaintainaceLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteMaintainaceLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteMaintainaceLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteMaintainaceLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePettyCashReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GeneratePettyCashReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePettyCashReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePettyCashReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePettyCashSurrenderReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GeneratePettyCashSurrenderReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePettyCashSurrenderReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePettyCashSurrenderReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteFleetLogLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteFleetLogLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteFleetLogLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteFleetLogLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitFleetApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:SubmitFleetApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitFleetApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitFleetApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditFleeLogLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditFleeLogLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditFleeLogLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditFleeLogLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertFleeLogLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:InsertFleeLogLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertFleeLogLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertFleeLogLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateFleetReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GenerateFleetReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateFleetReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateFleetReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateNewFleetCard">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:CreateNewFleetCard" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateNewFleetCard">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateNewFleetCard_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateNewVehicleRepair">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:CreateNewVehicleRepair" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateNewVehicleRepair">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateNewVehicleRepair_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateImprestRequestHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateImprestRequestHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateImprestRequestHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateImprestRequestHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateVehicleRepairsHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateVehicleRepairsHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateVehicleRepairsHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateVehicleRepairsHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateBidAnalysisReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GenerateBidAnalysisReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateBidAnalysisReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateBidAnalysisReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePurchaseOrderReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:GeneratePurchaseOrderReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePurchaseOrderReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePurchaseOrderReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateClaimsRequestHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateClaimsRequestHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateClaimsRequestHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateClaimsRequestHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleRepairLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:VehicleRepairLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleRepairLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleRepairLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditVehicleRepairLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditVehicleRepairLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditVehicleRepairLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditVehicleRepairLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteMaintainanceLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteMaintainanceLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteMaintainanceLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteMaintainanceLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleRepairsSendApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:VehicleRepairsSendApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleRepairsSendApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleRepairsSendApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleRepairsCancelApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:VehicleRepairsCancelApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleRepairsCancelApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleRepairsCancelApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CopyFixedAsset">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:CopyFixedAsset" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CopyFixedAsset">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CopyFixedAsset_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="NewAssetTransfer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:NewAssetTransfer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="NewAssetTransfer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="NewAssetTransfer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditAssetTransfer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditAssetTransfer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditAssetTransfer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditAssetTransfer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="NewAssetTransferLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:NewAssetTransferLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="NewAssetTransferLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="NewAssetTransferLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteAssetTransferLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:DeleteAssetTransferLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteAssetTransferLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteAssetTransferLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditAssetTransferLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditAssetTransferLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditAssetTransferLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditAssetTransferLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IssueAssetTransfer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:IssueAssetTransfer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IssueAssetTransfer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IssueAssetTransfer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecieveAssetTransfer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:RecieveAssetTransfer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecieveAssetTransfer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecieveAssetTransfer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditFixedAsset">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditFixedAsset" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditFixedAsset">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditFixedAsset_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="NewFixedAsset">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:NewFixedAsset" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="NewFixedAsset">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="NewFixedAsset_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="NewDepreciationBook">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:NewDepreciationBook" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="NewDepreciationBook">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="NewDepreciationBook_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EditDepreciationBook">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:EditDepreciationBook" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EditDepreciationBook">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EditDepreciationBook_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehiclelastOdometer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:VehiclelastOdometer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehiclelastOdometer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehiclelastOdometer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleLastToo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:VehicleLastToo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleLastToo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleLastToo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMaintainanceHeaderAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TimeSheetWS:UpdateMaintainanceHeaderAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMaintainanceHeaderAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMaintainanceHeaderAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TimeSheetWS">
+    <port name="TimeSheetWS_Port" binding="tns:TimeSheetWS_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/TimeSheetWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

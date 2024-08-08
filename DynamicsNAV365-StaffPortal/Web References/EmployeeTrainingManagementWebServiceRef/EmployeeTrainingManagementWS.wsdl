@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckOpenTrainingNeedApplicationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenTrainingNeedApplicationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingNeedApplicationExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingNeedApplicationExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingNeedApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingNeedApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingNeedApplicationStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingNeedApplicationStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingNeedApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="calendarYear" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="developmentNeed" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="interventionRequired" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="interventionRequireda40Othera41" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="proposedTrainingProvider" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="proposedPeriod" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="estimatedCost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="trainingLocationVenue" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingScheduleDateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="trainingScheduleDateTo" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="cPDPointsToBeEarned" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingNeedApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingNeedApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingNeedApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingNeedApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingNeedApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingNeedApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingNeedApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenTrainingApplicationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenTrainingApplicationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingApplicationExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingApplicationExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingApplicationStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingApplicationStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingNeedNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="calendarYear" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingStartDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="trainingEndDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objectivea47PurposeOfTraining" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingApplicationApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingApplicationApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingApplicationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingApplicationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingApplicationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingApplicationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenTrainingEvaluationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenTrainingEvaluationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingEvaluationExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingEvaluationExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingEvaluation">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTrainingEvaluation_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingEvaluationStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingEvaluationStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingEvaluation">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="comments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="a" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="b" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="c" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="d" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="e" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="f" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="g" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="h" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="i" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="j" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTrainingEvaluation_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingEvaluationApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckTrainingEvaluationApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingEvaluationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingEvaluationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingEvaluationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingEvaluationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckOpenTrainingNeedApplicationExists">
+    <part name="parameters" element="tns:CheckOpenTrainingNeedApplicationExists" />
+  </message>
+  <message name="CheckOpenTrainingNeedApplicationExists_Result">
+    <part name="parameters" element="tns:CheckOpenTrainingNeedApplicationExists_Result" />
+  </message>
+  <message name="CheckTrainingNeedApplicationExist">
+    <part name="parameters" element="tns:CheckTrainingNeedApplicationExist" />
+  </message>
+  <message name="CheckTrainingNeedApplicationExist_Result">
+    <part name="parameters" element="tns:CheckTrainingNeedApplicationExist_Result" />
+  </message>
+  <message name="CreateTrainingNeedApplication">
+    <part name="parameters" element="tns:CreateTrainingNeedApplication" />
+  </message>
+  <message name="CreateTrainingNeedApplication_Result">
+    <part name="parameters" element="tns:CreateTrainingNeedApplication_Result" />
+  </message>
+  <message name="GetTrainingNeedApplicationStatus">
+    <part name="parameters" element="tns:GetTrainingNeedApplicationStatus" />
+  </message>
+  <message name="GetTrainingNeedApplicationStatus_Result">
+    <part name="parameters" element="tns:GetTrainingNeedApplicationStatus_Result" />
+  </message>
+  <message name="ModifyTrainingNeedApplication">
+    <part name="parameters" element="tns:ModifyTrainingNeedApplication" />
+  </message>
+  <message name="ModifyTrainingNeedApplication_Result">
+    <part name="parameters" element="tns:ModifyTrainingNeedApplication_Result" />
+  </message>
+  <message name="CheckTrainingNeedApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckTrainingNeedApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckTrainingNeedApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckTrainingNeedApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendTrainingNeedApprovalRequest">
+    <part name="parameters" element="tns:SendTrainingNeedApprovalRequest" />
+  </message>
+  <message name="SendTrainingNeedApprovalRequest_Result">
+    <part name="parameters" element="tns:SendTrainingNeedApprovalRequest_Result" />
+  </message>
+  <message name="CancelTrainingNeedApprovalRequest">
+    <part name="parameters" element="tns:CancelTrainingNeedApprovalRequest" />
+  </message>
+  <message name="CancelTrainingNeedApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelTrainingNeedApprovalRequest_Result" />
+  </message>
+  <message name="CheckOpenTrainingApplicationExists">
+    <part name="parameters" element="tns:CheckOpenTrainingApplicationExists" />
+  </message>
+  <message name="CheckOpenTrainingApplicationExists_Result">
+    <part name="parameters" element="tns:CheckOpenTrainingApplicationExists_Result" />
+  </message>
+  <message name="CheckTrainingApplicationExist">
+    <part name="parameters" element="tns:CheckTrainingApplicationExist" />
+  </message>
+  <message name="CheckTrainingApplicationExist_Result">
+    <part name="parameters" element="tns:CheckTrainingApplicationExist_Result" />
+  </message>
+  <message name="CreateTrainingApplication">
+    <part name="parameters" element="tns:CreateTrainingApplication" />
+  </message>
+  <message name="CreateTrainingApplication_Result">
+    <part name="parameters" element="tns:CreateTrainingApplication_Result" />
+  </message>
+  <message name="GetTrainingApplicationStatus">
+    <part name="parameters" element="tns:GetTrainingApplicationStatus" />
+  </message>
+  <message name="GetTrainingApplicationStatus_Result">
+    <part name="parameters" element="tns:GetTrainingApplicationStatus_Result" />
+  </message>
+  <message name="ModifyTrainingApplication">
+    <part name="parameters" element="tns:ModifyTrainingApplication" />
+  </message>
+  <message name="ModifyTrainingApplication_Result">
+    <part name="parameters" element="tns:ModifyTrainingApplication_Result" />
+  </message>
+  <message name="CheckTrainingApplicationApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckTrainingApplicationApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckTrainingApplicationApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckTrainingApplicationApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendTrainingApplicationApprovalRequest">
+    <part name="parameters" element="tns:SendTrainingApplicationApprovalRequest" />
+  </message>
+  <message name="SendTrainingApplicationApprovalRequest_Result">
+    <part name="parameters" element="tns:SendTrainingApplicationApprovalRequest_Result" />
+  </message>
+  <message name="CancelTrainingApplicationApprovalRequest">
+    <part name="parameters" element="tns:CancelTrainingApplicationApprovalRequest" />
+  </message>
+  <message name="CancelTrainingApplicationApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelTrainingApplicationApprovalRequest_Result" />
+  </message>
+  <message name="CheckOpenTrainingEvaluationExists">
+    <part name="parameters" element="tns:CheckOpenTrainingEvaluationExists" />
+  </message>
+  <message name="CheckOpenTrainingEvaluationExists_Result">
+    <part name="parameters" element="tns:CheckOpenTrainingEvaluationExists_Result" />
+  </message>
+  <message name="CheckTrainingEvaluationExist">
+    <part name="parameters" element="tns:CheckTrainingEvaluationExist" />
+  </message>
+  <message name="CheckTrainingEvaluationExist_Result">
+    <part name="parameters" element="tns:CheckTrainingEvaluationExist_Result" />
+  </message>
+  <message name="CreateTrainingEvaluation">
+    <part name="parameters" element="tns:CreateTrainingEvaluation" />
+  </message>
+  <message name="CreateTrainingEvaluation_Result">
+    <part name="parameters" element="tns:CreateTrainingEvaluation_Result" />
+  </message>
+  <message name="GetTrainingEvaluationStatus">
+    <part name="parameters" element="tns:GetTrainingEvaluationStatus" />
+  </message>
+  <message name="GetTrainingEvaluationStatus_Result">
+    <part name="parameters" element="tns:GetTrainingEvaluationStatus_Result" />
+  </message>
+  <message name="ModifyTrainingEvaluation">
+    <part name="parameters" element="tns:ModifyTrainingEvaluation" />
+  </message>
+  <message name="ModifyTrainingEvaluation_Result">
+    <part name="parameters" element="tns:ModifyTrainingEvaluation_Result" />
+  </message>
+  <message name="CheckTrainingEvaluationApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckTrainingEvaluationApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckTrainingEvaluationApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckTrainingEvaluationApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendTrainingEvaluationApprovalRequest">
+    <part name="parameters" element="tns:SendTrainingEvaluationApprovalRequest" />
+  </message>
+  <message name="SendTrainingEvaluationApprovalRequest_Result">
+    <part name="parameters" element="tns:SendTrainingEvaluationApprovalRequest_Result" />
+  </message>
+  <message name="CancelTrainingEvaluationApprovalRequest">
+    <part name="parameters" element="tns:CancelTrainingEvaluationApprovalRequest" />
+  </message>
+  <message name="CancelTrainingEvaluationApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelTrainingEvaluationApprovalRequest_Result" />
+  </message>
+  <portType name="EmployeeTrainingManagementWS_Port">
+    <operation name="CheckOpenTrainingNeedApplicationExists">
+      <input name="CheckOpenTrainingNeedApplicationExists" message="tns:CheckOpenTrainingNeedApplicationExists" />
+      <output name="CheckOpenTrainingNeedApplicationExists_Result" message="tns:CheckOpenTrainingNeedApplicationExists_Result" />
+    </operation>
+    <operation name="CheckTrainingNeedApplicationExist">
+      <input name="CheckTrainingNeedApplicationExist" message="tns:CheckTrainingNeedApplicationExist" />
+      <output name="CheckTrainingNeedApplicationExist_Result" message="tns:CheckTrainingNeedApplicationExist_Result" />
+    </operation>
+    <operation name="CreateTrainingNeedApplication">
+      <input name="CreateTrainingNeedApplication" message="tns:CreateTrainingNeedApplication" />
+      <output name="CreateTrainingNeedApplication_Result" message="tns:CreateTrainingNeedApplication_Result" />
+    </operation>
+    <operation name="GetTrainingNeedApplicationStatus">
+      <input name="GetTrainingNeedApplicationStatus" message="tns:GetTrainingNeedApplicationStatus" />
+      <output name="GetTrainingNeedApplicationStatus_Result" message="tns:GetTrainingNeedApplicationStatus_Result" />
+    </operation>
+    <operation name="ModifyTrainingNeedApplication">
+      <input name="ModifyTrainingNeedApplication" message="tns:ModifyTrainingNeedApplication" />
+      <output name="ModifyTrainingNeedApplication_Result" message="tns:ModifyTrainingNeedApplication_Result" />
+    </operation>
+    <operation name="CheckTrainingNeedApprovalWorkflowEnabled">
+      <input name="CheckTrainingNeedApprovalWorkflowEnabled" message="tns:CheckTrainingNeedApprovalWorkflowEnabled" />
+      <output name="CheckTrainingNeedApprovalWorkflowEnabled_Result" message="tns:CheckTrainingNeedApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendTrainingNeedApprovalRequest">
+      <input name="SendTrainingNeedApprovalRequest" message="tns:SendTrainingNeedApprovalRequest" />
+      <output name="SendTrainingNeedApprovalRequest_Result" message="tns:SendTrainingNeedApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelTrainingNeedApprovalRequest">
+      <input name="CancelTrainingNeedApprovalRequest" message="tns:CancelTrainingNeedApprovalRequest" />
+      <output name="CancelTrainingNeedApprovalRequest_Result" message="tns:CancelTrainingNeedApprovalRequest_Result" />
+    </operation>
+    <operation name="CheckOpenTrainingApplicationExists">
+      <input name="CheckOpenTrainingApplicationExists" message="tns:CheckOpenTrainingApplicationExists" />
+      <output name="CheckOpenTrainingApplicationExists_Result" message="tns:CheckOpenTrainingApplicationExists_Result" />
+    </operation>
+    <operation name="CheckTrainingApplicationExist">
+      <input name="CheckTrainingApplicationExist" message="tns:CheckTrainingApplicationExist" />
+      <output name="CheckTrainingApplicationExist_Result" message="tns:CheckTrainingApplicationExist_Result" />
+    </operation>
+    <operation name="CreateTrainingApplication">
+      <input name="CreateTrainingApplication" message="tns:CreateTrainingApplication" />
+      <output name="CreateTrainingApplication_Result" message="tns:CreateTrainingApplication_Result" />
+    </operation>
+    <operation name="GetTrainingApplicationStatus">
+      <input name="GetTrainingApplicationStatus" message="tns:GetTrainingApplicationStatus" />
+      <output name="GetTrainingApplicationStatus_Result" message="tns:GetTrainingApplicationStatus_Result" />
+    </operation>
+    <operation name="ModifyTrainingApplication">
+      <input name="ModifyTrainingApplication" message="tns:ModifyTrainingApplication" />
+      <output name="ModifyTrainingApplication_Result" message="tns:ModifyTrainingApplication_Result" />
+    </operation>
+    <operation name="CheckTrainingApplicationApprovalWorkflowEnabled">
+      <input name="CheckTrainingApplicationApprovalWorkflowEnabled" message="tns:CheckTrainingApplicationApprovalWorkflowEnabled" />
+      <output name="CheckTrainingApplicationApprovalWorkflowEnabled_Result" message="tns:CheckTrainingApplicationApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendTrainingApplicationApprovalRequest">
+      <input name="SendTrainingApplicationApprovalRequest" message="tns:SendTrainingApplicationApprovalRequest" />
+      <output name="SendTrainingApplicationApprovalRequest_Result" message="tns:SendTrainingApplicationApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelTrainingApplicationApprovalRequest">
+      <input name="CancelTrainingApplicationApprovalRequest" message="tns:CancelTrainingApplicationApprovalRequest" />
+      <output name="CancelTrainingApplicationApprovalRequest_Result" message="tns:CancelTrainingApplicationApprovalRequest_Result" />
+    </operation>
+    <operation name="CheckOpenTrainingEvaluationExists">
+      <input name="CheckOpenTrainingEvaluationExists" message="tns:CheckOpenTrainingEvaluationExists" />
+      <output name="CheckOpenTrainingEvaluationExists_Result" message="tns:CheckOpenTrainingEvaluationExists_Result" />
+    </operation>
+    <operation name="CheckTrainingEvaluationExist">
+      <input name="CheckTrainingEvaluationExist" message="tns:CheckTrainingEvaluationExist" />
+      <output name="CheckTrainingEvaluationExist_Result" message="tns:CheckTrainingEvaluationExist_Result" />
+    </operation>
+    <operation name="CreateTrainingEvaluation">
+      <input name="CreateTrainingEvaluation" message="tns:CreateTrainingEvaluation" />
+      <output name="CreateTrainingEvaluation_Result" message="tns:CreateTrainingEvaluation_Result" />
+    </operation>
+    <operation name="GetTrainingEvaluationStatus">
+      <input name="GetTrainingEvaluationStatus" message="tns:GetTrainingEvaluationStatus" />
+      <output name="GetTrainingEvaluationStatus_Result" message="tns:GetTrainingEvaluationStatus_Result" />
+    </operation>
+    <operation name="ModifyTrainingEvaluation">
+      <input name="ModifyTrainingEvaluation" message="tns:ModifyTrainingEvaluation" />
+      <output name="ModifyTrainingEvaluation_Result" message="tns:ModifyTrainingEvaluation_Result" />
+    </operation>
+    <operation name="CheckTrainingEvaluationApprovalWorkflowEnabled">
+      <input name="CheckTrainingEvaluationApprovalWorkflowEnabled" message="tns:CheckTrainingEvaluationApprovalWorkflowEnabled" />
+      <output name="CheckTrainingEvaluationApprovalWorkflowEnabled_Result" message="tns:CheckTrainingEvaluationApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendTrainingEvaluationApprovalRequest">
+      <input name="SendTrainingEvaluationApprovalRequest" message="tns:SendTrainingEvaluationApprovalRequest" />
+      <output name="SendTrainingEvaluationApprovalRequest_Result" message="tns:SendTrainingEvaluationApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelTrainingEvaluationApprovalRequest">
+      <input name="CancelTrainingEvaluationApprovalRequest" message="tns:CancelTrainingEvaluationApprovalRequest" />
+      <output name="CancelTrainingEvaluationApprovalRequest_Result" message="tns:CancelTrainingEvaluationApprovalRequest_Result" />
+    </operation>
+  </portType>
+  <binding name="EmployeeTrainingManagementWS_Binding" type="tns:EmployeeTrainingManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckOpenTrainingNeedApplicationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckOpenTrainingNeedApplicationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenTrainingNeedApplicationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenTrainingNeedApplicationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingNeedApplicationExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingNeedApplicationExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingNeedApplicationExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingNeedApplicationExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateTrainingNeedApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CreateTrainingNeedApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateTrainingNeedApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateTrainingNeedApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTrainingNeedApplicationStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:GetTrainingNeedApplicationStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingNeedApplicationStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingNeedApplicationStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyTrainingNeedApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:ModifyTrainingNeedApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyTrainingNeedApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyTrainingNeedApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingNeedApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingNeedApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingNeedApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingNeedApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTrainingNeedApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:SendTrainingNeedApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTrainingNeedApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTrainingNeedApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelTrainingNeedApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CancelTrainingNeedApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelTrainingNeedApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelTrainingNeedApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenTrainingApplicationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckOpenTrainingApplicationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenTrainingApplicationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenTrainingApplicationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingApplicationExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingApplicationExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingApplicationExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingApplicationExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateTrainingApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CreateTrainingApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateTrainingApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateTrainingApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTrainingApplicationStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:GetTrainingApplicationStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingApplicationStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingApplicationStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyTrainingApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:ModifyTrainingApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyTrainingApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyTrainingApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingApplicationApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingApplicationApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingApplicationApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingApplicationApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTrainingApplicationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:SendTrainingApplicationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTrainingApplicationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTrainingApplicationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelTrainingApplicationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CancelTrainingApplicationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelTrainingApplicationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelTrainingApplicationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenTrainingEvaluationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckOpenTrainingEvaluationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenTrainingEvaluationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenTrainingEvaluationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingEvaluationExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingEvaluationExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingEvaluationExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingEvaluationExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateTrainingEvaluation">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CreateTrainingEvaluation" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateTrainingEvaluation">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateTrainingEvaluation_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTrainingEvaluationStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:GetTrainingEvaluationStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingEvaluationStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingEvaluationStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyTrainingEvaluation">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:ModifyTrainingEvaluation" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyTrainingEvaluation">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyTrainingEvaluation_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckTrainingEvaluationApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CheckTrainingEvaluationApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckTrainingEvaluationApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckTrainingEvaluationApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTrainingEvaluationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:SendTrainingEvaluationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTrainingEvaluationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTrainingEvaluationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelTrainingEvaluationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeTrainingManagementWS:CancelTrainingEvaluationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelTrainingEvaluationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelTrainingEvaluationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EmployeeTrainingManagementWS">
+    <port name="EmployeeTrainingManagementWS_Port" binding="tns:EmployeeTrainingManagementWS_Binding">
+      <address location="http://102.133.239.194:3032/Regent/WS/Regent%20Ltd/Codeunit/EmployeeTrainingManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

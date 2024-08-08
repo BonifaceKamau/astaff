@@ -1,0 +1,106 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.HumanResource.SalaryAdvanceModels.SalaryAdvanceHeaderModel>
+
+@{
+    ViewBag.Title = "Salary Advance History";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{Html.RenderAction("_PayrollSidebar", "PayrollHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Salary Advance History</i></h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewSalaryAdvance", "SalaryAdvance")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Advance Request
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table id="SalaryAdvanceListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Document Date</th>
+                                                    <th>Amount</th>
+                                                    <th>Description</th>
+                                                    <th>Status</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{ string editUrl = "";
+                                                    string viewUrl = "";
+                                                    string approverUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        editUrl = Url.Action("OnBeforeEdit", "SalaryAdvance") + "?MemoNo=" + Model[i].No;
+                                                        viewUrl = Url.Action("ViewSalaryAdvance", "SalaryAdvance") + "?MemoNo=" + Model[i].No;
+                                                        approverUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].No;
+                                                        <tr>
+                                                            <td>@Model[i].No</td>
+                                                            <td>@Model[i].DocumentDate</td>
+                                                            <td>@Model[i].Amount</td>
+                                                            <td>@Model[i].Description</td>
+                                                            <td>@Model[i].Status</td>
+                                                            <td>
+                                                                @if (@Model[i].Status == "Open")
+                                                                {
+                                                                    <a href="@editUrl" class=""><b>Edit</b></a>}
+                                                            </td>
+                                                            <td>
+                                                                <a href="@viewUrl" class=""><b>View</b></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="@approverUrl" style="color:red" class="fa fa-check"><b>Approver(s)</b></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	$("#SalaryAdvanceHistoryMenuItem").addClass("active");
+
+            $("#SalaryAdvanceListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,243 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.CoreCompetenciesModel
+@{
+    var MarksListcc = new SelectList(
+          new List<SelectListItem>
+          {
+            new SelectListItem {Text = "1", Value = "1"},
+            new SelectListItem {Text = "2", Value = "2"},
+            new SelectListItem {Text = "3", Value = "3"},
+            new SelectListItem {Text = "4", Value = "4"},
+            new SelectListItem {Text = "5", Value = "5"},
+
+          }, "Value", "Text");
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+
+            <p style="margin-left:20px; font-size:16px; color:black;">[B]. CORE COMPETENCIES - End Year</p>
+            @*<hr>*@
+            <div id="TableContainer" class="table-responsive">
+                <table id="Competencies" class="table table-bordered" style="font-size:small;">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Description</th>
+                            <th>Score</th>
+                            <th>Appraisee Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="CoreValuesModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                            <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center;color:white;font-family:'Times New Roman';font-size:18px">Core Competency Target Card</h4>
+                            <div class="col-md-12">
+
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-content">
+                                @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "" }))
+                                {
+                                    <p style="color:red;"><i>All Fields are Required</i></p>
+                                            <div class="row">
+                                                <input id="CodeItemCore" hidden="hidden">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @id = "DescriptionItemCore" } })
+                                                        @*@Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control", @id = "CodeItemCore", @hidden="true"} })*@
+                                                        @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Score, htmlAttributes: new { @id = "ScoreLbl", @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.Score, MarksListcc, new { @class = "form-control", @id = "ScoreItemCore" })
+                                                        @Html.ValidationMessageFor(model => model.Score, "", new { @id = "ScoreError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.AppraiseeComments, htmlAttributes: new { @id = "AppCommentsLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.AppraiseeComments, new { htmlAttributes = new { @class = "form-control", @id = "AppCommentsItemCore" } })
+                                                        @Html.ValidationMessageFor(model => model.AppraiseeComments, "", new { @id = "AppCommentsError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                }
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-md-8">
+
+                                    <button id="ModifyBtn" class="btn btn-success btn-xs" type="button" onclick="ModifyCompetencyLine();"><i class="fa fa-adjust" style="align-content:center"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  //Load Scripts
+    $(document).ready(function () {
+         LoadCoreCompetenciesEnd();
+    });
+
+
+
+//Load Appraisal Lines
+    function LoadCoreCompetenciesEnd() {
+     var TestVar = "TestId";
+	$.ajax({
+		url: "/Appraisals/GetCompetencyLinesEnd",
+		type: "post",
+		dataType: "json",
+        contentType: false,
+		processData: false,
+		data: {TestVar:TestVar},
+		cache: false,
+		success: function (results) {
+			var rows = "";
+			$.each(results, function (i, result) {
+				rows += "<tr>";
+				rows += "<td>" + result.Description + "</td>";
+				rows += "<td>" + result.Score + "</td>";
+				rows += "<td>" + result.AppraiseeComments + "</td>";
+				rows += '<td><a href="#" onclick="return EditCoreValueEnd(\'' + result.Code + '\');"><i class="fa fa-pencil" style="color:blue" aria-hidden="true"><strong>Edit</strong></i></a></td>';
+				rows += "</tr>";
+			});
+			$("#Competencies tbody").html(rows);
+
+			$("#AjaxLoader").css("display", "none");
+
+			//$("#Competencies").css("display", "block");
+		},
+		error: function (xhr, status, error) {
+		}
+	});
+}
+
+
+     //Edit A Single Core Competency  Line
+    function EditCoreValueEnd(Code) {
+    debugger;
+	$.ajax({
+		url: "/Appraisals/GetCoreValueForEditEnd",
+		type: "post",
+		dataType: "json",
+		data: { Code: Code },
+		cache: false,
+		success: function (result) {
+			$("#DescriptionItemCore").val(result.Description);
+            $("#ScoreItemCore").val(result.Score);
+			$("#AppCommentsItemCore").val(result.AppraiseeComments);
+            $("#CodeItemCore").val(result.Code);
+    		$('#errorMessage').hide();
+
+			$("#CoreValuesModal").modal("show");
+			$("#ModifyBtn").show();
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+	return false;
+}
+
+
+  //Validate Core Competencies Fields
+    function ValidateCompetencyFields() {
+	var isValid = true;
+	var label = "";
+
+	if ($("#ScoreItemCore").val().trim() == "") {
+		$("#ScoreError").text("This field is required");
+		isValid = false;
+	}
+	else {
+		$("#ScoreError").text("");
+	}
+    if ($("#AppCommentsItemCore").val().trim() == "") {
+		$("#AppCommentsError").text("This field is required");
+		isValid = false;
+	}
+	else {
+		$("#AppCommentsError").text("");
+	}
+	return isValid;
+}
+
+//Modify Selected Core Competency  Line
+
+    function ModifyCompetencyLine() {
+
+    var validLine = ValidateCompetencyFields();
+	if (validLine == false) {
+		return false;
+	}
+    var Code = $("#CodeItemCore").val();
+	var Score = $("#ScoreItemCore").val();
+    var AppraiseeComments = $("#AppCommentsItemCore").val();
+
+    var frmData = new FormData();
+
+	frmData.append("Code", Code);
+	frmData.append("Score", Score);
+	frmData.append("AppraiseeComments", AppraiseeComments);
+
+	//Block UI
+	$.blockUI();
+
+	$.ajax({
+		url: "/Appraisals/ModifyCoreValueLineEnd",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.success) {
+				$('#CoreValuesModal').modal('hide');
+				$('#errorMessage').hide();
+                alert("Target saved successfully");
+				LoadCoreCompetenciesEnd();
+				$.unblockUI();
+			} else {
+                alert(result.error);
+                //alert("An error Ocurred, please try again later");
+                LoadCoreCompetenciesEnd();
+				//$('#errorMessage').html(result.message);
+				//$('#errorMessage').show();
+				$.unblockUI();
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			$('#AppraisalsModal').modal('show');
+			//$('#errorMessage').html(err.statusText);
+			//$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+</script>
+
+
+

@@ -1,0 +1,201 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.FleetMgt.ListOfddlData
+<style>
+    .ui-front {
+        z-index: 2000 !important;
+    }
+</style>
+<div class="bg-soft-dark" style="color:black">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.DocumentDate, htmlAttributes: new { @id = "DocumentDateLbl", @class = "control-label" })
+                @Html.EditorFor(model => model.DocumentDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DocumentDate, "", new { @id = "DocumentDateError", @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(model =>model.EntryNo)
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.VehicleReg, htmlAttributes: new { @id = "VehicleRegLbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.VehicleReg, Model.ListofFixedAssets, "", new { @class = "form-control" ,@onchange="GetVehicleOdometer(this)" })
+                @Html.ValidationMessageFor(model => model.VehicleReg, "", new { @id = "VehicleRegError", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.StaffNo, htmlAttributes: new { @id = "StaffNoLbl", @class = "control-label" })
+                @Html.EditorFor(model => model.StaffNo, new{ @class = "form-control", required="required" ,@multiple = "multiple"})
+                @Html.ValidationMessageFor(model => model.StaffNo, "", new { @id = "StaffNoError", @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    @*@foreach (var selectListItem in Model.ListofStaff)
+    {
+        <p>@selectListItem.Value @selectListItem.Selected</p>
+    }*@
+    <div class="row">
+        <div class="col-md-4">
+            From(Max. 250 characters)
+            <input type="text" class="form-control" id="txtFrom" value="@Model.From" required />
+        </div>
+        <div class="col-md-4">
+            To(Max. 250 characters)
+            <input type="text" class="form-control" id="txtTo" value="@Model.Too" required />
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @id = "StartTimeLbl", @class = "control-label" })
+                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartTime, "", new { @id = "StartTimeError", @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @id = "EndTimeeLbl", @class = "control-label" })
+                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndTime, "", new { @id = "EndTimeError", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            Odometer Start
+            <input type="number" class="form-control" id="txtodometerstart" value="@Model.OdometerStart" required />
+        </div>
+        <div class="col-md-4">
+            Odometer End
+            <input type="number" class="form-control" id="txtodometerend" value="@Model.OdometerEnd" required />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            Litres Consumed
+            <input type="number" class="form-control" id="txtlitres" value="@Model.Litres" required />
+        </div>
+        <div class="col-md-4">
+            Amount
+            <input type="number" class="form-control" id="txtamountspent" value="@Model.Amount" required />
+        </div>
+        <div class="form-group col-md-4 label-floating">
+            <label for="" class="control-label">Purpose of travel</label>
+            @*@Html.LabelFor(model => model.Purpose, htmlAttributes: new {@id = "EndTimeeLbl", @class = "control-label"})*@
+            @Html.EditorFor(model => model.Purpose, new {htmlAttributes = new {@class = "form-control"}})
+            @Html.ValidationMessageFor(model => model.Purpose, "", new {@id = "EndTimeError", @class = "text-danger"})
+        </div>
+    </div>
+    <hr />
+    <h5>Dimension Values</h5>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension1, htmlAttributes: new { @id = "Dimension1Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension1, Model.Dimension1s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension1, "", new { @id = "Dimension1Error", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension2, htmlAttributes: new { @id = "Dimension2Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension2, Model.Dimension2s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension2, "", new { @id = "Dimension2Error", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension3, htmlAttributes: new { @id = "Dimension3Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension3, Model.Dimension3s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension3, "", new { @id = "Dimension3Error", @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension4, htmlAttributes: new { @id = "Dimension4Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension4, Model.Dimension4s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension4, "", new { @id = "Dimension4Error", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension5, htmlAttributes: new { @id = "Dimension5Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension5, Model.Dimension5s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension5, "", new { @id = "Dimension5Error", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension6, htmlAttributes: new { @id = "Dimension6Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension6, Model.Dimension6s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension6, "", new { @id = "Dimension6Error", @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Dimension7, htmlAttributes: new { @id = "Dimension7Lbl", @class = "control-label" })
+                @Html.DropDownListFor(model => model.Dimension7, Model.Dimension7s, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dimension7, "", new { @id = "Dimension7Error", @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <hr />
+    
+    <div align="center">
+        <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="UpdateNewLog();" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DocumentDate').datepicker({
+            dateFormat: "dd/mm/yy",
+            showStatus: true,
+            showWeeks: true,
+            currentText: 'Now',
+            autoSize: true,
+            gotoCurrent: true,
+            showAnim: 'blind',
+            highlightWeek: true
+        });
+
+        if ('@ViewBag.Edit'.length<=0){
+            //Add dropdown search
+            AddImprestRequestDropDownListSearch();
+            //On change events
+            AddOnChangeEvents();
+        }
+        
+
+    });
+    function functionDecimal(evt, val) {
+        try {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+
+            if (charCode == 46) {
+                if (!(val.indexOf(".") > -1)) {
+                    return true;
+                }
+                else {
+                   window.alert('Warning', 'Kindly ensure to specify numbers only', 'warning');
+                }
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                window.alert('Warning', 'Kindly ensure to specify numbers only', 'warning');
+                return false;
+            }
+            return true;
+        } catch (w) {
+            Swal.fire(w);
+        }
+    }
+    function functionx(evt) {
+        if (evt.charCode > 31 && (evt.charCode < 48 || evt.charCode > 57)) {
+            window.alert("Error", "Please enter only numeric characters in the text box", "error");
+            return false;
+        }
+    }
+</script>
+
+
+
+

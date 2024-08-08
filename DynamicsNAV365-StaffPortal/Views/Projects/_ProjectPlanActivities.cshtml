@@ -1,0 +1,169 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.PlanActivitiesModel>
+
+@{
+    ViewBag.Title = "PM Projects";}
+<!--Render Human Resource Sidebar-->
+
+                        <div class="row">                    
+                         
+                                <p style="background-color:#d4edda; color:#155724; padding:8px;">
+                                    Strategic Objectives @ViewBag.ProjectNumber
+                                    <input id="ProjectNumberItem" value="@ViewBag.ProjectNumber" hidden="hidden">
+                                </p>                        
+                            <div class="col-lg-4">
+                                @{
+                                    string addactivityUrl = @Url.Action("AddPlanActivity", "Projects") + "?ProjectNo=" + ViewBag.ProjectNumber;
+                                    //backUrl = Url.Action("ProjectMemberTasks", "Projects") + "?ProjectNo=" + Model.ProjectNo;
+                                }
+                                <a class="btn btn-success btn-xs pull-left" href="@addactivityUrl" style="border-radius:0px;">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Add Plan Activity
+                                    </strong>
+                                </a>
+
+                            </div>
+                            <div class="col-lg-8"> 
+                                @{
+                                    var success = TempData["success"];
+                                    var failed = TempData["failed"];
+                                }
+                                @if (success != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                        @success
+                                    </a>
+
+                                }
+                                @if (failed != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#f8d7da; color:#721c24; text-transform:lowercase;">
+                                        <strong style="color:black;">
+                                            <i class=""></i>
+                                            @failed
+                                        </strong>
+                                    </a>
+
+
+                                }
+
+
+                                
+                                </div>
+                                <table id="ManagerProjectsTbl" class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>Activity</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            @*<th>Objective </th>*@
+                                            <th>Strategic Objective</th>
+                                            <th>Status</th>
+                                            <th>&nbsp;</th>                                           
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+
+                                            string editUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                editUrl = Url.Action("EditPlanActivity", "Projects") + "?Line=" + Model[i].LineNo;
+
+                                                <tr>
+                                                    <td>@Model[i].Activity</td>
+                                                    <td>@Model[i].StartDate.Value.ToString("d")</td>
+                                                    <td>@Model[i].EndDate.Value.ToString("d")</td>                                                   
+                                                    @*<td>@Model[i].Objective</td>*@
+                                                    <td>@Model[i].StrategicObjective</td>
+                                                    <td>@Model[i].Status</td>
+                                                    <td>
+                                                        <a href="@editUrl" class=""><b>Edit</b></a>|
+                                                        <a href="" onclick="return DeleteActivityLine(@Model[i].LineNo);"><b>Remove</b></a>
+                                                        @*<a href="" class=""><b>Remove</b></a>*@
+                                                    </td>
+
+                                                   
+                                                </tr>
+                                              }
+                                        }
+                                    </tbody>
+                                </table>                    
+                        </div>
+              
+  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ManagerProjectsTbl').DataTable({
+                order: [[2, 'asc']],
+                rowGroup: {
+                    dataSrc: 2
+                }
+            });
+        });
+    </script>
+}
+<script>
+    $(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 10000);
+
+});
+
+
+
+//Delete Activity  Line on Manager View
+function DeleteActivityLine(LineNo) {
+       debugger;
+        var LineNo = LineNo;
+        var ProjectNumber = $("#ProjectNumberItem").val();
+        var frmData = new FormData();
+        frmData.append("LineNo", LineNo);
+        frmData.append("ProjectNumber", ProjectNumber);
+
+	var ans = confirm("Are you sure you want to remove this record?");
+	if (ans) {
+		$.ajax({
+			url: "/Projects/DeleteActivityLine",
+			type: "POST",
+			dataType: "json",
+			data:frmData,
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            async: true,
+			cache: false,
+			success: function (result) {
+            if(result.message=="approved"){
+            location.reload();
+            alert("Failed, this  plan has already been approved");
+            location.reload();
+            }
+            else if(result.message=="success"){
+
+            location.reload();
+            alert("Successfully Deleted");
+            location.reload();
+            }
+            else{
+              location.reload();
+            alert("Failed, An error Occurred");
+            location.reload();
+            }
+			},
+			error: function (errormessage) {
+				alert("An Error occurred, Please try again later");
+			}
+		});
+	}
+}
+    </script>
+
+
+

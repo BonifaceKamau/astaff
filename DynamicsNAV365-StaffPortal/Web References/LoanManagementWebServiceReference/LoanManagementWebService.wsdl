@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetLoanProducts">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLoanProducts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLoanApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLoanApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLoanApplicationStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLoanApplicationStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OpenLoanApplicationNoExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OpenLoanApplicationNoExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckLoanApplicationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckLoanApplicationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateLoanApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateLoanApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyLoanApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="productType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amountRequested" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyLoanApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckLoanApplicationApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckLoanApplicationApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendLoanApplicationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendLoanApplicationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelLoanApplicationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelLoanApplicationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetLoanProducts">
+    <part name="parameters" element="tns:GetLoanProducts" />
+  </message>
+  <message name="GetLoanProducts_Result">
+    <part name="parameters" element="tns:GetLoanProducts_Result" />
+  </message>
+  <message name="GetLoanApplications">
+    <part name="parameters" element="tns:GetLoanApplications" />
+  </message>
+  <message name="GetLoanApplications_Result">
+    <part name="parameters" element="tns:GetLoanApplications_Result" />
+  </message>
+  <message name="GetLoanApplicationStatus">
+    <part name="parameters" element="tns:GetLoanApplicationStatus" />
+  </message>
+  <message name="GetLoanApplicationStatus_Result">
+    <part name="parameters" element="tns:GetLoanApplicationStatus_Result" />
+  </message>
+  <message name="OpenLoanApplicationNoExists">
+    <part name="parameters" element="tns:OpenLoanApplicationNoExists" />
+  </message>
+  <message name="OpenLoanApplicationNoExists_Result">
+    <part name="parameters" element="tns:OpenLoanApplicationNoExists_Result" />
+  </message>
+  <message name="CheckLoanApplicationExists">
+    <part name="parameters" element="tns:CheckLoanApplicationExists" />
+  </message>
+  <message name="CheckLoanApplicationExists_Result">
+    <part name="parameters" element="tns:CheckLoanApplicationExists_Result" />
+  </message>
+  <message name="CreateLoanApplication">
+    <part name="parameters" element="tns:CreateLoanApplication" />
+  </message>
+  <message name="CreateLoanApplication_Result">
+    <part name="parameters" element="tns:CreateLoanApplication_Result" />
+  </message>
+  <message name="ModifyLoanApplication">
+    <part name="parameters" element="tns:ModifyLoanApplication" />
+  </message>
+  <message name="ModifyLoanApplication_Result">
+    <part name="parameters" element="tns:ModifyLoanApplication_Result" />
+  </message>
+  <message name="CheckLoanApplicationApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckLoanApplicationApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckLoanApplicationApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckLoanApplicationApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendLoanApplicationApprovalRequest">
+    <part name="parameters" element="tns:SendLoanApplicationApprovalRequest" />
+  </message>
+  <message name="SendLoanApplicationApprovalRequest_Result">
+    <part name="parameters" element="tns:SendLoanApplicationApprovalRequest_Result" />
+  </message>
+  <message name="CancelLoanApplicationApprovalRequest">
+    <part name="parameters" element="tns:CancelLoanApplicationApprovalRequest" />
+  </message>
+  <message name="CancelLoanApplicationApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelLoanApplicationApprovalRequest_Result" />
+  </message>
+  <portType name="LoanManagementWebService_Port">
+    <operation name="GetLoanProducts">
+      <input name="GetLoanProducts" message="tns:GetLoanProducts" />
+      <output name="GetLoanProducts_Result" message="tns:GetLoanProducts_Result" />
+    </operation>
+    <operation name="GetLoanApplications">
+      <input name="GetLoanApplications" message="tns:GetLoanApplications" />
+      <output name="GetLoanApplications_Result" message="tns:GetLoanApplications_Result" />
+    </operation>
+    <operation name="GetLoanApplicationStatus">
+      <input name="GetLoanApplicationStatus" message="tns:GetLoanApplicationStatus" />
+      <output name="GetLoanApplicationStatus_Result" message="tns:GetLoanApplicationStatus_Result" />
+    </operation>
+    <operation name="OpenLoanApplicationNoExists">
+      <input name="OpenLoanApplicationNoExists" message="tns:OpenLoanApplicationNoExists" />
+      <output name="OpenLoanApplicationNoExists_Result" message="tns:OpenLoanApplicationNoExists_Result" />
+    </operation>
+    <operation name="CheckLoanApplicationExists">
+      <input name="CheckLoanApplicationExists" message="tns:CheckLoanApplicationExists" />
+      <output name="CheckLoanApplicationExists_Result" message="tns:CheckLoanApplicationExists_Result" />
+    </operation>
+    <operation name="CreateLoanApplication">
+      <input name="CreateLoanApplication" message="tns:CreateLoanApplication" />
+      <output name="CreateLoanApplication_Result" message="tns:CreateLoanApplication_Result" />
+    </operation>
+    <operation name="ModifyLoanApplication">
+      <input name="ModifyLoanApplication" message="tns:ModifyLoanApplication" />
+      <output name="ModifyLoanApplication_Result" message="tns:ModifyLoanApplication_Result" />
+    </operation>
+    <operation name="CheckLoanApplicationApprovalWorkflowEnabled">
+      <input name="CheckLoanApplicationApprovalWorkflowEnabled" message="tns:CheckLoanApplicationApprovalWorkflowEnabled" />
+      <output name="CheckLoanApplicationApprovalWorkflowEnabled_Result" message="tns:CheckLoanApplicationApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendLoanApplicationApprovalRequest">
+      <input name="SendLoanApplicationApprovalRequest" message="tns:SendLoanApplicationApprovalRequest" />
+      <output name="SendLoanApplicationApprovalRequest_Result" message="tns:SendLoanApplicationApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelLoanApplicationApprovalRequest">
+      <input name="CancelLoanApplicationApprovalRequest" message="tns:CancelLoanApplicationApprovalRequest" />
+      <output name="CancelLoanApplicationApprovalRequest_Result" message="tns:CancelLoanApplicationApprovalRequest_Result" />
+    </operation>
+  </portType>
+  <binding name="LoanManagementWebService_Binding" type="tns:LoanManagementWebService_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetLoanProducts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:GetLoanProducts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLoanProducts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLoanProducts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLoanApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:GetLoanApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLoanApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLoanApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLoanApplicationStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:GetLoanApplicationStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLoanApplicationStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLoanApplicationStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OpenLoanApplicationNoExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:OpenLoanApplicationNoExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OpenLoanApplicationNoExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OpenLoanApplicationNoExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckLoanApplicationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:CheckLoanApplicationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckLoanApplicationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckLoanApplicationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateLoanApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:CreateLoanApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateLoanApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateLoanApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyLoanApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:ModifyLoanApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyLoanApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyLoanApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckLoanApplicationApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:CheckLoanApplicationApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckLoanApplicationApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckLoanApplicationApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendLoanApplicationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:SendLoanApplicationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendLoanApplicationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendLoanApplicationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelLoanApplicationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LoanManagementWebService:CancelLoanApplicationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelLoanApplicationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelLoanApplicationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LoanManagementWebService">
+    <port name="LoanManagementWebService_Port" binding="tns:LoanManagementWebService_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/LoanManagementWebService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "ProjectInfo";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+
+    @{Html.RenderAction("_ManagerProjects", "Projects");}  
+
+</div>
+
+
+
+
+
+

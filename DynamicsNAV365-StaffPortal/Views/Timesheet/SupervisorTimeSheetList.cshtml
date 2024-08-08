@@ -1,0 +1,99 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.HumanResource.TimeSheets.TimeSheetModel>
+@{
+    ViewBag.Title = "Supervisor Time Sheets";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Time Sheets</i></h4>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Month</th>
+                                                    <th>Year</th>
+                                                    <th>Category</th>
+                                                    <th>Region Code</th>
+                                                    <th>Program Code</th>
+                                                    <th>Hours Worked</th>
+                                                    <th>Total Days Worked</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{		string editUrl = "";
+                                                    string viewUrl = "";
+                                                    string approverUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        editUrl = Url.Action("OnBeforeEdit", "LeaveApplication") + "?LeaveApplicationNo=" + Model[i].No;
+                                                        viewUrl = Url.Action("ViewSupervisorTimeSheet", "Timesheet", new { DocNo = Model[i].LineNo, EmpNo = Model[i].EmpNo });
+                                                        approverUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].No;
+                                                        <tr>
+                                                            <td>@Model[i].No</td>
+                                                            <td>@Model[i].EmpName</td>
+                                                            <td>@Model[i].Month</td>
+                                                            <td>@Model[i].Year</td>
+                                                            <td>@Model[i].Category</td>
+                                                            <td>@Model[i].Dimension1</td>
+                                                            <td>@Model[i].Dimension2</td>
+                                                            <td>@Model[i].HoursWorked</td>
+                                                            <td>@Model[i].TotalDaysWorked</td>
+                                                            <td>
+                                                                <a href="@viewUrl" class=""><b>View</b></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#SupervisorTimesheet").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}
+

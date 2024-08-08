@@ -1,0 +1,115 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Account.EmployeeProfileModel
+@{
+    //ViewBag.Title = "Dashboard";
+    var _dcodataServices = new BCODATAServices("");
+    var portalModulesEnumerable = _dcodataServices.BCOData.PortalModules.Execute().ToList();
+}
+<aside class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <a href="@Url.Action("EmployeeProfile", "Account")">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    @if (Model != null && Model.PassportAttached == true)
+                    {
+                        <img src="~/EmployeeData/@Model.EmployeePassportPath" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/photo_placeholder.png" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                </div>
+                <div class="pull-left info">
+                    <p>@HttpContext.Current.User.Identity.Name</p>
+                    <div class="online-status" style="font-size: 10px;">
+                        <span class="fa fa-circle text-success" style="vertical-align: middle;"></span>
+                        <span class="status-text" style="vertical-align: middle;">Online</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li id="PettyCashRequestHistory">
+                <a href="@Url.Action("PettyCashRequestHistory", "PettyCash")">
+                    <i class="fa fa-briefcase"></i> <span>Petty Cash Request</span>
+                </a>
+            </li>
+            <li id="PettyCashSurrenderHistory">
+                <a href="@Url.Action("PettyCashSurrenderHistory", "PettyCashSurrender")">
+                    <i class="fa fa-bars"></i> <span>Petty Cash Surrender</span>
+                </a>
+            </li>
+            @if (portalModulesEnumerable.Any(c => c.Name == "ImprestRequestHistory Module" && c.Enabled == true))
+            {
+                <li id="ImprestRequestHistor">
+                    <a href="@Url.Action("ImprestRequestHistory", "Imprest")">
+                        <i class="fa fa-cab"></i> <span>Travel Requests</span>
+                    </a>
+                </li>
+            }
+            @if (portalModulesEnumerable.Any(c => c.Name == "Activity Requests Module" && c.Enabled == true))
+            {
+                <li id="ImprestRequestHistory">
+                    <a href="@Url.Action("ImprestRequestHistory", "ActivityRequest")">
+                        <i class="fa fa-money"></i> <span>Activity Requests</span>
+                    </a>
+                </li>
+            }
+            @if (portalModulesEnumerable.Any(c => c.Name == "Expenses Surrender Module" && c.Enabled == true))
+            {
+                <li id="ImprestSurrenderHistory">
+                    <a href="@Url.Action("ImprestSurrenderHistory", "ImprestSurrender")">
+                        <i class="fa fa-balance-scale"></i> <span>Expenses Surrender</span>
+                    </a>
+                </li>
+            }
+            @if (portalModulesEnumerable.Any(c => c.Name == "Travel Claims Module" && c.Enabled == true))
+            {
+                <li id="ClaimsRefundHistory">
+                    <a href="@Url.Action("ClaimsRefundHistory", "ClaimsRefund")">
+                        <i class="fa fa-bars"></i> <span>Travel Claims</span>
+                    </a>
+                </li>
+            }
+            @if (portalModulesEnumerable.Any(c => c.Name == "Staff Advance Module" && c.Enabled == true))
+            {
+                <li id="OpenStaffAdvance">
+                    <a href="@Url.Action("OpenStaffAdvance", "StaffAdvance")">
+                        <i class="fa fa-bars"></i> <span>Staff Advance</span>
+                    </a>
+                </li>
+            }
+                @*<li id="ImprestRequestHistoryMenuItem">
+                <a href="@Url.Action("ImprestRequestHistory", "Imprest")">
+                    <i class="fa fa-bank"></i> <span>Travel Claims</span>
+                </a>
+            </li>*@
+                @*<li id="FinanceInfoMenuItem">
+                <a href="@Url.Action("FinanceInfo", "FinanceHome")">
+                    <i class="fa fa-info"></i> <span>Financial Service Summary</span>
+                </a>
+            </li>*@
+                @*<li id="ImprestRequestHistoryMenuItem">
+                <a href="@Url.Action("PettyCashRequestHistory", "PettyCash")">
+                    <i class="fa fa-briefcase"></i> <span>Petty Cash Payment(Users)</span>
+                </a>
+            </li>*@
+                @*<li id="ImprestRequestHistoryMenuItem">
+                <a href="@Url.Action("FundsClaimHistory", "FundsClaim")">
+                    <i class="fa fa-money"></i> <span>Funds Claim Requests</span>
+                </a>
+            </li>*@
+            </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+
+

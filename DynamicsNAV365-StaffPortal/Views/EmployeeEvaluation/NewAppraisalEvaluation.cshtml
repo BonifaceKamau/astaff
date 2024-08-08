@@ -1,0 +1,114 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.EmployeeAppraisal.AppraisalEvaluationHeaderModel
+
+@{
+	ViewBag.Title = "New Appraisal Evaluation";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render procurement sidebar-->
+	@{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						@using (Html.BeginForm("NewAppraisalEvaluation", "EmployeeEvaluation", FormMethod.Post, new { @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="card-header" data-background-color="company_card">
+								<div class="row">
+									<div class="col-md-4">
+										<h4 class="title"><i>New Appraisal Evaluation</i></h4>
+									</div>
+									<div class="col-md-8">
+										<a class="btn btn-xs pull-right" style="background-color:red" href="@Url.Action("AppraisalEvaluationHistory", "EmployeeEvaluation")">
+											<i class="fa fa-close"></i>
+											Close
+										</a>
+										<input id="submitBtn" class="btn btn-white btn-xs pull-right ladda-button" type="submit" value="Submit For Approval" data-style="slide-right" data-background-color="login_card" />
+									</div>
+								</div>
+							</div>
+							<div class="card-content">
+								@if (Model != null && Model.ErrorStatus == true)
+								{
+									<div class="alert alert-danger">
+										<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+									</div>
+								}
+
+								@Html.HiddenFor(model => model.EmployeeNo)
+								<div class="row">
+									<div class="col-md-7">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#">General Details</a></li>
+										</ul>
+										<br />
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+													@Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.ApprovedAppraisal, htmlAttributes: new { @id = "ApprovedAppraisalLbl", @class = "control-label" })
+													@Html.DropDownListFor(model => model.ApprovedAppraisal, Model.AppraisalNos, "", new { @class = "form-control" })
+													@Html.ValidationMessageFor(model => model.ApprovedAppraisal, "", new { @id = "ApprovedAppraisalError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.EvaluationStage, htmlAttributes: new { @id = "EvaluationStageLbl", @class = "control-label" })
+													@Html.DropDownListFor(model => model.EvaluationStage, Model.EvaluationStages, "", new { @class = "form-control" })
+													@Html.ValidationMessageFor(model => model.EvaluationStage, "", new { @id = "EvaluationStageError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#"> Required Document</a></li>
+										</ul>
+										<br />
+										<div class="col-md-12">
+											@{Html.RenderAction("_AppraisalEvaluationDocument", "EmployeeEvaluation", new { DocumentNo = Model.No });}
+										</div>
+									</div>
+								</div>
+							</div>
+												}
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-12">
+									<!--Render appraisal evaluation line partial view-->
+									@{Html.RenderAction("_AppraisalEvaluationLine", "EmployeeEvaluation", new { DocumentNo = Model.No });}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+	<script src="~/Scripts/HumanResource/AppraisalEvaluationScripts/AppraisalEvaluationScript.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+        	//Add CSS Classes
+        	$("#AppraisalEvaluationMenuItem").addClass("active");
+
+        	//Initialize Appraisal Evaluation Scripts
+        	InitializeAppraisalEvaluationScripts();
+
+        	var DocumentNo = $("#No").val();
+        	LoadAppraisalEvaluationLines(DocumentNo);
+        	LoadAppraisalEvaluationDocuments(DocumentNo);
+        });
+	</script>
+}

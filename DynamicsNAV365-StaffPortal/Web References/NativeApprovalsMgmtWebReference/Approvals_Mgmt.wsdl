@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CopyApprovalEntryQuoteToOrder">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fromRecID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="toDocNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="toRecID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CopyApprovalEntryQuoteToOrder_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="OpenApprovalEntriesPage">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OpenApprovalEntriesPage_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CanCancelApprovalForRecord">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CanCancelApprovalForRecord_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnRenameRecordInApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="oldRecordId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="newRecordId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnRenameRecordInApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="OnDeleteRecordInApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordIDToApprove" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnDeleteRecordInApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ApproveRecordApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRecordApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="RejectRecordApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRecordApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DelegateRecordApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DelegateRecordApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="IsOverdueNotificationsWorkflowEnabled">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="IsOverdueNotificationsWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PostApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="approvedRecordID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postedRecordID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postedDocNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PostApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShowPostedApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="postedRecordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShowPostedApprovalEntries_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DeletePostedApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="postedRecordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePostedApprovalEntries_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="HasOpenApprovalEntriesForCurrentUser">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasOpenApprovalEntriesForCurrentUser_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasOpenApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasOpenApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasOpenOrPendingApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasOpenOrPendingApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasAnyOpenJournalLineApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasAnyOpenJournalLineApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RenameApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="oldRecordId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="newRecordId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RenameApprovalEntries_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="DeleteApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordIDToApprove" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteApprovalEntries_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CopyApprovalEntryQuoteToOrder">
+    <part name="parameters" element="tns:CopyApprovalEntryQuoteToOrder" />
+  </message>
+  <message name="CopyApprovalEntryQuoteToOrder_Result">
+    <part name="parameters" element="tns:CopyApprovalEntryQuoteToOrder_Result" />
+  </message>
+  <message name="OpenApprovalEntriesPage">
+    <part name="parameters" element="tns:OpenApprovalEntriesPage" />
+  </message>
+  <message name="OpenApprovalEntriesPage_Result">
+    <part name="parameters" element="tns:OpenApprovalEntriesPage_Result" />
+  </message>
+  <message name="CanCancelApprovalForRecord">
+    <part name="parameters" element="tns:CanCancelApprovalForRecord" />
+  </message>
+  <message name="CanCancelApprovalForRecord_Result">
+    <part name="parameters" element="tns:CanCancelApprovalForRecord_Result" />
+  </message>
+  <message name="OnRenameRecordInApprovalRequest">
+    <part name="parameters" element="tns:OnRenameRecordInApprovalRequest" />
+  </message>
+  <message name="OnRenameRecordInApprovalRequest_Result">
+    <part name="parameters" element="tns:OnRenameRecordInApprovalRequest_Result" />
+  </message>
+  <message name="OnDeleteRecordInApprovalRequest">
+    <part name="parameters" element="tns:OnDeleteRecordInApprovalRequest" />
+  </message>
+  <message name="OnDeleteRecordInApprovalRequest_Result">
+    <part name="parameters" element="tns:OnDeleteRecordInApprovalRequest_Result" />
+  </message>
+  <message name="ApproveRecordApprovalRequest">
+    <part name="parameters" element="tns:ApproveRecordApprovalRequest" />
+  </message>
+  <message name="ApproveRecordApprovalRequest_Result">
+    <part name="parameters" element="tns:ApproveRecordApprovalRequest_Result" />
+  </message>
+  <message name="RejectRecordApprovalRequest">
+    <part name="parameters" element="tns:RejectRecordApprovalRequest" />
+  </message>
+  <message name="RejectRecordApprovalRequest_Result">
+    <part name="parameters" element="tns:RejectRecordApprovalRequest_Result" />
+  </message>
+  <message name="DelegateRecordApprovalRequest">
+    <part name="parameters" element="tns:DelegateRecordApprovalRequest" />
+  </message>
+  <message name="DelegateRecordApprovalRequest_Result">
+    <part name="parameters" element="tns:DelegateRecordApprovalRequest_Result" />
+  </message>
+  <message name="IsOverdueNotificationsWorkflowEnabled">
+    <part name="parameters" element="tns:IsOverdueNotificationsWorkflowEnabled" />
+  </message>
+  <message name="IsOverdueNotificationsWorkflowEnabled_Result">
+    <part name="parameters" element="tns:IsOverdueNotificationsWorkflowEnabled_Result" />
+  </message>
+  <message name="PostApprovalEntries">
+    <part name="parameters" element="tns:PostApprovalEntries" />
+  </message>
+  <message name="PostApprovalEntries_Result">
+    <part name="parameters" element="tns:PostApprovalEntries_Result" />
+  </message>
+  <message name="ShowPostedApprovalEntries">
+    <part name="parameters" element="tns:ShowPostedApprovalEntries" />
+  </message>
+  <message name="ShowPostedApprovalEntries_Result">
+    <part name="parameters" element="tns:ShowPostedApprovalEntries_Result" />
+  </message>
+  <message name="DeletePostedApprovalEntries">
+    <part name="parameters" element="tns:DeletePostedApprovalEntries" />
+  </message>
+  <message name="DeletePostedApprovalEntries_Result">
+    <part name="parameters" element="tns:DeletePostedApprovalEntries_Result" />
+  </message>
+  <message name="HasOpenApprovalEntriesForCurrentUser">
+    <part name="parameters" element="tns:HasOpenApprovalEntriesForCurrentUser" />
+  </message>
+  <message name="HasOpenApprovalEntriesForCurrentUser_Result">
+    <part name="parameters" element="tns:HasOpenApprovalEntriesForCurrentUser_Result" />
+  </message>
+  <message name="HasOpenApprovalEntries">
+    <part name="parameters" element="tns:HasOpenApprovalEntries" />
+  </message>
+  <message name="HasOpenApprovalEntries_Result">
+    <part name="parameters" element="tns:HasOpenApprovalEntries_Result" />
+  </message>
+  <message name="HasOpenOrPendingApprovalEntries">
+    <part name="parameters" element="tns:HasOpenOrPendingApprovalEntries" />
+  </message>
+  <message name="HasOpenOrPendingApprovalEntries_Result">
+    <part name="parameters" element="tns:HasOpenOrPendingApprovalEntries_Result" />
+  </message>
+  <message name="HasApprovalEntries">
+    <part name="parameters" element="tns:HasApprovalEntries" />
+  </message>
+  <message name="HasApprovalEntries_Result">
+    <part name="parameters" element="tns:HasApprovalEntries_Result" />
+  </message>
+  <message name="HasAnyOpenJournalLineApprovalEntries">
+    <part name="parameters" element="tns:HasAnyOpenJournalLineApprovalEntries" />
+  </message>
+  <message name="HasAnyOpenJournalLineApprovalEntries_Result">
+    <part name="parameters" element="tns:HasAnyOpenJournalLineApprovalEntries_Result" />
+  </message>
+  <message name="RenameApprovalEntries">
+    <part name="parameters" element="tns:RenameApprovalEntries" />
+  </message>
+  <message name="RenameApprovalEntries_Result">
+    <part name="parameters" element="tns:RenameApprovalEntries_Result" />
+  </message>
+  <message name="DeleteApprovalEntries">
+    <part name="parameters" element="tns:DeleteApprovalEntries" />
+  </message>
+  <message name="DeleteApprovalEntries_Result">
+    <part name="parameters" element="tns:DeleteApprovalEntries_Result" />
+  </message>
+  <portType name="Approvals_Mgmt_Port">
+    <operation name="CopyApprovalEntryQuoteToOrder">
+      <input name="CopyApprovalEntryQuoteToOrder" message="tns:CopyApprovalEntryQuoteToOrder" />
+      <output name="CopyApprovalEntryQuoteToOrder_Result" message="tns:CopyApprovalEntryQuoteToOrder_Result" />
+    </operation>
+    <operation name="OpenApprovalEntriesPage">
+      <input name="OpenApprovalEntriesPage" message="tns:OpenApprovalEntriesPage" />
+      <output name="OpenApprovalEntriesPage_Result" message="tns:OpenApprovalEntriesPage_Result" />
+    </operation>
+    <operation name="CanCancelApprovalForRecord">
+      <input name="CanCancelApprovalForRecord" message="tns:CanCancelApprovalForRecord" />
+      <output name="CanCancelApprovalForRecord_Result" message="tns:CanCancelApprovalForRecord_Result" />
+    </operation>
+    <operation name="OnRenameRecordInApprovalRequest">
+      <input name="OnRenameRecordInApprovalRequest" message="tns:OnRenameRecordInApprovalRequest" />
+      <output name="OnRenameRecordInApprovalRequest_Result" message="tns:OnRenameRecordInApprovalRequest_Result" />
+    </operation>
+    <operation name="OnDeleteRecordInApprovalRequest">
+      <input name="OnDeleteRecordInApprovalRequest" message="tns:OnDeleteRecordInApprovalRequest" />
+      <output name="OnDeleteRecordInApprovalRequest_Result" message="tns:OnDeleteRecordInApprovalRequest_Result" />
+    </operation>
+    <operation name="ApproveRecordApprovalRequest">
+      <input name="ApproveRecordApprovalRequest" message="tns:ApproveRecordApprovalRequest" />
+      <output name="ApproveRecordApprovalRequest_Result" message="tns:ApproveRecordApprovalRequest_Result" />
+    </operation>
+    <operation name="RejectRecordApprovalRequest">
+      <input name="RejectRecordApprovalRequest" message="tns:RejectRecordApprovalRequest" />
+      <output name="RejectRecordApprovalRequest_Result" message="tns:RejectRecordApprovalRequest_Result" />
+    </operation>
+    <operation name="DelegateRecordApprovalRequest">
+      <input name="DelegateRecordApprovalRequest" message="tns:DelegateRecordApprovalRequest" />
+      <output name="DelegateRecordApprovalRequest_Result" message="tns:DelegateRecordApprovalRequest_Result" />
+    </operation>
+    <operation name="IsOverdueNotificationsWorkflowEnabled">
+      <input name="IsOverdueNotificationsWorkflowEnabled" message="tns:IsOverdueNotificationsWorkflowEnabled" />
+      <output name="IsOverdueNotificationsWorkflowEnabled_Result" message="tns:IsOverdueNotificationsWorkflowEnabled_Result" />
+    </operation>
+    <operation name="PostApprovalEntries">
+      <input name="PostApprovalEntries" message="tns:PostApprovalEntries" />
+      <output name="PostApprovalEntries_Result" message="tns:PostApprovalEntries_Result" />
+    </operation>
+    <operation name="ShowPostedApprovalEntries">
+      <input name="ShowPostedApprovalEntries" message="tns:ShowPostedApprovalEntries" />
+      <output name="ShowPostedApprovalEntries_Result" message="tns:ShowPostedApprovalEntries_Result" />
+    </operation>
+    <operation name="DeletePostedApprovalEntries">
+      <input name="DeletePostedApprovalEntries" message="tns:DeletePostedApprovalEntries" />
+      <output name="DeletePostedApprovalEntries_Result" message="tns:DeletePostedApprovalEntries_Result" />
+    </operation>
+    <operation name="HasOpenApprovalEntriesForCurrentUser">
+      <input name="HasOpenApprovalEntriesForCurrentUser" message="tns:HasOpenApprovalEntriesForCurrentUser" />
+      <output name="HasOpenApprovalEntriesForCurrentUser_Result" message="tns:HasOpenApprovalEntriesForCurrentUser_Result" />
+    </operation>
+    <operation name="HasOpenApprovalEntries">
+      <input name="HasOpenApprovalEntries" message="tns:HasOpenApprovalEntries" />
+      <output name="HasOpenApprovalEntries_Result" message="tns:HasOpenApprovalEntries_Result" />
+    </operation>
+    <operation name="HasOpenOrPendingApprovalEntries">
+      <input name="HasOpenOrPendingApprovalEntries" message="tns:HasOpenOrPendingApprovalEntries" />
+      <output name="HasOpenOrPendingApprovalEntries_Result" message="tns:HasOpenOrPendingApprovalEntries_Result" />
+    </operation>
+    <operation name="HasApprovalEntries">
+      <input name="HasApprovalEntries" message="tns:HasApprovalEntries" />
+      <output name="HasApprovalEntries_Result" message="tns:HasApprovalEntries_Result" />
+    </operation>
+    <operation name="HasAnyOpenJournalLineApprovalEntries">
+      <input name="HasAnyOpenJournalLineApprovalEntries" message="tns:HasAnyOpenJournalLineApprovalEntries" />
+      <output name="HasAnyOpenJournalLineApprovalEntries_Result" message="tns:HasAnyOpenJournalLineApprovalEntries_Result" />
+    </operation>
+    <operation name="RenameApprovalEntries">
+      <input name="RenameApprovalEntries" message="tns:RenameApprovalEntries" />
+      <output name="RenameApprovalEntries_Result" message="tns:RenameApprovalEntries_Result" />
+    </operation>
+    <operation name="DeleteApprovalEntries">
+      <input name="DeleteApprovalEntries" message="tns:DeleteApprovalEntries" />
+      <output name="DeleteApprovalEntries_Result" message="tns:DeleteApprovalEntries_Result" />
+    </operation>
+  </portType>
+  <binding name="Approvals_Mgmt_Binding" type="tns:Approvals_Mgmt_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CopyApprovalEntryQuoteToOrder">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:CopyApprovalEntryQuoteToOrder" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CopyApprovalEntryQuoteToOrder">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CopyApprovalEntryQuoteToOrder_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OpenApprovalEntriesPage">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:OpenApprovalEntriesPage" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OpenApprovalEntriesPage">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OpenApprovalEntriesPage_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CanCancelApprovalForRecord">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:CanCancelApprovalForRecord" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CanCancelApprovalForRecord">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CanCancelApprovalForRecord_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OnRenameRecordInApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:OnRenameRecordInApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnRenameRecordInApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnRenameRecordInApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OnDeleteRecordInApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:OnDeleteRecordInApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnDeleteRecordInApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnDeleteRecordInApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveRecordApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:ApproveRecordApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveRecordApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveRecordApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectRecordApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:RejectRecordApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectRecordApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectRecordApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DelegateRecordApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:DelegateRecordApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DelegateRecordApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DelegateRecordApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsOverdueNotificationsWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:IsOverdueNotificationsWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsOverdueNotificationsWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsOverdueNotificationsWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PostApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:PostApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PostApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PostApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ShowPostedApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:ShowPostedApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ShowPostedApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ShowPostedApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePostedApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:DeletePostedApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePostedApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePostedApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasOpenApprovalEntriesForCurrentUser">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:HasOpenApprovalEntriesForCurrentUser" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasOpenApprovalEntriesForCurrentUser">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasOpenApprovalEntriesForCurrentUser_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasOpenApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:HasOpenApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasOpenApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasOpenApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasOpenOrPendingApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:HasOpenOrPendingApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasOpenOrPendingApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasOpenOrPendingApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:HasApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasAnyOpenJournalLineApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:HasAnyOpenJournalLineApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasAnyOpenJournalLineApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasAnyOpenJournalLineApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RenameApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:RenameApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RenameApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RenameApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Approvals_Mgmt:DeleteApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Approvals_Mgmt">
+    <port name="Approvals_Mgmt_Port" binding="tns:Approvals_Mgmt_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/ReplaceWithAPercentEncodedCompanyName/Codeunit/Approvals_Mgmt" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

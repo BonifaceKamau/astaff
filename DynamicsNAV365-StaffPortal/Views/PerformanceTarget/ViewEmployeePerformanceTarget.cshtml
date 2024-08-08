@@ -1,0 +1,180 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.PerformanceTargetModels.EmployeePerformanceTargetHeaderModel
+
+@{
+    ViewBag.Title = "Employee Performance Target";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ViewEmployeePerformanceTarget", "PerformanceTarget", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="title"><i>Employee Performance Target</i></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" id="btnReject" name="Command" value="Submit" class="btn btn-success btn-xs ladda-button" data-style="slide-right">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-adjust"></i>
+                                                Submit For Approval
+                                            </span>
+                                        </button>
+                                        <a class="btn btn-danger pull-right btn-xs" href="@Url.Action("EmployeePerformanceTargetHistory", "PerformanceTarget")">
+                                            <i class="fa fa-close"></i>
+                                            Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.SupervisorNo, htmlAttributes: new { @id = "SupervisorNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SupervisorNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.SupervisorNo, "", new { @id = "SupervisorNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.SupervisorName, htmlAttributes: new { @id = "SupervisorNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SupervisorName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.SupervisorName, "", new { @id = "SupervisorNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.AppraisalType, htmlAttributes: new { @id = "AppraisalTypeLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisalType, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.AppraisalType, "", new { @id = "AppraisalTypeError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.AppraisalPeriod, htmlAttributes: new { @id = "AppraisalPeriodLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisalPeriod, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.AppraisalPeriod, "", new { @id = "AppraisalPeriodError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.EvaluationPeriodStartDate, htmlAttributes: new { @id = "EvaluationPeriodStartDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EvaluationPeriodStartDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EvaluationPeriodStartDate, "", new { @id = "EvaluationPeriodStartDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.EvaluationPeriodEndDate, htmlAttributes: new { @id = "EvaluationPeriodEndDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EvaluationPeriodEndDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EvaluationPeriodEndDate, "", new { @id = "EvaluationPeriodEndDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.DateofFirstAppointment, htmlAttributes: new { @id = "DateofFirstAppointmentLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DateofFirstAppointment, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.DateofFirstAppointment, "", new { @id = "DateofFirstAppointmentError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Designation, htmlAttributes: new { @id = "DesignationLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Designation, "", new { @id = "DesignationError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @id = "DepartmentNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DepartmentName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @id = "DepartmentNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                @{Html.RenderAction("_ViewGlobalAppraisalPerspectives", "PerformanceTarget");}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                @{Html.RenderAction("_ViewBusinessCoreValuesAndCompetencies", "PerformanceTarget");}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                @{Html.RenderAction("_ViewJobPerformanceTarget", "PerformanceTarget");}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                @{Html.RenderAction("_EmployeePerformanceTargetLine", "PerformanceTarget", new { HeaderNo = Model.No });}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/PerformanceTargetScripts/PerformanceTargetScript.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            LoadGlobalAppraisalObjective();
+            LoadJobPerformanceTargets();
+            LoadBusinessCoreValuesAndCompetencies();
+
+            var headerNo = $("#No").val();
+            LoadJobPerformanceTargetLinesView(headerNo);
+            LoadEmployeePerformanceTargetLinesView(headerNo);
+        });
+    </script>
+}

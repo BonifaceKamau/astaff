@@ -1,0 +1,128 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectManagementModel>
+
+@{
+    ViewBag.Title = "Projects Closure";}
+<!--Render Human Resource Sidebar-->
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="title" style="text-align:left">Projects Closure List</h4>
+                            </div>
+
+                            <div class="col-md-3">
+                                <a class="btn btn-danger btn-xs pull-left" href="@Url.Action("ProjectInfo", "ProjectHome")">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Close View
+                                    </strong>
+                                </a>
+                            </div>
+                            @*<div class="col-md-3">
+                                <a href="" class="btn btn-success btn-xs pull-right" onclick="return CancelProject();"><b>Send Approval Request</b></a>
+                            </div>*@
+
+                        </div>
+                    </div>
+                    <div class="card-content">
+                       
+                        <div class="row">
+                            <div class="col-lg-3"> 
+                                @{ string addProjectHere = Url.Action("AddClosureProject", "Projects");}                          
+                                <a class="btn btn-info btn-xs pull-left" href="@addProjectHere"> 
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Add A Project to Closure List
+                                    </strong>
+                                </a>
+                            </div>
+                            <div class="col-md-12">                               
+                                <table id="ProjectsClosureTbl" class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>Project Code</th>
+                                            <th>Project Description</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Approval Status</th>                                          
+                                            <th>&nbsp;</th>                                           
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                          
+                                            string teamUrl = "";
+                                            string risksUrl = "";
+                                            //string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                teamUrl = Url.Action("ViewTeamMembers", "Projects") + "?ProjectManagementTeam=" + Model[i].ProjectManagementTeam;
+                                                risksUrl = Url.Action("ProjectRisks", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                
+
+                                                <tr>
+                                                    <td>@Model[i].ProjectCode</td>
+                                                    <td>@Model[i].ProjectDescription</td>
+                                                    @{if (@Model[i].ProjectStartDate == "01/01/0001")
+                                                        {
+                                                            <td>-------</td>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@Model[i].ProjectStartDate</td>
+                                                        }
+                                                    }                                                  
+
+                                                    @{if (@Model[i].ProjectEndDate == "01/01/0001")
+                                                        {
+                                                            <td>-------</td>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@Model[i].ProjectEndDate</td>
+                                                        }
+                                                    }                                                   
+                                                    <td>@Model[i].ApprovalStatus</td>
+                                                    <td>
+                                                        <a href="" class=""><b>Send For Approval</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                                    </td>                                                  
+                                                </tr>}
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+       $(document).ready(function() {
+       $('#ProjectsClosureTbl').DataTable( {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+        }
+    } );
+} );
+    </script>
+}
+
+
+

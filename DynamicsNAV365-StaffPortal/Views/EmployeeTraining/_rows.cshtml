@@ -1,0 +1,17 @@
+@model List<OdataRef.KnowledgeGapsInd>
+
+@foreach (var trainingAnalysisKnowledgeGapsIndividual in Model)
+{
+    <tr>
+        <td>
+            @trainingAnalysisKnowledgeGapsIndividual.Line_No
+        </td>
+        <td>
+            @trainingAnalysisKnowledgeGapsIndividual.Description
+        </td>
+        <td>
+            <a onclick="EditKnowledgegapindividualLine(this,@trainingAnalysisKnowledgeGapsIndividual.Line_No,'@trainingAnalysisKnowledgeGapsIndividual.Training_Need_No')">edit</a>|
+            <a onclick="DeleteKnowledgegapindividualLine(this,@trainingAnalysisKnowledgeGapsIndividual.Line_No)">delete</a>
+        </td>
+    </tr>
+}

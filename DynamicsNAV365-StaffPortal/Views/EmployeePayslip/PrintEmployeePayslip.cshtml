@@ -1,0 +1,96 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PayrollModels.EmployeePayslipModel
+@{
+    ViewBag.Title = "Employee Payslip";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Payroll Sidebar-->
+    @{Html.RenderAction("_PayrollSidebar", "PayrollHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title"><i>Employee Payslip</i></h4>
+                        </div>
+                        @*@using (Html.BeginForm("PrintEmployeePayslip", "EmployeePayslip", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.EmployeeNo)*@
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.DropDownListFor(model => model.StartingDate, Model.ListofPeriods, "--select Period --", new { @class = "form-control", @id = "ddlPeriod" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <input type="button" class="btn btn-xs pull-right ladda-button" value="Preview Payslip" onclick="PReport();" />
+                                        @*<button class="btn btn-xs pull-right ladda-button" type="submit" formtarget="_blank" data-style="slide-right" data-background-color="login_card">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-print"></i>
+                                                Preview Payslip
+                                            </span>
+                                        </button>*@
+                                    </div>
+                                </div>
+                           </div>
+                       @* }*@
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#PrintEmployeePayslip").addClass("active");
+            window.onblur = function () {
+                Ladda.stopAll();
+            }
+        });
+        var GeneratePayslip = function () {
+            var Period = $("#ddlPeriod").val();
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ Period: Period }),
+
+                url: '/EmployeePayslip/GeneratePayslip',
+                success: function (data) {
+                    window.open(data.message, '_blank').focus();
+                    //window.alert(data.message);
+                    //window.location.reload();
+                }
+            });
+        };
+        function PReport() {
+            var period = $("#ddlPeriod").val();
+            console.log(period);
+            var reportUrl = '@Url.Action("GeneratePayslipFile","EmployeePayslip")';
+            var queryParams = [];
+            if (period) queryParams.push('Period=' + encodeURIComponent(period));
+            if (queryParams.length > 0) reportUrl += '?' + queryParams.join('&');
+            //window.location.href = Url;
+            window.open(reportUrl, "_blank");
+          }
+    </script>
+}
+

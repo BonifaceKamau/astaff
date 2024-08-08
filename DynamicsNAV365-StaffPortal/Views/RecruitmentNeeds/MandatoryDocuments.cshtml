@@ -1,0 +1,114 @@
+@model System.Linq.IQueryable<OdataRef.Recruitment_RequestMandatory_Documents>
+
+<div class="row">
+	<h4>mandatory document</h4>
+	<div class="col-md-12">
+		<div class="row" id="AddLine" style="">
+			<div class="col-md-12">
+				<button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AcademicProffessionalLineModal" onclick="ClearPurchaseRequisitionLineModal();">
+					<i class="fa fa-plus"></i> Add mandatory document
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="TableContainer" class="table-responsive">
+					<table id="AcademicRequirementsTbl" class="table table-striped table-bordered">
+						<thead class="text-primary">
+						<tr>
+							<th>Document_No</th>
+							<th>Document_Name</th>
+							<th>Document_Desciption</th>
+							<th>Mandatory</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach (var skill in Model)
+						{
+							<tr>
+								<td>@skill.Document_No</td>
+								<td>@skill.Document_Name</td>
+								<td>@skill.Document_Desciption</td>
+								<td>@skill.Mandatory</td>
+								<td>
+									<a href="#" onclick="">edit</a>|
+									<a href="#" onclick="">delete</a>
+								</td>
+							</tr>
+						}
+						</tbody>
+					</table>
+				</div>
+				<div id="PurchaseRequisitionLineModal" class="modal fade" role="dialog" aria-labelledby="PurchaseRequisitionLineModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="PurchaseRequisitionLineModalLabel" class="modal-title">Purchase Requisition Line</h4>
+							</div>
+							<div class="modal-body">
+								@using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "PurchaseRequisitionLineForm", @class = ""}))
+								{
+									@Html.AntiForgeryToken()
+
+
+								}
+							</div>
+							<div class="modal-footer">
+								<button id="CreatePurchaseRequisitionLineBtn" class="btn btn-primary btn-xs" type="button" onclick="CreatePurchaseRequisitionLine();"><i class="fa fa-plus"></i>Add Line</button>
+								<button id="ModifyPurchaseRequisitionLineBtn" class="btn btn-primary btn-xs" type="button" onclick="ModifyPurchaseRequisitionLine();"><i class="fa fa-adjust"></i>Update Line</button>
+								<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add/Edit button click handlers -->
+<script>
+    function ClearAcademicProffessionalLineModal() {
+        // Clear the form fields or perform other initialization
+    }
+
+    function EditMandatoryDocumentsLine() {
+        // Populate the form fields with existing data for editing
+    }
+
+    function CreateOrUpdateMandatoryDocumentsLine() {
+        // Perform form validation if needed
+
+        // Serialize the form data
+        var formData = $("#PurchaseRequisitionLineForm").serialize();
+
+        // Make an AJAX POST request to add or edit the data
+        $.ajax({
+            type: "POST",
+            url: "/YourController/YourAction", // Specify the URL for your form submission
+            data: formData,
+            success: function (response) {
+                // Handle success
+                // Close the modal
+                $("#PurchaseRequisitionLineModal").modal("hide");
+
+                // Refresh the table data
+                RefreshTable();
+            },
+            error: function (error) {
+                // Handle error
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    function RefreshTable() {
+        // Perform an AJAX request to reload the table data
+        $.get("/YourController/YourTableDataAction", function (data) {
+            // Update the table with the new data
+            $("#AcademicRequirementsTbl tbody").html(data);
+        });
+    }
+</script>

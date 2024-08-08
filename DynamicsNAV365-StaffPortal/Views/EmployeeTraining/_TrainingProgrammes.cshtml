@@ -1,0 +1,156 @@
+@model System.Collections.Generic.List<OdataRef.TrainingAnalysisProgrammes>
+
+<div class="row">
+    <h4>Training Programmes</h4>
+    <div class="col-md-12">
+        <div class="row" id="AddLine" style="">
+            <div class="col-md-12">
+                <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AcademicProffessionalLineModal" onclick="AddTrainingProgrammes('@ViewBag.Id');">
+                    <i class="fa fa-plus"></i> Add Training Programmes
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="TableContainer" class="table-responsive">
+                    <table id="TrainingProgrammesTbl" class="table table-striped table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                             @*   <th>Code</th>*@
+                                <th>Programme</th>
+                                <th>Trainer</th>
+                                <th>Venue</th>
+                                <th style="color:red">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                Html.RenderPartial("_TrainingProgrammesrows", Model);
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="TrainingProgrammesModal" class="modal fade" role="dialog" aria-labelledby="TrainingProgrammesModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                <h4 id="TrainingProgrammesModalLabel" class="modal-title" style="text-align:center">knowledge gap individual</h4>
+                            </div>
+                            <div class="modal-body" id="TrainingProgrammesModalBody">
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit button click handlers -->
+<script>
+
+    function EditTrainingProgrammesLine(element,lineNo,trainingId) {
+        // Populate the form fields with existing data for editing
+        //console.log(JSON.stringify({id: NeedId,lineNo:lineNo}));
+        $("#TrainingProgrammesModal").modal("show");
+        $("#TrainingProgrammesModalBody").html("<h4>loading form please wait....</h4>");
+        $.ajax({
+			async: true,
+			type: "Post",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: trainingId,lineNo:lineNo}),
+
+			url: '@Url.Action("AddTrainingProgrammes")',
+			success: function (data) {
+				$("#TrainingProgrammesModalBody").html(data);
+				//$("#TrainingProgrammesModal").modal("show");
+				$("#TrainingProgrammesModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+    }
+	function DeleteTrainingProgrammesLine(element, lineNo) {
+	  $.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({Id:lineNo}),
+  
+			url: '@Url.Action("DeleteTrainingProgrammes")',
+			success: function (data) {
+				if(data.success){
+					// Refresh the table data
+					RefreshTableTrainingProgrammes();
+				}else {
+					alert("error: "+data.message);
+				}
+			}
+		});
+	}
+
+    function CreateOrUpdateTrainingProgrammesLine() {
+        // Serialize the form data
+        var formData = $("#TrainingProgrammesModalForm").serialize();
+
+        // Make an AJAX POST request to add or edit the data
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveTrainingProgrammes")", // Specify the URL for your form submission
+            data: formData,
+            success: function (response) {
+                if(response.success){
+                $("#TrainingProgrammesModal").modal("hide");
+
+                // Refresh the table data
+                RefreshTableTrainingProgrammes();
+				}else {
+					alert("error: "+response.message);
+				}
+            },
+            error: function (error) {
+                // Handle error
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    function RefreshTableTrainingProgrammes() {
+        // Perform an AJAX request to reload the table data
+        $.get("@Url.Action("TrainingProgrammesModels", new {id = ViewBag.Id})", function (data) {
+            // Update the table with the new data
+            $("#TrainingProgrammesTbl tbody").html(data);
+        });
+    }
+	var AddTrainingProgrammes = function (trainingId) {
+		console.log(34)
+		$("#TrainingProgrammesModal").modal("show");
+		$("#TrainingProgrammesModalBody").html("<h4>loading form please wait....</h4>");
+		$.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: trainingId}),
+
+			url: '@Url.Action("AddTrainingProgrammes")',
+			success: function (data) {
+				//console.log(data)
+				$("#TrainingProgrammesModalBody").html(data);
+				$("#TrainingProgrammesModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+	};
+	$('select').select2();
+</script>
+

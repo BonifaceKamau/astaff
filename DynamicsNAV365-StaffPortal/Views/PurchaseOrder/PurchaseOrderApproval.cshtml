@@ -1,0 +1,138 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Procurement.Purchases.PurchaseHeaderModel
+
+@{
+    ViewBag.Title = "Approve/Reject Purchase Order";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Approval Sidebar-->
+    @{Html.RenderAction("_ApprovalSidebar", "Approval");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("PurchaseOrderApproval", "PurchaseOrder", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="title"><i><strong>Approve/Reject Purchase Order</strong></i></h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md-3">
+                                            <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                        </div>
+                                        <div class="pull-right">
+                                            <button type="submit" id="btnApprove" name="Command" value="Approve" class="btn btn-success btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    Approve
+                                                </span>
+                                            </button>
+                                            <button type="submit" id="btnReject" name="Command" value="Reject" class="btn btn-danger btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-close"></i>
+                                                    Reject
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.GlobalDimension2, htmlAttributes: new { @id = "GlobalDimension2Lbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.GlobalDimension2, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.GlobalDimension2, "", new { @id = "GlobalDimension2Error", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.VendorNo, htmlAttributes: new { @id = "VendorNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.VendorNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VendorNo, "", new { @id = "VendorNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.VendorName, htmlAttributes: new { @id = "VendorNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.VendorName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VendorName, "", new { @id = "VendorNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AmountIncVAT, htmlAttributes: new { @id = "AmountIncVATLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AmountIncVAT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.AmountIncVAT, "", new { @id = "AmountIncVATError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @id = "CommentsLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Comments, "", new { @id = "CommentsError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{Html.RenderAction("_ViewPurchaseOrderLine", "PurchaseOrder", new { PurchaseOrderNo = Model.No });} 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="btn btn-xs btn-dark pull-right" href="@Url.Action("OpenEntries", "Approval")" style="background-color:black">
+                                        <i class="fa fa-close"></i>
+                                        Close
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/Procurement/PurchaseOrderScripts/PurchaseOrderScript.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            LoadPurchaseOrderLines($("#No").val());
+        });
+    </script>
+}

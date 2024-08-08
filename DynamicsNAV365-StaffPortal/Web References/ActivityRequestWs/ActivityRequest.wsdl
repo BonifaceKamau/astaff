@@ -1,0 +1,3993 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetOpenImprestSurrender">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetOpenImprestSurrender_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestCategories">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetImprestCategories_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestElements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="category" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestElements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLocalCounties">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLocalCounties_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSalaryScales">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetSalaryScales_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSRCAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="salaryScale" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="cluster" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSRCAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestAmountPerCategory">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="transactionType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="category" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="element" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="kTNAJobGroup" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="destination" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unit" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestAmountPerCategory_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeSRCScale">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeSRCScale_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLocalSRCDestionations">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLocalSRCDestionations_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetInternationalSRCDestionations">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetInternationalSRCDestionations_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestTransactionCodes">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetImprestTransactionCodes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashBankAccounts">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashBankAccounts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashTransactionTypes">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPettyCashTransactionTypes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUnsurrenderedImprests">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUnsurrenderedImprests_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetReceiptList">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetReceiptList_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLocalCurrencyCode">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLocalCurrencyCode_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPettyCashExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPettyCashExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashNotSurrendered">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashNotSurrendered_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashPartiallySurrendered">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashPartiallySurrendered_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCash">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCash_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashByLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashByLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePettyCashLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePettyCashLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidatePettyCashLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidatePettyCashLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPettyCashApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPettyCashApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPettyCashApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPettyCashApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPettyCashRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPettyCashRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPettyCashSurrenderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPettyCashSurrenderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bankAccountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrender">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrender_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderByLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderByLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderLineCopy">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualAmountSpent" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePettyCashSurrenderLineCopy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderLineCopy">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualAmountSpent" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPettyCashSurrenderLineCopy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePettyCashSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePettyCashSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPettyCashSurrenderApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPettyCashSurrenderApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPettyCashSurrenderApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPettyCashSurrenderApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPettyCashSurrenderApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPettyCashSurrenderRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPettyCashSurrenderRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestRequestExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestRequestExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenImprestRequestExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenImprestRequestExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PreviousImprestSurrendered">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PreviousImprestSurrendered_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestPartiallySurrendered">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestPartiallySurrendered_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="createPV" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequests">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequests_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequestLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequestLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequestByLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRequestByLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transactionType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="days" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transactionType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="imprestCategory" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="imprestElement" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="salaryScale" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="destination" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="days" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteImprestLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteImprestLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateImprestLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateImprestLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendImprestApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendImprestApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenImprestRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenImprestRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestBudgetCommitment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestBudgetCommitment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeImprestBalance">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeImprestBalance_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenClaimsRefundExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenClaimsRefundExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateClaimsRefundHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateClaimsRefundHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyClaimsRefundHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyClaimsRefundHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefund">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefund_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundByLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundByLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClaimsRefundStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateClaimsRefundLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transactionType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateClaimsRefundLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyClaimsRefundLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transactionType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyClaimsRefundLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteClaimsRefundLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteClaimsRefundLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckClaimsRefundApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendClaimsRefundApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendClaimsRefundApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelClaimsRefundApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelClaimsRefundApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenders">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenders_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderByLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderByLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenImprestSurrenderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenImprestSurrenderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestSurrenderHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestSurrenderHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestSurrenderHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestSurrenderHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRemainingAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualSpent" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestRemainingAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTravelAllowance">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="allowanceCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="travelingFrom" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="travelingTo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="days" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTravelAllowance_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualAmountSpent" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateImprestSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualAmountSpent" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyImprestSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteImprestSurrenderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteImprestSurrenderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateImprestSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateImprestSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckImprestSurrenderApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendImprestSurrenderApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendImprestSurrenderApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestSurrenderApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestSurrenderApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenImprestSurrender">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenImprestSurrender_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestSurrenderBudgetCommitment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelImprestSurrenderBudgetCommitment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderGlobalDimension1Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderGlobalDimension1Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderGlobalDimension2Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestSurrenderGlobalDimension2Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestSurrenderNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckSimilarImprestSurrenderPending">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckSimilarImprestSurrenderPending_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetOpenImprestSurrender">
+    <part name="parameters" element="tns:GetOpenImprestSurrender" />
+  </message>
+  <message name="GetOpenImprestSurrender_Result">
+    <part name="parameters" element="tns:GetOpenImprestSurrender_Result" />
+  </message>
+  <message name="GetImprestCategories">
+    <part name="parameters" element="tns:GetImprestCategories" />
+  </message>
+  <message name="GetImprestCategories_Result">
+    <part name="parameters" element="tns:GetImprestCategories_Result" />
+  </message>
+  <message name="GetImprestElements">
+    <part name="parameters" element="tns:GetImprestElements" />
+  </message>
+  <message name="GetImprestElements_Result">
+    <part name="parameters" element="tns:GetImprestElements_Result" />
+  </message>
+  <message name="GetLocalCounties">
+    <part name="parameters" element="tns:GetLocalCounties" />
+  </message>
+  <message name="GetLocalCounties_Result">
+    <part name="parameters" element="tns:GetLocalCounties_Result" />
+  </message>
+  <message name="GetSalaryScales">
+    <part name="parameters" element="tns:GetSalaryScales" />
+  </message>
+  <message name="GetSalaryScales_Result">
+    <part name="parameters" element="tns:GetSalaryScales_Result" />
+  </message>
+  <message name="GetSRCAmount">
+    <part name="parameters" element="tns:GetSRCAmount" />
+  </message>
+  <message name="GetSRCAmount_Result">
+    <part name="parameters" element="tns:GetSRCAmount_Result" />
+  </message>
+  <message name="GetImprestAmountPerCategory">
+    <part name="parameters" element="tns:GetImprestAmountPerCategory" />
+  </message>
+  <message name="GetImprestAmountPerCategory_Result">
+    <part name="parameters" element="tns:GetImprestAmountPerCategory_Result" />
+  </message>
+  <message name="GetEmployeeSRCScale">
+    <part name="parameters" element="tns:GetEmployeeSRCScale" />
+  </message>
+  <message name="GetEmployeeSRCScale_Result">
+    <part name="parameters" element="tns:GetEmployeeSRCScale_Result" />
+  </message>
+  <message name="GetLocalSRCDestionations">
+    <part name="parameters" element="tns:GetLocalSRCDestionations" />
+  </message>
+  <message name="GetLocalSRCDestionations_Result">
+    <part name="parameters" element="tns:GetLocalSRCDestionations_Result" />
+  </message>
+  <message name="GetInternationalSRCDestionations">
+    <part name="parameters" element="tns:GetInternationalSRCDestionations" />
+  </message>
+  <message name="GetInternationalSRCDestionations_Result">
+    <part name="parameters" element="tns:GetInternationalSRCDestionations_Result" />
+  </message>
+  <message name="GetImprestTransactionCodes">
+    <part name="parameters" element="tns:GetImprestTransactionCodes" />
+  </message>
+  <message name="GetImprestTransactionCodes_Result">
+    <part name="parameters" element="tns:GetImprestTransactionCodes_Result" />
+  </message>
+  <message name="GetPettyCashBankAccounts">
+    <part name="parameters" element="tns:GetPettyCashBankAccounts" />
+  </message>
+  <message name="GetPettyCashBankAccounts_Result">
+    <part name="parameters" element="tns:GetPettyCashBankAccounts_Result" />
+  </message>
+  <message name="GetPettyCashTransactionTypes">
+    <part name="parameters" element="tns:GetPettyCashTransactionTypes" />
+  </message>
+  <message name="GetPettyCashTransactionTypes_Result">
+    <part name="parameters" element="tns:GetPettyCashTransactionTypes_Result" />
+  </message>
+  <message name="GetUnsurrenderedImprests">
+    <part name="parameters" element="tns:GetUnsurrenderedImprests" />
+  </message>
+  <message name="GetUnsurrenderedImprests_Result">
+    <part name="parameters" element="tns:GetUnsurrenderedImprests_Result" />
+  </message>
+  <message name="GetReceiptList">
+    <part name="parameters" element="tns:GetReceiptList" />
+  </message>
+  <message name="GetReceiptList_Result">
+    <part name="parameters" element="tns:GetReceiptList_Result" />
+  </message>
+  <message name="GetLocalCurrencyCode">
+    <part name="parameters" element="tns:GetLocalCurrencyCode" />
+  </message>
+  <message name="GetLocalCurrencyCode_Result">
+    <part name="parameters" element="tns:GetLocalCurrencyCode_Result" />
+  </message>
+  <message name="CheckPettyCashExists">
+    <part name="parameters" element="tns:CheckPettyCashExists" />
+  </message>
+  <message name="CheckPettyCashExists_Result">
+    <part name="parameters" element="tns:CheckPettyCashExists_Result" />
+  </message>
+  <message name="CheckOpenPettyCashExists">
+    <part name="parameters" element="tns:CheckOpenPettyCashExists" />
+  </message>
+  <message name="CheckOpenPettyCashExists_Result">
+    <part name="parameters" element="tns:CheckOpenPettyCashExists_Result" />
+  </message>
+  <message name="CheckPettyCashNotSurrendered">
+    <part name="parameters" element="tns:CheckPettyCashNotSurrendered" />
+  </message>
+  <message name="CheckPettyCashNotSurrendered_Result">
+    <part name="parameters" element="tns:CheckPettyCashNotSurrendered_Result" />
+  </message>
+  <message name="CheckPettyCashPartiallySurrendered">
+    <part name="parameters" element="tns:CheckPettyCashPartiallySurrendered" />
+  </message>
+  <message name="CheckPettyCashPartiallySurrendered_Result">
+    <part name="parameters" element="tns:CheckPettyCashPartiallySurrendered_Result" />
+  </message>
+  <message name="CreatePettyCashHeader">
+    <part name="parameters" element="tns:CreatePettyCashHeader" />
+  </message>
+  <message name="CreatePettyCashHeader_Result">
+    <part name="parameters" element="tns:CreatePettyCashHeader_Result" />
+  </message>
+  <message name="ModifyPettyCashHeader">
+    <part name="parameters" element="tns:ModifyPettyCashHeader" />
+  </message>
+  <message name="ModifyPettyCashHeader_Result">
+    <part name="parameters" element="tns:ModifyPettyCashHeader_Result" />
+  </message>
+  <message name="GetPettyCash">
+    <part name="parameters" element="tns:GetPettyCash" />
+  </message>
+  <message name="GetPettyCash_Result">
+    <part name="parameters" element="tns:GetPettyCash_Result" />
+  </message>
+  <message name="GetPettyCashLines">
+    <part name="parameters" element="tns:GetPettyCashLines" />
+  </message>
+  <message name="GetPettyCashLines_Result">
+    <part name="parameters" element="tns:GetPettyCashLines_Result" />
+  </message>
+  <message name="GetPettyCashByLine">
+    <part name="parameters" element="tns:GetPettyCashByLine" />
+  </message>
+  <message name="GetPettyCashByLine_Result">
+    <part name="parameters" element="tns:GetPettyCashByLine_Result" />
+  </message>
+  <message name="GetPettyCashAmount">
+    <part name="parameters" element="tns:GetPettyCashAmount" />
+  </message>
+  <message name="GetPettyCashAmount_Result">
+    <part name="parameters" element="tns:GetPettyCashAmount_Result" />
+  </message>
+  <message name="GetPettyCashStatus">
+    <part name="parameters" element="tns:GetPettyCashStatus" />
+  </message>
+  <message name="GetPettyCashStatus_Result">
+    <part name="parameters" element="tns:GetPettyCashStatus_Result" />
+  </message>
+  <message name="CreatePettyCashLine">
+    <part name="parameters" element="tns:CreatePettyCashLine" />
+  </message>
+  <message name="CreatePettyCashLine_Result">
+    <part name="parameters" element="tns:CreatePettyCashLine_Result" />
+  </message>
+  <message name="ModifyPettyCashLine">
+    <part name="parameters" element="tns:ModifyPettyCashLine" />
+  </message>
+  <message name="ModifyPettyCashLine_Result">
+    <part name="parameters" element="tns:ModifyPettyCashLine_Result" />
+  </message>
+  <message name="DeletePettyCashLine">
+    <part name="parameters" element="tns:DeletePettyCashLine" />
+  </message>
+  <message name="DeletePettyCashLine_Result">
+    <part name="parameters" element="tns:DeletePettyCashLine_Result" />
+  </message>
+  <message name="CheckPettyCashLinesExist">
+    <part name="parameters" element="tns:CheckPettyCashLinesExist" />
+  </message>
+  <message name="CheckPettyCashLinesExist_Result">
+    <part name="parameters" element="tns:CheckPettyCashLinesExist_Result" />
+  </message>
+  <message name="ValidatePettyCashLines">
+    <part name="parameters" element="tns:ValidatePettyCashLines" />
+  </message>
+  <message name="ValidatePettyCashLines_Result">
+    <part name="parameters" element="tns:ValidatePettyCashLines_Result" />
+  </message>
+  <message name="CheckPettyCashApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckPettyCashApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckPettyCashApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckPettyCashApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendPettyCashApprovalRequest">
+    <part name="parameters" element="tns:SendPettyCashApprovalRequest" />
+  </message>
+  <message name="SendPettyCashApprovalRequest_Result">
+    <part name="parameters" element="tns:SendPettyCashApprovalRequest_Result" />
+  </message>
+  <message name="CancelPettyCashApprovalRequest">
+    <part name="parameters" element="tns:CancelPettyCashApprovalRequest" />
+  </message>
+  <message name="CancelPettyCashApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelPettyCashApprovalRequest_Result" />
+  </message>
+  <message name="ReopenPettyCashRequest">
+    <part name="parameters" element="tns:ReopenPettyCashRequest" />
+  </message>
+  <message name="ReopenPettyCashRequest_Result">
+    <part name="parameters" element="tns:ReopenPettyCashRequest_Result" />
+  </message>
+  <message name="CheckPettyCashSurrenderExists">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderExists" />
+  </message>
+  <message name="CheckPettyCashSurrenderExists_Result">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderExists_Result" />
+  </message>
+  <message name="CheckOpenPettyCashSurrenderExists">
+    <part name="parameters" element="tns:CheckOpenPettyCashSurrenderExists" />
+  </message>
+  <message name="CheckOpenPettyCashSurrenderExists_Result">
+    <part name="parameters" element="tns:CheckOpenPettyCashSurrenderExists_Result" />
+  </message>
+  <message name="CreatePettyCashSurrenderHeader">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderHeader" />
+  </message>
+  <message name="CreatePettyCashSurrenderHeader_Result">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderHeader_Result" />
+  </message>
+  <message name="ModifyPettyCashSurrenderHeader">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderHeader" />
+  </message>
+  <message name="ModifyPettyCashSurrenderHeader_Result">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderHeader_Result" />
+  </message>
+  <message name="GetPettyCashSurrender">
+    <part name="parameters" element="tns:GetPettyCashSurrender" />
+  </message>
+  <message name="GetPettyCashSurrender_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrender_Result" />
+  </message>
+  <message name="GetPettyCashSurrenderLines">
+    <part name="parameters" element="tns:GetPettyCashSurrenderLines" />
+  </message>
+  <message name="GetPettyCashSurrenderLines_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrenderLines_Result" />
+  </message>
+  <message name="GetPettyCashSurrenderByLine">
+    <part name="parameters" element="tns:GetPettyCashSurrenderByLine" />
+  </message>
+  <message name="GetPettyCashSurrenderByLine_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrenderByLine_Result" />
+  </message>
+  <message name="GetPettyCashSurrenderAmount">
+    <part name="parameters" element="tns:GetPettyCashSurrenderAmount" />
+  </message>
+  <message name="GetPettyCashSurrenderAmount_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrenderAmount_Result" />
+  </message>
+  <message name="GetPettyCashSurrenderStatus">
+    <part name="parameters" element="tns:GetPettyCashSurrenderStatus" />
+  </message>
+  <message name="GetPettyCashSurrenderStatus_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrenderStatus_Result" />
+  </message>
+  <message name="CreatePettyCashSurrenderLine">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderLine" />
+  </message>
+  <message name="CreatePettyCashSurrenderLine_Result">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderLine_Result" />
+  </message>
+  <message name="ModifyPettyCashSurrenderLine">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderLine" />
+  </message>
+  <message name="ModifyPettyCashSurrenderLine_Result">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderLine_Result" />
+  </message>
+  <message name="CreatePettyCashSurrenderLineCopy">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderLineCopy" />
+  </message>
+  <message name="CreatePettyCashSurrenderLineCopy_Result">
+    <part name="parameters" element="tns:CreatePettyCashSurrenderLineCopy_Result" />
+  </message>
+  <message name="ModifyPettyCashSurrenderLineCopy">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderLineCopy" />
+  </message>
+  <message name="ModifyPettyCashSurrenderLineCopy_Result">
+    <part name="parameters" element="tns:ModifyPettyCashSurrenderLineCopy_Result" />
+  </message>
+  <message name="DeletePettyCashSurrenderLine">
+    <part name="parameters" element="tns:DeletePettyCashSurrenderLine" />
+  </message>
+  <message name="DeletePettyCashSurrenderLine_Result">
+    <part name="parameters" element="tns:DeletePettyCashSurrenderLine_Result" />
+  </message>
+  <message name="CheckPettyCashSurrenderLinesExist">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderLinesExist" />
+  </message>
+  <message name="CheckPettyCashSurrenderLinesExist_Result">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderLinesExist_Result" />
+  </message>
+  <message name="CheckPettyCashSurrenderApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckPettyCashSurrenderApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckPettyCashSurrenderApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendPettyCashSurrenderApprovalRequest">
+    <part name="parameters" element="tns:SendPettyCashSurrenderApprovalRequest" />
+  </message>
+  <message name="SendPettyCashSurrenderApprovalRequest_Result">
+    <part name="parameters" element="tns:SendPettyCashSurrenderApprovalRequest_Result" />
+  </message>
+  <message name="CancelPettyCashSurrenderApprovalRequest">
+    <part name="parameters" element="tns:CancelPettyCashSurrenderApprovalRequest" />
+  </message>
+  <message name="CancelPettyCashSurrenderApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelPettyCashSurrenderApprovalRequest_Result" />
+  </message>
+  <message name="ReopenPettyCashSurrenderRequest">
+    <part name="parameters" element="tns:ReopenPettyCashSurrenderRequest" />
+  </message>
+  <message name="ReopenPettyCashSurrenderRequest_Result">
+    <part name="parameters" element="tns:ReopenPettyCashSurrenderRequest_Result" />
+  </message>
+  <message name="CheckImprestRequestExists">
+    <part name="parameters" element="tns:CheckImprestRequestExists" />
+  </message>
+  <message name="CheckImprestRequestExists_Result">
+    <part name="parameters" element="tns:CheckImprestRequestExists_Result" />
+  </message>
+  <message name="CheckOpenImprestRequestExists">
+    <part name="parameters" element="tns:CheckOpenImprestRequestExists" />
+  </message>
+  <message name="CheckOpenImprestRequestExists_Result">
+    <part name="parameters" element="tns:CheckOpenImprestRequestExists_Result" />
+  </message>
+  <message name="PreviousImprestSurrendered">
+    <part name="parameters" element="tns:PreviousImprestSurrendered" />
+  </message>
+  <message name="PreviousImprestSurrendered_Result">
+    <part name="parameters" element="tns:PreviousImprestSurrendered_Result" />
+  </message>
+  <message name="CheckImprestPartiallySurrendered">
+    <part name="parameters" element="tns:CheckImprestPartiallySurrendered" />
+  </message>
+  <message name="CheckImprestPartiallySurrendered_Result">
+    <part name="parameters" element="tns:CheckImprestPartiallySurrendered_Result" />
+  </message>
+  <message name="CreateImprestHeader">
+    <part name="parameters" element="tns:CreateImprestHeader" />
+  </message>
+  <message name="CreateImprestHeader_Result">
+    <part name="parameters" element="tns:CreateImprestHeader_Result" />
+  </message>
+  <message name="ModifyImprestHeader">
+    <part name="parameters" element="tns:ModifyImprestHeader" />
+  </message>
+  <message name="ModifyImprestHeader_Result">
+    <part name="parameters" element="tns:ModifyImprestHeader_Result" />
+  </message>
+  <message name="GetImprestRequests">
+    <part name="parameters" element="tns:GetImprestRequests" />
+  </message>
+  <message name="GetImprestRequests_Result">
+    <part name="parameters" element="tns:GetImprestRequests_Result" />
+  </message>
+  <message name="GetImprestRequestLines">
+    <part name="parameters" element="tns:GetImprestRequestLines" />
+  </message>
+  <message name="GetImprestRequestLines_Result">
+    <part name="parameters" element="tns:GetImprestRequestLines_Result" />
+  </message>
+  <message name="GetImprestRequestByLine">
+    <part name="parameters" element="tns:GetImprestRequestByLine" />
+  </message>
+  <message name="GetImprestRequestByLine_Result">
+    <part name="parameters" element="tns:GetImprestRequestByLine_Result" />
+  </message>
+  <message name="GetImprestAmount">
+    <part name="parameters" element="tns:GetImprestAmount" />
+  </message>
+  <message name="GetImprestAmount_Result">
+    <part name="parameters" element="tns:GetImprestAmount_Result" />
+  </message>
+  <message name="GetImprestStatus">
+    <part name="parameters" element="tns:GetImprestStatus" />
+  </message>
+  <message name="GetImprestStatus_Result">
+    <part name="parameters" element="tns:GetImprestStatus_Result" />
+  </message>
+  <message name="CreateImprestLine">
+    <part name="parameters" element="tns:CreateImprestLine" />
+  </message>
+  <message name="CreateImprestLine_Result">
+    <part name="parameters" element="tns:CreateImprestLine_Result" />
+  </message>
+  <message name="ModifyImprestLine">
+    <part name="parameters" element="tns:ModifyImprestLine" />
+  </message>
+  <message name="ModifyImprestLine_Result">
+    <part name="parameters" element="tns:ModifyImprestLine_Result" />
+  </message>
+  <message name="DeleteImprestLine">
+    <part name="parameters" element="tns:DeleteImprestLine" />
+  </message>
+  <message name="DeleteImprestLine_Result">
+    <part name="parameters" element="tns:DeleteImprestLine_Result" />
+  </message>
+  <message name="CheckImprestLinesExist">
+    <part name="parameters" element="tns:CheckImprestLinesExist" />
+  </message>
+  <message name="CheckImprestLinesExist_Result">
+    <part name="parameters" element="tns:CheckImprestLinesExist_Result" />
+  </message>
+  <message name="ValidateImprestLines">
+    <part name="parameters" element="tns:ValidateImprestLines" />
+  </message>
+  <message name="ValidateImprestLines_Result">
+    <part name="parameters" element="tns:ValidateImprestLines_Result" />
+  </message>
+  <message name="CheckImprestApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckImprestApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckImprestApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckImprestApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendImprestApprovalRequest">
+    <part name="parameters" element="tns:SendImprestApprovalRequest" />
+  </message>
+  <message name="SendImprestApprovalRequest_Result">
+    <part name="parameters" element="tns:SendImprestApprovalRequest_Result" />
+  </message>
+  <message name="CancelImprestApprovalRequest">
+    <part name="parameters" element="tns:CancelImprestApprovalRequest" />
+  </message>
+  <message name="CancelImprestApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelImprestApprovalRequest_Result" />
+  </message>
+  <message name="ReopenImprestRequest">
+    <part name="parameters" element="tns:ReopenImprestRequest" />
+  </message>
+  <message name="ReopenImprestRequest_Result">
+    <part name="parameters" element="tns:ReopenImprestRequest_Result" />
+  </message>
+  <message name="CancelImprestBudgetCommitment">
+    <part name="parameters" element="tns:CancelImprestBudgetCommitment" />
+  </message>
+  <message name="CancelImprestBudgetCommitment_Result">
+    <part name="parameters" element="tns:CancelImprestBudgetCommitment_Result" />
+  </message>
+  <message name="GetEmployeeImprestBalance">
+    <part name="parameters" element="tns:GetEmployeeImprestBalance" />
+  </message>
+  <message name="GetEmployeeImprestBalance_Result">
+    <part name="parameters" element="tns:GetEmployeeImprestBalance_Result" />
+  </message>
+  <message name="CheckClaimsRefundExists">
+    <part name="parameters" element="tns:CheckClaimsRefundExists" />
+  </message>
+  <message name="CheckClaimsRefundExists_Result">
+    <part name="parameters" element="tns:CheckClaimsRefundExists_Result" />
+  </message>
+  <message name="CheckOpenClaimsRefundExists">
+    <part name="parameters" element="tns:CheckOpenClaimsRefundExists" />
+  </message>
+  <message name="CheckOpenClaimsRefundExists_Result">
+    <part name="parameters" element="tns:CheckOpenClaimsRefundExists_Result" />
+  </message>
+  <message name="CreateClaimsRefundHeader">
+    <part name="parameters" element="tns:CreateClaimsRefundHeader" />
+  </message>
+  <message name="CreateClaimsRefundHeader_Result">
+    <part name="parameters" element="tns:CreateClaimsRefundHeader_Result" />
+  </message>
+  <message name="ModifyClaimsRefundHeader">
+    <part name="parameters" element="tns:ModifyClaimsRefundHeader" />
+  </message>
+  <message name="ModifyClaimsRefundHeader_Result">
+    <part name="parameters" element="tns:ModifyClaimsRefundHeader_Result" />
+  </message>
+  <message name="GetClaimsRefund">
+    <part name="parameters" element="tns:GetClaimsRefund" />
+  </message>
+  <message name="GetClaimsRefund_Result">
+    <part name="parameters" element="tns:GetClaimsRefund_Result" />
+  </message>
+  <message name="GetClaimsRefundLines">
+    <part name="parameters" element="tns:GetClaimsRefundLines" />
+  </message>
+  <message name="GetClaimsRefundLines_Result">
+    <part name="parameters" element="tns:GetClaimsRefundLines_Result" />
+  </message>
+  <message name="GetClaimsRefundByLine">
+    <part name="parameters" element="tns:GetClaimsRefundByLine" />
+  </message>
+  <message name="GetClaimsRefundByLine_Result">
+    <part name="parameters" element="tns:GetClaimsRefundByLine_Result" />
+  </message>
+  <message name="GetClaimsRefundAmount">
+    <part name="parameters" element="tns:GetClaimsRefundAmount" />
+  </message>
+  <message name="GetClaimsRefundAmount_Result">
+    <part name="parameters" element="tns:GetClaimsRefundAmount_Result" />
+  </message>
+  <message name="GetClaimsRefundStatus">
+    <part name="parameters" element="tns:GetClaimsRefundStatus" />
+  </message>
+  <message name="GetClaimsRefundStatus_Result">
+    <part name="parameters" element="tns:GetClaimsRefundStatus_Result" />
+  </message>
+  <message name="CreateClaimsRefundLine">
+    <part name="parameters" element="tns:CreateClaimsRefundLine" />
+  </message>
+  <message name="CreateClaimsRefundLine_Result">
+    <part name="parameters" element="tns:CreateClaimsRefundLine_Result" />
+  </message>
+  <message name="ModifyClaimsRefundLine">
+    <part name="parameters" element="tns:ModifyClaimsRefundLine" />
+  </message>
+  <message name="ModifyClaimsRefundLine_Result">
+    <part name="parameters" element="tns:ModifyClaimsRefundLine_Result" />
+  </message>
+  <message name="DeleteClaimsRefundLine">
+    <part name="parameters" element="tns:DeleteClaimsRefundLine" />
+  </message>
+  <message name="DeleteClaimsRefundLine_Result">
+    <part name="parameters" element="tns:DeleteClaimsRefundLine_Result" />
+  </message>
+  <message name="CheckClaimsRefundLinesExist">
+    <part name="parameters" element="tns:CheckClaimsRefundLinesExist" />
+  </message>
+  <message name="CheckClaimsRefundLinesExist_Result">
+    <part name="parameters" element="tns:CheckClaimsRefundLinesExist_Result" />
+  </message>
+  <message name="CheckClaimsRefundApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckClaimsRefundApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckClaimsRefundApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckClaimsRefundApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendClaimsRefundApprovalRequest">
+    <part name="parameters" element="tns:SendClaimsRefundApprovalRequest" />
+  </message>
+  <message name="SendClaimsRefundApprovalRequest_Result">
+    <part name="parameters" element="tns:SendClaimsRefundApprovalRequest_Result" />
+  </message>
+  <message name="CancelClaimsRefundApprovalRequest">
+    <part name="parameters" element="tns:CancelClaimsRefundApprovalRequest" />
+  </message>
+  <message name="CancelClaimsRefundApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelClaimsRefundApprovalRequest_Result" />
+  </message>
+  <message name="GetImprestSurrenders">
+    <part name="parameters" element="tns:GetImprestSurrenders" />
+  </message>
+  <message name="GetImprestSurrenders_Result">
+    <part name="parameters" element="tns:GetImprestSurrenders_Result" />
+  </message>
+  <message name="GetImprestSurrenderLines">
+    <part name="parameters" element="tns:GetImprestSurrenderLines" />
+  </message>
+  <message name="GetImprestSurrenderLines_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderLines_Result" />
+  </message>
+  <message name="GetImprestSurrenderByLine">
+    <part name="parameters" element="tns:GetImprestSurrenderByLine" />
+  </message>
+  <message name="GetImprestSurrenderByLine_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderByLine_Result" />
+  </message>
+  <message name="CheckImprestSurrenderExists">
+    <part name="parameters" element="tns:CheckImprestSurrenderExists" />
+  </message>
+  <message name="CheckImprestSurrenderExists_Result">
+    <part name="parameters" element="tns:CheckImprestSurrenderExists_Result" />
+  </message>
+  <message name="CheckOpenImprestSurrenderExists">
+    <part name="parameters" element="tns:CheckOpenImprestSurrenderExists" />
+  </message>
+  <message name="CheckOpenImprestSurrenderExists_Result">
+    <part name="parameters" element="tns:CheckOpenImprestSurrenderExists_Result" />
+  </message>
+  <message name="CreateImprestSurrenderHeader">
+    <part name="parameters" element="tns:CreateImprestSurrenderHeader" />
+  </message>
+  <message name="CreateImprestSurrenderHeader_Result">
+    <part name="parameters" element="tns:CreateImprestSurrenderHeader_Result" />
+  </message>
+  <message name="ModifyImprestSurrenderHeader">
+    <part name="parameters" element="tns:ModifyImprestSurrenderHeader" />
+  </message>
+  <message name="ModifyImprestSurrenderHeader_Result">
+    <part name="parameters" element="tns:ModifyImprestSurrenderHeader_Result" />
+  </message>
+  <message name="GetImprestSurrenderAmount">
+    <part name="parameters" element="tns:GetImprestSurrenderAmount" />
+  </message>
+  <message name="GetImprestSurrenderAmount_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderAmount_Result" />
+  </message>
+  <message name="GetImprestRemainingAmount">
+    <part name="parameters" element="tns:GetImprestRemainingAmount" />
+  </message>
+  <message name="GetImprestRemainingAmount_Result">
+    <part name="parameters" element="tns:GetImprestRemainingAmount_Result" />
+  </message>
+  <message name="GetTravelAllowance">
+    <part name="parameters" element="tns:GetTravelAllowance" />
+  </message>
+  <message name="GetTravelAllowance_Result">
+    <part name="parameters" element="tns:GetTravelAllowance_Result" />
+  </message>
+  <message name="GetImprestSurrenderStatus">
+    <part name="parameters" element="tns:GetImprestSurrenderStatus" />
+  </message>
+  <message name="GetImprestSurrenderStatus_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderStatus_Result" />
+  </message>
+  <message name="CreateImprestSurrenderLine">
+    <part name="parameters" element="tns:CreateImprestSurrenderLine" />
+  </message>
+  <message name="CreateImprestSurrenderLine_Result">
+    <part name="parameters" element="tns:CreateImprestSurrenderLine_Result" />
+  </message>
+  <message name="ModifyImprestSurrenderLine">
+    <part name="parameters" element="tns:ModifyImprestSurrenderLine" />
+  </message>
+  <message name="ModifyImprestSurrenderLine_Result">
+    <part name="parameters" element="tns:ModifyImprestSurrenderLine_Result" />
+  </message>
+  <message name="DeleteImprestSurrenderLine">
+    <part name="parameters" element="tns:DeleteImprestSurrenderLine" />
+  </message>
+  <message name="DeleteImprestSurrenderLine_Result">
+    <part name="parameters" element="tns:DeleteImprestSurrenderLine_Result" />
+  </message>
+  <message name="CheckImprestSurrenderLinesExist">
+    <part name="parameters" element="tns:CheckImprestSurrenderLinesExist" />
+  </message>
+  <message name="CheckImprestSurrenderLinesExist_Result">
+    <part name="parameters" element="tns:CheckImprestSurrenderLinesExist_Result" />
+  </message>
+  <message name="ValidateImprestSurrenderLines">
+    <part name="parameters" element="tns:ValidateImprestSurrenderLines" />
+  </message>
+  <message name="ValidateImprestSurrenderLines_Result">
+    <part name="parameters" element="tns:ValidateImprestSurrenderLines_Result" />
+  </message>
+  <message name="CheckImprestSurrenderApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckImprestSurrenderApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckImprestSurrenderApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckImprestSurrenderApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendImprestSurrenderApprovalRequest">
+    <part name="parameters" element="tns:SendImprestSurrenderApprovalRequest" />
+  </message>
+  <message name="SendImprestSurrenderApprovalRequest_Result">
+    <part name="parameters" element="tns:SendImprestSurrenderApprovalRequest_Result" />
+  </message>
+  <message name="CancelImprestSurrenderApprovalRequest">
+    <part name="parameters" element="tns:CancelImprestSurrenderApprovalRequest" />
+  </message>
+  <message name="CancelImprestSurrenderApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelImprestSurrenderApprovalRequest_Result" />
+  </message>
+  <message name="ReopenImprestSurrender">
+    <part name="parameters" element="tns:ReopenImprestSurrender" />
+  </message>
+  <message name="ReopenImprestSurrender_Result">
+    <part name="parameters" element="tns:ReopenImprestSurrender_Result" />
+  </message>
+  <message name="CancelImprestSurrenderBudgetCommitment">
+    <part name="parameters" element="tns:CancelImprestSurrenderBudgetCommitment" />
+  </message>
+  <message name="CancelImprestSurrenderBudgetCommitment_Result">
+    <part name="parameters" element="tns:CancelImprestSurrenderBudgetCommitment_Result" />
+  </message>
+  <message name="GetImprestSurrenderGlobalDimension1Code">
+    <part name="parameters" element="tns:GetImprestSurrenderGlobalDimension1Code" />
+  </message>
+  <message name="GetImprestSurrenderGlobalDimension1Code_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderGlobalDimension1Code_Result" />
+  </message>
+  <message name="GetImprestSurrenderGlobalDimension2Code">
+    <part name="parameters" element="tns:GetImprestSurrenderGlobalDimension2Code" />
+  </message>
+  <message name="GetImprestSurrenderGlobalDimension2Code_Result">
+    <part name="parameters" element="tns:GetImprestSurrenderGlobalDimension2Code_Result" />
+  </message>
+  <message name="InsertImprestSurrenderLines">
+    <part name="parameters" element="tns:InsertImprestSurrenderLines" />
+  </message>
+  <message name="InsertImprestSurrenderLines_Result">
+    <part name="parameters" element="tns:InsertImprestSurrenderLines_Result" />
+  </message>
+  <message name="CheckSimilarImprestSurrenderPending">
+    <part name="parameters" element="tns:CheckSimilarImprestSurrenderPending" />
+  </message>
+  <message name="CheckSimilarImprestSurrenderPending_Result">
+    <part name="parameters" element="tns:CheckSimilarImprestSurrenderPending_Result" />
+  </message>
+  <portType name="ActivityRequest_Port">
+    <operation name="GetOpenImprestSurrender">
+      <input name="GetOpenImprestSurrender" message="tns:GetOpenImprestSurrender" />
+      <output name="GetOpenImprestSurrender_Result" message="tns:GetOpenImprestSurrender_Result" />
+    </operation>
+    <operation name="GetImprestCategories">
+      <input name="GetImprestCategories" message="tns:GetImprestCategories" />
+      <output name="GetImprestCategories_Result" message="tns:GetImprestCategories_Result" />
+    </operation>
+    <operation name="GetImprestElements">
+      <input name="GetImprestElements" message="tns:GetImprestElements" />
+      <output name="GetImprestElements_Result" message="tns:GetImprestElements_Result" />
+    </operation>
+    <operation name="GetLocalCounties">
+      <input name="GetLocalCounties" message="tns:GetLocalCounties" />
+      <output name="GetLocalCounties_Result" message="tns:GetLocalCounties_Result" />
+    </operation>
+    <operation name="GetSalaryScales">
+      <input name="GetSalaryScales" message="tns:GetSalaryScales" />
+      <output name="GetSalaryScales_Result" message="tns:GetSalaryScales_Result" />
+    </operation>
+    <operation name="GetSRCAmount">
+      <input name="GetSRCAmount" message="tns:GetSRCAmount" />
+      <output name="GetSRCAmount_Result" message="tns:GetSRCAmount_Result" />
+    </operation>
+    <operation name="GetImprestAmountPerCategory">
+      <input name="GetImprestAmountPerCategory" message="tns:GetImprestAmountPerCategory" />
+      <output name="GetImprestAmountPerCategory_Result" message="tns:GetImprestAmountPerCategory_Result" />
+    </operation>
+    <operation name="GetEmployeeSRCScale">
+      <input name="GetEmployeeSRCScale" message="tns:GetEmployeeSRCScale" />
+      <output name="GetEmployeeSRCScale_Result" message="tns:GetEmployeeSRCScale_Result" />
+    </operation>
+    <operation name="GetLocalSRCDestionations">
+      <input name="GetLocalSRCDestionations" message="tns:GetLocalSRCDestionations" />
+      <output name="GetLocalSRCDestionations_Result" message="tns:GetLocalSRCDestionations_Result" />
+    </operation>
+    <operation name="GetInternationalSRCDestionations">
+      <input name="GetInternationalSRCDestionations" message="tns:GetInternationalSRCDestionations" />
+      <output name="GetInternationalSRCDestionations_Result" message="tns:GetInternationalSRCDestionations_Result" />
+    </operation>
+    <operation name="GetImprestTransactionCodes">
+      <input name="GetImprestTransactionCodes" message="tns:GetImprestTransactionCodes" />
+      <output name="GetImprestTransactionCodes_Result" message="tns:GetImprestTransactionCodes_Result" />
+    </operation>
+    <operation name="GetPettyCashBankAccounts">
+      <input name="GetPettyCashBankAccounts" message="tns:GetPettyCashBankAccounts" />
+      <output name="GetPettyCashBankAccounts_Result" message="tns:GetPettyCashBankAccounts_Result" />
+    </operation>
+    <operation name="GetPettyCashTransactionTypes">
+      <input name="GetPettyCashTransactionTypes" message="tns:GetPettyCashTransactionTypes" />
+      <output name="GetPettyCashTransactionTypes_Result" message="tns:GetPettyCashTransactionTypes_Result" />
+    </operation>
+    <operation name="GetUnsurrenderedImprests">
+      <input name="GetUnsurrenderedImprests" message="tns:GetUnsurrenderedImprests" />
+      <output name="GetUnsurrenderedImprests_Result" message="tns:GetUnsurrenderedImprests_Result" />
+    </operation>
+    <operation name="GetReceiptList">
+      <input name="GetReceiptList" message="tns:GetReceiptList" />
+      <output name="GetReceiptList_Result" message="tns:GetReceiptList_Result" />
+    </operation>
+    <operation name="GetLocalCurrencyCode">
+      <input name="GetLocalCurrencyCode" message="tns:GetLocalCurrencyCode" />
+      <output name="GetLocalCurrencyCode_Result" message="tns:GetLocalCurrencyCode_Result" />
+    </operation>
+    <operation name="CheckPettyCashExists">
+      <input name="CheckPettyCashExists" message="tns:CheckPettyCashExists" />
+      <output name="CheckPettyCashExists_Result" message="tns:CheckPettyCashExists_Result" />
+    </operation>
+    <operation name="CheckOpenPettyCashExists">
+      <input name="CheckOpenPettyCashExists" message="tns:CheckOpenPettyCashExists" />
+      <output name="CheckOpenPettyCashExists_Result" message="tns:CheckOpenPettyCashExists_Result" />
+    </operation>
+    <operation name="CheckPettyCashNotSurrendered">
+      <input name="CheckPettyCashNotSurrendered" message="tns:CheckPettyCashNotSurrendered" />
+      <output name="CheckPettyCashNotSurrendered_Result" message="tns:CheckPettyCashNotSurrendered_Result" />
+    </operation>
+    <operation name="CheckPettyCashPartiallySurrendered">
+      <input name="CheckPettyCashPartiallySurrendered" message="tns:CheckPettyCashPartiallySurrendered" />
+      <output name="CheckPettyCashPartiallySurrendered_Result" message="tns:CheckPettyCashPartiallySurrendered_Result" />
+    </operation>
+    <operation name="CreatePettyCashHeader">
+      <input name="CreatePettyCashHeader" message="tns:CreatePettyCashHeader" />
+      <output name="CreatePettyCashHeader_Result" message="tns:CreatePettyCashHeader_Result" />
+    </operation>
+    <operation name="ModifyPettyCashHeader">
+      <input name="ModifyPettyCashHeader" message="tns:ModifyPettyCashHeader" />
+      <output name="ModifyPettyCashHeader_Result" message="tns:ModifyPettyCashHeader_Result" />
+    </operation>
+    <operation name="GetPettyCash">
+      <input name="GetPettyCash" message="tns:GetPettyCash" />
+      <output name="GetPettyCash_Result" message="tns:GetPettyCash_Result" />
+    </operation>
+    <operation name="GetPettyCashLines">
+      <input name="GetPettyCashLines" message="tns:GetPettyCashLines" />
+      <output name="GetPettyCashLines_Result" message="tns:GetPettyCashLines_Result" />
+    </operation>
+    <operation name="GetPettyCashByLine">
+      <input name="GetPettyCashByLine" message="tns:GetPettyCashByLine" />
+      <output name="GetPettyCashByLine_Result" message="tns:GetPettyCashByLine_Result" />
+    </operation>
+    <operation name="GetPettyCashAmount">
+      <input name="GetPettyCashAmount" message="tns:GetPettyCashAmount" />
+      <output name="GetPettyCashAmount_Result" message="tns:GetPettyCashAmount_Result" />
+    </operation>
+    <operation name="GetPettyCashStatus">
+      <input name="GetPettyCashStatus" message="tns:GetPettyCashStatus" />
+      <output name="GetPettyCashStatus_Result" message="tns:GetPettyCashStatus_Result" />
+    </operation>
+    <operation name="CreatePettyCashLine">
+      <input name="CreatePettyCashLine" message="tns:CreatePettyCashLine" />
+      <output name="CreatePettyCashLine_Result" message="tns:CreatePettyCashLine_Result" />
+    </operation>
+    <operation name="ModifyPettyCashLine">
+      <input name="ModifyPettyCashLine" message="tns:ModifyPettyCashLine" />
+      <output name="ModifyPettyCashLine_Result" message="tns:ModifyPettyCashLine_Result" />
+    </operation>
+    <operation name="DeletePettyCashLine">
+      <input name="DeletePettyCashLine" message="tns:DeletePettyCashLine" />
+      <output name="DeletePettyCashLine_Result" message="tns:DeletePettyCashLine_Result" />
+    </operation>
+    <operation name="CheckPettyCashLinesExist">
+      <input name="CheckPettyCashLinesExist" message="tns:CheckPettyCashLinesExist" />
+      <output name="CheckPettyCashLinesExist_Result" message="tns:CheckPettyCashLinesExist_Result" />
+    </operation>
+    <operation name="ValidatePettyCashLines">
+      <input name="ValidatePettyCashLines" message="tns:ValidatePettyCashLines" />
+      <output name="ValidatePettyCashLines_Result" message="tns:ValidatePettyCashLines_Result" />
+    </operation>
+    <operation name="CheckPettyCashApprovalWorkflowEnabled">
+      <input name="CheckPettyCashApprovalWorkflowEnabled" message="tns:CheckPettyCashApprovalWorkflowEnabled" />
+      <output name="CheckPettyCashApprovalWorkflowEnabled_Result" message="tns:CheckPettyCashApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendPettyCashApprovalRequest">
+      <input name="SendPettyCashApprovalRequest" message="tns:SendPettyCashApprovalRequest" />
+      <output name="SendPettyCashApprovalRequest_Result" message="tns:SendPettyCashApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelPettyCashApprovalRequest">
+      <input name="CancelPettyCashApprovalRequest" message="tns:CancelPettyCashApprovalRequest" />
+      <output name="CancelPettyCashApprovalRequest_Result" message="tns:CancelPettyCashApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenPettyCashRequest">
+      <input name="ReopenPettyCashRequest" message="tns:ReopenPettyCashRequest" />
+      <output name="ReopenPettyCashRequest_Result" message="tns:ReopenPettyCashRequest_Result" />
+    </operation>
+    <operation name="CheckPettyCashSurrenderExists">
+      <input name="CheckPettyCashSurrenderExists" message="tns:CheckPettyCashSurrenderExists" />
+      <output name="CheckPettyCashSurrenderExists_Result" message="tns:CheckPettyCashSurrenderExists_Result" />
+    </operation>
+    <operation name="CheckOpenPettyCashSurrenderExists">
+      <input name="CheckOpenPettyCashSurrenderExists" message="tns:CheckOpenPettyCashSurrenderExists" />
+      <output name="CheckOpenPettyCashSurrenderExists_Result" message="tns:CheckOpenPettyCashSurrenderExists_Result" />
+    </operation>
+    <operation name="CreatePettyCashSurrenderHeader">
+      <input name="CreatePettyCashSurrenderHeader" message="tns:CreatePettyCashSurrenderHeader" />
+      <output name="CreatePettyCashSurrenderHeader_Result" message="tns:CreatePettyCashSurrenderHeader_Result" />
+    </operation>
+    <operation name="ModifyPettyCashSurrenderHeader">
+      <input name="ModifyPettyCashSurrenderHeader" message="tns:ModifyPettyCashSurrenderHeader" />
+      <output name="ModifyPettyCashSurrenderHeader_Result" message="tns:ModifyPettyCashSurrenderHeader_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrender">
+      <input name="GetPettyCashSurrender" message="tns:GetPettyCashSurrender" />
+      <output name="GetPettyCashSurrender_Result" message="tns:GetPettyCashSurrender_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrenderLines">
+      <input name="GetPettyCashSurrenderLines" message="tns:GetPettyCashSurrenderLines" />
+      <output name="GetPettyCashSurrenderLines_Result" message="tns:GetPettyCashSurrenderLines_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrenderByLine">
+      <input name="GetPettyCashSurrenderByLine" message="tns:GetPettyCashSurrenderByLine" />
+      <output name="GetPettyCashSurrenderByLine_Result" message="tns:GetPettyCashSurrenderByLine_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrenderAmount">
+      <input name="GetPettyCashSurrenderAmount" message="tns:GetPettyCashSurrenderAmount" />
+      <output name="GetPettyCashSurrenderAmount_Result" message="tns:GetPettyCashSurrenderAmount_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrenderStatus">
+      <input name="GetPettyCashSurrenderStatus" message="tns:GetPettyCashSurrenderStatus" />
+      <output name="GetPettyCashSurrenderStatus_Result" message="tns:GetPettyCashSurrenderStatus_Result" />
+    </operation>
+    <operation name="CreatePettyCashSurrenderLine">
+      <input name="CreatePettyCashSurrenderLine" message="tns:CreatePettyCashSurrenderLine" />
+      <output name="CreatePettyCashSurrenderLine_Result" message="tns:CreatePettyCashSurrenderLine_Result" />
+    </operation>
+    <operation name="ModifyPettyCashSurrenderLine">
+      <input name="ModifyPettyCashSurrenderLine" message="tns:ModifyPettyCashSurrenderLine" />
+      <output name="ModifyPettyCashSurrenderLine_Result" message="tns:ModifyPettyCashSurrenderLine_Result" />
+    </operation>
+    <operation name="CreatePettyCashSurrenderLineCopy">
+      <input name="CreatePettyCashSurrenderLineCopy" message="tns:CreatePettyCashSurrenderLineCopy" />
+      <output name="CreatePettyCashSurrenderLineCopy_Result" message="tns:CreatePettyCashSurrenderLineCopy_Result" />
+    </operation>
+    <operation name="ModifyPettyCashSurrenderLineCopy">
+      <input name="ModifyPettyCashSurrenderLineCopy" message="tns:ModifyPettyCashSurrenderLineCopy" />
+      <output name="ModifyPettyCashSurrenderLineCopy_Result" message="tns:ModifyPettyCashSurrenderLineCopy_Result" />
+    </operation>
+    <operation name="DeletePettyCashSurrenderLine">
+      <input name="DeletePettyCashSurrenderLine" message="tns:DeletePettyCashSurrenderLine" />
+      <output name="DeletePettyCashSurrenderLine_Result" message="tns:DeletePettyCashSurrenderLine_Result" />
+    </operation>
+    <operation name="CheckPettyCashSurrenderLinesExist">
+      <input name="CheckPettyCashSurrenderLinesExist" message="tns:CheckPettyCashSurrenderLinesExist" />
+      <output name="CheckPettyCashSurrenderLinesExist_Result" message="tns:CheckPettyCashSurrenderLinesExist_Result" />
+    </operation>
+    <operation name="CheckPettyCashSurrenderApprovalWorkflowEnabled">
+      <input name="CheckPettyCashSurrenderApprovalWorkflowEnabled" message="tns:CheckPettyCashSurrenderApprovalWorkflowEnabled" />
+      <output name="CheckPettyCashSurrenderApprovalWorkflowEnabled_Result" message="tns:CheckPettyCashSurrenderApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendPettyCashSurrenderApprovalRequest">
+      <input name="SendPettyCashSurrenderApprovalRequest" message="tns:SendPettyCashSurrenderApprovalRequest" />
+      <output name="SendPettyCashSurrenderApprovalRequest_Result" message="tns:SendPettyCashSurrenderApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelPettyCashSurrenderApprovalRequest">
+      <input name="CancelPettyCashSurrenderApprovalRequest" message="tns:CancelPettyCashSurrenderApprovalRequest" />
+      <output name="CancelPettyCashSurrenderApprovalRequest_Result" message="tns:CancelPettyCashSurrenderApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenPettyCashSurrenderRequest">
+      <input name="ReopenPettyCashSurrenderRequest" message="tns:ReopenPettyCashSurrenderRequest" />
+      <output name="ReopenPettyCashSurrenderRequest_Result" message="tns:ReopenPettyCashSurrenderRequest_Result" />
+    </operation>
+    <operation name="CheckImprestRequestExists">
+      <input name="CheckImprestRequestExists" message="tns:CheckImprestRequestExists" />
+      <output name="CheckImprestRequestExists_Result" message="tns:CheckImprestRequestExists_Result" />
+    </operation>
+    <operation name="CheckOpenImprestRequestExists">
+      <input name="CheckOpenImprestRequestExists" message="tns:CheckOpenImprestRequestExists" />
+      <output name="CheckOpenImprestRequestExists_Result" message="tns:CheckOpenImprestRequestExists_Result" />
+    </operation>
+    <operation name="PreviousImprestSurrendered">
+      <input name="PreviousImprestSurrendered" message="tns:PreviousImprestSurrendered" />
+      <output name="PreviousImprestSurrendered_Result" message="tns:PreviousImprestSurrendered_Result" />
+    </operation>
+    <operation name="CheckImprestPartiallySurrendered">
+      <input name="CheckImprestPartiallySurrendered" message="tns:CheckImprestPartiallySurrendered" />
+      <output name="CheckImprestPartiallySurrendered_Result" message="tns:CheckImprestPartiallySurrendered_Result" />
+    </operation>
+    <operation name="CreateImprestHeader">
+      <input name="CreateImprestHeader" message="tns:CreateImprestHeader" />
+      <output name="CreateImprestHeader_Result" message="tns:CreateImprestHeader_Result" />
+    </operation>
+    <operation name="ModifyImprestHeader">
+      <input name="ModifyImprestHeader" message="tns:ModifyImprestHeader" />
+      <output name="ModifyImprestHeader_Result" message="tns:ModifyImprestHeader_Result" />
+    </operation>
+    <operation name="GetImprestRequests">
+      <input name="GetImprestRequests" message="tns:GetImprestRequests" />
+      <output name="GetImprestRequests_Result" message="tns:GetImprestRequests_Result" />
+    </operation>
+    <operation name="GetImprestRequestLines">
+      <input name="GetImprestRequestLines" message="tns:GetImprestRequestLines" />
+      <output name="GetImprestRequestLines_Result" message="tns:GetImprestRequestLines_Result" />
+    </operation>
+    <operation name="GetImprestRequestByLine">
+      <input name="GetImprestRequestByLine" message="tns:GetImprestRequestByLine" />
+      <output name="GetImprestRequestByLine_Result" message="tns:GetImprestRequestByLine_Result" />
+    </operation>
+    <operation name="GetImprestAmount">
+      <input name="GetImprestAmount" message="tns:GetImprestAmount" />
+      <output name="GetImprestAmount_Result" message="tns:GetImprestAmount_Result" />
+    </operation>
+    <operation name="GetImprestStatus">
+      <input name="GetImprestStatus" message="tns:GetImprestStatus" />
+      <output name="GetImprestStatus_Result" message="tns:GetImprestStatus_Result" />
+    </operation>
+    <operation name="CreateImprestLine">
+      <input name="CreateImprestLine" message="tns:CreateImprestLine" />
+      <output name="CreateImprestLine_Result" message="tns:CreateImprestLine_Result" />
+    </operation>
+    <operation name="ModifyImprestLine">
+      <input name="ModifyImprestLine" message="tns:ModifyImprestLine" />
+      <output name="ModifyImprestLine_Result" message="tns:ModifyImprestLine_Result" />
+    </operation>
+    <operation name="DeleteImprestLine">
+      <input name="DeleteImprestLine" message="tns:DeleteImprestLine" />
+      <output name="DeleteImprestLine_Result" message="tns:DeleteImprestLine_Result" />
+    </operation>
+    <operation name="CheckImprestLinesExist">
+      <input name="CheckImprestLinesExist" message="tns:CheckImprestLinesExist" />
+      <output name="CheckImprestLinesExist_Result" message="tns:CheckImprestLinesExist_Result" />
+    </operation>
+    <operation name="ValidateImprestLines">
+      <input name="ValidateImprestLines" message="tns:ValidateImprestLines" />
+      <output name="ValidateImprestLines_Result" message="tns:ValidateImprestLines_Result" />
+    </operation>
+    <operation name="CheckImprestApprovalWorkflowEnabled">
+      <input name="CheckImprestApprovalWorkflowEnabled" message="tns:CheckImprestApprovalWorkflowEnabled" />
+      <output name="CheckImprestApprovalWorkflowEnabled_Result" message="tns:CheckImprestApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendImprestApprovalRequest">
+      <input name="SendImprestApprovalRequest" message="tns:SendImprestApprovalRequest" />
+      <output name="SendImprestApprovalRequest_Result" message="tns:SendImprestApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelImprestApprovalRequest">
+      <input name="CancelImprestApprovalRequest" message="tns:CancelImprestApprovalRequest" />
+      <output name="CancelImprestApprovalRequest_Result" message="tns:CancelImprestApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenImprestRequest">
+      <input name="ReopenImprestRequest" message="tns:ReopenImprestRequest" />
+      <output name="ReopenImprestRequest_Result" message="tns:ReopenImprestRequest_Result" />
+    </operation>
+    <operation name="CancelImprestBudgetCommitment">
+      <input name="CancelImprestBudgetCommitment" message="tns:CancelImprestBudgetCommitment" />
+      <output name="CancelImprestBudgetCommitment_Result" message="tns:CancelImprestBudgetCommitment_Result" />
+    </operation>
+    <operation name="GetEmployeeImprestBalance">
+      <input name="GetEmployeeImprestBalance" message="tns:GetEmployeeImprestBalance" />
+      <output name="GetEmployeeImprestBalance_Result" message="tns:GetEmployeeImprestBalance_Result" />
+    </operation>
+    <operation name="CheckClaimsRefundExists">
+      <input name="CheckClaimsRefundExists" message="tns:CheckClaimsRefundExists" />
+      <output name="CheckClaimsRefundExists_Result" message="tns:CheckClaimsRefundExists_Result" />
+    </operation>
+    <operation name="CheckOpenClaimsRefundExists">
+      <input name="CheckOpenClaimsRefundExists" message="tns:CheckOpenClaimsRefundExists" />
+      <output name="CheckOpenClaimsRefundExists_Result" message="tns:CheckOpenClaimsRefundExists_Result" />
+    </operation>
+    <operation name="CreateClaimsRefundHeader">
+      <input name="CreateClaimsRefundHeader" message="tns:CreateClaimsRefundHeader" />
+      <output name="CreateClaimsRefundHeader_Result" message="tns:CreateClaimsRefundHeader_Result" />
+    </operation>
+    <operation name="ModifyClaimsRefundHeader">
+      <input name="ModifyClaimsRefundHeader" message="tns:ModifyClaimsRefundHeader" />
+      <output name="ModifyClaimsRefundHeader_Result" message="tns:ModifyClaimsRefundHeader_Result" />
+    </operation>
+    <operation name="GetClaimsRefund">
+      <input name="GetClaimsRefund" message="tns:GetClaimsRefund" />
+      <output name="GetClaimsRefund_Result" message="tns:GetClaimsRefund_Result" />
+    </operation>
+    <operation name="GetClaimsRefundLines">
+      <input name="GetClaimsRefundLines" message="tns:GetClaimsRefundLines" />
+      <output name="GetClaimsRefundLines_Result" message="tns:GetClaimsRefundLines_Result" />
+    </operation>
+    <operation name="GetClaimsRefundByLine">
+      <input name="GetClaimsRefundByLine" message="tns:GetClaimsRefundByLine" />
+      <output name="GetClaimsRefundByLine_Result" message="tns:GetClaimsRefundByLine_Result" />
+    </operation>
+    <operation name="GetClaimsRefundAmount">
+      <input name="GetClaimsRefundAmount" message="tns:GetClaimsRefundAmount" />
+      <output name="GetClaimsRefundAmount_Result" message="tns:GetClaimsRefundAmount_Result" />
+    </operation>
+    <operation name="GetClaimsRefundStatus">
+      <input name="GetClaimsRefundStatus" message="tns:GetClaimsRefundStatus" />
+      <output name="GetClaimsRefundStatus_Result" message="tns:GetClaimsRefundStatus_Result" />
+    </operation>
+    <operation name="CreateClaimsRefundLine">
+      <input name="CreateClaimsRefundLine" message="tns:CreateClaimsRefundLine" />
+      <output name="CreateClaimsRefundLine_Result" message="tns:CreateClaimsRefundLine_Result" />
+    </operation>
+    <operation name="ModifyClaimsRefundLine">
+      <input name="ModifyClaimsRefundLine" message="tns:ModifyClaimsRefundLine" />
+      <output name="ModifyClaimsRefundLine_Result" message="tns:ModifyClaimsRefundLine_Result" />
+    </operation>
+    <operation name="DeleteClaimsRefundLine">
+      <input name="DeleteClaimsRefundLine" message="tns:DeleteClaimsRefundLine" />
+      <output name="DeleteClaimsRefundLine_Result" message="tns:DeleteClaimsRefundLine_Result" />
+    </operation>
+    <operation name="CheckClaimsRefundLinesExist">
+      <input name="CheckClaimsRefundLinesExist" message="tns:CheckClaimsRefundLinesExist" />
+      <output name="CheckClaimsRefundLinesExist_Result" message="tns:CheckClaimsRefundLinesExist_Result" />
+    </operation>
+    <operation name="CheckClaimsRefundApprovalWorkflowEnabled">
+      <input name="CheckClaimsRefundApprovalWorkflowEnabled" message="tns:CheckClaimsRefundApprovalWorkflowEnabled" />
+      <output name="CheckClaimsRefundApprovalWorkflowEnabled_Result" message="tns:CheckClaimsRefundApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendClaimsRefundApprovalRequest">
+      <input name="SendClaimsRefundApprovalRequest" message="tns:SendClaimsRefundApprovalRequest" />
+      <output name="SendClaimsRefundApprovalRequest_Result" message="tns:SendClaimsRefundApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelClaimsRefundApprovalRequest">
+      <input name="CancelClaimsRefundApprovalRequest" message="tns:CancelClaimsRefundApprovalRequest" />
+      <output name="CancelClaimsRefundApprovalRequest_Result" message="tns:CancelClaimsRefundApprovalRequest_Result" />
+    </operation>
+    <operation name="GetImprestSurrenders">
+      <input name="GetImprestSurrenders" message="tns:GetImprestSurrenders" />
+      <output name="GetImprestSurrenders_Result" message="tns:GetImprestSurrenders_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderLines">
+      <input name="GetImprestSurrenderLines" message="tns:GetImprestSurrenderLines" />
+      <output name="GetImprestSurrenderLines_Result" message="tns:GetImprestSurrenderLines_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderByLine">
+      <input name="GetImprestSurrenderByLine" message="tns:GetImprestSurrenderByLine" />
+      <output name="GetImprestSurrenderByLine_Result" message="tns:GetImprestSurrenderByLine_Result" />
+    </operation>
+    <operation name="CheckImprestSurrenderExists">
+      <input name="CheckImprestSurrenderExists" message="tns:CheckImprestSurrenderExists" />
+      <output name="CheckImprestSurrenderExists_Result" message="tns:CheckImprestSurrenderExists_Result" />
+    </operation>
+    <operation name="CheckOpenImprestSurrenderExists">
+      <input name="CheckOpenImprestSurrenderExists" message="tns:CheckOpenImprestSurrenderExists" />
+      <output name="CheckOpenImprestSurrenderExists_Result" message="tns:CheckOpenImprestSurrenderExists_Result" />
+    </operation>
+    <operation name="CreateImprestSurrenderHeader">
+      <input name="CreateImprestSurrenderHeader" message="tns:CreateImprestSurrenderHeader" />
+      <output name="CreateImprestSurrenderHeader_Result" message="tns:CreateImprestSurrenderHeader_Result" />
+    </operation>
+    <operation name="ModifyImprestSurrenderHeader">
+      <input name="ModifyImprestSurrenderHeader" message="tns:ModifyImprestSurrenderHeader" />
+      <output name="ModifyImprestSurrenderHeader_Result" message="tns:ModifyImprestSurrenderHeader_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderAmount">
+      <input name="GetImprestSurrenderAmount" message="tns:GetImprestSurrenderAmount" />
+      <output name="GetImprestSurrenderAmount_Result" message="tns:GetImprestSurrenderAmount_Result" />
+    </operation>
+    <operation name="GetImprestRemainingAmount">
+      <input name="GetImprestRemainingAmount" message="tns:GetImprestRemainingAmount" />
+      <output name="GetImprestRemainingAmount_Result" message="tns:GetImprestRemainingAmount_Result" />
+    </operation>
+    <operation name="GetTravelAllowance">
+      <input name="GetTravelAllowance" message="tns:GetTravelAllowance" />
+      <output name="GetTravelAllowance_Result" message="tns:GetTravelAllowance_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderStatus">
+      <input name="GetImprestSurrenderStatus" message="tns:GetImprestSurrenderStatus" />
+      <output name="GetImprestSurrenderStatus_Result" message="tns:GetImprestSurrenderStatus_Result" />
+    </operation>
+    <operation name="CreateImprestSurrenderLine">
+      <input name="CreateImprestSurrenderLine" message="tns:CreateImprestSurrenderLine" />
+      <output name="CreateImprestSurrenderLine_Result" message="tns:CreateImprestSurrenderLine_Result" />
+    </operation>
+    <operation name="ModifyImprestSurrenderLine">
+      <input name="ModifyImprestSurrenderLine" message="tns:ModifyImprestSurrenderLine" />
+      <output name="ModifyImprestSurrenderLine_Result" message="tns:ModifyImprestSurrenderLine_Result" />
+    </operation>
+    <operation name="DeleteImprestSurrenderLine">
+      <input name="DeleteImprestSurrenderLine" message="tns:DeleteImprestSurrenderLine" />
+      <output name="DeleteImprestSurrenderLine_Result" message="tns:DeleteImprestSurrenderLine_Result" />
+    </operation>
+    <operation name="CheckImprestSurrenderLinesExist">
+      <input name="CheckImprestSurrenderLinesExist" message="tns:CheckImprestSurrenderLinesExist" />
+      <output name="CheckImprestSurrenderLinesExist_Result" message="tns:CheckImprestSurrenderLinesExist_Result" />
+    </operation>
+    <operation name="ValidateImprestSurrenderLines">
+      <input name="ValidateImprestSurrenderLines" message="tns:ValidateImprestSurrenderLines" />
+      <output name="ValidateImprestSurrenderLines_Result" message="tns:ValidateImprestSurrenderLines_Result" />
+    </operation>
+    <operation name="CheckImprestSurrenderApprovalWorkflowEnabled">
+      <input name="CheckImprestSurrenderApprovalWorkflowEnabled" message="tns:CheckImprestSurrenderApprovalWorkflowEnabled" />
+      <output name="CheckImprestSurrenderApprovalWorkflowEnabled_Result" message="tns:CheckImprestSurrenderApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendImprestSurrenderApprovalRequest">
+      <input name="SendImprestSurrenderApprovalRequest" message="tns:SendImprestSurrenderApprovalRequest" />
+      <output name="SendImprestSurrenderApprovalRequest_Result" message="tns:SendImprestSurrenderApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelImprestSurrenderApprovalRequest">
+      <input name="CancelImprestSurrenderApprovalRequest" message="tns:CancelImprestSurrenderApprovalRequest" />
+      <output name="CancelImprestSurrenderApprovalRequest_Result" message="tns:CancelImprestSurrenderApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenImprestSurrender">
+      <input name="ReopenImprestSurrender" message="tns:ReopenImprestSurrender" />
+      <output name="ReopenImprestSurrender_Result" message="tns:ReopenImprestSurrender_Result" />
+    </operation>
+    <operation name="CancelImprestSurrenderBudgetCommitment">
+      <input name="CancelImprestSurrenderBudgetCommitment" message="tns:CancelImprestSurrenderBudgetCommitment" />
+      <output name="CancelImprestSurrenderBudgetCommitment_Result" message="tns:CancelImprestSurrenderBudgetCommitment_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderGlobalDimension1Code">
+      <input name="GetImprestSurrenderGlobalDimension1Code" message="tns:GetImprestSurrenderGlobalDimension1Code" />
+      <output name="GetImprestSurrenderGlobalDimension1Code_Result" message="tns:GetImprestSurrenderGlobalDimension1Code_Result" />
+    </operation>
+    <operation name="GetImprestSurrenderGlobalDimension2Code">
+      <input name="GetImprestSurrenderGlobalDimension2Code" message="tns:GetImprestSurrenderGlobalDimension2Code" />
+      <output name="GetImprestSurrenderGlobalDimension2Code_Result" message="tns:GetImprestSurrenderGlobalDimension2Code_Result" />
+    </operation>
+    <operation name="InsertImprestSurrenderLines">
+      <input name="InsertImprestSurrenderLines" message="tns:InsertImprestSurrenderLines" />
+      <output name="InsertImprestSurrenderLines_Result" message="tns:InsertImprestSurrenderLines_Result" />
+    </operation>
+    <operation name="CheckSimilarImprestSurrenderPending">
+      <input name="CheckSimilarImprestSurrenderPending" message="tns:CheckSimilarImprestSurrenderPending" />
+      <output name="CheckSimilarImprestSurrenderPending_Result" message="tns:CheckSimilarImprestSurrenderPending_Result" />
+    </operation>
+  </portType>
+  <binding name="ActivityRequest_Binding" type="tns:ActivityRequest_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetOpenImprestSurrender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetOpenImprestSurrender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetOpenImprestSurrender">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetOpenImprestSurrender_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestCategories">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestCategories" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestCategories">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestCategories_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestElements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestElements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestElements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestElements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLocalCounties">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetLocalCounties" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLocalCounties">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLocalCounties_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSalaryScales">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetSalaryScales" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSalaryScales">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSalaryScales_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSRCAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetSRCAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSRCAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSRCAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestAmountPerCategory">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestAmountPerCategory" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestAmountPerCategory">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestAmountPerCategory_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeSRCScale">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetEmployeeSRCScale" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeSRCScale">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeSRCScale_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLocalSRCDestionations">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetLocalSRCDestionations" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLocalSRCDestionations">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLocalSRCDestionations_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetInternationalSRCDestionations">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetInternationalSRCDestionations" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetInternationalSRCDestionations">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetInternationalSRCDestionations_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestTransactionCodes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestTransactionCodes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestTransactionCodes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestTransactionCodes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashBankAccounts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashBankAccounts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashBankAccounts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashBankAccounts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashTransactionTypes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashTransactionTypes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashTransactionTypes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashTransactionTypes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetUnsurrenderedImprests">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetUnsurrenderedImprests" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetUnsurrenderedImprests">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetUnsurrenderedImprests_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetReceiptList">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetReceiptList" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetReceiptList">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetReceiptList_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLocalCurrencyCode">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetLocalCurrencyCode" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLocalCurrencyCode">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLocalCurrencyCode_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenPettyCashExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckOpenPettyCashExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenPettyCashExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenPettyCashExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashNotSurrendered">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashNotSurrendered" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashNotSurrendered">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashNotSurrendered_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashPartiallySurrendered">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashPartiallySurrendered" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashPartiallySurrendered">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashPartiallySurrendered_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePettyCashHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreatePettyCashHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePettyCashHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPettyCashHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyPettyCashHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPettyCashHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPettyCashHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCash">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCash" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCash">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCash_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashByLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashByLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashByLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashByLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePettyCashLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreatePettyCashLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePettyCashLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPettyCashLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyPettyCashLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPettyCashLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPettyCashLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePettyCashLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:DeletePettyCashLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePettyCashLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePettyCashLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidatePettyCashLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ValidatePettyCashLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidatePettyCashLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidatePettyCashLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendPettyCashApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:SendPettyCashApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendPettyCashApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendPettyCashApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelPettyCashApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelPettyCashApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelPettyCashApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelPettyCashApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenPettyCashRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ReopenPettyCashRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenPettyCashRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenPettyCashRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashSurrenderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashSurrenderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashSurrenderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashSurrenderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenPettyCashSurrenderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckOpenPettyCashSurrenderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenPettyCashSurrenderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenPettyCashSurrenderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePettyCashSurrenderHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreatePettyCashSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashSurrenderHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePettyCashSurrenderHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPettyCashSurrenderHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyPettyCashSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPettyCashSurrenderHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPettyCashSurrenderHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashSurrender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrender">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrender_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrenderByLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashSurrenderByLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrenderByLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrenderByLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrenderAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashSurrenderAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrenderAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrenderAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrenderStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetPettyCashSurrenderStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrenderStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrenderStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePettyCashSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreatePettyCashSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePettyCashSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPettyCashSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyPettyCashSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPettyCashSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPettyCashSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePettyCashSurrenderLineCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreatePettyCashSurrenderLineCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashSurrenderLineCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePettyCashSurrenderLineCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPettyCashSurrenderLineCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyPettyCashSurrenderLineCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPettyCashSurrenderLineCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPettyCashSurrenderLineCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePettyCashSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:DeletePettyCashSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePettyCashSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePettyCashSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashSurrenderLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashSurrenderLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashSurrenderLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashSurrenderLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPettyCashSurrenderApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckPettyCashSurrenderApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPettyCashSurrenderApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPettyCashSurrenderApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendPettyCashSurrenderApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:SendPettyCashSurrenderApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendPettyCashSurrenderApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendPettyCashSurrenderApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelPettyCashSurrenderApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelPettyCashSurrenderApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelPettyCashSurrenderApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelPettyCashSurrenderApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenPettyCashSurrenderRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ReopenPettyCashSurrenderRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenPettyCashSurrenderRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenPettyCashSurrenderRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestRequestExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestRequestExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestRequestExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestRequestExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenImprestRequestExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckOpenImprestRequestExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenImprestRequestExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenImprestRequestExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PreviousImprestSurrendered">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:PreviousImprestSurrendered" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PreviousImprestSurrendered">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PreviousImprestSurrendered_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestPartiallySurrendered">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestPartiallySurrendered" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestPartiallySurrendered">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestPartiallySurrendered_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateImprestHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateImprestHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateImprestHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateImprestHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyImprestHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyImprestHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyImprestHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyImprestHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestRequests">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestRequests" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestRequests">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestRequests_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestRequestLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestRequestLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestRequestLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestRequestLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestRequestByLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestRequestByLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestRequestByLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestRequestByLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateImprestLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateImprestLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateImprestLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateImprestLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyImprestLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyImprestLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyImprestLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyImprestLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteImprestLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:DeleteImprestLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteImprestLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteImprestLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateImprestLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ValidateImprestLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateImprestLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateImprestLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendImprestApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:SendImprestApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendImprestApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendImprestApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelImprestApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelImprestApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelImprestApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelImprestApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenImprestRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ReopenImprestRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenImprestRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenImprestRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelImprestBudgetCommitment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelImprestBudgetCommitment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelImprestBudgetCommitment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelImprestBudgetCommitment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeImprestBalance">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetEmployeeImprestBalance" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeImprestBalance">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeImprestBalance_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckClaimsRefundExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckClaimsRefundExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckClaimsRefundExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckClaimsRefundExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenClaimsRefundExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckOpenClaimsRefundExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenClaimsRefundExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenClaimsRefundExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateClaimsRefundHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateClaimsRefundHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateClaimsRefundHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateClaimsRefundHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyClaimsRefundHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyClaimsRefundHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyClaimsRefundHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyClaimsRefundHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClaimsRefund">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetClaimsRefund" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClaimsRefund">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClaimsRefund_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClaimsRefundLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetClaimsRefundLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClaimsRefundLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClaimsRefundLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClaimsRefundByLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetClaimsRefundByLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClaimsRefundByLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClaimsRefundByLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClaimsRefundAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetClaimsRefundAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClaimsRefundAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClaimsRefundAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClaimsRefundStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetClaimsRefundStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClaimsRefundStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClaimsRefundStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateClaimsRefundLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateClaimsRefundLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateClaimsRefundLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateClaimsRefundLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyClaimsRefundLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyClaimsRefundLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyClaimsRefundLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyClaimsRefundLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteClaimsRefundLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:DeleteClaimsRefundLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteClaimsRefundLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteClaimsRefundLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckClaimsRefundLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckClaimsRefundLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckClaimsRefundLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckClaimsRefundLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckClaimsRefundApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckClaimsRefundApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckClaimsRefundApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckClaimsRefundApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendClaimsRefundApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:SendClaimsRefundApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendClaimsRefundApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendClaimsRefundApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelClaimsRefundApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelClaimsRefundApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelClaimsRefundApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelClaimsRefundApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenders">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenders" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenders">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenders_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderByLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderByLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderByLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderByLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestSurrenderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestSurrenderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestSurrenderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestSurrenderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenImprestSurrenderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckOpenImprestSurrenderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenImprestSurrenderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenImprestSurrenderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateImprestSurrenderHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateImprestSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateImprestSurrenderHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateImprestSurrenderHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyImprestSurrenderHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyImprestSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyImprestSurrenderHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyImprestSurrenderHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestRemainingAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestRemainingAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestRemainingAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestRemainingAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTravelAllowance">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetTravelAllowance" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTravelAllowance">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTravelAllowance_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateImprestSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CreateImprestSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateImprestSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateImprestSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyImprestSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ModifyImprestSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyImprestSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyImprestSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteImprestSurrenderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:DeleteImprestSurrenderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteImprestSurrenderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteImprestSurrenderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestSurrenderLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestSurrenderLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestSurrenderLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestSurrenderLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateImprestSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ValidateImprestSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateImprestSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateImprestSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckImprestSurrenderApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckImprestSurrenderApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckImprestSurrenderApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckImprestSurrenderApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendImprestSurrenderApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:SendImprestSurrenderApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendImprestSurrenderApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendImprestSurrenderApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelImprestSurrenderApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelImprestSurrenderApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelImprestSurrenderApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelImprestSurrenderApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenImprestSurrender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:ReopenImprestSurrender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenImprestSurrender">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenImprestSurrender_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelImprestSurrenderBudgetCommitment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CancelImprestSurrenderBudgetCommitment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelImprestSurrenderBudgetCommitment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelImprestSurrenderBudgetCommitment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderGlobalDimension1Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderGlobalDimension1Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderGlobalDimension1Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderGlobalDimension1Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetImprestSurrenderGlobalDimension2Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:GetImprestSurrenderGlobalDimension2Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestSurrenderGlobalDimension2Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestSurrenderGlobalDimension2Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertImprestSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:InsertImprestSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertImprestSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertImprestSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckSimilarImprestSurrenderPending">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ActivityRequest:CheckSimilarImprestSurrenderPending" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckSimilarImprestSurrenderPending">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckSimilarImprestSurrenderPending_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ActivityRequest">
+    <port name="ActivityRequest_Port" binding="tns:ActivityRequest_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ActivityRequest" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

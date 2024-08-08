@@ -1,0 +1,27 @@
+@model System.Collections.Generic.IEnumerable<OdataRef.ApprovalCommentLine>
+
+@if (Model.Any())
+{
+    <h4>Comments</h4>
+    <div id="TableContainer" class="table-responsive">
+        <table id="approvalCommentLineTbl" class="table table-striped table-bordered">
+            <thead class="text-primary">
+            <tr>
+                <th>Comment</th>
+                <th>UserID</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var approvalCommentLine in Model)
+            {
+                <tr>
+                    <td>@approvalCommentLine.Comment</td>
+                    <td>@approvalCommentLine.User_ID</td>
+                    <td>@approvalCommentLine.Date_and_Time</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

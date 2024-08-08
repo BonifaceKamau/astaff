@@ -1,0 +1,203 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Inventory.StoreRequisition.StoreRequisitionLineModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#StoreRequisitionLineModal" onclick="ClearStoreRequisitionLineModal();">
+                    <i class="fa fa-shopping-cart"></i> Add Store Requisition Line
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="AjaxStoreLineLoader" class="">
+                    Loading Store Requisition Lines
+                    <img src="~/Content/images/ajax-loader.gif" alt="Loading Store Requisition Lines..." style="width:15px;height:15px;"/>
+                </div>
+                <div id="TableContainer" class="table-responsive">
+                    <table id="StoreRequisitionLineTbl" class="table table-striped table-bordered">
+                        <thead class="text-primary">
+                        <tr>
+                            <th>Item No.</th>
+                            <th>Item Description</th>
+                            <th>Location</th>
+                            <th>UOM</th>
+                            @*<th>Inventory</th>*@
+                            <th>Quantity</th>
+                            @*<th>Region</th>
+                                <th>Team</th>
+								<th>.</th>*@
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="StoreRequisitionLineModal" class="modal fade" role="dialog" aria-labelledby="StoreRequisitionLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="btn close" type="button" data-dismiss="modal">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                                <h4 id="StoreRequisitionLineModalLabel" class="modal-title">Store Requisition Line</h4>
+                            </div>
+                            <div class="modal-body">
+                                @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "StoreRequisitionLineForm", @class = ""}))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    if (Model != null && Model.LineErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.LineErrorMessage))
+                                        </div>
+                                    }
+                                    @Html.HiddenFor(model => model.LineNo)
+                                    @Html.HiddenFor(model => model.DocumentNo)
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ItemNo, htmlAttributes: new {@id = "ItemNoLbl", @class = "control-label"})
+                                                @Html.DropDownListFor(model => model.ItemNo, Model.Items, "", new {@class = "form-control", @onchange = "GetInventory()"})
+                                                @Html.ValidationMessageFor(model => model.ItemNo, "", new {@id = "ItemNoError", @class = "text-danger"})
+                                            </div>
+                                        </div>
+                                        @*<div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineLocationCode, htmlAttributes: new { @id = "LineLocationCodeLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.LineLocationCode, Model.LineLocationCodes, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LineLocationCode, "", new { @id = "LineLocationCodeError", @class = "text-danger" })
+                                    </div>
+                                </div>*@
+                                    </div>
+									@*<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												@Html.LabelFor(model => model.UOM, htmlAttributes: new { @id = "UOMLbl", @class = "control-label" })
+												@Html.DropDownListFor(model => model.UOM, Model.UOMs, "", new { @class = "form-control" })
+												@Html.ValidationMessageFor(model => model.UOM, "", new { @id = "UOMError", @class = "text-danger" })
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												@Html.LabelFor(model => model.LineLocationCode, htmlAttributes: new { @id = "LineLocationCodeLbl", @class = "control-label" })
+												@Html.DropDownListFor(model => model.LineLocationCode, Model.LineLocationCodes, "", new { @class = "form-control" })
+												@Html.ValidationMessageFor(model => model.LineLocationCode, "", new { @id = "LineLocationCodeError", @class = "text-danger" })
+											</div>
+										</div>
+									</div>*@
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-static">
+                                                @Html.LabelFor(model => model.Inventory, htmlAttributes: new {@id = "InventoryLbl", @class = "control-label"})
+                                                @Html.EditorFor(model => model.Inventory, new {htmlAttributes = new {@class = "form-control", @disabled = "disabled"}})
+                                                @Html.ValidationMessageFor(model => model.Inventory, "", new {@id = "InventoryError", @class = "text-danger"})
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => model.Inventory)
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Quantity, htmlAttributes: new {@id = "QuantityLbl", @class = "control-label"})
+                                                @Html.EditorFor(model => model.Quantity, new {htmlAttributes = new {@class = "form-control"}})
+                                                @Html.ValidationMessageFor(model => model.Quantity, "", new {@id = "QuantityError", @class = "text-danger"})
+                                            </div>
+                                        </div>
+                                    </div>
+                            @*<div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineGlobalDimension1Code, htmlAttributes: new { @id = "Dimension1Lbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.LineGlobalDimension1Code, Model.LineGlobalDimension1Codes, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LineGlobalDimension1Code, "", new { @id = "Dimension1Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineGlobalDimension2Code, htmlAttributes: new { @id = "Dimension2Lbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.LineGlobalDimension2Code, Model.LineGlobalDimension2Codes, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LineGlobalDimension2Code, "", new { @id = "Dimension2Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.LineShortcutDimension3Code, htmlAttributes: new { @id = "Dimension3Lbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.LineShortcutDimension3Code, Model.LineShortcutDimension3Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LineShortcutDimension3Code, "", new { @id = "Dimension3Error", @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+                                            @*<div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.LineShortcutDimension4Code, htmlAttributes: new { @id = "Dimension4Lbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.LineShortcutDimension4Code, Model.LineShortcutDimension4Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LineShortcutDimension4Code, "", new { @id = "Dimension4Error", @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+
+                                        @*<div class="row">
+                                         
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.LineShortcutDimension5Code, htmlAttributes: new { @id = "Dimension5Lbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.LineShortcutDimension5Code, Model.LineShortcutDimension5Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LineShortcutDimension5Code, "", new { @id = "Dimension5Error", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.LineShortcutDimension6Code, htmlAttributes: new { @id = "Dimension6Lbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.LineShortcutDimension6Code, Model.LineShortcutDimension6Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LineShortcutDimension6Code, "", new { @id = "Dimension6Error", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.LineShortcutDimension7Code, htmlAttributes: new { @id = "Dimension7Lbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.LineShortcutDimension7Code, Model.LineShortcutDimension7Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LineShortcutDimension7Code, "", new { @id = "Dimension7Error", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                }
+                            </div>
+                            <div class="modal-footer">
+                                <button id="CreateStoreRequisitionLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateStoreRequisitionLine();"><i class="fa fa-plus"></i>Add Line</button>
+                                <button id="ModifyStoreRequisitionLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyStoreRequisitionLine();"><i class="fa fa-adjust"></i>Update Line</button>
+                                <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function GetInventory() {
+        if ($('#ItemNo').val() == '' || $('#ItemNo').val() == 'undefined' || $('#ItemNo').val() == null) {
+            $('#Inventory').val(0);
+
+        } else {
+            var ItemNo = $('#ItemNo').val();
+            var docno = $('#DocumentNo').val();
+
+            /*$.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetAvailableInventorys")',
+                data: { 'ItemNo': ItemNo, 'docno': docno },
+                dataType: 'json',
+                success: function (data) {
+					console.log(data)
+                    $('#Inventory').val(data.AvailableInventory);
+                },
+                error: function () {
+                    return false;
+                }
+            });*/
+
+        }
+    }
+   
+</script>

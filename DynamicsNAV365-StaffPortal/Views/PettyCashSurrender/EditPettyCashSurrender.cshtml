@@ -1,0 +1,186 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.PettyCashSurrender.PettyCashSurrenderHeaderModel
+
+@{
+    ViewBag.Title = "Edit PettyCash Surrender";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditPettyCashSurrender", "PettyCashSurrender", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>Edit PettyCash Surrender</i></h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="button" class="btn btn-warning btn-xs pull-right ladda-button" value="Petty Cash Report" onclick="GenerateReport('@Model.No');" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("PettyCashSurrenderHistory", "PettyCashSurrender")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.Status)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.UnsurrenderedPettyCash, htmlAttributes: new { @id = "UnsurrenderedPettyCashLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.UnsurrenderedPettyCash, Model.UnsurrenderedPettyCashs, "", new { @class = "form-control"})
+                                                    @Html.ValidationMessageFor(model => model.UnsurrenderedPettyCash, "", new { @id = "UnsurrenderedPettyCashError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.BankAccountNo, htmlAttributes: new { @id = "BankAccountNoLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.BankAccountNo, Model.BankAccountNos, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.BankAccountNo, "", new { @id = "BankAccountNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render imprest line partial view-->
+                                    @{Html.RenderAction("_PettyCashSurrenderLine", "PettyCashSurrender", new { PettyCashSurrenderNo = Model.No });}
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ApplicationDocumentForm", @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.No)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="errorMessage" class="alert alert-info" role="alert">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input id="ApplicationDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-8">
+                    <button id="UploadPettyCashDocumentBtn" class="btn btn-warning btn-xs" type="button" onclick="UploadPettyCashSurrenderDocument();"><i class="fa fa-adjust" style="align-content:center"></i>Upload Document</button>
+                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Finance/PettyCashSurrenderScripts/PettyCashSurrenderScript.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        	//Initialize PettyCash Surrender Scripts
+            InitializePettyCashSurrenderScripts();
+
+            var headerNo = $("#No").val();
+            LoadPettyCashSurrenderLines(headerNo);
+            LoadPettyCashSurrenderDocuments(headerNo);
+
+        });
+    </script>
+}

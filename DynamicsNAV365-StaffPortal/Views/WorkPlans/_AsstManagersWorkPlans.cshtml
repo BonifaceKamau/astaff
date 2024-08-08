@@ -1,0 +1,525 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.CEOWorkPlanModel
+@{
+    ViewBag.Title = "FillWorkplan";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @*@{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}*@
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title" style="text-align:left;margin-left:20px;">Assistant Managers' Workplans </h4>
+                        </div>                     
+                        <p style="color:black; font-weight:bold; font-size:18px; padding:23px;">
+                            Please complete the work plan by filling in the empty spaces in each line. 
+                        </p>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-s col-sm-6 col-xs-6">
+                                <button class="btn btn-success btn-xs" type="button" data-toggle="modal" onclick="CreateAsstManagersHeader();" style=" color:white; font-weight:bold; font-size:14px; float:left; padding:5px; border-radius:0px; margin-left:20px; ">
+                                    Load Managers' Workplan Lines
+                                </button>
+                            </div>
+                            <div class="col-lg-6 col-md-s col-sm-6 col-xs-6">
+
+                            </div>
+
+
+                        </div>
+                        <div id="TableContainer" class="table-responsive">
+                            @*<input id="Designation" value="@Model.Designation">
+                            <input id="UserId" value="@Model.UserId">
+                            <input id="DirectorateItem" value="@Model.Directorate">
+                            <input id="DepartmentItem" value="@Model.Department">*@
+                            <table id="ApplicationDocumentsTbl" class="table table-striped table-bordered" style="">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Performance Objective</th>
+                                        <th>Project</th>
+                                        <th>Performance Outcome</th>
+                                        <th>Departmental Objective</th>
+                                        <th>Performance Measure/Indicator</th>
+                                        <th>Activity</th>
+                                        <th>Weight Total</th>
+                                        <th>Completion Date</th>
+                                        <th>Perspective</th>
+                                        <th>Action</th> 
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                        <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center;color:white;font-family:'Times New Roman';font-size:18px">Workplan Card</h4>
+                                        <div class="col-md-12">
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input id="Designation" value="@Model.Designation" hidden="hidden">
+                                        <input id="UserId" value="@Model.UserId" hidden="hidden">
+                                        <input id="DirectorateItem" value="@Model.Directorate" hidden="hidden">
+                                        <input id="DepartmentItem" value="@Model.Department" hidden="hidden">
+
+
+                                        <div class="card-content">
+                                            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <input id="UserCode" hidden="hidden">
+                                                <input id="HeaderNo" hidden="hidden">
+                                                <input id="DepartmentItem" hidden="hidden">
+                                                <input id="Designation" hidden="hidden">
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Designation, htmlAttributes: new { @id = "DesignationLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control", @id = "DesignationItem", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.Designation, "", new { @id = "DesignationError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Directorate, htmlAttributes: new { @id = "DirectorateLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.Directorate, new { htmlAttributes = new { @class = "form-control", @id = "DirectorateItem", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.Directorate, "", new { @id = "DirectorateError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Perspective, htmlAttributes: new { @id = "PerspectiveLbl", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.Perspective, Model.PerspectiveCodes, "--Select--", new { @class = "form-control", @id = "PerspectiveItem" })
+                                                            @Html.ValidationMessageFor(model => model.Perspective, "", new { @id = "PerspectiveError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.PerformanceObjective, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.PerformanceObjective, Model.PerformanceObjectiveCodes, "--Select--", new { @class = "form-control", @id = "PerformanceObjectiveCodeItem" })
+                                                            @Html.ValidationMessageFor(model => model.PerformanceObjective, "", new { @id = "PMOError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Project, htmlAttributes: new { @id = "ProjectLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.Project, new { htmlAttributes = new { @class = "form-control", @id = "ProjectItem" } })
+                                                            @Html.ValidationMessageFor(model => model.Project, "", new { @id = "ProjectError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Activity, htmlAttributes: new { @id = "ActivityLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.Activity, "  ", new { htmlAttributes = new { @class = "form-control", @id = "ActivityItem", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.Activity, "", new { @id = "ActivityError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.PMI, htmlAttributes: new { @id = "ActivityLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.PMI, " ", new { htmlAttributes = new { @class = "form-control", @id = "PMIItem", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.PMI, "", new { @id = "PMIError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.DepartmentalObjective, htmlAttributes: new { @id = "DOLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.DepartmentalObjective, new { htmlAttributes = new { @class = "form-control", @id = "DepartmentalObjectiveItem" } })
+                                                            @Html.ValidationMessageFor(model => model.DepartmentalObjective, "", new { @id = "DOError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.PerformanceOutcome, htmlAttributes: new { @id = "PerformanceOutcomeLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.PerformanceOutcome, new { htmlAttributes = new { @class = "form-control", @id = "POItem" } })
+                                                            @Html.ValidationMessageFor(model => model.PerformanceOutcome, "", new { @id = "POIError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.CompletionDate, htmlAttributes: new { @id = "CompletionDateLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.CompletionDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @id = "CompletionDateItem" } })
+                                                            @Html.ValidationMessageFor(model => model.CompletionDate, "", new { @id = "CompletionDateError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.WeightTotal, htmlAttributes: new { @id = "WeightTotalLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.WeightTotal, new { htmlAttributes = new { @class = "form-control", @id = "WeightTotalItem" } })
+                                                            @Html.ValidationMessageFor(model => model.WeightTotal, "", new { @id = "WeightTotalError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-8">
+                                                <button id="UploadBtn" class="btn btn-success btn-xs" type="button" onclick="InsertDirectorWPLines();"><i class="fa fa-print" style="align-content:center"></i>Save</button>
+                                                <button id="ModifyBtn" class="btn btn-success btn-xs" type="button" onclick="ModifyAsstManagerWPLines();"><i class="fa fa-adjust" style="align-content:center"></i>Update</button>
+                                                <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+     //Load Scripts
+    $(document).ready(function () {
+        var LineNo = $("#DirectorateItem").val();
+		LoadAsstManagersWorkplanLines();
+
+
+    $(function(){
+    $('#CompletionDateItem').datepicker({
+        changeMonth:true,
+        changeYear: true,
+		showButtonPanel: true,
+        yearRange: '1999:2030', // Optional Year Range
+        dateFormat: 'dd/mm/yy',
+
+		});
+    })
+
+
+    });
+
+
+  //Prevent Typing into the completion date Field
+$('#CompletionDateItem').keydown(function(e) {
+		   e.preventDefault();
+			return false;
+	});
+
+//Validate Asst manager WorkPlan Fields
+    function ValidateAsstManagerWorkPlanFields() {
+	var isValid = true;
+	var label = "";
+
+	if ($("#PerformanceObjectiveCodeItem").val().trim() == "") {
+		$("#PMOError").text("Performance Objective is required");
+		isValid = false;
+	}
+	else {
+		$("#PMOError").text("");
+	}
+    if ($("#ProjectItem").val().trim() == "") {
+		$("#ProjectError").text("Project is required");
+		isValid = false;
+	}
+	else {
+		$("#ProjectError").text("");
+	}
+
+	if ($("#ActivityItem").val().trim() == "") {
+		$("#ActivityError").text("Activity is required");
+		isValid = false;
+	}
+	else {
+		$("#ActivityError").text("");
+	}
+
+	if ($("#PMIItem").val().trim() == "") {
+		$("#PMIError").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#PMIError").text("");
+	}
+    if ($("#POItem").val().trim() == "") {
+		$("#POIError").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#POIError").text("");
+	}
+     if ($("#CompletionDateItem").val().trim() == "") {
+		$("#CompletionDateError").text("Completion Date is required");
+		isValid = false;
+	}
+	else {
+		$("#CompletionDateError").text("");
+	}
+
+    if ($("#PerspectiveItem").val().trim() == "") {
+		$("#PerspectiveError").text("Perspective is required");
+		isValid = false;
+	}
+	else {
+		$("#PerspectiveError").text("");
+	}
+     if ($("#DepartmentalObjectiveItem").val().trim() == "") {
+		$("#DOError").text("Departmental Objective is required");
+		isValid = false;
+	}
+	else {
+		$("#DOError").text("");
+	}
+
+
+	return isValid;
+}
+
+
+
+//Load Asst Managers WorkPlan Lines
+    function LoadAsstManagersWorkplanLines() {
+    var Department = $("#DepartmentItem").val();
+	$.ajax({
+		url: "/WorkPlans/LoadAsstManagerWorkplanLines",
+		type: "post",
+		dataType: "json",
+       // contentType: false,
+		//processData: false,
+		data: {Department:Department},
+		cache: false,
+		success: function (results) {
+			var rows = "";
+			$.each(results, function (i, result) {
+				rows += "<tr>";
+    rows += "<td>" + result.PerformanceObjective + "</td>";
+    rows += "<td>" + result.Project + "</td>";
+    rows += "<td>" + result.PerformanceOutcome + "</td>";
+    rows += "<td>" + result.DepartmentalObjective + "</td>";
+    rows += "<td>" + result.PMI + "</td>";
+    rows += "<td>" + result.Activity + "</td>";
+    rows += "<td>" + result.WeightTotal + "</td>";
+    rows += "<td>" + result.CompletionDate + "</td>";
+    rows += "<td>" + result.Perspective + "</td>";
+    //rows += "<td>" + result.Designation + "</td>";
+
+    rows += '<td><a href="#" onclick="return EditAsstManagerLine(\'' + result.Code + '\');"><i class="fa fa-pencil" style="color:blue" aria-hidden="true"><strong>Edit</strong></i></a> |<a href="#" onclick="return DeleteAsstManagerLine(\'' + result.Code + '\');"><i class="fa fa-trash" style="color:red" aria-hidden="true"><strong>Remove</strong></i></a></td>';
+    rows += "</tr>";
+	});
+		$("#ApplicationDocumentsTbl tbody").html(rows);
+		$("#AjaxLoader").css("display", "none");
+		$("#ApplicationDocumentsTbl").css("display", "block");
+
+	},
+		error: function (xhr, status, error) {
+		}
+	});
+}
+
+
+
+//Create Asst Managers Workplan Header
+   function CreateAsstManagersHeader() {
+
+    var Designation = $("#Designation").val();
+    var UserId = $("#UserId").val();
+    var Department=$("#DepartmentItem").val();
+    var Directorate=$("#DirectorateItem").val();
+
+	var frmData = new FormData();
+
+	frmData.append("Designation",Designation);
+	frmData.append("UserId",UserId);
+    frmData.append("Department",Department);
+	frmData.append("Directorate",Directorate);
+
+	//Block UI
+	$.blockUI();
+	$.ajax({
+		url: "/WorkPlans/CreateAsstManagersWPHeader",
+		type: "POST",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.message=="youexist") {
+                alert("You have already Loaded Managers' Workplan Lines")
+                LoadAsstManagersWorkplanLines();
+            }
+            else if (result.message=="someoneexists") {
+                alert("Failed, this Process has already been Initiated by another Assistant Manager");
+                LoadAsstManagersWorkplanLines();
+            }
+            else if(result.message=="succeeded") {
+             alert("Managers' Workplan Lines Loaded Successfully");
+              LoadAsstManagersWorkplanLines();
+            }
+            else if(result.message=="managernill") {
+             alert("Failed, Managers' workplan Lines have not yet been filled. Please contact your department for assistance");
+             LoadAsstManagersWorkplanLines();
+            }
+            else{
+            alert("Failed, Please try again later");
+            }
+			$.unblockUI();
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+    //Delete Asst Manager WorkPlan Line
+    function DeleteAsstManagerLine(Code) {
+        var ans = confirm("Are you sure you want to remove this record ?");
+        if (ans) {
+            $.ajax({
+                url: "/WorkPlans/DeleteAsstManagerWorkPlanLine",
+                type: "POST",
+                dataType: "json",
+                data: { Code: Code },
+                cache: false,
+                success: function (result) {
+                    alert("Successfully Deleted");
+                    LoadAsstManagersWorkplanLines();
+                },
+                error: function (errormessage) {
+                    alert("An Error occurred, Please try again later");
+                }
+            });
+        }
+    }
+
+    //Edit Asst Manager Line
+    function EditAsstManagerLine(Code) {
+
+        $.ajax({
+            url: "/WorkPlans/GetAsstManagerLineForEdit",
+            type: "post",
+            dataType: "json",
+            data: { Code: Code },
+            cache: false,
+            success: function (result) {
+                $("#DesignationItem").val(result.Designation);
+                $("#DirectorateItem").val(result.Directorate);
+                $("#DepartmentItem").val(result.Department);
+                $("#PerspectiveItem").val(result.Perspective);
+                $("#PerformanceObjectiveCodeItem").val(result.No);
+                $("#DepartmentalObjectiveItem").val(result.DepartmentalObjective);
+                $("#ProjectItem").val(result.Project);
+                $("#ActivityItem").val(result.Activity);
+                $("#PMIItem").val(result.PMI);
+                $("#POItem").val(result.PerformanceOutcome);
+                $("#CompletionDateItem").val(result.CompletionDate, 'dd/mm/yyyy');
+                $("#WeightTotalItem").val(result.WeightTotal);
+                $("#UserCode").val(result.Code);
+                $("#HeaderNo").val(result.HeaderNo);
+
+                $('#errorMessage').hide();
+                $("#ApplicationDocumentModal").modal("show");
+                $("#UploadBtn").hide();
+                $("#ModifyBtn").show();
+            },
+            error: function (xhr, status, error) {
+
+            }
+        });
+        return false;
+    }
+
+    //Modify Asst Manager Workplan Line
+    function ModifyAsstManagerWPLines() {
+        debugger;
+        var Perspective = $("#PerspectiveItem").val();
+        var Directorate = $("#DirectorateItem").val();
+        var Department = $("#DepartmentItem").val();
+        var Designation = $("#DesignationItem").val();
+        var PerformanceObjective = $("#PerformanceObjectiveCodeItem").val();
+        var Project = $("#ProjectItem").val();
+        var Activity = $("#ActivityItem").val();
+        var PMI = $("#PMIItem").val();
+        var DeptObjective = $("#DepartmentalObjectiveItem").val();
+
+        var PerformanceOutcome = $("#POItem").val();
+        var CompletionDate = $("#CompletionDateItem").val();
+        var WeightTotal = $("#WeightTotalItem").val();
+        //var WeightTotal = "5";
+        var UserCode = $("#UserCode").val();
+        var HeaderNo = $("#HeaderNo").val();
+        var frmData = new FormData();
+
+        frmData.append("Perspective", Perspective);
+        frmData.append("Directorate", Directorate);
+        frmData.append("Designation", Designation);
+        frmData.append("Department", Department);
+        frmData.append("PerformanceObjective", PerformanceObjective);
+        frmData.append("Project", Project);
+        frmData.append("Activity", Activity);
+        frmData.append("PMI", PMI);
+        frmData.append("PerformanceOutcome", PerformanceOutcome);
+        frmData.append("CompletionDate", CompletionDate);
+        frmData.append("WeightTotal", WeightTotal);
+        frmData.append("UserCode", UserCode);
+        frmData.append("HeaderNo", HeaderNo);
+        frmData.append("DeptObjective", DeptObjective);
+
+        var validLine = ValidateAsstManagerWorkPlanFields();
+        if (validLine == false) {
+        return false;
+        }
+        //Block UI
+        $.blockUI();
+
+        $.ajax({
+            url: "/WorkPlans/ModifyAsstManagerWorkPlanLine",
+            type: "POST",
+            data: frmData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            async: true,
+            cache: false,
+            success: function (result) {
+                $('#txtMessage').html(result.message);
+                if (result.success) {
+                    $('#ApplicationDocumentModal').modal('hide');
+                    $('#errorMessage').hide();
+                    alert("Changes Saved Successfully");
+                    LoadAsstManagersWorkplanLines();
+                    $.unblockUI();
+                } else {
+                    $('#errorMessage').html(result.message);
+                    $('#errorMessage').show();
+                    $.unblockUI();
+                }
+                Ladda.stopAll();
+            },
+            error: function (err) {
+                $('#ApplicationDocumentModal').modal('show');
+                $('#errorMessage').html(err.statusText);
+                $('#errorMessage').show();
+                Ladda.stopAll();
+            }
+        });
+    }
+
+    </script>

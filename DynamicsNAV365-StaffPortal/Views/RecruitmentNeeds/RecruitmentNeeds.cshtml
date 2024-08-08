@@ -1,0 +1,91 @@
+@model System.Collections.Generic.List<OdataRef.RecruitmentNeeds>
+
+<!--Render Human Resource Sidebar-->
+@{ Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome"); }
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="title">
+                                    <i>Recruitment needs</i>
+                                </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewRecruitmentNeed")" data-background-color="login_card">
+                                    <strong style="color:white">
+                                        <i class="fa fa-plus"></i>
+                                        Create New recruitment need
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                    <table id="LeaveApplicationsTbl" class="stripe table">
+                                        <thead class="text-primary">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Job Id</th>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Reason_for_Recruitment</th>
+                                            <th>Requested_By</th>
+                                            <th>Status</th>
+                                            <th>Start_Date</th>
+                                            <th>End_Date</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @{
+                                            string editUrl = "";
+                                            string viewUrl = "";
+                                            string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                viewUrl = Url.Action("ViewRecruitmentNeed", "RecruitmentNeeds",new {id=Model[i].No});
+                                                approverUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].No;
+                                                <tr>
+                                                    <td>@Model[i].No</td>
+                                                    <td>@Model[i].Job_ID</td>
+                                                    <td>@Model[i].Date</td>
+                                                    <td>@Model[i].Description</td>
+                                                    <td>@Model[i].Reason_for_Recruitment</td>
+                                                    <td>@Model[i].Requested_By</td>
+                                                    <td>@Model[i].Status</td>
+                                                    <td>@Model[i].Start_Date</td>
+                                                    <td>@Model[i].End_Date</td>
+                                                    <td>
+                                                        <a href="@viewUrl" class="">
+                                                            <b>View</b>
+                                                        </a>
+                                                    </td>
+                                                    @*<td>
+                                                        <a href="@approverUrl" style="color:red" class="fa fa-check">
+                                                            <b>Approval Worksflow</b>
+                                                        </a>
+                                                    </td>*@
+                                                </tr>
+                                            }
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>

@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetEmployeePayrollGroup">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeePayrollGroup_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslip">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="payrollCode" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslip_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipNew">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="payrollCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipNew_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateP9">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateP9_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayrollPeriods">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayrollPeriods_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayrollYears">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayrollYears_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipPortal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="payrollCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipPortal_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateImprestReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateImprestReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePerformancePlaningPortal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePerformancePlaningPortal_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateMidYearCheckinFormPortal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateMidYearCheckinFormPortal_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateAppraisalReportPortal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filename" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateAppraisalReportPortal_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateCustomerBaleanceToDate">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filename" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="maxDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateCustomerBaleanceToDate_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleFleetlogRecordReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filename" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="logNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="regNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="program" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileformat" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleFleetlogRecordReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleFleetSummaryReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="filename" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="logNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="regNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="program" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileformat" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VehicleFleetSummaryReport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetEmployeePayrollGroup">
+    <part name="parameters" element="tns:GetEmployeePayrollGroup" />
+  </message>
+  <message name="GetEmployeePayrollGroup_Result">
+    <part name="parameters" element="tns:GetEmployeePayrollGroup_Result" />
+  </message>
+  <message name="GeneratePayslip">
+    <part name="parameters" element="tns:GeneratePayslip" />
+  </message>
+  <message name="GeneratePayslip_Result">
+    <part name="parameters" element="tns:GeneratePayslip_Result" />
+  </message>
+  <message name="GeneratePayslipNew">
+    <part name="parameters" element="tns:GeneratePayslipNew" />
+  </message>
+  <message name="GeneratePayslipNew_Result">
+    <part name="parameters" element="tns:GeneratePayslipNew_Result" />
+  </message>
+  <message name="GenerateP9">
+    <part name="parameters" element="tns:GenerateP9" />
+  </message>
+  <message name="GenerateP9_Result">
+    <part name="parameters" element="tns:GenerateP9_Result" />
+  </message>
+  <message name="GetPayrollPeriods">
+    <part name="parameters" element="tns:GetPayrollPeriods" />
+  </message>
+  <message name="GetPayrollPeriods_Result">
+    <part name="parameters" element="tns:GetPayrollPeriods_Result" />
+  </message>
+  <message name="GetPayrollYears">
+    <part name="parameters" element="tns:GetPayrollYears" />
+  </message>
+  <message name="GetPayrollYears_Result">
+    <part name="parameters" element="tns:GetPayrollYears_Result" />
+  </message>
+  <message name="GeneratePayslipPortal">
+    <part name="parameters" element="tns:GeneratePayslipPortal" />
+  </message>
+  <message name="GeneratePayslipPortal_Result">
+    <part name="parameters" element="tns:GeneratePayslipPortal_Result" />
+  </message>
+  <message name="GenerateImprestReport">
+    <part name="parameters" element="tns:GenerateImprestReport" />
+  </message>
+  <message name="GenerateImprestReport_Result">
+    <part name="parameters" element="tns:GenerateImprestReport_Result" />
+  </message>
+  <message name="GeneratePerformancePlaningPortal">
+    <part name="parameters" element="tns:GeneratePerformancePlaningPortal" />
+  </message>
+  <message name="GeneratePerformancePlaningPortal_Result">
+    <part name="parameters" element="tns:GeneratePerformancePlaningPortal_Result" />
+  </message>
+  <message name="GenerateMidYearCheckinFormPortal">
+    <part name="parameters" element="tns:GenerateMidYearCheckinFormPortal" />
+  </message>
+  <message name="GenerateMidYearCheckinFormPortal_Result">
+    <part name="parameters" element="tns:GenerateMidYearCheckinFormPortal_Result" />
+  </message>
+  <message name="GenerateAppraisalReportPortal">
+    <part name="parameters" element="tns:GenerateAppraisalReportPortal" />
+  </message>
+  <message name="GenerateAppraisalReportPortal_Result">
+    <part name="parameters" element="tns:GenerateAppraisalReportPortal_Result" />
+  </message>
+  <message name="GenerateCustomerBaleanceToDate">
+    <part name="parameters" element="tns:GenerateCustomerBaleanceToDate" />
+  </message>
+  <message name="GenerateCustomerBaleanceToDate_Result">
+    <part name="parameters" element="tns:GenerateCustomerBaleanceToDate_Result" />
+  </message>
+  <message name="VehicleFleetlogRecordReport">
+    <part name="parameters" element="tns:VehicleFleetlogRecordReport" />
+  </message>
+  <message name="VehicleFleetlogRecordReport_Result">
+    <part name="parameters" element="tns:VehicleFleetlogRecordReport_Result" />
+  </message>
+  <message name="VehicleFleetSummaryReport">
+    <part name="parameters" element="tns:VehicleFleetSummaryReport" />
+  </message>
+  <message name="VehicleFleetSummaryReport_Result">
+    <part name="parameters" element="tns:VehicleFleetSummaryReport_Result" />
+  </message>
+  <portType name="PayrollManagementWS_Port">
+    <operation name="GetEmployeePayrollGroup">
+      <input name="GetEmployeePayrollGroup" message="tns:GetEmployeePayrollGroup" />
+      <output name="GetEmployeePayrollGroup_Result" message="tns:GetEmployeePayrollGroup_Result" />
+    </operation>
+    <operation name="GeneratePayslip">
+      <input name="GeneratePayslip" message="tns:GeneratePayslip" />
+      <output name="GeneratePayslip_Result" message="tns:GeneratePayslip_Result" />
+    </operation>
+    <operation name="GeneratePayslipNew">
+      <input name="GeneratePayslipNew" message="tns:GeneratePayslipNew" />
+      <output name="GeneratePayslipNew_Result" message="tns:GeneratePayslipNew_Result" />
+    </operation>
+    <operation name="GenerateP9">
+      <input name="GenerateP9" message="tns:GenerateP9" />
+      <output name="GenerateP9_Result" message="tns:GenerateP9_Result" />
+    </operation>
+    <operation name="GetPayrollPeriods">
+      <input name="GetPayrollPeriods" message="tns:GetPayrollPeriods" />
+      <output name="GetPayrollPeriods_Result" message="tns:GetPayrollPeriods_Result" />
+    </operation>
+    <operation name="GetPayrollYears">
+      <input name="GetPayrollYears" message="tns:GetPayrollYears" />
+      <output name="GetPayrollYears_Result" message="tns:GetPayrollYears_Result" />
+    </operation>
+    <operation name="GeneratePayslipPortal">
+      <input name="GeneratePayslipPortal" message="tns:GeneratePayslipPortal" />
+      <output name="GeneratePayslipPortal_Result" message="tns:GeneratePayslipPortal_Result" />
+    </operation>
+    <operation name="GenerateImprestReport">
+      <input name="GenerateImprestReport" message="tns:GenerateImprestReport" />
+      <output name="GenerateImprestReport_Result" message="tns:GenerateImprestReport_Result" />
+    </operation>
+    <operation name="GeneratePerformancePlaningPortal">
+      <input name="GeneratePerformancePlaningPortal" message="tns:GeneratePerformancePlaningPortal" />
+      <output name="GeneratePerformancePlaningPortal_Result" message="tns:GeneratePerformancePlaningPortal_Result" />
+    </operation>
+    <operation name="GenerateMidYearCheckinFormPortal">
+      <input name="GenerateMidYearCheckinFormPortal" message="tns:GenerateMidYearCheckinFormPortal" />
+      <output name="GenerateMidYearCheckinFormPortal_Result" message="tns:GenerateMidYearCheckinFormPortal_Result" />
+    </operation>
+    <operation name="GenerateAppraisalReportPortal">
+      <input name="GenerateAppraisalReportPortal" message="tns:GenerateAppraisalReportPortal" />
+      <output name="GenerateAppraisalReportPortal_Result" message="tns:GenerateAppraisalReportPortal_Result" />
+    </operation>
+    <operation name="GenerateCustomerBaleanceToDate">
+      <input name="GenerateCustomerBaleanceToDate" message="tns:GenerateCustomerBaleanceToDate" />
+      <output name="GenerateCustomerBaleanceToDate_Result" message="tns:GenerateCustomerBaleanceToDate_Result" />
+    </operation>
+    <operation name="VehicleFleetlogRecordReport">
+      <input name="VehicleFleetlogRecordReport" message="tns:VehicleFleetlogRecordReport" />
+      <output name="VehicleFleetlogRecordReport_Result" message="tns:VehicleFleetlogRecordReport_Result" />
+    </operation>
+    <operation name="VehicleFleetSummaryReport">
+      <input name="VehicleFleetSummaryReport" message="tns:VehicleFleetSummaryReport" />
+      <output name="VehicleFleetSummaryReport_Result" message="tns:VehicleFleetSummaryReport_Result" />
+    </operation>
+  </portType>
+  <binding name="PayrollManagementWS_Binding" type="tns:PayrollManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetEmployeePayrollGroup">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GetEmployeePayrollGroup" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeePayrollGroup">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeePayrollGroup_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePayslip">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GeneratePayslip" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslip">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePayslip_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePayslipNew">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GeneratePayslipNew" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslipNew">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePayslipNew_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateP9">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GenerateP9" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateP9">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateP9_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayrollPeriods">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GetPayrollPeriods" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayrollPeriods">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayrollPeriods_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayrollYears">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GetPayrollYears" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayrollYears">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayrollYears_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePayslipPortal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GeneratePayslipPortal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslipPortal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePayslipPortal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateImprestReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GenerateImprestReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateImprestReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateImprestReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePerformancePlaningPortal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GeneratePerformancePlaningPortal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePerformancePlaningPortal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePerformancePlaningPortal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateMidYearCheckinFormPortal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GenerateMidYearCheckinFormPortal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateMidYearCheckinFormPortal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateMidYearCheckinFormPortal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateAppraisalReportPortal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GenerateAppraisalReportPortal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateAppraisalReportPortal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateAppraisalReportPortal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateCustomerBaleanceToDate">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:GenerateCustomerBaleanceToDate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateCustomerBaleanceToDate">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateCustomerBaleanceToDate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleFleetlogRecordReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:VehicleFleetlogRecordReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleFleetlogRecordReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleFleetlogRecordReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="VehicleFleetSummaryReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PayrollManagementWS:VehicleFleetSummaryReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="VehicleFleetSummaryReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="VehicleFleetSummaryReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PayrollManagementWS">
+    <port name="PayrollManagementWS_Port" binding="tns:PayrollManagementWS_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PayrollManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

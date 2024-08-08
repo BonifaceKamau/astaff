@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="ModifyProjectBenefit">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefit" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objectiveSupported" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefitOwner" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="beneficiariesText" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="kPIText" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="measureText" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="frequencyText" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="baselineDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="realizationStatus" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualRealizationDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="targetValue" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="assumptions" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefitRisk" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="notes" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyProjectBenefit_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteBenefitLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteBenefitLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectBenefit">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefit" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objectiveSupported" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefitOwner" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="beneficiaries" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="kPI" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="measure" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="frequency" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="baselineDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="realizationStatus" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualRealizationDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="targetValue" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="assumptions" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="benefitRisk" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="notes" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectBenefit_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectRisk">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="riskDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="impactDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="impactLevel" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="probabilityLevel" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="mitigationNotes" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="ownerName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objectiveRelated" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="riskStartDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="riskEndDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectRisk_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteRiskLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteRiskLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyProjectRisk">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="projectCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="riskDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="impactDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="impactLevel" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="probabilityLevel" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="mitigationNotes" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="ownerName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="objectiveRelated" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="riskStartDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="riskEndDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyProjectRisk_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectTask">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="taskDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="assignedTo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="expectedCompletioDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddProjectTask_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ManagerEditTaskLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="confirmMarkComplete" type="boolean" />
+            <element minOccurs="1" maxOccurs="1" name="pMRemarks" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="taskDescription" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ManagerEditTaskLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteTaskManagerLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteTaskManagerLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="MemberEditTaskLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="markComplete" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="MemberEditTaskLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="BeginProject">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="user" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="BeginProject_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CompleteProject">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="user" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CompleteProject_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelProject">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="user" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelProject_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadTasksDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="attachmentLink" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadTasksDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAttachedLinks">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAttachedLinks_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateProjectPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="status" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="projectNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateProjectPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddPlanActivity">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="activity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="strategicObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="projectNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="status" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="strategicPlan" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddPlanActivity_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyProjectPlanActivity">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="activity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="strategicObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="strategicPlan" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="status" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyProjectPlanActivity_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePlanActivity">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePlanActivity_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendProjectPlanApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendProjectPlanApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddClosureProject">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddClosureProject_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="ModifyProjectBenefit">
+    <part name="parameters" element="tns:ModifyProjectBenefit" />
+  </message>
+  <message name="ModifyProjectBenefit_Result">
+    <part name="parameters" element="tns:ModifyProjectBenefit_Result" />
+  </message>
+  <message name="DeleteBenefitLine">
+    <part name="parameters" element="tns:DeleteBenefitLine" />
+  </message>
+  <message name="DeleteBenefitLine_Result">
+    <part name="parameters" element="tns:DeleteBenefitLine_Result" />
+  </message>
+  <message name="AddProjectBenefit">
+    <part name="parameters" element="tns:AddProjectBenefit" />
+  </message>
+  <message name="AddProjectBenefit_Result">
+    <part name="parameters" element="tns:AddProjectBenefit_Result" />
+  </message>
+  <message name="AddProjectRisk">
+    <part name="parameters" element="tns:AddProjectRisk" />
+  </message>
+  <message name="AddProjectRisk_Result">
+    <part name="parameters" element="tns:AddProjectRisk_Result" />
+  </message>
+  <message name="DeleteRiskLine">
+    <part name="parameters" element="tns:DeleteRiskLine" />
+  </message>
+  <message name="DeleteRiskLine_Result">
+    <part name="parameters" element="tns:DeleteRiskLine_Result" />
+  </message>
+  <message name="ModifyProjectRisk">
+    <part name="parameters" element="tns:ModifyProjectRisk" />
+  </message>
+  <message name="ModifyProjectRisk_Result">
+    <part name="parameters" element="tns:ModifyProjectRisk_Result" />
+  </message>
+  <message name="AddProjectTask">
+    <part name="parameters" element="tns:AddProjectTask" />
+  </message>
+  <message name="AddProjectTask_Result">
+    <part name="parameters" element="tns:AddProjectTask_Result" />
+  </message>
+  <message name="ManagerEditTaskLines">
+    <part name="parameters" element="tns:ManagerEditTaskLines" />
+  </message>
+  <message name="ManagerEditTaskLines_Result">
+    <part name="parameters" element="tns:ManagerEditTaskLines_Result" />
+  </message>
+  <message name="DeleteTaskManagerLine">
+    <part name="parameters" element="tns:DeleteTaskManagerLine" />
+  </message>
+  <message name="DeleteTaskManagerLine_Result">
+    <part name="parameters" element="tns:DeleteTaskManagerLine_Result" />
+  </message>
+  <message name="MemberEditTaskLines">
+    <part name="parameters" element="tns:MemberEditTaskLines" />
+  </message>
+  <message name="MemberEditTaskLines_Result">
+    <part name="parameters" element="tns:MemberEditTaskLines_Result" />
+  </message>
+  <message name="BeginProject">
+    <part name="parameters" element="tns:BeginProject" />
+  </message>
+  <message name="BeginProject_Result">
+    <part name="parameters" element="tns:BeginProject_Result" />
+  </message>
+  <message name="CompleteProject">
+    <part name="parameters" element="tns:CompleteProject" />
+  </message>
+  <message name="CompleteProject_Result">
+    <part name="parameters" element="tns:CompleteProject_Result" />
+  </message>
+  <message name="CancelProject">
+    <part name="parameters" element="tns:CancelProject" />
+  </message>
+  <message name="CancelProject_Result">
+    <part name="parameters" element="tns:CancelProject_Result" />
+  </message>
+  <message name="UploadTasksDocument">
+    <part name="parameters" element="tns:UploadTasksDocument" />
+  </message>
+  <message name="UploadTasksDocument_Result">
+    <part name="parameters" element="tns:UploadTasksDocument_Result" />
+  </message>
+  <message name="DeleteAttachedLinks">
+    <part name="parameters" element="tns:DeleteAttachedLinks" />
+  </message>
+  <message name="DeleteAttachedLinks_Result">
+    <part name="parameters" element="tns:DeleteAttachedLinks_Result" />
+  </message>
+  <message name="CreateProjectPlanHeader">
+    <part name="parameters" element="tns:CreateProjectPlanHeader" />
+  </message>
+  <message name="CreateProjectPlanHeader_Result">
+    <part name="parameters" element="tns:CreateProjectPlanHeader_Result" />
+  </message>
+  <message name="AddPlanActivity">
+    <part name="parameters" element="tns:AddPlanActivity" />
+  </message>
+  <message name="AddPlanActivity_Result">
+    <part name="parameters" element="tns:AddPlanActivity_Result" />
+  </message>
+  <message name="ModifyProjectPlanActivity">
+    <part name="parameters" element="tns:ModifyProjectPlanActivity" />
+  </message>
+  <message name="ModifyProjectPlanActivity_Result">
+    <part name="parameters" element="tns:ModifyProjectPlanActivity_Result" />
+  </message>
+  <message name="DeletePlanActivity">
+    <part name="parameters" element="tns:DeletePlanActivity" />
+  </message>
+  <message name="DeletePlanActivity_Result">
+    <part name="parameters" element="tns:DeletePlanActivity_Result" />
+  </message>
+  <message name="SendProjectPlanApproval">
+    <part name="parameters" element="tns:SendProjectPlanApproval" />
+  </message>
+  <message name="SendProjectPlanApproval_Result">
+    <part name="parameters" element="tns:SendProjectPlanApproval_Result" />
+  </message>
+  <message name="AddClosureProject">
+    <part name="parameters" element="tns:AddClosureProject" />
+  </message>
+  <message name="AddClosureProject_Result">
+    <part name="parameters" element="tns:AddClosureProject_Result" />
+  </message>
+  <portType name="ProjectManagementWS_Port">
+    <operation name="ModifyProjectBenefit">
+      <input name="ModifyProjectBenefit" message="tns:ModifyProjectBenefit" />
+      <output name="ModifyProjectBenefit_Result" message="tns:ModifyProjectBenefit_Result" />
+    </operation>
+    <operation name="DeleteBenefitLine">
+      <input name="DeleteBenefitLine" message="tns:DeleteBenefitLine" />
+      <output name="DeleteBenefitLine_Result" message="tns:DeleteBenefitLine_Result" />
+    </operation>
+    <operation name="AddProjectBenefit">
+      <input name="AddProjectBenefit" message="tns:AddProjectBenefit" />
+      <output name="AddProjectBenefit_Result" message="tns:AddProjectBenefit_Result" />
+    </operation>
+    <operation name="AddProjectRisk">
+      <input name="AddProjectRisk" message="tns:AddProjectRisk" />
+      <output name="AddProjectRisk_Result" message="tns:AddProjectRisk_Result" />
+    </operation>
+    <operation name="DeleteRiskLine">
+      <input name="DeleteRiskLine" message="tns:DeleteRiskLine" />
+      <output name="DeleteRiskLine_Result" message="tns:DeleteRiskLine_Result" />
+    </operation>
+    <operation name="ModifyProjectRisk">
+      <input name="ModifyProjectRisk" message="tns:ModifyProjectRisk" />
+      <output name="ModifyProjectRisk_Result" message="tns:ModifyProjectRisk_Result" />
+    </operation>
+    <operation name="AddProjectTask">
+      <input name="AddProjectTask" message="tns:AddProjectTask" />
+      <output name="AddProjectTask_Result" message="tns:AddProjectTask_Result" />
+    </operation>
+    <operation name="ManagerEditTaskLines">
+      <input name="ManagerEditTaskLines" message="tns:ManagerEditTaskLines" />
+      <output name="ManagerEditTaskLines_Result" message="tns:ManagerEditTaskLines_Result" />
+    </operation>
+    <operation name="DeleteTaskManagerLine">
+      <input name="DeleteTaskManagerLine" message="tns:DeleteTaskManagerLine" />
+      <output name="DeleteTaskManagerLine_Result" message="tns:DeleteTaskManagerLine_Result" />
+    </operation>
+    <operation name="MemberEditTaskLines">
+      <input name="MemberEditTaskLines" message="tns:MemberEditTaskLines" />
+      <output name="MemberEditTaskLines_Result" message="tns:MemberEditTaskLines_Result" />
+    </operation>
+    <operation name="BeginProject">
+      <input name="BeginProject" message="tns:BeginProject" />
+      <output name="BeginProject_Result" message="tns:BeginProject_Result" />
+    </operation>
+    <operation name="CompleteProject">
+      <input name="CompleteProject" message="tns:CompleteProject" />
+      <output name="CompleteProject_Result" message="tns:CompleteProject_Result" />
+    </operation>
+    <operation name="CancelProject">
+      <input name="CancelProject" message="tns:CancelProject" />
+      <output name="CancelProject_Result" message="tns:CancelProject_Result" />
+    </operation>
+    <operation name="UploadTasksDocument">
+      <input name="UploadTasksDocument" message="tns:UploadTasksDocument" />
+      <output name="UploadTasksDocument_Result" message="tns:UploadTasksDocument_Result" />
+    </operation>
+    <operation name="DeleteAttachedLinks">
+      <input name="DeleteAttachedLinks" message="tns:DeleteAttachedLinks" />
+      <output name="DeleteAttachedLinks_Result" message="tns:DeleteAttachedLinks_Result" />
+    </operation>
+    <operation name="CreateProjectPlanHeader">
+      <input name="CreateProjectPlanHeader" message="tns:CreateProjectPlanHeader" />
+      <output name="CreateProjectPlanHeader_Result" message="tns:CreateProjectPlanHeader_Result" />
+    </operation>
+    <operation name="AddPlanActivity">
+      <input name="AddPlanActivity" message="tns:AddPlanActivity" />
+      <output name="AddPlanActivity_Result" message="tns:AddPlanActivity_Result" />
+    </operation>
+    <operation name="ModifyProjectPlanActivity">
+      <input name="ModifyProjectPlanActivity" message="tns:ModifyProjectPlanActivity" />
+      <output name="ModifyProjectPlanActivity_Result" message="tns:ModifyProjectPlanActivity_Result" />
+    </operation>
+    <operation name="DeletePlanActivity">
+      <input name="DeletePlanActivity" message="tns:DeletePlanActivity" />
+      <output name="DeletePlanActivity_Result" message="tns:DeletePlanActivity_Result" />
+    </operation>
+    <operation name="SendProjectPlanApproval">
+      <input name="SendProjectPlanApproval" message="tns:SendProjectPlanApproval" />
+      <output name="SendProjectPlanApproval_Result" message="tns:SendProjectPlanApproval_Result" />
+    </operation>
+    <operation name="AddClosureProject">
+      <input name="AddClosureProject" message="tns:AddClosureProject" />
+      <output name="AddClosureProject_Result" message="tns:AddClosureProject_Result" />
+    </operation>
+  </portType>
+  <binding name="ProjectManagementWS_Binding" type="tns:ProjectManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="ModifyProjectBenefit">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:ModifyProjectBenefit" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyProjectBenefit">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyProjectBenefit_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteBenefitLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:DeleteBenefitLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteBenefitLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteBenefitLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddProjectBenefit">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:AddProjectBenefit" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddProjectBenefit">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddProjectBenefit_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddProjectRisk">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:AddProjectRisk" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddProjectRisk">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddProjectRisk_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteRiskLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:DeleteRiskLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteRiskLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteRiskLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyProjectRisk">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:ModifyProjectRisk" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyProjectRisk">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyProjectRisk_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddProjectTask">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:AddProjectTask" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddProjectTask">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddProjectTask_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ManagerEditTaskLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:ManagerEditTaskLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ManagerEditTaskLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ManagerEditTaskLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteTaskManagerLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:DeleteTaskManagerLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteTaskManagerLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteTaskManagerLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="MemberEditTaskLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:MemberEditTaskLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="MemberEditTaskLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="MemberEditTaskLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginProject">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:BeginProject" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginProject">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginProject_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CompleteProject">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:CompleteProject" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CompleteProject">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CompleteProject_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelProject">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:CancelProject" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelProject">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelProject_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UploadTasksDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:UploadTasksDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UploadTasksDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UploadTasksDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteAttachedLinks">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:DeleteAttachedLinks" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteAttachedLinks">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteAttachedLinks_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateProjectPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:CreateProjectPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateProjectPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateProjectPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddPlanActivity">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:AddPlanActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddPlanActivity">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddPlanActivity_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyProjectPlanActivity">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:ModifyProjectPlanActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyProjectPlanActivity">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyProjectPlanActivity_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePlanActivity">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:DeletePlanActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePlanActivity">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePlanActivity_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendProjectPlanApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:SendProjectPlanApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendProjectPlanApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendProjectPlanApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddClosureProject">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectManagementWS:AddClosureProject" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddClosureProject">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddClosureProject_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ProjectManagementWS">
+    <port name="ProjectManagementWS_Port" binding="tns:ProjectManagementWS_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProjectManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

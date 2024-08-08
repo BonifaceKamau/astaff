@@ -1,0 +1,75 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.DocumentMgmt.DocumentRepositoryModel
+@{
+    ViewBag.Title = "User Manuals";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Payroll Sidebar-->
+    @{Html.RenderAction("_DocumentSideBar", "Documents");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title"><i>User Manuals</i></h4>
+                        </div>
+                        @using (Html.BeginForm("ViewDocuments", "Documents", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+
+                                @Html.HiddenFor(model => model.EmployeeNo)
+                                @Html.HiddenFor(model => model.EmployeeName)
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.DocumentType, htmlAttributes: new { @id = "DocumentTypeLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.DocumentType, Model.DocumentTypes, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.DocumentType, "", new { @id = "DocumentTypeError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <button class="btn btn-danger btn-xs pull-right ladda-button" type="submit" formtarget="_blank" data-style="slide-right">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-print"></i>
+                                                <strong>View SOPs/Manuals </strong>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/DocumentManagement/DocumentScript.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Document Management Scripts
+            LoadDocumentScripts();
+
+            //Add CSS Classes
+            $("#ViewDocuments").addClass("active");
+            window.onblur = function () {
+                Ladda.stopAll();
+            }
+        });
+    </script>
+}
+

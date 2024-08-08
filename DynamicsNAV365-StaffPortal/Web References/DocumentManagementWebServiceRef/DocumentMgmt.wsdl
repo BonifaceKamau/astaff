@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="InsertNewDocumentEntry">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localFilePath" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertNewDocumentEntry_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifySystemFileURL">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localURL" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifySystemFileURL_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ModifyCustomerSystemFileURL">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localURL" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCustomerSystemFileURL_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ModifyDocumentEntryFileURL">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localURL" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyDocumentEntryFileURL_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckDocumentAttached">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckDocumentAttached_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPortalDocuments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPortalDocuments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPortalDocumentByDocCode">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPortalDocumentByDocCode_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertLeaveApplicationDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertLeaveApplicationDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveApplicationDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveApplicationDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateSupportingDocumentLink">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateSupportingDocumentLink_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateSupportingDocumentLinkCopy">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateSupportingDocumentLinkCopy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetERPPUserManuals">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetERPPUserManuals_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadFileToSharePointAndNAV">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localURL" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="sharePointUrl" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadFileToSharePointAndNAV_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="linkUrl" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableID" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docDescription" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="InsertNewDocumentEntry">
+    <part name="parameters" element="tns:InsertNewDocumentEntry" />
+  </message>
+  <message name="InsertNewDocumentEntry_Result">
+    <part name="parameters" element="tns:InsertNewDocumentEntry_Result" />
+  </message>
+  <message name="ModifySystemFileURL">
+    <part name="parameters" element="tns:ModifySystemFileURL" />
+  </message>
+  <message name="ModifySystemFileURL_Result">
+    <part name="parameters" element="tns:ModifySystemFileURL_Result" />
+  </message>
+  <message name="ModifyCustomerSystemFileURL">
+    <part name="parameters" element="tns:ModifyCustomerSystemFileURL" />
+  </message>
+  <message name="ModifyCustomerSystemFileURL_Result">
+    <part name="parameters" element="tns:ModifyCustomerSystemFileURL_Result" />
+  </message>
+  <message name="ModifyDocumentEntryFileURL">
+    <part name="parameters" element="tns:ModifyDocumentEntryFileURL" />
+  </message>
+  <message name="ModifyDocumentEntryFileURL_Result">
+    <part name="parameters" element="tns:ModifyDocumentEntryFileURL_Result" />
+  </message>
+  <message name="CheckDocumentAttached">
+    <part name="parameters" element="tns:CheckDocumentAttached" />
+  </message>
+  <message name="CheckDocumentAttached_Result">
+    <part name="parameters" element="tns:CheckDocumentAttached_Result" />
+  </message>
+  <message name="GetPortalDocuments">
+    <part name="parameters" element="tns:GetPortalDocuments" />
+  </message>
+  <message name="GetPortalDocuments_Result">
+    <part name="parameters" element="tns:GetPortalDocuments_Result" />
+  </message>
+  <message name="GetPortalDocumentByDocCode">
+    <part name="parameters" element="tns:GetPortalDocumentByDocCode" />
+  </message>
+  <message name="GetPortalDocumentByDocCode_Result">
+    <part name="parameters" element="tns:GetPortalDocumentByDocCode_Result" />
+  </message>
+  <message name="InsertLeaveApplicationDocument">
+    <part name="parameters" element="tns:InsertLeaveApplicationDocument" />
+  </message>
+  <message name="InsertLeaveApplicationDocument_Result">
+    <part name="parameters" element="tns:InsertLeaveApplicationDocument_Result" />
+  </message>
+  <message name="GetLeaveApplicationDocument">
+    <part name="parameters" element="tns:GetLeaveApplicationDocument" />
+  </message>
+  <message name="GetLeaveApplicationDocument_Result">
+    <part name="parameters" element="tns:GetLeaveApplicationDocument_Result" />
+  </message>
+  <message name="GenerateSupportingDocumentLink">
+    <part name="parameters" element="tns:GenerateSupportingDocumentLink" />
+  </message>
+  <message name="GenerateSupportingDocumentLink_Result">
+    <part name="parameters" element="tns:GenerateSupportingDocumentLink_Result" />
+  </message>
+  <message name="GenerateSupportingDocumentLinkCopy">
+    <part name="parameters" element="tns:GenerateSupportingDocumentLinkCopy" />
+  </message>
+  <message name="GenerateSupportingDocumentLinkCopy_Result">
+    <part name="parameters" element="tns:GenerateSupportingDocumentLinkCopy_Result" />
+  </message>
+  <message name="GetERPPUserManuals">
+    <part name="parameters" element="tns:GetERPPUserManuals" />
+  </message>
+  <message name="GetERPPUserManuals_Result">
+    <part name="parameters" element="tns:GetERPPUserManuals_Result" />
+  </message>
+  <message name="UploadFileToSharePointAndNAV">
+    <part name="parameters" element="tns:UploadFileToSharePointAndNAV" />
+  </message>
+  <message name="UploadFileToSharePointAndNAV_Result">
+    <part name="parameters" element="tns:UploadFileToSharePointAndNAV_Result" />
+  </message>
+  <message name="InsertImprestAttachment">
+    <part name="parameters" element="tns:InsertImprestAttachment" />
+  </message>
+  <message name="InsertImprestAttachment_Result">
+    <part name="parameters" element="tns:InsertImprestAttachment_Result" />
+  </message>
+  <portType name="DocumentMgmt_Port">
+    <operation name="InsertNewDocumentEntry">
+      <input name="InsertNewDocumentEntry" message="tns:InsertNewDocumentEntry" />
+      <output name="InsertNewDocumentEntry_Result" message="tns:InsertNewDocumentEntry_Result" />
+    </operation>
+    <operation name="ModifySystemFileURL">
+      <input name="ModifySystemFileURL" message="tns:ModifySystemFileURL" />
+      <output name="ModifySystemFileURL_Result" message="tns:ModifySystemFileURL_Result" />
+    </operation>
+    <operation name="ModifyCustomerSystemFileURL">
+      <input name="ModifyCustomerSystemFileURL" message="tns:ModifyCustomerSystemFileURL" />
+      <output name="ModifyCustomerSystemFileURL_Result" message="tns:ModifyCustomerSystemFileURL_Result" />
+    </operation>
+    <operation name="ModifyDocumentEntryFileURL">
+      <input name="ModifyDocumentEntryFileURL" message="tns:ModifyDocumentEntryFileURL" />
+      <output name="ModifyDocumentEntryFileURL_Result" message="tns:ModifyDocumentEntryFileURL_Result" />
+    </operation>
+    <operation name="CheckDocumentAttached">
+      <input name="CheckDocumentAttached" message="tns:CheckDocumentAttached" />
+      <output name="CheckDocumentAttached_Result" message="tns:CheckDocumentAttached_Result" />
+    </operation>
+    <operation name="GetPortalDocuments">
+      <input name="GetPortalDocuments" message="tns:GetPortalDocuments" />
+      <output name="GetPortalDocuments_Result" message="tns:GetPortalDocuments_Result" />
+    </operation>
+    <operation name="GetPortalDocumentByDocCode">
+      <input name="GetPortalDocumentByDocCode" message="tns:GetPortalDocumentByDocCode" />
+      <output name="GetPortalDocumentByDocCode_Result" message="tns:GetPortalDocumentByDocCode_Result" />
+    </operation>
+    <operation name="InsertLeaveApplicationDocument">
+      <input name="InsertLeaveApplicationDocument" message="tns:InsertLeaveApplicationDocument" />
+      <output name="InsertLeaveApplicationDocument_Result" message="tns:InsertLeaveApplicationDocument_Result" />
+    </operation>
+    <operation name="GetLeaveApplicationDocument">
+      <input name="GetLeaveApplicationDocument" message="tns:GetLeaveApplicationDocument" />
+      <output name="GetLeaveApplicationDocument_Result" message="tns:GetLeaveApplicationDocument_Result" />
+    </operation>
+    <operation name="GenerateSupportingDocumentLink">
+      <input name="GenerateSupportingDocumentLink" message="tns:GenerateSupportingDocumentLink" />
+      <output name="GenerateSupportingDocumentLink_Result" message="tns:GenerateSupportingDocumentLink_Result" />
+    </operation>
+    <operation name="GenerateSupportingDocumentLinkCopy">
+      <input name="GenerateSupportingDocumentLinkCopy" message="tns:GenerateSupportingDocumentLinkCopy" />
+      <output name="GenerateSupportingDocumentLinkCopy_Result" message="tns:GenerateSupportingDocumentLinkCopy_Result" />
+    </operation>
+    <operation name="GetERPPUserManuals">
+      <input name="GetERPPUserManuals" message="tns:GetERPPUserManuals" />
+      <output name="GetERPPUserManuals_Result" message="tns:GetERPPUserManuals_Result" />
+    </operation>
+    <operation name="UploadFileToSharePointAndNAV">
+      <input name="UploadFileToSharePointAndNAV" message="tns:UploadFileToSharePointAndNAV" />
+      <output name="UploadFileToSharePointAndNAV_Result" message="tns:UploadFileToSharePointAndNAV_Result" />
+    </operation>
+    <operation name="InsertImprestAttachment">
+      <input name="InsertImprestAttachment" message="tns:InsertImprestAttachment" />
+      <output name="InsertImprestAttachment_Result" message="tns:InsertImprestAttachment_Result" />
+    </operation>
+  </portType>
+  <binding name="DocumentMgmt_Binding" type="tns:DocumentMgmt_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="InsertNewDocumentEntry">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:InsertNewDocumentEntry" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertNewDocumentEntry">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertNewDocumentEntry_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifySystemFileURL">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:ModifySystemFileURL" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifySystemFileURL">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifySystemFileURL_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyCustomerSystemFileURL">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:ModifyCustomerSystemFileURL" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyCustomerSystemFileURL">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyCustomerSystemFileURL_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyDocumentEntryFileURL">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:ModifyDocumentEntryFileURL" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyDocumentEntryFileURL">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyDocumentEntryFileURL_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckDocumentAttached">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:CheckDocumentAttached" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckDocumentAttached">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckDocumentAttached_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPortalDocuments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GetPortalDocuments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPortalDocuments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPortalDocuments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPortalDocumentByDocCode">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GetPortalDocumentByDocCode" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPortalDocumentByDocCode">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPortalDocumentByDocCode_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertLeaveApplicationDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:InsertLeaveApplicationDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertLeaveApplicationDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertLeaveApplicationDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLeaveApplicationDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GetLeaveApplicationDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLeaveApplicationDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLeaveApplicationDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateSupportingDocumentLink">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GenerateSupportingDocumentLink" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateSupportingDocumentLink">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateSupportingDocumentLink_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateSupportingDocumentLinkCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GenerateSupportingDocumentLinkCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateSupportingDocumentLinkCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateSupportingDocumentLinkCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetERPPUserManuals">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:GetERPPUserManuals" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetERPPUserManuals">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetERPPUserManuals_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UploadFileToSharePointAndNAV">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:UploadFileToSharePointAndNAV" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UploadFileToSharePointAndNAV">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UploadFileToSharePointAndNAV_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertImprestAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/DocumentMgmt:InsertImprestAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertImprestAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertImprestAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DocumentMgmt">
+    <port name="DocumentMgmt_Port" binding="tns:DocumentMgmt_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/DocumentMgmt" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

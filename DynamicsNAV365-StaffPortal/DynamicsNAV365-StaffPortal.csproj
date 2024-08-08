@@ -1,0 +1,2052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8E41ACA-76D5-4C2E-981F-58C55D5A08FA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DynamicsNAV365_StaffPortal</RootNamespace>
+    <AssemblyName>DynamicsNAV365-StaffPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+    <_MigrateToProjectGuid>48042894-d880-4537-84cf-9671de451098</_MigrateToProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.14.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.14.0\lib\net461\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.102.2.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.102.2\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.11.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.17.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.17.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.17.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.17.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.17.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.17.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ActiveDirectory.GraphClient, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.ActiveDirectory.GraphClient.2.1.0\lib\portable-net4+sl5+win+wpa+wp8\Microsoft.Azure.ActiveDirectory.GraphClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph, Version=1.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.1.14.0\lib\net45\Microsoft.Graph.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph.Core, Version=1.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.Core.1.14.0\lib\net45\Microsoft.Graph.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.identitymodel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.7.0.0\lib\net35\microsoft.identitymodel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.2.4\lib\net451\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.4\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Client, Version=7.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Client.7.15.0\lib\net45\Microsoft.OData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=7.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Core.7.15.0\lib\net45\Microsoft.OData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=7.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Edm.7.15.0\lib\net45\Microsoft.OData.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Client.Policy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.Office.Client.Policy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Client.TranslationServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.Office.Client.TranslationServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.SharePoint.Tools, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.Office.SharePoint.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Online.SharePoint.Client.Tenant, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.Online.SharePoint.Client.Tenant.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectServer.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.ProjectServer.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.DocumentManagement, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.DocumentManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Publishing, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search.Applications, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.Search.Applications.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Taxonomy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.UserProfiles, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.UserProfiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.WorkflowServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.21812.12000\lib\net45\Microsoft.SharePoint.Client.WorkflowServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=7.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.7.15.0\lib\net45\Microsoft.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.7.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Namotion.Reflection, Version=2.1.2.0, Culture=neutral, PublicKeyToken=c2f9c3bdfae56102">
+      <HintPath>..\packages\Namotion.Reflection.2.1.2\lib\net45\Namotion.Reflection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NJsonSchema, Version=10.9.0.0, Culture=neutral, PublicKeyToken=c2f9c3bdfae56102">
+      <HintPath>..\packages\NJsonSchema.10.9.0\lib\net45\NJsonSchema.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OfficeDevPnP.Core, Version=3.28.2012.0, Culture=neutral, PublicKeyToken=5e633289e95c321a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharePointPnPCoreOnline.3.28.2012\lib\net461\OfficeDevPnP.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharePointPnP.IdentityModel.Extensions, Version=1.2.4.0, Culture=neutral, PublicKeyToken=5e633289e95c321a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharePointPnP.IdentityModel.Extensions.1.2.4\lib\net45\SharePointPnP.IdentityModel.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.4\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.6.0.0\lib\net461\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.8.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="XLParser, Version=1.5.2.0, Culture=neutral, PublicKeyToken=63397e1e46bb91b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLParser.1.5.2\lib\net461\XLParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CodeHelpers\IpAuthorizationFilter.cs" />
+    <Compile Include="CodeHelpers\MapperHelper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Administration\AdministrationController.cs" />
+    <Compile Include="Controllers\Administration\FleetManagementController.cs" />
+    <Compile Include="Controllers\ApprovalServices\ApprovalController.cs" />
+    <Compile Include="Controllers\CustomerApiController.cs" />
+    <Compile Include="Controllers\DocumentRepositoryServices\DocumentsController.cs" />
+    <Compile Include="Controllers\FinanceServices\ActivityRequestController.cs" />
+    <Compile Include="Controllers\FinanceServices\ClaimsRefundController.cs" />
+    <Compile Include="Controllers\FinanceServices\FinanceHomeController.cs" />
+    <Compile Include="Controllers\FinanceServices\FundsClaimController.cs" />
+    <Compile Include="Controllers\FinanceServices\ImprestController.cs" />
+    <Compile Include="Controllers\FinanceServices\ImprestSurrenderController.cs" />
+    <Compile Include="Controllers\FinanceServices\PaymentVoucherController.cs" />
+    <Compile Include="Controllers\FinanceServices\PettyCashController.cs" />
+    <Compile Include="Controllers\FinanceServices\PettyCashSurrenderController.cs" />
+    <Compile Include="Controllers\FinanceServices\StaffAdvanceController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\AppraiseeEvaluationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\AppraiserEvaluationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\CompleteAppraisalController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\EmployeeAppraisalController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\EmployeeEvaluationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\EmployeeTrainingController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\EndYearEvaluationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\FleetMgtController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\HumanResourceHomeController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\LeaveApplicationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\LeaveReimbursementController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\LoanApplicationController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\ModeratedAppraisalController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\PerformanceTargetController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\RecruitmentNeedsController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\SalaryAdvanceController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\StaffRequisitionController.cs" />
+    <Compile Include="Controllers\HumanResourceServices\TargetSettings.cs" />
+    <Compile Include="Controllers\HumanResourceServices\TimesheetController.cs" />
+    <Compile Include="Controllers\InventoryServices\InventoryHomeController.cs" />
+    <Compile Include="Controllers\InventoryServices\StoreRequisitionController.cs" />
+    <Compile Include="Controllers\LeadFileApiController.cs" />
+    <Compile Include="Controllers\PayrollServices\EmployeeP9Controller.cs" />
+    <Compile Include="Controllers\PayrollServices\EmployeePayslipController.cs" />
+    <Compile Include="Controllers\PayrollServices\PayrollHomeController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\AppraisalResultsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\AppraisalsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\CustomerAppraisalsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\PeerAppraisalsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\PerformanceHomeController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\PerformanceTargetsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\SubordinateAppraisalsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\SupervisorAppraisalsController.cs" />
+    <Compile Include="Controllers\PerformanceManagement\WorkPlansController.cs" />
+    <Compile Include="Controllers\ProcurementServices\BidAnalysisController.cs" />
+    <Compile Include="Controllers\ProcurementServices\ProcurementHomeController.cs" />
+    <Compile Include="Controllers\ProcurementServices\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\ProcurementServices\PurchaseRequisitionController.cs" />
+    <Compile Include="Controllers\ProcurementServices\RFXController.cs" />
+    <Compile Include="Controllers\ProjectManagement\ProjectHomeController.cs" />
+    <Compile Include="Controllers\ProjectManagement\ProjectsController.cs" />
+    <Compile Include="Controllers\ResponseServices\ErrorResponseController.cs" />
+    <Compile Include="Controllers\ResponseServices\InfoResponseController.cs" />
+    <Compile Include="Controllers\ResponseServices\SuccessResponseController.cs" />
+    <Compile Include="Controllers\WepApiController.cs" />
+    <Compile Include="Cryptography.cs" />
+    <Compile Include="DynamicsNAVODATAServices.cs" />
+    <Compile Include="DynamicsNAVSOAPServices.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account\EmployeeProfile.cs" />
+    <Compile Include="Models\Account\EmployeeProfileModel.cs" />
+    <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Account\PasswordResetModel.cs" />
+    <Compile Include="Models\Account\SendPasswordResetLinkModel.cs" />
+    <Compile Include="Models\APIModels\CustomerInfo.cs" />
+    <Compile Include="Models\APIModels\LeadFileInfo.cs" />
+    <Compile Include="Models\Approvals\ApprovalEntryModel.cs" />
+    <Compile Include="Models\AssetTransferHeaderLine.cs" />
+    <Compile Include="Models\Credentials.cs" />
+    <Compile Include="Models\DocumentMgmt\DocumentMgmtModel.cs" />
+    <Compile Include="Models\DocumentMgmt\DocumentRepositoryModel.cs" />
+    <Compile Include="Models\DocumentMgmt\UserManualModel.cs" />
+    <Compile Include="Models\EmployeeAppraisal\AppraisalEvaluationHeaderModel.cs" />
+    <Compile Include="Models\EmployeeAppraisal\AppraisalEvaluationLineModel.cs" />
+    <Compile Include="Models\EmployeeAppraisal\EmployeeAppraisalHeaderModel.cs" />
+    <Compile Include="Models\EmployeeAppraisal\EmployeeAppraisalLineModel.cs" />
+    <Compile Include="Models\EmployeeTraining\EmployeeTrainingApplicationModel.cs" />
+    <Compile Include="Models\EmployeeTraining\EmployeeTrainingEvaluationModel.cs" />
+    <Compile Include="Models\EmployeeTraining\EmployeeTrainingNeedModel.cs" />
+    <Compile Include="Models\EmployeeTraining\TrainingAnalysisDTO.cs" />
+    <Compile Include="Models\Finance\AssetTransferHeader.cs" />
+    <Compile Include="Models\Finance\ClaimsRefund\ClaimsRefundHeaderModel.cs" />
+    <Compile Include="Models\Finance\ClaimsRefund\ClaimsRefundLineModel.cs" />
+    <Compile Include="Models\Finance\Currency.cs" />
+    <Compile Include="Models\Finance\FinanceHome\Currency.cs" />
+    <Compile Include="Models\Finance\FinanceHome\Dimensions.cs" />
+    <Compile Include="Models\Finance\FinanceHome\DimensionValueModel.cs" />
+    <Compile Include="Models\Finance\FinanceHome\EmployeeBalancesModel.cs" />
+    <Compile Include="Models\Finance\FinanceHome\FundsTransactionModel.cs" />
+    <Compile Include="Models\Finance\FinanceHome\TransactionTypeModel.cs" />
+    <Compile Include="Models\Finance\FixedAsset.cs" />
+    <Compile Include="Models\Finance\FixedAssetDepreciationBook.cs" />
+    <Compile Include="Models\Finance\FundsClaim\FundsClaimHeaderModel.cs" />
+    <Compile Include="Models\Finance\FundsClaim\FundsClaimLineModel.cs" />
+    <Compile Include="Models\Finance\ImprestSurrender\ImprestSurrenderHeaderModel.cs" />
+    <Compile Include="Models\Finance\ImprestSurrender\ImprestSurrenderLineModel.cs" />
+    <Compile Include="Models\Finance\ImprestSurrender\ReceiptList.cs" />
+    <Compile Include="Models\Finance\ImprestSurrender\UnsurrenderedImprestCode.cs" />
+    <Compile Include="Models\Finance\Imprest\ActivityRequestHeader.cs" />
+    <Compile Include="Models\Finance\Imprest\AdvanceTypes.cs" />
+    <Compile Include="Models\Finance\Imprest\ImprestElements.cs" />
+    <Compile Include="Models\Finance\Imprest\ImprestHeaderModel.cs" />
+    <Compile Include="Models\Finance\Imprest\ImprestLineModel.cs" />
+    <Compile Include="Models\Finance\Imprest\ImprestCategory.cs" />
+    <Compile Include="Models\Finance\Imprest\SalaryScales.cs" />
+    <Compile Include="Models\Finance\Imprest\SRCInternationalDestinations.cs" />
+    <Compile Include="Models\Finance\Imprest\SRCLocalDestinations.cs" />
+    <Compile Include="Models\Finance\PaymentVoucher\PVHeaderModel.cs" />
+    <Compile Include="Models\Finance\PaymentVoucher\PVLineModel.cs" />
+    <Compile Include="Models\Finance\PettyCashSurrender\PettyCashSurrenderHeaderModel.cs" />
+    <Compile Include="Models\Finance\PettyCashSurrender\PettyCashSurrenderLineModel.cs" />
+    <Compile Include="Models\Finance\PettyCashSurrender\PettyCashTransactionTypes.cs" />
+    <Compile Include="Models\Finance\PettyCashSurrender\UnsurrenderedPettyCashCodes.cs" />
+    <Compile Include="Models\Finance\PettyCash\PettyCashHeaderModel.cs" />
+    <Compile Include="Models\Finance\PettyCash\PettyCashLineModel.cs" />
+    <Compile Include="Models\Finance\StaffAdvance\RequestHeader.cs" />
+    <Compile Include="Models\HumanResource\Appraisal.cs" />
+    <Compile Include="Models\HumanResource\CorporateWorkplan.cs" />
+    <Compile Include="Models\HumanResource\DepartmentalWorkplanHeader.cs" />
+    <Compile Include="Models\HumanResource\DirectorateWorkplanHeader.cs" />
+    <Compile Include="Models\HumanResource\FleetMgt\FleetHeaderModel.cs" />
+    <Compile Include="Models\HumanResource\FleetMgt\MaintananceAndRepair.cs" />
+    <Compile Include="Models\HumanResource\HumanResourceHome\BusinessCoreValuesAndCompetenciesModel.cs" />
+    <Compile Include="Models\HumanResource\HumanResourceHome\EmployeeLeaveBalanceModel.cs" />
+    <Compile Include="Models\HumanResource\HumanResourceHome\EmployeeSplittedLeaveBalance.cs" />
+    <Compile Include="Models\HumanResource\LeaveApplicationModels\LeaveApplicationModel.cs" />
+    <Compile Include="Models\HumanResource\LeaveReimbursementModels\LeaveReimbursementModel.cs" />
+    <Compile Include="Models\HumanResource\LoanApplicationModels\LoanApplicationModel.cs" />
+    <Compile Include="Models\HumanResource\LoanApplicationModels\LoanProductsModel.cs" />
+    <Compile Include="Models\HumanResource\PeerAppraisal.cs" />
+    <Compile Include="Models\HumanResource\PerformanceTargetModels\EmployeePerformanceTargetLineModel.cs" />
+    <Compile Include="Models\HumanResource\PerformanceTargetModels\EmployeePerformanceTargetHeaderModel.cs" />
+    <Compile Include="Models\HumanResource\PerformanceTargetModels\GlobalAppraisalPerspectiveModel.cs" />
+    <Compile Include="Models\HumanResource\PerformanceTargetModels\JobPerformanceTargetModel.cs" />
+    <Compile Include="Models\HumanResource\SalaryAdvanceModels\SalaryAdvanceHeaderModel.cs" />
+    <Compile Include="Models\HumanResource\SalaryAdvanceModels\SalaryAdvanceLineModel.cs" />
+    <Compile Include="Models\HumanResource\StaffRecruitmentNeeds.cs" />
+    <Compile Include="Models\HumanResource\StaffTargetObjectives.cs" />
+    <Compile Include="Models\HumanResource\TargetImportViewModel.cs" />
+    <Compile Include="Models\HumanResource\TimeSheets\AcademicQualifications.cs" />
+    <Compile Include="Models\HumanResource\TimeSheets\TimeSheetModel.cs" />
+    <Compile Include="Models\HumanResource\TrainingSurveyDTO.cs" />
+    <Compile Include="Models\HumanResource\WorkplanHeaderModel.cs" />
+    <Compile Include="Models\HumanResource\WorkplanLine.cs" />
+    <Compile Include="Models\Inventory\StoreRequisition\LocationCodes.cs" />
+    <Compile Include="Models\Inventory\StoreRequisition\StoreRequisitionHeaderModel.cs" />
+    <Compile Include="Models\Inventory\StoreRequisition\StoreRequisitionLineModel.cs" />
+    <Compile Include="Models\MidYearAppraisal.cs" />
+    <Compile Include="Models\PayrollModels\EmployeeP9Model.cs" />
+    <Compile Include="Models\PayrollModels\EmployeePayslipModel.cs" />
+    <Compile Include="Models\PayrollModels\PayrollPeriodModel.cs" />
+    <Compile Include="Models\PayrollModels\PayrollYears.cs" />
+    <Compile Include="Models\PerformanceManagement\AppraisalResultsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\AppraisalsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\CEOWorkPlanModel.cs" />
+    <Compile Include="Models\PerformanceManagement\CoreCompetenciesModel.cs" />
+    <Compile Include="Models\PerformanceManagement\CustomerAppraisalsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\PeerAppraisalsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\SubordinateAppraisalsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\SupervisorAppraisalsModel.cs" />
+    <Compile Include="Models\PerformanceManagement\TargetsModel.cs" />
+    <Compile Include="Models\Procurement\BidAnalysis\BidAnalysisHeaderModel.cs" />
+    <Compile Include="Models\Procurement\BidAnalysis\BidAnalysisLineModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\FixedAssetModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\ItemsModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\ItemUOMModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\ProcurementPlanItems.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\PurchaseRequisitionHeaderModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\PurchaseRequisitionLineModel.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\PurchaseRequisitionUOMs.cs" />
+    <Compile Include="Models\Procurement\PurchaseRequistion\ServicesModel.cs" />
+    <Compile Include="Models\Procurement\Purchases\PurchaseHeaderModel.cs" />
+    <Compile Include="Models\Procurement\Purchases\PurchaseLineModel.cs" />
+    <Compile Include="Models\Procurement\RFX\RFXHeaderModel.cs" />
+    <Compile Include="Models\Procurement\RFX\RFXLineModel.cs" />
+    <Compile Include="Models\ProjectManagement\PlanActivitiesModel.cs" />
+    <Compile Include="Models\ProjectManagement\ProjectBenefitsModel.cs" />
+    <Compile Include="Models\ProjectManagement\ProjectManagementModel.cs" />
+    <Compile Include="Models\ProjectManagement\ProjectPlanModel.cs" />
+    <Compile Include="Models\ProjectManagement\ProjectRisksModel.cs" />
+    <Compile Include="Models\ProjectManagement\ProjectTasksModel.cs" />
+    <Compile Include="Models\Responses\ErrorResponseModel.cs" />
+    <Compile Include="Models\Responses\InfoResponseModel.cs" />
+    <Compile Include="Models\Responses\SuccessResponseModel.cs" />
+    <Compile Include="Models\StaffRequisition\AcademicRequirements.cs" />
+    <Compile Include="Models\StaffRequisition\Chapter6Requirments.cs" />
+    <Compile Include="Models\StaffRequisition\EmploymentContract.cs" />
+    <Compile Include="Models\StaffRequisition\Establishment.cs" />
+    <Compile Include="Models\StaffRequisition\JobExperience.cs" />
+    <Compile Include="Models\StaffRequisition\JobResponsibilities.cs" />
+    <Compile Include="Models\StaffRequisition\OtherRequirements.cs" />
+    <Compile Include="Models\StaffRequisition\PositionType.cs" />
+    <Compile Include="Models\StaffRequisition\ProfessionalBodies.cs" />
+    <Compile Include="Models\StaffRequisition\ProfessionalQualifications.cs" />
+    <Compile Include="Models\StaffRequisition\RequisitionType.cs" />
+    <Compile Include="Models\StaffRequisition\StaffRequisition.cs" />
+    <Compile Include="NoCacheAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DynamicsNAVODataServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ODataService\BCReference.cs" />
+    <Compile Include="Service References\ODataService\BCReferenceV4.cs" />
+    <Compile Include="Service References\RecruitmentNeeds\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceConnection.cs" />
+    <Compile Include="Web References\ActivityRequestWs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApprovalManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\DocumentManagementWebServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\EmployeeAccountWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\EmployeeAppraisalManagementWebServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\EmployeeTrainingManagementWebServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\FundsClaimManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\FundsManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\HumanResourceManagmentWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\InventoryManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LoanManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\NativeApprovalsMgmtWebReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProjectPortalUpdate\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Property_Card\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\StaffAdvanceWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MemoSalaryAdvanceWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PayrollManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PerformanceManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProcurementManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProjectManagementWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TimeSheet\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\ladda-themeless.css" />
+    <Content Include="Content\ladda-themeless.min.css" />
+    <Content Include="Content\ladda.css" />
+    <Content Include="Content\ladda.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\DocumentManagement\DocumentScript.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\Finance\ClaimsRefundScripts\ClaimsRefundScript.js" />
+    <Content Include="Scripts\Finance\FinanceHomeScripts\LoadDimensions.js" />
+    <Content Include="Scripts\Finance\FundsClaimScripts\FundsClaimScripts.js" />
+    <Content Include="Scripts\Finance\ImprestRequestScripts\ImprestRequest.js" />
+    <Content Include="Scripts\Finance\ImprestSurrenderScripts\ImprestSurrender.js" />
+    <Content Include="Scripts\Finance\PettyCashRequestScripts\PettyCashScripts.js" />
+    <Content Include="Scripts\Finance\PettyCashSurrenderScripts\PettyCashSurrenderScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\AppraisalEvaluationScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\AppraiseeEvaluationScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\AppraiserEvaluationScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\CompleteAppraisalScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\EndYearEvaluationScript.js" />
+    <Content Include="Scripts\HumanResource\AppraisalEvaluationScripts\ModeratedAppraisalScript.js" />
+    <Content Include="Scripts\HumanResource\EmployeeAppraisalScripts\EmployeeAppraisalScripts.js" />
+    <Content Include="Scripts\HumanResource\EmployeeTrainingScripts\EmployeeTraining.js" />
+    <Content Include="Scripts\HumanResource\EmployeeTrainingScripts\EmployeeTrainingEvaluation.js" />
+    <Content Include="Scripts\HumanResource\EmployeeTrainingScripts\EmployeeTrainingNeed.js" />
+    <Content Include="Scripts\HumanResource\LeaveApplicationScripts\LeaveApplication.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-select.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\HumanResource\LeaveReimbursementScripts\LeaveReimbursementScript.js" />
+    <Content Include="Scripts\HumanResource\PerformanceTargetScripts\PerformanceTargetScript.js" />
+    <Content Include="Scripts\HumanResource\SalaryAdvanceScripts\SalaryAdvanceScript.js" />
+    <Content Include="Scripts\HumanResource\StaffRequisitionScripts\StaffRequisitionScript.js" />
+    <Content Include="Scripts\i18n\defaults-am_ET.js" />
+    <Content Include="Scripts\i18n\defaults-am_ET.min.js" />
+    <Content Include="Scripts\i18n\defaults-ar_AR.js" />
+    <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
+    <Content Include="Scripts\i18n\defaults-bg_BG.js" />
+    <Content Include="Scripts\i18n\defaults-bg_BG.min.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Scripts\i18n\defaults-da_DK.js" />
+    <Content Include="Scripts\i18n\defaults-da_DK.min.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.min.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.min.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.min.js" />
+    <Content Include="Scripts\i18n\defaults-es_ES.js" />
+    <Content Include="Scripts\i18n\defaults-es_ES.min.js" />
+    <Content Include="Scripts\i18n\defaults-et_EE.js" />
+    <Content Include="Scripts\i18n\defaults-et_EE.min.js" />
+    <Content Include="Scripts\i18n\defaults-eu.js" />
+    <Content Include="Scripts\i18n\defaults-eu.min.js" />
+    <Content Include="Scripts\i18n\defaults-fa_IR.js" />
+    <Content Include="Scripts\i18n\defaults-fa_IR.min.js" />
+    <Content Include="Scripts\i18n\defaults-fi_FI.js" />
+    <Content Include="Scripts\i18n\defaults-fi_FI.min.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Scripts\i18n\defaults-hr_HR.js" />
+    <Content Include="Scripts\i18n\defaults-hr_HR.min.js" />
+    <Content Include="Scripts\i18n\defaults-hu_HU.js" />
+    <Content Include="Scripts\i18n\defaults-hu_HU.min.js" />
+    <Content Include="Scripts\i18n\defaults-id_ID.js" />
+    <Content Include="Scripts\i18n\defaults-id_ID.min.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.min.js" />
+    <Content Include="Scripts\i18n\defaults-ja_JP.js" />
+    <Content Include="Scripts\i18n\defaults-ja_JP.min.js" />
+    <Content Include="Scripts\i18n\defaults-kh_KM.js" />
+    <Content Include="Scripts\i18n\defaults-kh_KM.min.js" />
+    <Content Include="Scripts\i18n\defaults-ko_KR.js" />
+    <Content Include="Scripts\i18n\defaults-ko_KR.min.js" />
+    <Content Include="Scripts\i18n\defaults-lt_LT.js" />
+    <Content Include="Scripts\i18n\defaults-lt_LT.min.js" />
+    <Content Include="Scripts\i18n\defaults-lv_LV.js" />
+    <Content Include="Scripts\i18n\defaults-lv_LV.min.js" />
+    <Content Include="Scripts\i18n\defaults-nb_NO.js" />
+    <Content Include="Scripts\i18n\defaults-nb_NO.min.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Scripts\i18n\defaults-pt_PT.js" />
+    <Content Include="Scripts\i18n\defaults-pt_PT.min.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Scripts\i18n\defaults-sk_SK.js" />
+    <Content Include="Scripts\i18n\defaults-sk_SK.min.js" />
+    <Content Include="Scripts\i18n\defaults-sl_SI.js" />
+    <Content Include="Scripts\i18n\defaults-sl_SI.min.js" />
+    <Content Include="Scripts\i18n\defaults-sr_SP.js" />
+    <Content Include="Scripts\i18n\defaults-sr_SP.min.js" />
+    <Content Include="Scripts\i18n\defaults-sv_SE.js" />
+    <Content Include="Scripts\i18n\defaults-sv_SE.min.js" />
+    <Content Include="Scripts\i18n\defaults-th_TH.js" />
+    <Content Include="Scripts\i18n\defaults-th_TH.min.js" />
+    <Content Include="Scripts\i18n\defaults-tr_TR.js" />
+    <Content Include="Scripts\i18n\defaults-tr_TR.min.js" />
+    <Content Include="Scripts\i18n\defaults-ua_UA.js" />
+    <Content Include="Scripts\i18n\defaults-ua_UA.min.js" />
+    <Content Include="Scripts\i18n\defaults-vi_VN.js" />
+    <Content Include="Scripts\i18n\defaults-vi_VN.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Scripts\Inventory\StoreRequisitionScripts\StoreRequisition.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.js.map" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.js.map" />
+    <Content Include="Scripts\i18n\defaults-vi_VN.js.map" />
+    <Content Include="Scripts\i18n\defaults-ua_UA.js.map" />
+    <Content Include="Scripts\i18n\defaults-tr_TR.js.map" />
+    <Content Include="Scripts\i18n\defaults-th_TH.js.map" />
+    <Content Include="Scripts\i18n\defaults-sv_SE.js.map" />
+    <Content Include="Scripts\i18n\defaults-sr_SP.js.map" />
+    <Content Include="Scripts\i18n\defaults-sl_SI.js.map" />
+    <Content Include="Scripts\i18n\defaults-sk_SK.js.map" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.js.map" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.js.map" />
+    <Content Include="Scripts\i18n\defaults-pt_PT.js.map" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.js.map" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.js.map" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.js.map" />
+    <Content Include="Scripts\i18n\defaults-nb_NO.js.map" />
+    <Content Include="Scripts\i18n\defaults-lv_LV.js.map" />
+    <Content Include="Scripts\i18n\defaults-lt_LT.js.map" />
+    <Content Include="Scripts\i18n\defaults-ko_KR.js.map" />
+    <Content Include="Scripts\i18n\defaults-kh_KM.js.map" />
+    <Content Include="Scripts\i18n\defaults-ja_JP.js.map" />
+    <Content Include="Scripts\i18n\defaults-it_IT.js.map" />
+    <Content Include="Scripts\i18n\defaults-id_ID.js.map" />
+    <Content Include="Scripts\i18n\defaults-hu_HU.js.map" />
+    <Content Include="Scripts\i18n\defaults-hr_HR.js.map" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.js.map" />
+    <Content Include="Scripts\i18n\defaults-fi_FI.js.map" />
+    <Content Include="Scripts\i18n\defaults-fa_IR.js.map" />
+    <Content Include="Scripts\i18n\defaults-eu.js.map" />
+    <Content Include="Scripts\i18n\defaults-et_EE.js.map" />
+    <Content Include="Scripts\i18n\defaults-es_ES.js.map" />
+    <Content Include="Scripts\i18n\defaults-es_CL.js.map" />
+    <Content Include="Scripts\i18n\defaults-en_US.js.map" />
+    <Content Include="Scripts\i18n\defaults-de_DE.js.map" />
+    <Content Include="Scripts\i18n\defaults-da_DK.js.map" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.js.map" />
+    <Content Include="Scripts\i18n\defaults-bg_BG.js.map" />
+    <Content Include="Scripts\i18n\defaults-ar_AR.js.map" />
+    <Content Include="Scripts\i18n\defaults-am_ET.js.map" />
+    <Content Include="Scripts\bootstrap-select.min.js.map" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ladda.js" />
+    <Content Include="Scripts\ladda.min.js" />
+    <Content Include="Scripts\HumanResource\LoanApplicationScripts\LoanApplicationScript.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Procurement\PurchaseOrderScripts\PurchaseOrderScript.js" />
+    <Content Include="Scripts\Procurement\PurchaseRequisitionScripts\PurchaseRequisition.js" />
+    <Content Include="Scripts\Procurement\RFXScripts\RFXScript.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Select2Plugin\select2.js" />
+    <Content Include="Scripts\Select2Plugin\select2.min.js" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\spin.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\SysreAddons\control-ladda-btn.js" />
+    <Content Include="Scripts\SysreAddons\custom-alert.js" />
+    <Content Include="Scripts\tether.js" />
+    <Content Include="Scripts\tether.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="Service References\DynamicsNAVODataServiceReference\Reference.datasvcmap">
+      <Generator>DataServicesCoreClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RecruitmentNeeds\configuration91.svcinfo" />
+    <None Include="Service References\RecruitmentNeeds\configuration.svcinfo" />
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.CreateMultiple_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Create_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Job_Qualifications_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_JOB_Questions_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_KPA_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Mandatory_Documents_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Other_Qualifications_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Professional_Bodies_Needs_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_PROFFESSIonQUALIFICATION_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Delete_Skills_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.GetRecIdFromKey_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.IsUpdated_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.ReadByRecId_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.ReadMultiple_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Read_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.RecruitmentNeeds.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.UpdateMultiple_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RecruitmentNeeds\DynamicsNAV365_StaffPortal.RecruitmentNeeds.Update_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\RecruitmentNeeds\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Account\NewEmployeeProfile.cshtml" />
+    <Content Include="Views\Administration\AdministrationInfo.cshtml" />
+    <Content Include="Views\Administration\AssetTransferIssued.cshtml" />
+    <Content Include="Views\Administration\AssetTransferReceived.cshtml" />
+    <Content Include="Views\Administration\DepreciationBook.cshtml" />
+    <Content Include="Views\Administration\FixedAssetPool.cshtml" />
+    <Content Include="Views\Administration\ViewAssetTransfer.cshtml" />
+    <Content Include="Views\Administration\ViewFixedAssetPooling.cshtml" />
+    <Content Include="Views\Administration\_AdministrationSidebar.cshtml" />
+    <Content Include="Views\Administration\_AssetTransferLine.cshtml" />
+    <Content Include="Views\EmployeeTraining\AddKnowledgegapDepartment.cshtml" />
+    <Content Include="Views\EmployeeTraining\AddTrainingProgrammes.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingRequest.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingSurvey.cshtml" />
+    <Content Include="Views\EmployeeTraining\ViewTrainingSurvey.cshtml" />
+    <Content Include="Views\EmployeeTraining\_knowledgeGap.cshtml" />
+    <Content Include="Views\EmployeeTraining\_knowledgeGapDepartment.cshtml" />
+    <Content Include="Views\EmployeeTraining\_knowledgeGapDepartmentrows.cshtml" />
+    <Content Include="Views\EmployeeTraining\_knowledgeGapForm.cshtml" />
+    <Content Include="Views\EmployeeTraining\_rows.cshtml" />
+    <Content Include="Views\EmployeeTraining\_TrainingProgrammes.cshtml" />
+    <Content Include="Views\EmployeeTraining\_TrainingProgrammesrows.cshtml" />
+    <Content Include="Views\FleetManagement\FleetLogs.cshtml" />
+    <Content Include="Views\FleetMgt\FleetLogreports.cshtml" />
+    <Content Include="Views\FleetMgt\MaintainaceLineView.cshtml" />
+    <Content Include="Views\FleetMgt\MaintainanceAndRepair.cshtml" />
+    <Content Include="Views\FleetMgt\NewMaitainanceAndRepair.cshtml" />
+    <Content Include="Views\FleetMgt\ViewFleetMgt.cshtml" />
+    <Content Include="Views\FleetMgt\ViewMaintanaceAndRepair.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HumanResourceHome\_DisciplinaryStatusWidget.cshtml" />
+    <Content Include="Views\ImprestSurrender\Substitution.cshtml" />
+    <Content Include="Views\Imprest\ApprovalCommentLines.cshtml" />
+    <Content Include="Views\LeaveApplication\LeaveAcknowledgment.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\AcademicRequirements.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\AddAcademicQualification.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\AddJobResponsibility.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\AddOtherRequirement.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\AddSkill.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\JobResponsibility.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\MandatoryDocuments.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\OtherRequirements.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\RecruitmentNeeds.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\Skills.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\ViewRecruitmentNeed.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\_academicRequirementsModels.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\_OtherRequirementsModels.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\_ResponsibilityModel.cshtml" />
+    <Content Include="Views\RecruitmentNeeds\_SkillModel.cshtml" />
+    <Content Include="Views\StaffAdvance\EditAdvanceRequest.cshtml" />
+    <Content Include="Views\StaffAdvance\NewStaffAdvance.cshtml" />
+    <Content Include="Views\StaffAdvance\OnBeforeEdit.cshtml" />
+    <Content Include="Views\StaffAdvance\OpenStaffAdvance.cshtml" />
+    <Content Include="Views\StaffAdvance\ViewStaffAdvance.cshtml" />
+    <Content Include="Views\StaffAdvance\_AdvanceDocumentLine.cshtml" />
+    <Content Include="Views\StaffAdvance\_AdvanceLine.cshtml" />
+    <Content Include="Views\TargetSettings\Appraisals.cshtml" />
+    <Content Include="Views\TargetSettings\ApprovedMidYearAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\CorporateWorkplanList.cshtml" />
+    <Content Include="Views\TargetSettings\DepartmentWorkplans.cshtml" />
+    <Content Include="Views\TargetSettings\DirectorateWorkplan.cshtml" />
+    <Content Include="Views\TargetSettings\MidYearAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\NewAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\NewMidYearAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\NewPeerAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorViewAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\ViewProbationAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\NewTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\EmployeePeerAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\PeerAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\PerformanceInfo.cshtml" />
+    <Content Include="Views\TargetSettings\Probation.cshtml" />
+    <Content Include="Views\TargetSettings\ProbationAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\StaffTargetObjectivesList.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorMidYearAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorViewMidYearAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\SuperVisorViewTargetSettings.cshtml" />
+    <Content Include="Views\TargetSettings\TargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\ViewAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\ViewEmployeePeerAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\ViewMidYearAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\ViewPeerAppraisal.cshtml" />
+    <Content Include="Views\TargetSettings\ViewTargetSettings.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineCommunicationAndTeamWork.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineEmployeeComments.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineJobKnowledgeReviews.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineLearningGoals.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineManagementReviews.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineProblemSolvings.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLines.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraisalLineSuperVisorComments.cshtml" />
+    <Content Include="Views\TargetSettings\_MidYearAgreedActionsLines.cshtml" />
+    <Content Include="Views\TargetSettings\_MidYearConcernsLines.cshtml" />
+    <Content Include="Views\TargetSettings\_MidYearLines.cshtml" />
+    <Content Include="Views\TargetSettings\_PeerAppraisalAknowLedgementReview.cshtml" />
+    <Content Include="Views\TargetSettings\_PeerAppraisalCommunicationReview.cshtml" />
+    <Content Include="Views\TargetSettings\_PeerAppraisalManagmentReview.cshtml" />
+    <Content Include="Views\TargetSettings\_PeerAppraisalProblemSolvingReview.cshtml" />
+    <Content Include="Views\TargetSettings\_PerformanceSidebar.cshtml" />
+    <Content Include="Views\TargetSettings\_TargetSettingLine.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\ErrorResponse.cshtml" />
+    <Content Include="Views\Shared\InfoResponse.cshtml" />
+    <Content Include="Views\Shared\ConfirmResponse.cshtml" />
+    <Content Include="Views\Shared\SuccessResponse.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SendPasswordResetLink.cshtml" />
+    <Content Include="Views\Account\ResetEmployeePassword.cshtml" />
+    <Content Include="Views\FinanceHome\_EmployeeBalanceWidget.cshtml" />
+    <Content Include="Views\FinanceHome\_FinanceSidebar.cshtml" />
+    <Content Include="Views\FinanceHome\FinanceInfo.cshtml" />
+    <Content Include="Views\HumanResourceHome\HumanResourceInfo.cshtml" />
+    <Content Include="Views\HumanResourceHome\_HumanResourceSidebar.cshtml" />
+    <Content Include="Views\HumanResourceHome\_EmployeeLeaveBalanceWidget.cshtml" />
+    <Content Include="Views\Account\EmployeeProfile.cshtml" />
+    <Content Include="Views\Account\_EmployeeProfileSidebar.cshtml" />
+    <Content Include="Views\Imprest\NewImprestRequest.cshtml" />
+    <Content Include="Views\Imprest\EditImprestRequest.cshtml" />
+    <Content Include="Views\Imprest\ViewImprestRequest.cshtml" />
+    <Content Include="Views\Imprest\ImprestRequestHistory.cshtml" />
+    <Content Include="Views\Imprest\_ImprestLine.cshtml" />
+    <Content Include="Views\Imprest\_ViewImprestLine.cshtml" />
+    <Content Include="Views\Imprest\ImprestApproval.cshtml" />
+    <Content Include="Views\Imprest\_ImprestDocumentLine.cshtml" />
+    <Content Include="Views\Imprest\_ViewImprestDocumentLine.cshtml" />
+    <Content Include="Views\ImprestSurrender\NewImprestSurrender.cshtml" />
+    <Content Include="Views\ImprestSurrender\EditImprestSurrender.cshtml" />
+    <Content Include="Views\ImprestSurrender\ViewImprestSurrender.cshtml" />
+    <Content Include="Views\ImprestSurrender\ImprestSurrenderHistory.cshtml" />
+    <Content Include="Views\ImprestSurrender\ImprestSurrenderApproval.cshtml" />
+    <Content Include="Views\ImprestSurrender\_ImprestDocumentLine.cshtml" />
+    <Content Include="Views\ImprestSurrender\_ViewImprestDocumentLine.cshtml" />
+    <Content Include="Views\ImprestSurrender\_ImprestSurrenderLine.cshtml" />
+    <Content Include="Views\ImprestSurrender\_ViewImprestSurrenderLine.cshtml" />
+    <Content Include="Views\FundsClaim\NewFundsClaim.cshtml" />
+    <Content Include="Views\FundsClaim\EditFundsClaim.cshtml" />
+    <Content Include="Views\FundsClaim\ViewFundsClaim.cshtml" />
+    <Content Include="Views\FundsClaim\FundsClaimHistory.cshtml" />
+    <Content Include="Views\FundsClaim\_UploadDocumentLine.cshtml" />
+    <Content Include="Views\FundsClaim\_ViewUplodedDocumentLine.cshtml" />
+    <Content Include="Views\FundsClaim\_FundsClaimLine.cshtml" />
+    <Content Include="Views\FundsClaim\_ViewFundsClaimLine.cshtml" />
+    <Content Include="Views\PettyCash\NewPettyCashRequest.cshtml" />
+    <Content Include="Views\PettyCash\EditPettyCashRequest.cshtml" />
+    <Content Include="Views\PettyCash\ViewPettyCashRequest.cshtml" />
+    <Content Include="Views\PettyCash\PettyCashRequestHistory.cshtml" />
+    <Content Include="Views\PettyCash\PettyCashApproval.cshtml" />
+    <Content Include="Views\PettyCash\_PettyCashDocumentLine.cshtml" />
+    <Content Include="Views\PettyCash\_ViewPettyCashDocumentLine.cshtml" />
+    <Content Include="Views\PettyCash\_PettyCashLine.cshtml" />
+    <Content Include="Views\PettyCash\_ViewPettyCashLine.cshtml" />
+    <Content Include="Views\Approval\Approvals.cshtml" />
+    <Content Include="Views\Approval\RequestsToApprove.cshtml" />
+    <Content Include="Views\Approval\_ApprovalSidebar.cshtml" />
+    <Content Include="Views\FundsClaim\FundsClaimApproval.cshtml" />
+    <Content Include="Views\LeaveApplication\_ViewLeaveApplicationDocument.cshtml" />
+    <Content Include="Views\LeaveApplication\_LeaveApplicationDocument.cshtml" />
+    <Content Include="Views\LeaveApplication\LeaveApplicationApproval.cshtml" />
+    <Content Include="Views\LeaveApplication\LeaveApplicationHistory.cshtml" />
+    <Content Include="Views\LeaveApplication\ViewLeaveApplication.cshtml" />
+    <Content Include="Views\LeaveApplication\EditLeaveApplication.cshtml" />
+    <Content Include="Views\LeaveApplication\NewLeaveApplication.cshtml" />
+    <Content Include="Views\PayrollHome\_PayrollSidebar.cshtml" />
+    <Content Include="Views\PayrollHome\PayrollInfo.cshtml" />
+    <Content Include="Views\EmployeePayslip\PrintEmployeePayslip.cshtml" />
+    <Content Include="Views\ProcurementHome\ProcurementInfo.cshtml" />
+    <Content Include="Views\ProcurementHome\_ProcurementSidebar.cshtml" />
+    <Content Include="Views\PurchaseRequisition\NewPurchaseRequisition.cshtml" />
+    <Content Include="Views\PurchaseRequisition\EditPurchaseRequisition.cshtml" />
+    <Content Include="Views\PurchaseRequisition\ViewPurchaseRequisition.cshtml" />
+    <Content Include="Views\PurchaseRequisition\_PurchaseRequisitionLine.cshtml" />
+    <Content Include="Views\PurchaseRequisition\_ViewPurchaseRequisitionLine.cshtml" />
+    <Content Include="Views\PurchaseRequisition\PurchaseRequisitionHistory.cshtml" />
+    <Content Include="Views\PurchaseRequisition\PurchaseRequisitionApproval.cshtml" />
+    <Content Include="Views\PurchaseRequisition\_PurchaseRequisitionDocument.cshtml" />
+    <Content Include="Views\PurchaseRequisition\_ViewPurchaseRequisitionDocument.cshtml" />
+    <Content Include="Views\StoreRequisition\NewStoreRequisition.cshtml" />
+    <Content Include="Views\StoreRequisition\EditStoreRequisition.cshtml" />
+    <Content Include="Views\StoreRequisition\ViewStoreRequisition.cshtml" />
+    <Content Include="Views\StoreRequisition\_StoreRequisitionLine.cshtml" />
+    <Content Include="Views\StoreRequisition\_ViewStoreRequisitionLine.cshtml" />
+    <Content Include="Views\StoreRequisition\StoreRequisitionHistory.cshtml" />
+    <Content Include="Views\StoreRequisition\_StoreRequisitionDocument.cshtml" />
+    <Content Include="Views\StoreRequisition\_ViewStoreRequisitionDocument.cshtml" />
+    <Content Include="Views\InventoryHome\InventoryInfo.cshtml" />
+    <Content Include="Views\InventoryHome\_InventorySidebar.cshtml" />
+    <Content Include="Views\StoreRequisition\StoreRequisitionApproval.cshtml" />
+    <Content Include="Views\EmployeeTraining\NewEmployeeTrainingApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\EditEmployeeTrainingApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\ViewTrainingRequests.cshtml" />
+    <Content Include="Views\EmployeeTraining\EmployeeApplicationsHistory.cshtml" />
+    <Content Include="Views\EmployeeTraining\_EmployeeTrainingDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeTraining\_ViewEmployeeTrainingDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\_AppraisalEvaluationDocument.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\_AppraisalEvaluationLine.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\_ViewAppraisalEvaluationDocument.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\_ViewAppraisalEvaluationLine.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\AppraisalEvaluationHistory.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\EditAppraisalEvaluation.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\NewAppraisalEvaluation.cshtml" />
+    <Content Include="Views\EmployeeEvaluation\ViewAppraisalEvaluation.cshtml" />
+    <Content Include="Views\EmployeeTraining\NewTrainingNeedApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\EditTrainingNeedApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\ViewTrainingNeedRequests.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingNeedsHistory.cshtml" />
+    <Content Include="Views\EmployeeTraining\_EmployeeTrainingNeedDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeTraining\_ViewEmployeeTrainingNeedDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeTraining\NewTrainingEvaluationApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\EditTrainingEvaluationApplication.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingEvaluationApprovals.cshtml" />
+    <Content Include="Views\EmployeeTraining\ViewTrainingEvaluationRequests.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingEvaluationsHistory.cshtml" />
+    <Content Include="Views\EmployeeTraining\_EmployeeTrainingEvaluationDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeTraining\_ViewEmployeeTrainingEvaluationDocumentLine.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\NewEmployeeAppraisal.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\EditEmployeeAppraisal.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\ViewEmployeeAppraisal.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\EmployeeAppraisalHistory.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\_EmployeeAppraisalLine.cshtml" />
+    <Content Include="Views\EmployeeAppraisal\_ViewEmployeeAppraisalLine.cshtml" />
+    <Content Include="Views\EmployeeP9\PrintEmployeeP9.cshtml" />
+    <Content Include="Views\LeaveReimbursement\NewLeaveReimbursment.cshtml" />
+    <Content Include="Views\LeaveReimbursement\EditLeaveReimbursement.cshtml" />
+    <Content Include="Views\LeaveReimbursement\ViewLeaveReimbursement.cshtml" />
+    <Content Include="Views\LeaveReimbursement\LeaveReimbursementHistory.cshtml" />
+    <Content Include="Views\Documents\DocumentInfo.cshtml" />
+    <Content Include="Views\Documents\_DocumentSidebar.cshtml" />
+    <Content Include="Views\Documents\ViewDocuments.cshtml" />
+    <Content Include="Views\Documents\_PreviewDocument.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingApplicationApproval.cshtml" />
+    <Content Include="Views\EmployeeTraining\TrainingNeedApproval.cshtml" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Approval\OpenEntries.cshtml" />
+    <Content Include="Views\Approval\RejectedEntries.cshtml" />
+    <Content Include="Views\Approval\ApprovedEntries.cshtml" />
+    <Content Include="Views\LoanApplication\LoanApplicationHistory.cshtml" />
+    <Content Include="Views\LoanApplication\NewLoanApplication.cshtml" />
+    <Content Include="Views\LoanApplication\ViewLoanApplication.cshtml" />
+    <Content Include="Views\LoanApplication\EditLoanApplication.cshtml" />
+    <Content Include="Views\SalaryAdvance\_SalaryAdvanceLine.cshtml" />
+    <Content Include="Views\SalaryAdvance\_ViewSalaryAdvanceLine.cshtml" />
+    <Content Include="Views\SalaryAdvance\SalaryAdvanceHistory.cshtml" />
+    <Content Include="Views\SalaryAdvance\ViewSalaryAdvance.cshtml" />
+    <Content Include="Views\SalaryAdvance\EditSalaryAdvance.cshtml" />
+    <Content Include="Views\SalaryAdvance\NewSalaryAdvance.cshtml" />
+    <Content Include="Views\PerformanceTarget\EmployeePerformanceTargetHistory.cshtml" />
+    <Content Include="Views\PerformanceTarget\ViewEmployeePerformanceTarget.cshtml" />
+    <Content Include="Views\PerformanceTarget\_ViewGlobalAppraisalPerspectives.cshtml" />
+    <Content Include="Views\PerformanceTarget\_ViewJobPerformanceTarget.cshtml" />
+    <Content Include="Views\PerformanceTarget\_ViewEmployeePerformanceTargetLine.cshtml" />
+    <Content Include="Views\PerformanceTarget\_ViewBusinessCoreValuesAndCompetencies.cshtml" />
+    <Content Include="Views\PerformanceTarget\NewEmployeePerformanceTarget.cshtml" />
+    <Content Include="Views\PerformanceTarget\_EmployeePerformanceTargetLine.cshtml" />
+    <Content Include="Views\AppraiseeEvaluation\_AppraiseeEvaluationLine.cshtml" />
+    <Content Include="Views\AppraiseeEvaluation\AppraiseeEvaluationHistory.cshtml" />
+    <Content Include="Views\AppraiseeEvaluation\ViewAppraiseeEvaluation.cshtml" />
+    <Content Include="Views\AppraiserEvaluation\_AppraiserEvaluationLine.cshtml" />
+    <Content Include="Views\AppraiserEvaluation\ViewAppraiserEvaluation.cshtml" />
+    <Content Include="Views\AppraiserEvaluation\AppraiserEvaluationHistory.cshtml" />
+    <Content Include="Views\CompleteAppraisal\_CompleteAppraisalLine.cshtml" />
+    <Content Include="Views\CompleteAppraisal\ViewCompleteAppraisal.cshtml" />
+    <Content Include="Views\CompleteAppraisal\CompleteAppraisalHistory.cshtml" />
+    <Content Include="Views\ModeratedAppraisal\ModeratedAppraisalHistory.cshtml" />
+    <Content Include="Views\ModeratedAppraisal\ViewModeratedAppraisal.cshtml" />
+    <Content Include="Views\ModeratedAppraisal\_ModeratedAppraisalLine.cshtml" />
+    <Content Include="Views\EndYearEvaluation\ViewEndYearEvaluation.cshtml" />
+    <Content Include="Views\EndYearEvaluation\_EndYearEvaluationLine.cshtml" />
+    <Content Include="Views\EndYearEvaluation\EndYearEvaluationHistory.cshtml" />
+    <Content Include="Views\CompleteAppraisal\CompleteAppraiseeAppraisal.cshtml" />
+    <Content Include="Views\LeaveApplication\_employeeSplittedLeaveBalance.cshtml" />
+    <Content Include="Views\ClaimsRefund\NewClaimsRefund.cshtml" />
+    <Content Include="Views\ClaimsRefund\EditClaimsRefund.cshtml" />
+    <Content Include="Views\ClaimsRefund\ViewClaimsRefund.cshtml" />
+    <Content Include="Views\ClaimsRefund\ClaimsRefundHistory.cshtml" />
+    <Content Include="Views\ClaimsRefund\_ClaimsRefundLine.cshtml" />
+    <Content Include="Views\ClaimsRefund\_ViewClaimsRefundLine.cshtml" />
+    <Content Include="Views\ClaimsRefund\ClaimsRefundApproval.cshtml" />
+    <Content Include="Views\ClaimsRefund\_ClaimsRefundDocumentLine.cshtml" />
+    <Content Include="Views\ClaimsRefund\_ViewClaimsRefundDocumentLine.cshtml" />
+    <Content Include="Views\PettyCashSurrender\PettyCashSurrenderApproval.cshtml" />
+    <Content Include="Views\PettyCashSurrender\NewPettyCashSurrender.cshtml" />
+    <Content Include="Views\PettyCashSurrender\_PettyCashSurrenderDocumentLine.cshtml" />
+    <Content Include="Views\PettyCashSurrender\_PettyCashSurrenderLine.cshtml" />
+    <Content Include="Views\PettyCashSurrender\_ViewPettyCashSurrenderLine.cshtml" />
+    <Content Include="Views\PettyCashSurrender\ViewPettyCashSurrender.cshtml" />
+    <Content Include="Views\PettyCashSurrender\PettyCashSurrenderHistory.cshtml" />
+    <Content Include="Views\PettyCashSurrender\EditPettyCashSurrender.cshtml" />
+    <Content Include="Views\PettyCashSurrender\_ViewPettyCashSurrenderDocumentLine.cshtml" />
+    <Content Include="Views\StaffRequisition\StaffRequisitionHistory.cshtml" />
+    <Content Include="Views\StaffRequisition\ViewStaffRequisitionApproval.cshtml" />
+    <Content Include="Views\StaffRequisition\NewStaffRequisition.cshtml" />
+    <Content Include="Views\StaffRequisition\EditStaffRequisition.cshtml" />
+    <Content Include="Views\StaffRequisition\ViewStaffRequisition.cshtml" />
+    <Content Include="Views\StaffRequisition\_JobDescriptionDocument.cshtml" />
+    <Content Include="Views\StaffRequisition\_ViewJobDescriptionDocument.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddJobResponsibilities.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddOtherRequirements.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddJobAcademicQualifications.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddJobProfessionalQualifications.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddJobProfessionalBodies.cshtml" />
+    <Content Include="Views\StaffRequisition\_AddChapter6Requirement.cshtml" />
+    <Content Include="Views\StaffRequisition\_JobExperience.cshtml" />
+    <Content Include="Views\PurchaseOrder\_ViewPurchaseOrderLine.cshtml" />
+    <Content Include="Views\RFX\_ViewRFXLine.cshtml" />
+    <Content Include="Views\PurchaseOrder\PurchaseOrderApproval.cshtml" />
+    <Content Include="Views\RFX\RFXApproval.cshtml" />
+    <Content Include="Views\AppraisalResults\_AppraisalResults.cshtml" />
+    <Content Include="Views\Appraisals\_Appraisals.cshtml" />
+    <Content Include="Views\Appraisals\_CoreCompetencies.cshtml" />
+    <Content Include="Views\CustomerAppraisals\_CustomerAppraisals.cshtml" />
+    <Content Include="Views\PerformanceHome\AppraisalResultsHome.cshtml" />
+    <Content Include="Views\PerformanceHome\AppraisalsHome.cshtml" />
+    <Content Include="Views\PerformanceHome\CustomerAppraisalHome.cshtml" />
+    <Content Include="Views\PerformanceHome\PeerAppraisalHome.cshtml" />
+    <Content Include="Views\PerformanceHome\PerformanceInfo.cshtml" />
+    <Content Include="Views\PerformanceHome\SubordinateAppraisalHome.cshtml" />
+    <Content Include="Views\PerformanceHome\SupervisorAppraisalHome.cshtml" />
+    <Content Include="Views\PerformanceHome\TargetsHome.cshtml" />
+    <Content Include="Views\PerformanceHome\_PerformanceManagementSidebar.cshtml" />
+    <Content Include="Views\PerformanceTargets\_TargetSetting.cshtml" />
+    <Content Include="Views\ProjectHome\ProjectInfo.cshtml" />
+    <Content Include="Views\ProjectHome\_ProjectManagementSidebar.cshtml" />
+    <Content Include="Views\SubordinateAppraisals\_SubordinateAppraisals.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\SupervisorAppraiseeForm.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\_SupervisorAppraisals.cshtml" />
+    <Content Include="Views\WorkPlans\FillWorkplan.cshtml" />
+    <Content Include="Views\WorkPlans\_AsstManagersWorkPlans.cshtml" />
+    <Content Include="Views\WorkPlans\_DirectorsWorkPlans.cshtml" />
+    <Content Include="Views\WorkPlans\_FillWorkplan.cshtml" />
+    <Content Include="Views\WorkPlans\_ManagersWorkPlans.cshtml" />
+    <Content Include="Views\WorkPlans\_OfficersWorkPlans.cshtml" />
+    <Content Include="Views\Projects\_ManagerProjects.cshtml" />
+    <Content Include="Views\Projects\ViewProjectDetails.cshtml" />
+    <Content Include="Views\PeerAppraisals\_PeerAppraisals.cshtml" />
+    <Content Include="Views\Projects\ViewTeamMembers.cshtml" />
+    <Content Include="Views\Projects\ProjectBenefits.cshtml" />
+    <Content Include="Views\Projects\ProjectRisks.cshtml" />
+    <Content Include="Views\Projects\_MemberProjects.cshtml" />
+    <Content Include="Views\Projects\_ProjectsHome.cshtml" />
+    <Content Include="Views\Projects\ProjectMemberTasks.cshtml" />
+    <Content Include="Views\Projects\EditProjectBenefit.cshtml" />
+    <Content Include="Views\Projects\AddProjectBenefit.cshtml" />
+    <Content Include="Views\Projects\AddProjectRisk.cshtml" />
+    <Content Include="Views\Projects\EditProjectRisk.cshtml" />
+    <Content Include="Views\Projects\ManageProject.cshtml" />
+    <Content Include="Views\Projects\AddProjectTask.cshtml" />
+    <Content Include="Views\Projects\EditTaskManager.cshtml" />
+    <Content Include="Views\Projects\EditMemberTasks.cshtml" />
+    <Content Include="Views\PeerAppraisals\SinglePeerForm.cshtml" />
+    <Content Include="Views\Appraisals\SinglePeerForm.cshtml" />
+    <Content Include="Views\PeerAppraisals\GetPeerLineForedit.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\SingleAppraiseeForm.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\GetPTAppraiseeLine.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\SingleAppraiseeFormCC.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\GetCCAppraiseeLine.cshtml" />
+    <Content Include="Views\CustomerAppraisals\SingleCustomerForm.cshtml" />
+    <Content Include="Views\CustomerAppraisals\GetCustomerLineForedit.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\GetAppraisees.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\FinalAppraisal.cshtml" />
+    <Content Include="Views\SubordinateAppraisals\SingleSubordinateForm.cshtml" />
+    <Content Include="Views\SubordinateAppraisals\GetSubordinateLineForedit.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\LoadAppraisalResults.cshtml" />
+    <Content Include="Views\Projects\ProjectPlan.cshtml" />
+    <Content Include="Views\Projects\NewProjectPlan.cshtml" />
+    <Content Include="Views\Projects\ProjectPlanDetails.cshtml" />
+    <Content Include="Views\Projects\_ProjectPlanActivities.cshtml" />
+    <Content Include="Views\Projects\AddPlanActivity.cshtml" />
+    <Content Include="Views\Projects\EditPlanActivity.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\MidYearPTAppraiseeLine.cshtml" />
+    <Content Include="Views\Appraisals\MidAppraisals.cshtml" />
+    <Content Include="Views\Appraisals\EndYearAppraisal.cshtml" />
+    <Content Include="Views\Appraisals\_CoreCompetenciesEnd.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\SupervisorAppraisalEnd.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\SingleAppraiseeFormEnd.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\GetPTAppraiseeLineEnd.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\MidYearAppraisal.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\LoadAppraisalResultsMid.cshtml" />
+    <Content Include="Views\AppraisalResults\LoadAppraisalResultsEnd.cshtml" />
+    <Content Include="Views\AppraisalResults\DetailedResults.cshtml" />
+    <Content Include="Views\AppraisalResults\AcceptResults.cshtml" />
+    <Content Include="Views\AppraisalResults\AppealResults.cshtml" />
+    <Content Include="Views\AppraisalResults\EndYearAcceptResults.cshtml" />
+    <Content Include="Views\AppraisalResults\EndYearAppealResults.cshtml" />
+    <Content Include="Views\AppraisalResults\EndYearDetailedResults.cshtml" />
+    <Content Include="Views\SupervisorAppraisals\EndYearGetAppraisees.cshtml" />
+    <Content Include="Views\Projects\ProjectsClosure.cshtml" />
+    <Content Include="Views\Projects\AddClosureProject.cshtml" />
+    <Content Include="Views\AppraisalResults\EndYearDeclineResults.cshtml" />
+    <Content Include="Views\AppraisalResults\DeclineResults.cshtml" />
+    <Content Include="Views\Timesheet\TimeSheets.cshtml" />
+    <Content Include="Views\Timesheet\ViewTimeSheet.cshtml" />
+    <Content Include="Views\Timesheet\_ViewTimeSheetLine.cshtml" />
+    <Content Include="Views\Timesheet\_TimeSheetEditItemForm.cshtml" />
+    <Content Include="Views\Timesheet\SupervisorTimeSheetList.cshtml" />
+    <Content Include="Views\Timesheet\ViewSupervisorTimeSheet.cshtml" />
+    <Content Include="Views\Timesheet\TasksUndertakenLine.cshtml" />
+    <Content Include="Views\Timesheet\_TimeSheetAddTask.cshtml" />
+    <Content Include="Views\ActivityRequest\ImprestRequestHistory.cshtml" />
+    <Content Include="Views\ActivityRequest\NewImprestRequest.cshtml" />
+    <Content Include="Views\ActivityRequest\EditImprestRequest.cshtml" />
+    <Content Include="Views\ActivityRequest\ViewImprestRequest.cshtml" />
+    <Content Include="Views\ActivityRequest\ImprestApproval.cshtml" />
+    <Content Include="Views\ActivityRequest\_ImprestDocumentLine.cshtml" />
+    <Content Include="Views\ActivityRequest\_ImprestLine.cshtml" />
+    <Content Include="Views\BidAnalysis\BidAnalysisApproval.cshtml" />
+    <Content Include="Views\BidAnalysis\_ViewBidAnalysisLine.cshtml" />
+    <Content Include="Views\PaymentVoucher\PaymentVoucherApproval.cshtml" />
+    <Content Include="Views\PaymentVoucher\_ViewPVLine.cshtml" />
+    <Content Include="Views\Shared\ImportantDocs.cshtml" />
+    <Content Include="Views\FleetMgt\FleetMgtList.cshtml" />
+    <Content Include="Views\FleetMgt\FleetMgtLine.cshtml" />
+    <Content Include="Views\FleetMgt\_FleetMgtAddLog.cshtml" />
+    <None Include="Service References\DynamicsNAVODataServiceReference\service.edmx" />
+    <Content Include="Service References\ODataService\ConnectedService.json" />
+    <Content Include="Views\TargetSettings\SupervisorApprovedAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorApprovedMidAppraisals.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorApprovedTargetSetting.cshtml" />
+    <None Include="Service References\RecruitmentNeeds\RecruitmentNeeds.wsdl" />
+    <Content Include="Views\TargetSettings\AppraiseeTargets.cshtml" />
+    <Content Include="Views\TargetSettings\ViewAprraiseTargetSettings.cshtml" />
+    <Content Include="Views\TargetSettings\_AppraiseeTargetSettingLine.cshtml" />
+    <Content Include="Views\TargetSettings\MIBstatics.cshtml" />
+    <Content Include="Views\TargetSettings\Salesstatics.cshtml" />
+    <Content Include="Views\TargetSettings\SignedSales.cshtml" />
+    <Content Include="Views\TargetSettings\SalesInstallment.cshtml" />
+    <Content Include="Views\TargetSettings\HRViewAprraiseTargetSettings.cshtml" />
+    <Content Include="Views\TargetSettings\HREAcceptedTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\HREPendingTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorEmpApprovedTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\SupervisorEmpPendingTargetSetting.cshtml" />
+    <Content Include="Views\TargetSettings\ApprovalsTargetSettings.cshtml" />
+    <Content Include="Views\TargetSettings\PillarsTargetSettings.cshtml" />
+    <None Include="Web References\ActivityRequestWs\ActivityRequest.wsdl" />
+    <None Include="Web References\ActivityRequestWs\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ApprovalManagementWebServiceReference\PortalApprovalManager.wsdl" />
+    <None Include="Web References\ApprovalManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DocumentManagementWebServiceRef\DocumentMgmt.wsdl" />
+    <None Include="Web References\DocumentManagementWebServiceRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\EmployeeAccountWebServiceReference\EmployeeAccountWebService.wsdl" />
+    <None Include="Web References\EmployeeAccountWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\EmployeeAppraisalManagementWebServiceRef\EmployeeAppraisalManagementWS.wsdl" />
+    <None Include="Web References\EmployeeAppraisalManagementWebServiceRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\EmployeeTrainingManagementWebServiceRef\EmployeeTrainingManagementWS.wsdl" />
+    <None Include="Web References\EmployeeTrainingManagementWebServiceRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\FundsClaimManagementWebServiceReference\FundsClaimManagementWebService.wsdl" />
+    <None Include="Web References\FundsClaimManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\FundsManagementWebServiceReference\FundsManagementWebService.wsdl" />
+    <None Include="Web References\FundsManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\HumanResourceManagmentWebServiceReference\HumanResourceManagementWS.wsdl" />
+    <None Include="Web References\HumanResourceManagmentWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\InventoryManagementWebServiceReference\InventoryManagementWS.wsdl" />
+    <None Include="Web References\InventoryManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LoanManagementWebServiceReference\LoanManagementWebService.wsdl" />
+    <None Include="Web References\LoanManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ImprestStaffAdvance\ImprestStaffAdvance.wsdl" />
+    <Content Include="Web References\ImprestStaffAdvance\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+    </Content>
+    <None Include="Web References\StaffAdvanceWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NativeApprovalsMgmtWebReference\Approvals_Mgmt.wsdl" />
+    <Content Include="Web References\NativeApprovalsMgmtWebReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Property_Card\Property_Card.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ProjectPortalUpdate\ProjectPortalUpdate.wsdl" />
+    <Content Include="Web References\ProjectPortalUpdate\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\Property_Card\Property_Card.wsdl" />
+    <Content Include="Web References\Property_Card\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\StaffAdvanceWebServiceReference\StaffAdvance.wsdl" />
+    <None Include="Web References\MemoSalaryAdvanceWebServiceReference\MemoSalaryAdvanceWebService.wsdl" />
+    <None Include="Web References\MemoSalaryAdvanceWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PayrollManagementWebServiceReference\PayrollManagementWS.wsdl" />
+    <None Include="Web References\PayrollManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PerformanceManagementWebServiceReference\PerformanceManagement.wsdl" />
+    <None Include="Web References\PerformanceManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProcurementManagementWebServiceReference\ProcurementManagementWS.wsdl" />
+    <None Include="Web References\ProcurementManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProjectManagementWebServiceReference\ProjectManagementWS.wsdl" />
+    <None Include="Web References\ProjectManagementWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TimeSheet\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TimeSheet\TimeSheetWS.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\admin-lte\" />
+    <Folder Include="Content\AdminLTE\" />
+    <Folder Include="Content\bootstrap\" />
+    <Folder Include="Content\DataTables\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Content\MaterialUI\" />
+    <Folder Include="Content\Select2Plugin\" />
+    <Folder Include="Content\SysreThemes\" />
+    <Folder Include="Content\tether\" />
+    <Folder Include="Content\themes\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Scripts\HumanResource\HumanResourceHomeScripts\" />
+    <Folder Include="Scripts\Inventory\InventoryHomeScripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Codeunit/Approvals_Mgmt">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NativeApprovalsMgmtWebReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Codeunit/Approvals_Mgmt</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_NativeApprovalsMgmtWebReference_Approvals_Mgmt</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Codeunit/ProjectPortalUpdate">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProjectPortalUpdate\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Codeunit/ProjectPortalUpdate</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_ProjectPortalUpdate_ProjectPortalUpdate</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven%2520R.E/Page/Property_Card">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Property_Card\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven%2520R.E/Page/Property_Card</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_Property_Card_Property_Card_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/LoanManagementWebService">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LoanManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/LoanManagementWebService</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_LoanManagementWebServiceReference_LoanManagementWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/MemoSalaryAdvanceWebService">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MemoSalaryAdvanceWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/MemoSalaryAdvanceWebService</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_MemoSalaryAdvanceWebServiceReference_MemoSalaryAdvanceWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PerformanceManagement">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PerformanceManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PerformanceManagement</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_PerformanceManagementWebServiceReference_PerformanceManagement</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://102.133.239.194:3032/Regent/WS/Regent%2520Ltd/Codeunit/EmployeeAppraisalManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EmployeeAppraisalManagementWebServiceRef\</RelPath>
+      <UpdateFromURL>http://102.133.239.194:3032/Regent/WS/Regent%2520Ltd/Codeunit/EmployeeAppraisalManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_EmployeeAppraisalManagementWebServiceRef_EmployeeAppraisalManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://102.133.239.194:3032/Regent/WS/Regent%2520Ltd/Codeunit/EmployeeTrainingManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EmployeeTrainingManagementWebServiceRef\</RelPath>
+      <UpdateFromURL>http://102.133.239.194:3032/Regent/WS/Regent%2520Ltd/Codeunit/EmployeeTrainingManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_EmployeeTrainingManagementWebServiceRef_EmployeeTrainingManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProjectManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProjectManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProjectManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_ProjectManagementWebServiceReference_ProjectManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ActivityRequest">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ActivityRequestWs\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ActivityRequest</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_ActivityRequestWs_ActivityRequest</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/DocumentMgmt">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DocumentManagementWebServiceRef\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/DocumentMgmt</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_DocumentManagementWebServiceRef_DocumentMgmt</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/EmployeeAccountWebService">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EmployeeAccountWebServiceReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/EmployeeAccountWebService</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_EmployeeAccountWebServiceReference_EmployeeAccountWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/StaffAdvance">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\StaffAdvanceWebServiceReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/StaffAdvance</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_StaffAdvanceWebServiceReference2_StaffAdvance</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Page/ImprestStaffAdvance">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ImprestStaffAdvance\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Page/ImprestStaffAdvance</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_local_cihebk_cihebsvr_ImprestStaffAdvance_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/FundsClaimManagementWebService">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FundsClaimManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/FundsClaimManagementWebService</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_FundsClaimManagementWebServiceReference_FundsClaimManagementWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/FundsManagementWebService">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FundsManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/FundsManagementWebService</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_FundsManagementWebServiceReference_FundsManagementWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/HumanResourceManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\HumanResourceManagmentWebServiceReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/HumanResourceManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_HumanResourceManagmentWebServiceReference_HumanResourceManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/InventoryManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\InventoryManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/InventoryManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_InventoryManagementWebServiceReference_InventoryManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PayrollManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PayrollManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PayrollManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_PayrollManagementWebServiceReference_PayrollManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/PortalApprovalManager">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApprovalManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/PortalApprovalManager</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_ApprovalManagementWebServiceReference_PortalApprovalManager</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProcurementManagementWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProcurementManagementWebServiceReference\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProcurementManagementWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_ProcurementManagementWebServiceReference_ProcurementManagementWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/TimeSheetWS">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TimeSheet\</RelPath>
+      <UpdateFromURL>http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/TimeSheetWS</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DynamicsNAV365_StaffPortal_TimeSheet_TimeSheetWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\DynamicsNAVODataServiceReference\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RecruitmentNeeds\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>21806</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2037/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.17.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.17.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.17.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.17.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.17.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.17.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.17.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.17.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.17.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.17.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.17.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.17.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.17.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

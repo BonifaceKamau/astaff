@@ -1,0 +1,218 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectBenefitsModel
+
+@{
+    ViewBag.Title = "Add Project Benefit";
+
+    var Rstatus = new SelectList(
+        new List<SelectListItem>
+        {
+              new SelectListItem {Text = "Pre-Project", Value = "Pre-Project"},
+              new SelectListItem {Text = "Post-Project", Value = "Post-Project"},          
+
+        }, "Value", "Text");
+}
+<style>
+    #OtherLbl{
+        font-size:18px;
+        padding:10px;
+        margin-bottom:10px;
+    }
+    </style>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("AddProjectBenefit", "Projects", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title">Add Project Benefit</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right" data-style="slide-right" data-background-color="green" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />*@
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("ProjectBenefits", "Projects") + "?ProjectNo=" + Model.ProjectNo;
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @*@if (Model != null && Model.ErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                        </div>
+                                    }
+
+                                    @Html.HiddenFor(model => model.EmployeeNo)*@
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ProjectNo, htmlAttributes: new { @id = "ProjectNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ProjectNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.ProjectNo, "", new { @id = "ProjectNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.BenefitText, htmlAttributes: new { @id = "BenefitTextLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.BenefitText, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BenefitText, "", new { @id = "BenefitTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ObjectiveSupported, htmlAttributes: new { @id = "ObjectiveLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ObjectiveSupported, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ObjectiveSupported, "", new { @id = "ObjectiveError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.BenefitOwner, htmlAttributes: new { @id = "BenefitOwnerLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.BenefitOwner, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BenefitOwner, "", new { @id = "BenefitOwnerError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.BeneficiariesText, htmlAttributes: new { @id = "BeneficiariesTextLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.BeneficiariesText, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BeneficiariesText, "", new { @id = "BeneficiariesTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.KPIText, htmlAttributes: new { @id = "KPITextLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.KPIText, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.KPIText, "", new { @id = "KPITextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.MeasureText, htmlAttributes: new { @id = "MeasureTextLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.MeasureText, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MeasureText, "", new { @id = "MeasureTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.FrequencyText, htmlAttributes: new { @id = "FrequencyTextLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.FrequencyText, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FrequencyText, "", new { @id = "FrequencyTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.BaselineDate, htmlAttributes: new { @id = "BaseLineDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.BaselineDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.BaselineDate, "", new { @id = "BaseLineDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RealisationStatus, htmlAttributes: new { @id = "RealisationStatusLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.RealisationStatus,Rstatus,"--Select--",new { @class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.RealisationStatus, "", new { @id = "RealisationStatusError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ActualRealisationDate, htmlAttributes: new { @id = "ActualRealisationDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ActualRealisationDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.ActualRealisationDate, "", new { @id = "ActualRealisationDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.TargetValue, htmlAttributes: new { @id = "TargetValueLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.TargetValue, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TargetValue, "", new { @id = "TargetValueError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.BenefitRisks, htmlAttributes: new { @id = "BenefitRisksLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.BenefitRisks, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BenefitRisks, "", new { @id = "BenefitRisksError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.NotesText, htmlAttributes: new { @id = "OtherLbl", @class = "control-label" })
+                                            @Html.TextAreaFor(model => model.NotesText, 5, 80, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.NotesText, "", new { @id = "NotesTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AssumptionsText, htmlAttributes: new { @id = "OtherLbl", @class = "control-label" })
+                                            @Html.TextAreaFor(model => model.AssumptionsText,5,80, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AssumptionsText, "", new { @id = "AssumptionsTextError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	InitializeLeaveApplication();
+        	var LeaveApplicationNo = $("#No").val();
+        	LoadLeaveApplicationDocuments(LeaveApplicationNo);
+        });
+    </script>
+}

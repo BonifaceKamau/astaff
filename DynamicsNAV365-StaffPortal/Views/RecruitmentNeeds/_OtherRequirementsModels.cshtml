@@ -1,0 +1,13 @@
+@model IEnumerable<OdataRef.RecruitmentNeedsOther_Qualifications>
+
+@foreach (var jobOtherRequirement in Model)
+{
+    <tr>
+        <td>@jobOtherRequirement.Qualification</td>
+        @*<td>@jobOtherRequirement.Mandatory</td>*@
+        <td>
+            <a onclick="EditOtherRequirementsLine(this,'@jobOtherRequirement.Code','@jobOtherRequirement.Qualification')">edit</a>|
+            <a onclick="DeleteOtherRequirementsLine(this,'@jobOtherRequirement.Code','@jobOtherRequirement.Qualification')">delete</a>
+        </td>
+    </tr>
+}

@@ -1,0 +1,103 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.HumanResource.PerformanceTargetModels.EmployeePerformanceTargetHeaderModel>
+
+@{
+    ViewBag.Title = "Appraiser Evaluations";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Appraiser Evaluations</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table id="AppraiserEvaluationsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Appraisal No.</th>
+                                                    <th>Employee No.</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Date of First Appointment</th>
+                                                    <th>Appraisal Period</th>
+                                                    <th>Appraisal Stage</th>
+                                                    <th>Supervisor No.</th>
+                                                    <th>Supervisor Name</th>
+                                                    <th>Appraisal Status</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{ string editUrl = "";
+                                                    string viewUrl = "";
+                                                    string approverUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        editUrl = Url.Action("OnBeforeEdit", "AppraiserEvaluation") + "?AppraisalNo=" + Model[i].No;
+                                                        viewUrl = Url.Action("ViewAppraiserEvaluation", "AppraiserEvaluation") + "?AppraisalNo=" + Model[i].No;
+                                                        approverUrl = Url.Action("Approvals", "Approval") + "?AppraisalNo=" + Model[i].No;
+                                                        <tr>
+                                                            <td>@Model[i].No</td>
+                                                            <td>@Model[i].EmployeeNo</td>
+                                                            <td>@Model[i].EmployeeName</td>
+                                                            <td>@Model[i].DateofFirstAppointment</td>
+                                                            <td>@Model[i].AppraisalPeriod</td>
+                                                            <td>@Model[i].AppraisalStage</td>
+                                                            <td>@Model[i].SupervisorNo</td>
+                                                            <td>@Model[i].SupervisorName</td>
+                                                            <td>@Model[i].AppraisalStatus</td>
+                                                            <td>
+                                                                <a href="@viewUrl" class="btn btn-primary print-btn">
+                                                                    <i class="fa fa-search"></i>
+                                                                    MID YEAR Evaluation
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="@approverUrl" style="color:red" class="fa fa-check"><b>Approver(s)</b></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#PerformanceTargetHistoryMenuItem").addClass("active");
+
+            $("#AppraiserEvaluationsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [0,1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

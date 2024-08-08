@@ -1,0 +1,101 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SubordinateAppraisalsModel>
+@{
+    ViewBag.Title = "Single Subordinate  Appraisal  Form";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4 class="title" style="text-align:center">Appraise as a Subordinate</h4> 
+                                </div>
+                                <div class="col-md-5">
+                                    <h4 class="title" style="text-align:center"></h4>
+                                </div>
+                                <div class="col-lg-2">
+                                    @{
+                                        var saved = TempData["saved"];
+                                    }
+                                    @if (saved != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                            @saved
+                                        </a>
+
+
+                                    }
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("SubordinateAppraisalHome", "PerformanceHome")">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Close
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+
+                                <div class="col-lg-11">
+                                    <table id="PeerAppTable" class="table" style="margin-left:20px;">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Perfomance Goals & Targets</th>
+                                                <th>Subordinate Rating</th>
+                                                <th>Subordinate Comments</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{                                               
+                                                string editUrl = "";
+
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+                                                    editUrl = Url.Action("GetSubordinateLineForedit", "SubordinateAppraisals") + "?LineNo=" + Model[i].LineNo;
+
+                                                    <tr>
+                                                        <td>@Model[i].SubGoalsTargets</td>
+                                                        <td>@Model[i].SubordinateRating</td>
+                                                        <td>@Model[i].SubordinateComments</td>
+
+                                                        <td>
+                                                            <a href="@editUrl" class=""><b>Edit</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                                        </td>
+                                                    </tr>}
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+})
+
+</script>

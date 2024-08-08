@@ -1,0 +1,14 @@
+@model IEnumerable<OdataRef.RecruitmentNeedsSkills>
+@foreach (var skill in Model)
+{
+    <tr>
+        <th>@skill.Name</th>
+        <td>@skill.Description</td>
+        <th>@skill.Remarks</th>
+        <td>@skill.Mandatory</td>
+        <td>
+            <a onclick="EditSkillsLine(this,@skill.Line_No,'@skill.Recruitment_Need_Code')">edit</a>|
+            <a onclick="DeleteSkillsLine(this,@skill.Line_No)">delete</a>
+        </td>
+    </tr>
+}

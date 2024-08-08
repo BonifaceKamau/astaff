@@ -1,0 +1,94 @@
+@model IEnumerable<OdataRef.Staff_Appraisal_Header>
+
+@{
+    ViewBag.Title = "Supervisor Appraisal";
+    bool? ApprovedAppraisals = ViewBag.ApprovedAppraisals;
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Supervisor Appraisal</i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Workplan Date</th>
+                                                <th>Staff No</th>
+                                                <th>Period</th>
+                                                <th>Directorate</th>
+                                                <th>Staff Department</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var staffTargetObjectives in Model)
+                                            {
+                                                <tr>
+                                                    <td>@staffTargetObjectives.No</td>
+                                                    <td>@staffTargetObjectives.Created_On</td>
+                                                    <td>@staffTargetObjectives.Staff_No</td>
+                                                    <td>@staffTargetObjectives.Period</td>
+                                                    <td>@staffTargetObjectives.Directorate</td>
+                                                    <td>@staffTargetObjectives.Department</td>
+                                                    <td>
+                                                        @if (ViewBag.Editable == null || ViewBag.Editable == true)
+                                                        {
+                                                            <a href="@Url.Action("SupervisorViewAppraisal", new { no = staffTargetObjectives.No, ediatable= false })" class="">
+                                                                <b>View</b>
+                                                            </a>
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#SupervisorAppraisals").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

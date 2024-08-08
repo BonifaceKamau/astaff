@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetLoaProducts">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLoaProducts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvance">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvance_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OpenMemoSalaryAdvanceNoExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OpenMemoSalaryAdvanceNoExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckMemoSalaryAdvanceExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckMemoSalaryAdvanceExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateMemoSalaryAdvance">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateMemoSalaryAdvance_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyMemoSalaryAdvance">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amountRequested" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyMemoSalaryAdvance_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendMemoSalaryAdvanceApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendMemoSalaryAdvanceApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelMemoSalaryAdvanceApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelMemoSalaryAdvanceApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateMemoSalaryAdvanceLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateMemoSalaryAdvanceLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyMemoSalaryAdvanceLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyMemoSalaryAdvanceLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMemoSalaryAdvanceLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMemoSalaryAdvanceLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceByLineNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMemoSalaryAdvanceByLineNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSalaryAdvanceAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memoNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSalaryAdvanceAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetLoaProducts">
+    <part name="parameters" element="tns:GetLoaProducts" />
+  </message>
+  <message name="GetLoaProducts_Result">
+    <part name="parameters" element="tns:GetLoaProducts_Result" />
+  </message>
+  <message name="GetMemoSalaryAdvance">
+    <part name="parameters" element="tns:GetMemoSalaryAdvance" />
+  </message>
+  <message name="GetMemoSalaryAdvance_Result">
+    <part name="parameters" element="tns:GetMemoSalaryAdvance_Result" />
+  </message>
+  <message name="GetMemoSalaryAdvanceStatus">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceStatus" />
+  </message>
+  <message name="GetMemoSalaryAdvanceStatus_Result">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceStatus_Result" />
+  </message>
+  <message name="OpenMemoSalaryAdvanceNoExists">
+    <part name="parameters" element="tns:OpenMemoSalaryAdvanceNoExists" />
+  </message>
+  <message name="OpenMemoSalaryAdvanceNoExists_Result">
+    <part name="parameters" element="tns:OpenMemoSalaryAdvanceNoExists_Result" />
+  </message>
+  <message name="CheckMemoSalaryAdvanceExists">
+    <part name="parameters" element="tns:CheckMemoSalaryAdvanceExists" />
+  </message>
+  <message name="CheckMemoSalaryAdvanceExists_Result">
+    <part name="parameters" element="tns:CheckMemoSalaryAdvanceExists_Result" />
+  </message>
+  <message name="CreateMemoSalaryAdvance">
+    <part name="parameters" element="tns:CreateMemoSalaryAdvance" />
+  </message>
+  <message name="CreateMemoSalaryAdvance_Result">
+    <part name="parameters" element="tns:CreateMemoSalaryAdvance_Result" />
+  </message>
+  <message name="ModifyMemoSalaryAdvance">
+    <part name="parameters" element="tns:ModifyMemoSalaryAdvance" />
+  </message>
+  <message name="ModifyMemoSalaryAdvance_Result">
+    <part name="parameters" element="tns:ModifyMemoSalaryAdvance_Result" />
+  </message>
+  <message name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckMemoSalaryAdvanceApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendMemoSalaryAdvanceApprovalRequest">
+    <part name="parameters" element="tns:SendMemoSalaryAdvanceApprovalRequest" />
+  </message>
+  <message name="SendMemoSalaryAdvanceApprovalRequest_Result">
+    <part name="parameters" element="tns:SendMemoSalaryAdvanceApprovalRequest_Result" />
+  </message>
+  <message name="CancelMemoSalaryAdvanceApprovalRequest">
+    <part name="parameters" element="tns:CancelMemoSalaryAdvanceApprovalRequest" />
+  </message>
+  <message name="CancelMemoSalaryAdvanceApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelMemoSalaryAdvanceApprovalRequest_Result" />
+  </message>
+  <message name="CreateMemoSalaryAdvanceLine">
+    <part name="parameters" element="tns:CreateMemoSalaryAdvanceLine" />
+  </message>
+  <message name="CreateMemoSalaryAdvanceLine_Result">
+    <part name="parameters" element="tns:CreateMemoSalaryAdvanceLine_Result" />
+  </message>
+  <message name="ModifyMemoSalaryAdvanceLine">
+    <part name="parameters" element="tns:ModifyMemoSalaryAdvanceLine" />
+  </message>
+  <message name="ModifyMemoSalaryAdvanceLine_Result">
+    <part name="parameters" element="tns:ModifyMemoSalaryAdvanceLine_Result" />
+  </message>
+  <message name="DeleteMemoSalaryAdvanceLine">
+    <part name="parameters" element="tns:DeleteMemoSalaryAdvanceLine" />
+  </message>
+  <message name="DeleteMemoSalaryAdvanceLine_Result">
+    <part name="parameters" element="tns:DeleteMemoSalaryAdvanceLine_Result" />
+  </message>
+  <message name="GetMemoSalaryAdvanceLines">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceLines" />
+  </message>
+  <message name="GetMemoSalaryAdvanceLines_Result">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceLines_Result" />
+  </message>
+  <message name="GetMemoSalaryAdvanceByLineNo">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceByLineNo" />
+  </message>
+  <message name="GetMemoSalaryAdvanceByLineNo_Result">
+    <part name="parameters" element="tns:GetMemoSalaryAdvanceByLineNo_Result" />
+  </message>
+  <message name="GetSalaryAdvanceAmount">
+    <part name="parameters" element="tns:GetSalaryAdvanceAmount" />
+  </message>
+  <message name="GetSalaryAdvanceAmount_Result">
+    <part name="parameters" element="tns:GetSalaryAdvanceAmount_Result" />
+  </message>
+  <portType name="MemoSalaryAdvanceWebService_Port">
+    <operation name="GetLoaProducts">
+      <input name="GetLoaProducts" message="tns:GetLoaProducts" />
+      <output name="GetLoaProducts_Result" message="tns:GetLoaProducts_Result" />
+    </operation>
+    <operation name="GetMemoSalaryAdvance">
+      <input name="GetMemoSalaryAdvance" message="tns:GetMemoSalaryAdvance" />
+      <output name="GetMemoSalaryAdvance_Result" message="tns:GetMemoSalaryAdvance_Result" />
+    </operation>
+    <operation name="GetMemoSalaryAdvanceStatus">
+      <input name="GetMemoSalaryAdvanceStatus" message="tns:GetMemoSalaryAdvanceStatus" />
+      <output name="GetMemoSalaryAdvanceStatus_Result" message="tns:GetMemoSalaryAdvanceStatus_Result" />
+    </operation>
+    <operation name="OpenMemoSalaryAdvanceNoExists">
+      <input name="OpenMemoSalaryAdvanceNoExists" message="tns:OpenMemoSalaryAdvanceNoExists" />
+      <output name="OpenMemoSalaryAdvanceNoExists_Result" message="tns:OpenMemoSalaryAdvanceNoExists_Result" />
+    </operation>
+    <operation name="CheckMemoSalaryAdvanceExists">
+      <input name="CheckMemoSalaryAdvanceExists" message="tns:CheckMemoSalaryAdvanceExists" />
+      <output name="CheckMemoSalaryAdvanceExists_Result" message="tns:CheckMemoSalaryAdvanceExists_Result" />
+    </operation>
+    <operation name="CreateMemoSalaryAdvance">
+      <input name="CreateMemoSalaryAdvance" message="tns:CreateMemoSalaryAdvance" />
+      <output name="CreateMemoSalaryAdvance_Result" message="tns:CreateMemoSalaryAdvance_Result" />
+    </operation>
+    <operation name="ModifyMemoSalaryAdvance">
+      <input name="ModifyMemoSalaryAdvance" message="tns:ModifyMemoSalaryAdvance" />
+      <output name="ModifyMemoSalaryAdvance_Result" message="tns:ModifyMemoSalaryAdvance_Result" />
+    </operation>
+    <operation name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled">
+      <input name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled" message="tns:CheckMemoSalaryAdvanceApprovalWorkflowEnabled" />
+      <output name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result" message="tns:CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendMemoSalaryAdvanceApprovalRequest">
+      <input name="SendMemoSalaryAdvanceApprovalRequest" message="tns:SendMemoSalaryAdvanceApprovalRequest" />
+      <output name="SendMemoSalaryAdvanceApprovalRequest_Result" message="tns:SendMemoSalaryAdvanceApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelMemoSalaryAdvanceApprovalRequest">
+      <input name="CancelMemoSalaryAdvanceApprovalRequest" message="tns:CancelMemoSalaryAdvanceApprovalRequest" />
+      <output name="CancelMemoSalaryAdvanceApprovalRequest_Result" message="tns:CancelMemoSalaryAdvanceApprovalRequest_Result" />
+    </operation>
+    <operation name="CreateMemoSalaryAdvanceLine">
+      <input name="CreateMemoSalaryAdvanceLine" message="tns:CreateMemoSalaryAdvanceLine" />
+      <output name="CreateMemoSalaryAdvanceLine_Result" message="tns:CreateMemoSalaryAdvanceLine_Result" />
+    </operation>
+    <operation name="ModifyMemoSalaryAdvanceLine">
+      <input name="ModifyMemoSalaryAdvanceLine" message="tns:ModifyMemoSalaryAdvanceLine" />
+      <output name="ModifyMemoSalaryAdvanceLine_Result" message="tns:ModifyMemoSalaryAdvanceLine_Result" />
+    </operation>
+    <operation name="DeleteMemoSalaryAdvanceLine">
+      <input name="DeleteMemoSalaryAdvanceLine" message="tns:DeleteMemoSalaryAdvanceLine" />
+      <output name="DeleteMemoSalaryAdvanceLine_Result" message="tns:DeleteMemoSalaryAdvanceLine_Result" />
+    </operation>
+    <operation name="GetMemoSalaryAdvanceLines">
+      <input name="GetMemoSalaryAdvanceLines" message="tns:GetMemoSalaryAdvanceLines" />
+      <output name="GetMemoSalaryAdvanceLines_Result" message="tns:GetMemoSalaryAdvanceLines_Result" />
+    </operation>
+    <operation name="GetMemoSalaryAdvanceByLineNo">
+      <input name="GetMemoSalaryAdvanceByLineNo" message="tns:GetMemoSalaryAdvanceByLineNo" />
+      <output name="GetMemoSalaryAdvanceByLineNo_Result" message="tns:GetMemoSalaryAdvanceByLineNo_Result" />
+    </operation>
+    <operation name="GetSalaryAdvanceAmount">
+      <input name="GetSalaryAdvanceAmount" message="tns:GetSalaryAdvanceAmount" />
+      <output name="GetSalaryAdvanceAmount_Result" message="tns:GetSalaryAdvanceAmount_Result" />
+    </operation>
+  </portType>
+  <binding name="MemoSalaryAdvanceWebService_Binding" type="tns:MemoSalaryAdvanceWebService_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetLoaProducts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetLoaProducts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLoaProducts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLoaProducts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMemoSalaryAdvance">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetMemoSalaryAdvance" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMemoSalaryAdvance">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMemoSalaryAdvance_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMemoSalaryAdvanceStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetMemoSalaryAdvanceStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMemoSalaryAdvanceStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMemoSalaryAdvanceStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OpenMemoSalaryAdvanceNoExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:OpenMemoSalaryAdvanceNoExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OpenMemoSalaryAdvanceNoExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OpenMemoSalaryAdvanceNoExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckMemoSalaryAdvanceExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:CheckMemoSalaryAdvanceExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckMemoSalaryAdvanceExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckMemoSalaryAdvanceExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMemoSalaryAdvance">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:CreateMemoSalaryAdvance" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMemoSalaryAdvance">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMemoSalaryAdvance_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyMemoSalaryAdvance">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:ModifyMemoSalaryAdvance" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyMemoSalaryAdvance">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyMemoSalaryAdvance_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:CheckMemoSalaryAdvanceApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckMemoSalaryAdvanceApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendMemoSalaryAdvanceApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:SendMemoSalaryAdvanceApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendMemoSalaryAdvanceApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendMemoSalaryAdvanceApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelMemoSalaryAdvanceApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:CancelMemoSalaryAdvanceApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelMemoSalaryAdvanceApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelMemoSalaryAdvanceApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMemoSalaryAdvanceLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:CreateMemoSalaryAdvanceLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMemoSalaryAdvanceLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMemoSalaryAdvanceLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyMemoSalaryAdvanceLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:ModifyMemoSalaryAdvanceLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyMemoSalaryAdvanceLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyMemoSalaryAdvanceLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteMemoSalaryAdvanceLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:DeleteMemoSalaryAdvanceLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteMemoSalaryAdvanceLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteMemoSalaryAdvanceLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMemoSalaryAdvanceLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetMemoSalaryAdvanceLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMemoSalaryAdvanceLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMemoSalaryAdvanceLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMemoSalaryAdvanceByLineNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetMemoSalaryAdvanceByLineNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMemoSalaryAdvanceByLineNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMemoSalaryAdvanceByLineNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSalaryAdvanceAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/MemoSalaryAdvanceWebService:GetSalaryAdvanceAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSalaryAdvanceAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSalaryAdvanceAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MemoSalaryAdvanceWebService">
+    <port name="MemoSalaryAdvanceWebService_Port" binding="tns:MemoSalaryAdvanceWebService_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/MemoSalaryAdvanceWebService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

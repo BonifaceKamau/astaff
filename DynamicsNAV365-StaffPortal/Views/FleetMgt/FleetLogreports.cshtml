@@ -1,0 +1,229 @@
+@model dynamic
+
+@{
+    ViewBag.Title = "Fleet Log reports";
+    var dcodataServices = new BCODATAServices("");
+    var mvFixedAssets = dcodataServices.BCOData.MVFixedAssets.Select(c => new SelectListItem()
+    {
+        Value = c.MVl_Reg_No,
+        Text = c.MVl_Reg_No.ToString()
+    });
+    var fleetLogHeader = dcodataServices.BCOData.FleetLogHeader.Select(c => new SelectListItem()
+    {
+        Value = c.No,
+        Text = c.No.ToString()
+    });
+    var employees = dcodataServices.BCOData.Employees.Select(c => new SelectListItem()
+    {
+        Value = c.No,
+        Text = c.Full_Name.ToString()
+    });
+    var programmes = dcodataServices.BCOData.DimensionValues.Where(c => c.Global_Dimension_No == 2).Select(c => new SelectListItem()
+    {
+        Value = c.Code,
+        Text = c.Name.ToString()
+    });
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{ Html.RenderAction("_AdministrationSidebar", "Administration"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Vehicle Fleet Logs reports</i>
+                                    </h4>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <a class=" btn-xs" href="#" data-toggle="modal" data-target="#VehicleFleetlogrecordModal">
+                                                    <i class="fa fa-file"></i>
+                                                    Vehicle Fleet log record
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class=" btn-xs" href="#" data-toggle="modal" data-target="#VehicleFleetSummaryModal">
+                                                    <i class="fa fa-file"></i>
+                                                    Vehicle Fleet Summary
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="VehicleFleetlogrecordModal" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="dateModalLabel">Vehicle Fleetlog Record Report</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group label-floating">
+                                            <label for="">Start Date</label>
+                                            <input type="date" pattern="\d{2}/\d{2}/\d{4}" class="form-control date" id="Start_Date">
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">End Date</label>
+                                            <input type="date" pattern="\d{2}/\d{2}/\d{4}" class="form-control date" id="End_Date">
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Log No</label>
+                                            @Html.DropDownList("LogNo", fleetLogHeader, new {id = "LogNo"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Vehicle Reg number</label>
+                                            @Html.DropDownList("RegNumber", mvFixedAssets, new {id = "RegNumber"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Emp No</label>
+                                            @Html.DropDownList("EmpNo", employees, new {id = "EmpNo"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Program</label>
+                                            @Html.DropDownList("Program", programmes, new {id = "Program"})
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" onclick="VehicleFleetlogRecordReport('pdf')">Generate report(pdf)</button>
+                                        <button type="button" class="btn btn-primary" onclick="VehicleFleetlogRecordReport('xlsx')">Generate report(excel)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="VehicleFleetSummaryModal" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="dateModalLabel">Vehicle Fleet Summary</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group label-floating">
+                                            <label for="">Start Date</label>
+                                            <input type="date" pattern="\d{2}/\d{2}/\d{4}" class="form-control date" id="Summary_Start_Date">
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">End Date</label>
+                                            <input type="date" pattern="\d{2}/\d{2}/\d{4}" class="form-control date" id="Summary_End_Date">
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Log No</label>
+                                            @Html.DropDownList("LogNo", fleetLogHeader, new {id = "Summary_LogNo"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Vehicle Reg number</label>
+                                            @Html.DropDownList("RegNumber", mvFixedAssets, new {id = "Summary_RegNumber"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Emp No</label>
+                                            @Html.DropDownList("EmpNo", employees, new {id = "Summary_EmpNo"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="">Program</label>
+                                            @Html.DropDownList("Program", programmes, new {id = "Summary_Program"})
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" onclick="VehicleFleetSummaryReport('pdf')">Generate report(pdf)</button>
+                                        <button type="button" class="btn btn-primary" onclick="VehicleFleetSummaryReport('xlsx')">Generate report(excel)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#FleetLogreports").addClass("active");
+            window.onblur = function () {
+                Ladda.stopAll();
+            }
+        });
+        $('select').val('').trigger("change");
+        function VehicleFleetlogRecordReport(format) {
+            var startDate = formatDate($('#Start_Date').val());
+            var endDate = formatDate($('#End_Date').val());
+            var RegNumber = $('#RegNumber').val();
+            var LogNo = $('#LogNo').val();
+            var EmpNo = $('#EmpNo').val();
+            var Program = $('#Program').val();
+            
+            var reportUrl = '@Url.Action("VehicleFleetlogRecordReport")';
+            var queryParams = [];
+            if (startDate) queryParams.push('startDate=' + encodeURIComponent(startDate));
+            if (endDate) queryParams.push('endDate=' + encodeURIComponent(endDate));
+            if (RegNumber) queryParams.push('RegNumber=' + encodeURIComponent(RegNumber));
+            if (LogNo) queryParams.push('LogNo=' + encodeURIComponent(LogNo));
+            if (EmpNo) queryParams.push('EmpNo=' + encodeURIComponent(EmpNo));
+            if (Program) queryParams.push('Program=' + encodeURIComponent(Program));
+            if (format) queryParams.push('format=' + encodeURIComponent(format));
+            if (queryParams.length > 0) reportUrl += '?' + queryParams.join('&');
+            //window.location.href = Url;
+            window.open(reportUrl, "_blank");
+          }
+          function VehicleFleetSummaryReport(format) {
+              var startDate = formatDate($('#Summary_Start_Date').val());
+              var endDate = formatDate($('#Summary_End_Date').val());
+              var RegNumber = $('#Summary_RegNumber').val();
+              var LogNo = $('#Summary_LogNo').val();
+              var EmpNo = $('#Summary_EmpNo').val();
+              var Program = $('#Summary_Program').val();
+              console.log(Date);
+
+              var reportUrl = '@Url.Action("VehicleFleetSummaryReport")';
+              var queryParams = [];
+              if (startDate) queryParams.push('startDate=' + encodeURIComponent(startDate));
+              if (endDate) queryParams.push('endDate=' + encodeURIComponent(endDate));
+              if (RegNumber) queryParams.push('RegNumber=' + encodeURIComponent(RegNumber));
+              if (LogNo) queryParams.push('LogNo=' + encodeURIComponent(LogNo));
+              if (EmpNo) queryParams.push('EmpNo=' + encodeURIComponent(EmpNo));
+              if (Program) queryParams.push('Program=' + encodeURIComponent(Program));
+              if (format) queryParams.push('format=' + encodeURIComponent(format));
+              if (queryParams.length > 0) reportUrl += '?' + queryParams.join('&');       
+                //window.location.href = Url;
+              window.open(reportUrl, "_blank");
+            }
+          function formatDate(dateString) {
+              var parts = dateString.split('-');
+              if (parts.length === 3) {
+                return parts[2] + '/' + parts[1] + '/' + parts[0];
+              }
+              return dateString;
+            }
+    </script>
+}

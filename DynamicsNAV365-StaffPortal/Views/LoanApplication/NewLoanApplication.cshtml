@@ -1,0 +1,118 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.LoanApplicationModels.LoanApplicationModel
+
+@{
+    ViewBag.Title = "New Loan Application";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PayrollSidebar", "PayrollHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("NewLoanApplication", "LoanApplication", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="title"><i>New Loan Application</i></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn btn-danger pull-right btn-xs" href="@Url.Action("LoanApplicationHistory", "LoanApplication")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                        <input id="submitBtn" class="btn btn-white btn-xs pull-right ladda-button" type="submit" value="Submit For Approval" data-style="slide-right" data-background-color="login_card" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.LoanProductType, htmlAttributes: new { @id = "LoanProductTypeLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.LoanProductType, Model.LoanProductTypes, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.LoanProductType, "", new { @id = "LoanProductTypeError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#">Required Document</a></li>
+                                            </ul>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @{Html.RenderAction("_ViewLeaveApplicationDocument", "LeaveApplication", new { DocumentNo = Model.No });}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        }
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/LoanApplicationScripts/LoanApplicationScript.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            InitializeLoanApplicationScript();
+        });
+    </script>
+}

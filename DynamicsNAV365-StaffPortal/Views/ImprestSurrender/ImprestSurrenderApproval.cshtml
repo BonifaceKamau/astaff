@@ -1,0 +1,149 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.ImprestSurrender.ImprestSurrenderHeaderModel
+
+@{
+    ViewBag.Title = "View Imprest Surrender Request";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ImprestSurrenderApproval", "ImprestSurrender", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="title"><i>Approve/Reject Imprest Surrender Request</i></h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md-3">
+                                            <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                        </div>
+                                        <div class="pull-right">
+                                            <button type="submit" id="btnApprove" name="Command" value="Approve" class="btn btn-success btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    Approve
+                                                </span>
+                                            </button>
+                                            <button type="submit" id="btnReject" name="Command" value="Reject" class="btn btn-danger btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-close"></i>
+                                                    Reject
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                            @{
+                                                var description = Model?.Description;
+                                                <input type="text" class="form-control" readonly="readonly" value="@description">
+                                            }
+                                            @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @id = "CommentsLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Comments, "", new { @id = "CommentsError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render imprest line partial view-->
+                                    @{Html.RenderAction("_ImprestSurrenderLine", "ImprestSurrender", new { DocumentNo = Model.No });}
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="btn btn-danger pull-right" href="@Url.Action("OpenEntries", "Approval")">
+                                        <i class="fa fa-close"></i>
+                                        Close
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/Finance/ImprestSurrenderScripts/ImprestSurrender.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            InitializeImprestSurrenderScripts();
+            var DocumentNo = $("#No").val();
+            LoadImprestSurrenderDocuments(DocumentNo);
+            //var DocumentNo = $("#No").val();
+            //LoadImprestSurrenderDocumentsView(DocumentNo);
+            LoadImprestSurrenderLines(DocumentNo);
+
+            //var DocumentNo = $("#ImprestNumber").val();
+            //ValidateImprestSurrenderLines(ImprestNo);
+
+        });
+    </script>
+}

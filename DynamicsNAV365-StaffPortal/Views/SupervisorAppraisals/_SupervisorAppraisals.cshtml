@@ -1,0 +1,163 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SupervisorAppraisalsModel>
+@{
+    ViewBag.Title = "Supervisor Appraisals";
+    //string midyrUrl = Url.Action("MidAppraisals", "Appraisals");
+    string endyrUrl = Url.Action("SupervisorAppraisalEnd", "SupervisorAppraisals");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @*@{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}*@
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" style="padding:8px;">
+
+                        <div class="card-header" data-background-color="company_card">
+              
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="title" style="text-align:left;font-size:18px;margin-left:20px;">Appraise as a Supervisor - Mid Year Appraisals</h4>
+                                </div>
+                               
+                                <div class="col-md-3">
+                                    <a class="btn btn-success btn-xs pull-right" href="@endyrUrl">
+                                        End Year Appraisal
+                                    </a>                                    
+                                </div>
+                            </div>
+                         </div>
+                        <br>
+                      
+                      
+                        <table id="SupervisorTable" class="table table-condensed">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th data-orderable="false">&nbsp;</th>
+                                    <th data-orderable="false">Employee Name</th>
+                                    <th data-orderable="false">Designation</th>
+                                    <th data-orderable="false">Department</th>
+                                    <th data-orderable="false">Period</th>                                 
+                                    <th data-orderable="false">Supervisor</th>
+                                    <th data-orderable="false">Stage</th>
+                                    @*<th data-orderable="false">Appraisal Status</th>*@                                   
+                                    <th data-orderable="false">&nbsp;</th>
+                                    <th data-orderable="false">&nbsp;</th>
+                                    <th data-orderable="false">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    string performanceUrl = "";
+                                    string competencyUrl = "";
+                                    string appraisersUrl = "";
+                                    string midappraisenowUrl = "";
+                                    string midappresultsUrl = "";
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        performanceUrl = Url.Action("SingleAppraiseeForm", "SupervisorAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                        competencyUrl = Url.Action("SingleAppraiseeFormCC", "SupervisorAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                        appraisersUrl = Url.Action("GetAppraisees", "SupervisorAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                        midappraisenowUrl = Url.Action("MidYearAppraisal", "SupervisorAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                        midappresultsUrl = Url.Action("LoadAppraisalResultsMid", "SupervisorAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+
+                                         <tr>
+                                                @{
+                                                    if (Model[i].Appeal ==true)
+                                                    {
+                                                        <td style="color:Red;">Appeal</td>
+                                                    }
+                                                    if (Model[i].Appeal ==false)
+                                                    {
+                                                        <td><p></p>  </td>
+                                                        }
+                                              }
+                                            <td>@Model[i].EmployeeName</td>
+                                            <td>@Model[i].Designation</td>
+                                            <td>@Model[i].Department</td>
+                                            <td>@Model[i].AppraisalPeriod</td>
+                                             <td>@Model[i].SupervisorNo</td>
+                                            @{
+                                                if (Model[i].AppraisalStage == "Mid Year Review")
+                                                {
+                                                    <td style="color:green;">MidYear</td>
+                                                }
+                                                if (Model[i].AppraisalStage == "End Year Evaluation")
+                                                {
+                                                    <td style="color:maroon;"><p>EndYear</p></td>
+                                                }
+                                            }
+                                                    
+
+                                           
+                                            @*<td>@Model[i].AppraisalStatus</td>*@
+
+                                            <td>
+                                                <a href="@performanceUrl" class=""><b> Core Targets</b></a> |
+                                                <a href="@competencyUrl" class=""><b> Competency </b></a>                                                          @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                            </td>
+                                            <td>
+                                                <input id="AppraisalNoItem" value="@Model[i].AppraisalNo" hidden="hidden">
+                                                @*<a href="@appraisersUrl" class=""><b>Assign Appraisers</b></a> |*@
+                                                @*<a href="" onclick="return AppraiseEmployee();"><b>Appraise Now</b></a>*@
+                                                 <a href="@midappraisenowUrl" class=""><b>Appraise Now</b></a>                                                              @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                            </td>
+                                             <td>
+                                                 <a href="@midappresultsUrl" class=""><b>Results</b></a> 
+                                                 @*<a href="@competencyUrl" class=""><b>Results</b></a>*@                                                              @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                             </td>
+                                        </tr>}                                   
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+       $('#SupervisorTable').DataTable();      
+} );
+</script>
+
+<script>
+ //Appraise Employee
+    function AppraiseEmployee() {
+        var AppraisalNo=$('#AppraisalNoItem').val();
+        var frmData = new FormData();
+        frmData.append("AppraisalNo", AppraisalNo);
+        var ans = confirm("Do you wish to Appraise this Employee ?");
+        if (ans) {
+            $.blockUI();
+            $.ajax({
+                url: "/SupervisorAppraisals/AppraiseEmployee",
+                type: "post",
+                data: frmData,
+                dataType: 'json',
+                //contentType: false,
+                //processData: false,
+                enctype: "multipart/form-data",
+                //async: true,
+                cache: false,
+                success: function (result) {
+                    if (result.success) {                   
+                        alert("Employee Appraised successfully");
+                        $.unblockUI();
+                    }
+                    else {
+                      alert("Failed, This Employee has already been Appraised");
+                        $.unblockUI();
+                    }
+                    Ladda.stopAll();
+                },
+                error: function (err) {
+                    Ladda.stopAll();
+                }
+            });
+        }
+    }
+
+    </script>

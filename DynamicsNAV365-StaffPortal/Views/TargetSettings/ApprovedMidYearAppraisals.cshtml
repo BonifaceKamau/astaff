@@ -1,0 +1,101 @@
+@model System.Collections.Generic.List<OdataRef.MidYearAppraisal>
+
+@{
+    ViewBag.Title = "MidYear Appraisal";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>MidYear Appraisal</i>
+                                    </h4>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Staff No</th>
+                                                <th>Staff Name</th>
+                                                <th>Directorate</th>
+                                                <th>Department</th>
+                                                <th>Period</th>
+                                                <th>Created On</th>
+                                                <th>Created By</th>
+                                                <th>Supervisor</th>
+                                                <th>Sent To Supervisor</th>
+                                                <th>Approved By Supervisor</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var staffTargetObjectives in Model)
+                                            {
+                                                <tr>
+                                                    <td>@staffTargetObjectives.No</td>
+                                                    <td>@staffTargetObjectives.Staff_No</td>
+                                                    <td>@staffTargetObjectives.Staff_Name</td>
+                                                    <td>@staffTargetObjectives.Directorate</td>
+                                                    <td>@staffTargetObjectives.Department</td>
+                                                    <td>@staffTargetObjectives.Period</td>
+                                                    <td>@staffTargetObjectives.Created_On</td>
+                                                    <td>@staffTargetObjectives.Created_By</td>
+                                                    <td>@staffTargetObjectives.Supervisor</td>
+                                                    <td>@staffTargetObjectives.Sent_to_Supervisor</td>
+                                                    <td>@staffTargetObjectives.Approved_By_Supervisor</td>
+                                                    <td>
+                                                        <a href="@Url.Action("ViewMidYearAppraisal", new {number= staffTargetObjectives.No})" class="">
+                                                            <b>View</b>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#ApprovedMidYearAppraisals").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

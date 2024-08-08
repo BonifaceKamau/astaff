@@ -1,0 +1,195 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.EmployeeTraining.EmployeeTrainingEvaluationModel
+
+@{
+    ViewBag.Title = "Approve/Reject Training Evaluation";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Approval Sidebar-->
+    @{Html.RenderAction("_ApprovalSidebar", "Approval");}
+
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("TrainingEvaluationApprovals", "EmployeeTraining", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="title"><i><strong>Approve/Reject Training Evaluation</strong></i></h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btnApprove" name="Command" value="Approve" class="btn btn-success btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-check-circle"></i>
+                                                    Approve
+                                                </span>
+                                            </button>
+                                            <button type="submit" id="btnReject" name="Command" value="Reject" class="btn btn-danger btn-xs ladda-button" data-style="slide-right">
+                                                <span class="ladda-label">
+                                                    <i class="fa fa-close"></i>
+                                                    Reject
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.ApplicationNo)
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.TrainingEvaluationNo, htmlAttributes: new { @id = "TrainingEvaluationNoLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.TrainingEvaluationNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.TrainingEvaluationNo, "", new { @id = "TrainingEvaluationNoError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.ApplicationNo, htmlAttributes: new { @id = "ApplicationNoLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.ApplicationNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.ApplicationNo, "", new { @id = "ApplicationNoError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.CalenderYear, htmlAttributes: new { @id = "YearLbl", @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.CalenderYear, Model.YearCodes, new { htmlAttributes = new { @class = "form-control" }, @disabled = "disabled" })
+                                                        @Html.ValidationMessageFor(model => model.CalenderYear, "", new { @id = "YearError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.DevelopmentNeed, htmlAttributes: new { @id = "DevelopmentNeedLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.DevelopmentNeed, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.DevelopmentNeed, "", new { @id = "DevelopmentNeedError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.TrainingProvider, htmlAttributes: new { @id = "ProposedTrainingProviderLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.TrainingProvider, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.TrainingProvider, "", new { @id = "ProposedTrainingProviderError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.TrainingLocation, htmlAttributes: new { @id = "TrainingLocationLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.TrainingLocation, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.TrainingLocation, "", new { @id = "TrainingLocationError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Objectives, htmlAttributes: new { @id = "ObjectivesLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Objectives, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.Objectives, "", new { @id = "ObjectivesError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-static">
+                                                        @Html.LabelFor(model => model.TrainingStartDate, htmlAttributes: new { @id = "TrainingStartDateLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.TrainingStartDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.TrainingStartDate, "", new { @id = "TrainingStartDateError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-static">
+                                                        @Html.LabelFor(model => model.TrainingEndDate, htmlAttributes: new { @id = "TrainingEndDateLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.TrainingEndDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.TrainingEndDate, "", new { @id = "TrainingEndDateError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-static">
+                                                        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @id = "CommentsLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.Comments, "", new { @id = "commentsError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">Required Document</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @{Html.RenderAction("_ViewEmployeeTrainingEvaluationDocumentLine", "EmployeeTraining", new { DocumentNo = Model.TrainingEvaluationNo });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <a class="btn btn-danger pull-right" href="@Url.Action("RequestsToApprove", "Approval")">
+                                            <i class="fa fa-close"></i>
+                                            Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/EmployeeTrainingScripts/EmployeeTrainingEvaluation.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var ApplicationNo = $("#ApplicationNo").val();
+            GetAttendedTrainingApplicationDetails(ApplicationNo);
+
+            var EvaluationNo = $("#TrainingEvaluationNo").val();
+            LoadTrainingEvaluationDocumentsView(EvaluationNo);
+
+            //Add CSS Classes
+            InitializeTrainingEvaluationScripts();
+        });
+    </script>
+}

@@ -1,0 +1,108 @@
+@model System.Collections.Generic.IEnumerable<OdataRef.Asset_Transfer_List_Issue>
+
+@{
+    ViewBag.Title = "List";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{ Html.RenderAction("_AdministrationSidebar", "Administration"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Asset Transfer Issue</i>
+                                    </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="col-md-8">
+                                        <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewAssetTransfer")" data-background-color="login_card">
+                                            <strong style="color:white">
+                                                <i class="fa fa-plus"></i>
+                                                New Asset trasfer
+                                            </strong>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="FleetListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Date_Created</th>
+                                                <th>Effective_Transfer_Date</th>
+                                                <th>Status</th>
+                                                <th>Department</th>
+                                                <th>Raised_By</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @{
+                                                string editUrl = "";
+                                                string viewUrl = "";
+                                                string approverUrl = "";
+                                                foreach (var assetTransferListIssue in Model)
+                                                {
+                                                    viewUrl = Url.Action("ViewAssetTransfer", new {DocNo = assetTransferListIssue.No});
+                                                    <tr>
+                                                        <td>@assetTransferListIssue.No</td>
+                                                        <td>@assetTransferListIssue.Date_Created</td>
+                                                        <td>@assetTransferListIssue.Effective_Transfer_Date</td>
+                                                        <td>@assetTransferListIssue.Status</td>
+                                                        <td>@assetTransferListIssue.Department</td>
+                                                        <td>@assetTransferListIssue.Raised_By</td>
+                                                        <td>
+                                                            <a href="@viewUrl" class="">
+                                                                <b>View</b>
+                                                            </a>
+
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#AssetTransferIssued").addClass("active");
+
+            $("#FleetListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

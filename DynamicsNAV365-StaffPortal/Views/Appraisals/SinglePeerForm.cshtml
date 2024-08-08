@@ -1,0 +1,72 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.PeerAppraisalsModel>
+@{
+    ViewBag.Title = "Peer Appraisal  Form";
+}
+@{
+    var MarksList = new SelectList(
+          new List<SelectListItem>
+          {
+            new SelectListItem {Text = "----Select----", Value = "  "},
+            new SelectListItem {Text = "Weight  1", Value = "1"},
+            new SelectListItem {Text = "Weight  2", Value = "2"},
+            new SelectListItem {Text = "Weight  3", Value = "3"},
+            new SelectListItem {Text = "Weight  4", Value = "4"},
+            new SelectListItem {Text = "Weight  5", Value = "5"},
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center" id="companycard">
+                            <h4 id="title">Appraise as a Peer</h4>
+                        </div>
+
+                        <table id="PeerAppTable" class="table table-condensed table-bordered" style="display:block;">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th>Perfomance Goals & Targets</th>
+                                    <th>Peer Rating</th>
+                                    <th>Peer Comments</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    string teamUrl = "";
+                                    string editUrl = "";
+                                    string viewUrl = "";
+                                    string benefitsUrl = "";
+                                    string risksUrl = "";
+                                    string manageUrl = "";
+                                    //string approverUrl = "";
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        //teamUrl = Url.Action("ViewTeamMembers", "Projects") + "?ProjectManagementTeam=" + Model[i].ProjectManagementTeam;
+
+                                        <tr>
+                                            <td>@Model[i].GoalsTargets</td>
+                                            <td>@Model[i].PeerRating</td>
+                                            <td>@Model[i].PeerComments</td>
+
+                                            <td>
+                                                <a href="@teamUrl" class=""><b>Edit</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                            </td>
+                                        </tr>}
+                                }
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

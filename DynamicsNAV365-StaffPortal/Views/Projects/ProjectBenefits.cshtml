@@ -1,0 +1,179 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectBenefitsModel>
+@{
+    ViewBag.Title = "Project Benefits";}
+<!--Render Human Resource Sidebar-->
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");} 
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-4">  
+                                <h4 class="title" style="text-align:center">Project Benefits: @ViewBag.ProjectNumber</h4> 
+                            </div>
+                            @{ string addUrl = Url.Action("AddProjectBenefit", "Projects") + "?ProjectNo=" +@ViewBag.ProjectNumber; }
+                           
+                            <div class="col-lg-4">
+                                @{
+                                    var success = TempData["success"];
+                                    var failed = TempData["failed"];
+                                }
+                                @if (success != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                        @success
+                                    </a>
+
+
+                                }
+                                @if (failed != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#f8d7da; color:#721c24; text-transform:lowercase;">
+                                        @failed
+                                    </a>
+
+                                }
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-success btn-xs pull-right" href="@addUrl">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Add Benefit
+                                    </strong>
+                                </a>
+
+                                @*<input type="submit" id="submitBtn" name="Command" value="Add Benefit" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@                            
+                            </div>
+
+                            <div class="col-md-2">
+                                <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("ProjectInfo", "ProjectHome")">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Close
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="ProjectsBenefitsTbl" class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            @*<th>Project No.</th>*@
+                                            <th>Benefit</th>
+                                            <th>Objective Supported</th>
+                                            <th>Benefit Owner</th>
+                                            <th>Beneficiaries</th>
+                                            <th>KPI</th>
+                                            <th>Measure</th>
+                                            <th>Frequency</th>
+                                            @*<th>Assumptions</th>*@
+                                            @*<th>BenefitRisks</th>*@
+                                            @*<th>Notes</th>*@
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+
+                                            string editUrl = "";
+                                            //string deleteUrl = "";
+
+                                            //string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                //deleteUrl = Url.Action("DeleteProjectBenefit", "Projects") + "?Line=" + Model[i].LineNo;
+                                                editUrl = Url.Action("EditProjectBenefit", "Projects") + "?Line=" + Model[i].LineNo;
+                                                <tr>
+                                                    @*<td>@Model[i].ProjectNo</td>*@
+                                                    <td>@Model[i].BenefitText</td>
+                                                    <td>@Model[i].ObjectiveSupported</td>
+                                                    <td>@Model[i].BenefitOwner</td>
+                                                    <td>@Model[i].BeneficiariesText</td>
+                                                    <td>@Model[i].KPIText</td>
+                                                    <td>@Model[i].MeasureText</td>
+                                                    <td>@Model[i].FrequencyText</td>
+                                                    @*<td>@Model[i].AssumptionsText</td>*@
+                                                    @*<td>@Model[i].BenefitRisks</td>*@ 
+                                                    @*<td>@Model[i].NotesText</td>*@
+                                                    <td>
+                                                        @*@if (@Model[i].Status == "Open" || @Model[i].Status == "Declined with amendments")
+                                                            {*@
+                                                        <a href="@editUrl" class=""><b>Edit</b></a>
+                                                        @*}*@
+                                                    </td>
+                                                    <td>                                                    
+                                                    <a href="" onclick="return DeleteBenefitLine(@Model[i].LineNo);"><b>Delete</b></a>                                                       
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ProjectsBenefitsTbl').DataTable({
+                order: [[2, 'asc']],
+                rowGroup: {
+                    dataSrc: 2
+                }
+            });
+        });
+    </script>
+}
+
+<script>
+
+//Success or Failed Script
+$(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+});
+//Delete Benefit Line
+function DeleteBenefitLine(LineNo) {
+	var ans = confirm("Are you sure you want to remove this record?");
+	if (ans) {
+		$.ajax({
+			url: "/Projects/DeleteBenefitLine",
+			type: "POST",
+			dataType: "json",
+			data: { LineNo:LineNo },
+			cache: false,
+			success: function (result) {
+            location.reload();
+            alert("Successfully Deleted");
+			},
+			error: function (errormessage) {
+				alert("An Error occurred, Please try again later");
+			}
+		});
+	}
+}
+
+    </script>
+

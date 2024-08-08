@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/recruitmentneeds" targetNamespace="urn:microsoft-dynamics-schemas/page/recruitmentneeds" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/recruitmentneeds" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Requisition_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Internal" />
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="External" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Reason_for_Recruitment">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="New_Position" />
+          <xsd:enumeration value="Existing_Position" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="Released" />
+          <xsd:enumeration value="Pending_Approval" />
+          <xsd:enumeration value="Pending_Prepayment" />
+          <xsd:enumeration value="Rejected" />
+          <xsd:enumeration value="Closed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Qualification_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Academic" />
+          <xsd:enumeration value="Professional" />
+          <xsd:enumeration value="Technical" />
+          <xsd:enumeration value="Experience" />
+          <xsd:enumeration value="Personal_Attributes" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Job_Specification">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Academic" />
+          <xsd:enumeration value="Professional" />
+          <xsd:enumeration value="Technical" />
+          <xsd:enumeration value="Experience" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Priority">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="High" />
+          <xsd:enumeration value="Medium" />
+          <xsd:enumeration value="Low" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Needs_Requirements">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Type" type="tns:Qualification_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Education_Level_Id" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Education_Level_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Course_Id" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Course_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Grade_Id" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Grade_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Mandatory" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_Specification" type="tns:Job_Specification" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Priority" type="tns:Priority" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Score_ID" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Needs_Requirements_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Needs_Requirements" type="tns:Needs_Requirements" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Other_Qualifications">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Other_Qualifications_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Other_Qualifications" type="tns:Other_Qualifications" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Qualifications">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_Qualification" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Qualifications_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Job_Qualifications" type="tns:Job_Qualifications" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Recruitment_Need_Skills">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Recruitment_Need_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Remarks" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Mandatory" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Recruitment_Need_Skills_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Recruitment_Need_Skills" type="tns:Recruitment_Need_Skills" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Recruitment_Need_Docs_Mandator">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Recruitment_Need_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_Desciption" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Mandatory" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Recruitment_Need_Docs_Mandator_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Recruitment_Need_Docs_Mandator" type="tns:Recruitment_Need_Docs_Mandator" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Professional_Bodies_Needs">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Professional_Body" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Body_Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Professional_Bodies_Needs_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Professional_Bodies_Needs" type="tns:Professional_Bodies_Needs" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Responsiblities">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Responsibility" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Responsiblities_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Job_Responsiblities" type="tns:Job_Responsiblities" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RecruitmentNeedQuizes">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Question" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Need_code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RecruitmentNeedQuizes_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RecruitmentNeedQuizes" type="tns:RecruitmentNeedQuizes" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RecruitmentNeeds">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Requisition_Type" type="tns:Requisition_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Appointment_Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Location" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Reporting_To" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NoOfPositions" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Reporting_To_Desc" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Reason_for_Recruitment" type="tns:Reason_for_Recruitment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Start_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="End_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Expected_Reporting_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Requested_By" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Requires_Aptitude_Test" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Closed" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Experience_Yrs" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Total_Interview_Score" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Select_Top" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Pass_Mark" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Validate_Required_Attachments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Validate_Prof_Documents" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Minimum_Academic_Level" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Other_Requirements" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Minimum_Academic_Level_Lk" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PROFFESSIonQUALIFICATION" type="tns:Needs_Requirements_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Other_Qualifications" type="tns:Other_Qualifications_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_Qualifications" type="tns:Job_Qualifications_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Skills" type="tns:Recruitment_Need_Skills_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Mandatory_Documents" type="tns:Recruitment_Need_Docs_Mandator_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Professional_Bodies_Needs" type="tns:Professional_Bodies_Needs_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="KPA" type="tns:Job_Responsiblities_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="JOB_Questions" type="tns:RecruitmentNeedQuizes_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RecruitmentNeeds_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="RecruitmentNeeds_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No" />
+          <xsd:enumeration value="Date" />
+          <xsd:enumeration value="Job_ID" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="Requisition_Type" />
+          <xsd:enumeration value="Appointment_Type" />
+          <xsd:enumeration value="Location" />
+          <xsd:enumeration value="Employee_No" />
+          <xsd:enumeration value="Reporting_To" />
+          <xsd:enumeration value="NoOfPositions" />
+          <xsd:enumeration value="Reporting_To_Desc" />
+          <xsd:enumeration value="Reason_for_Recruitment" />
+          <xsd:enumeration value="Start_Date" />
+          <xsd:enumeration value="End_Date" />
+          <xsd:enumeration value="Expected_Reporting_Date" />
+          <xsd:enumeration value="Requested_By" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="Requires_Aptitude_Test" />
+          <xsd:enumeration value="Closed" />
+          <xsd:enumeration value="Experience_Yrs" />
+          <xsd:enumeration value="Total_Interview_Score" />
+          <xsd:enumeration value="Select_Top" />
+          <xsd:enumeration value="Pass_Mark" />
+          <xsd:enumeration value="Validate_Required_Attachments" />
+          <xsd:enumeration value="Validate_Prof_Documents" />
+          <xsd:enumeration value="Minimum_Academic_Level" />
+          <xsd:enumeration value="Other_Requirements" />
+          <xsd:enumeration value="Minimum_Academic_Level_Lk" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="RecruitmentNeeds_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:RecruitmentNeeds_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="No" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:RecruitmentNeeds_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:RecruitmentNeeds_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds_List" type="tns:RecruitmentNeeds_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds_List" type="tns:RecruitmentNeeds_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds" type="tns:RecruitmentNeeds" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds_List" type="tns:RecruitmentNeeds_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RecruitmentNeeds_List" type="tns:RecruitmentNeeds_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_PROFFESSIonQUALIFICATION">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="PROFFESSIonQUALIFICATION_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_PROFFESSIonQUALIFICATION_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_PROFFESSIonQUALIFICATION_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Other_Qualifications">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Other_Qualifications_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Other_Qualifications_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Other_Qualifications_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Job_Qualifications">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Job_Qualifications_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Job_Qualifications_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Job_Qualifications_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Skills">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Skills_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Skills_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Skills_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Mandatory_Documents">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mandatory_Documents_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Mandatory_Documents_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Mandatory_Documents_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Professional_Bodies_Needs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Professional_Bodies_Needs_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Professional_Bodies_Needs_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Professional_Bodies_Needs_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KPA">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="KPA_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KPA_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_KPA_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_JOB_Questions">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="JOB_Questions_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_JOB_Questions_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_JOB_Questions_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <message name="Delete_PROFFESSIonQUALIFICATION">
+    <part name="parameters" element="tns:Delete_PROFFESSIonQUALIFICATION" />
+  </message>
+  <message name="Delete_PROFFESSIonQUALIFICATION_Result">
+    <part name="parameters" element="tns:Delete_PROFFESSIonQUALIFICATION_Result" />
+  </message>
+  <message name="Delete_Other_Qualifications">
+    <part name="parameters" element="tns:Delete_Other_Qualifications" />
+  </message>
+  <message name="Delete_Other_Qualifications_Result">
+    <part name="parameters" element="tns:Delete_Other_Qualifications_Result" />
+  </message>
+  <message name="Delete_Job_Qualifications">
+    <part name="parameters" element="tns:Delete_Job_Qualifications" />
+  </message>
+  <message name="Delete_Job_Qualifications_Result">
+    <part name="parameters" element="tns:Delete_Job_Qualifications_Result" />
+  </message>
+  <message name="Delete_Skills">
+    <part name="parameters" element="tns:Delete_Skills" />
+  </message>
+  <message name="Delete_Skills_Result">
+    <part name="parameters" element="tns:Delete_Skills_Result" />
+  </message>
+  <message name="Delete_Mandatory_Documents">
+    <part name="parameters" element="tns:Delete_Mandatory_Documents" />
+  </message>
+  <message name="Delete_Mandatory_Documents_Result">
+    <part name="parameters" element="tns:Delete_Mandatory_Documents_Result" />
+  </message>
+  <message name="Delete_Professional_Bodies_Needs">
+    <part name="parameters" element="tns:Delete_Professional_Bodies_Needs" />
+  </message>
+  <message name="Delete_Professional_Bodies_Needs_Result">
+    <part name="parameters" element="tns:Delete_Professional_Bodies_Needs_Result" />
+  </message>
+  <message name="Delete_KPA">
+    <part name="parameters" element="tns:Delete_KPA" />
+  </message>
+  <message name="Delete_KPA_Result">
+    <part name="parameters" element="tns:Delete_KPA_Result" />
+  </message>
+  <message name="Delete_JOB_Questions">
+    <part name="parameters" element="tns:Delete_JOB_Questions" />
+  </message>
+  <message name="Delete_JOB_Questions_Result">
+    <part name="parameters" element="tns:Delete_JOB_Questions_Result" />
+  </message>
+  <portType name="RecruitmentNeeds_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+    <operation name="Delete_PROFFESSIonQUALIFICATION">
+      <input name="Delete_PROFFESSIonQUALIFICATION" message="tns:Delete_PROFFESSIonQUALIFICATION" />
+      <output name="Delete_PROFFESSIonQUALIFICATION_Result" message="tns:Delete_PROFFESSIonQUALIFICATION_Result" />
+    </operation>
+    <operation name="Delete_Other_Qualifications">
+      <input name="Delete_Other_Qualifications" message="tns:Delete_Other_Qualifications" />
+      <output name="Delete_Other_Qualifications_Result" message="tns:Delete_Other_Qualifications_Result" />
+    </operation>
+    <operation name="Delete_Job_Qualifications">
+      <input name="Delete_Job_Qualifications" message="tns:Delete_Job_Qualifications" />
+      <output name="Delete_Job_Qualifications_Result" message="tns:Delete_Job_Qualifications_Result" />
+    </operation>
+    <operation name="Delete_Skills">
+      <input name="Delete_Skills" message="tns:Delete_Skills" />
+      <output name="Delete_Skills_Result" message="tns:Delete_Skills_Result" />
+    </operation>
+    <operation name="Delete_Mandatory_Documents">
+      <input name="Delete_Mandatory_Documents" message="tns:Delete_Mandatory_Documents" />
+      <output name="Delete_Mandatory_Documents_Result" message="tns:Delete_Mandatory_Documents_Result" />
+    </operation>
+    <operation name="Delete_Professional_Bodies_Needs">
+      <input name="Delete_Professional_Bodies_Needs" message="tns:Delete_Professional_Bodies_Needs" />
+      <output name="Delete_Professional_Bodies_Needs_Result" message="tns:Delete_Professional_Bodies_Needs_Result" />
+    </operation>
+    <operation name="Delete_KPA">
+      <input name="Delete_KPA" message="tns:Delete_KPA" />
+      <output name="Delete_KPA_Result" message="tns:Delete_KPA_Result" />
+    </operation>
+    <operation name="Delete_JOB_Questions">
+      <input name="Delete_JOB_Questions" message="tns:Delete_JOB_Questions" />
+      <output name="Delete_JOB_Questions_Result" message="tns:Delete_JOB_Questions_Result" />
+    </operation>
+  </portType>
+  <binding name="RecruitmentNeeds_Binding" type="tns:RecruitmentNeeds_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_PROFFESSIonQUALIFICATION">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_PROFFESSIonQUALIFICATION" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_PROFFESSIonQUALIFICATION">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_PROFFESSIonQUALIFICATION_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Other_Qualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_Other_Qualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Other_Qualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Other_Qualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Job_Qualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_Job_Qualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Job_Qualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Job_Qualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Skills">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_Skills" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Skills">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Skills_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Mandatory_Documents">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_Mandatory_Documents" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Mandatory_Documents">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Mandatory_Documents_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Professional_Bodies_Needs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_Professional_Bodies_Needs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Professional_Bodies_Needs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Professional_Bodies_Needs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_KPA">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_KPA" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_KPA">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_KPA_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_JOB_Questions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/recruitmentneeds:Delete_JOB_Questions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_JOB_Questions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_JOB_Questions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RecruitmentNeeds_Service">
+    <port name="RecruitmentNeeds_Port" binding="tns:RecruitmentNeeds_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Page/RecruitmentNeeds" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

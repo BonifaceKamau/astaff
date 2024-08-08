@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/property_card" targetNamespace="urn:microsoft-dynamics-schemas/page/property_card" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/property_card" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Project_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Land" />
+          <xsd:enumeration value="Housing" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="For_Sale_Not_For_Sale">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="For_Sale" />
+          <xsd:enumeration value="Not_For_Sale" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Unit_of_Measure">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Acre" />
+          <xsd:enumeration value="Hectare" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Asset_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Money_Market" />
+          <xsd:enumeration value="Property" />
+          <xsd:enumeration value="Equity" />
+          <xsd:enumeration value="Mortgage" />
+          <xsd:enumeration value="Unit_Trust" />
+          <xsd:enumeration value="Forex" />
+          <xsd:enumeration value="Land" />
+          <xsd:enumeration value="Fixed_Asset" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="Released" />
+          <xsd:enumeration value="Pending_Approval" />
+          <xsd:enumeration value="Pending_Prepayment" />
+          <xsd:enumeration value="Rejected" />
+          <xsd:enumeration value="Reserved" />
+          <xsd:enumeration value="Sold" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Portal_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="Reserved" />
+          <xsd:enumeration value="Sold" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Plot_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Residential" />
+          <xsd:enumeration value="Commercial" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Depreciation_Method">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Straight_Line" />
+          <xsd:enumeration value="Declining_Balance_1" />
+          <xsd:enumeration value="Declining_Balance_2" />
+          <xsd:enumeration value="DB1_SL" />
+          <xsd:enumeration value="DB2_SL" />
+          <xsd:enumeration value="User_Defined" />
+          <xsd:enumeration value="Manual" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Property_Class_Custom_1">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Personal_Property" />
+          <xsd:enumeration value="Real_Property" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="FA_Depreciation_Books_Line">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depreciation_Book_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="GetAddCurrCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FA_Posting_Group" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depreciation_Method" type="tns:Depreciation_Method" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depreciation_Starting_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Depreciation_Years" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depreciation_Ending_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Depreciation_Months" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Straight_Line_Percent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Fixed_Depr_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Declining_Balance_Percent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="First_User_Defined_Depr_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Disposed_Of_Date" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BookValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depreciation_Table_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Final_Rounding_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ending_Book_Value" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ignore_Def_Ending_Book_Value" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FA_Exchange_Rate" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Use_FA_Ledger_Check" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depr_below_Zero_Percent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Fixed_Depr_Amount_below_Zero" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Projected_Disposal_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Projected_Proceeds_on_Disposal" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depr_Starting_Date_Custom_1" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depr_Ending_Date_Custom_1" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Accum_Depr_Percent_Custom_1" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Depr_This_Year_Percent_Custom_1" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Property_Class_Custom_1" type="tns:Property_Class_Custom_1" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Use_Half_Year_Convention" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Use_DBPercent_First_Fiscal_Year" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Temp_Ending_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Temp_Fixed_Depr_Amount" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FA_Depreciation_Books_Line_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="FA_Depreciation_Books_Line" type="tns:FA_Depreciation_Books_Line" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Property_Card">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Plot_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Project_Type" type="tns:Project_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Property_Posting_Group_x003E_" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Project_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Housing_Project_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Project_Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allocation_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Housing_Allocation_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LR_Number" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="For_Sale_Not_For_Sale" type="tns:For_Sale_Not_For_Sale" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Responsible_Employee" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Inactive" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Blocked" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Last_Date_Modified" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allocation_Size" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Acres" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_of_Measure" type="tns:Unit_of_Measure" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_Of_Plots" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Invoiced" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Invoiced_To" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Asset_Type" type="tns:Asset_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Captured_By" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Threshold_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Selling_Price" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Portal_Status" type="tns:Portal_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="View" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Plot_Type" type="tns:Plot_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddToPortal" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Sold_To" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Customer_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Phone" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Email" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FA_Class_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FA_Subclass_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FA_Location_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DepreciationBook" type="tns:FA_Depreciation_Books_Line_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Property_Card_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Property_Card" type="tns:Property_Card" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Property_Card_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No" />
+          <xsd:enumeration value="Plot_No" />
+          <xsd:enumeration value="Project_Type" />
+          <xsd:enumeration value="Property_Posting_Group_x003E_" />
+          <xsd:enumeration value="Project_No" />
+          <xsd:enumeration value="Housing_Project_No" />
+          <xsd:enumeration value="Project_Description" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="Allocation_No" />
+          <xsd:enumeration value="Housing_Allocation_No" />
+          <xsd:enumeration value="LR_Number" />
+          <xsd:enumeration value="For_Sale_Not_For_Sale" />
+          <xsd:enumeration value="Responsible_Employee" />
+          <xsd:enumeration value="Inactive" />
+          <xsd:enumeration value="Blocked" />
+          <xsd:enumeration value="Last_Date_Modified" />
+          <xsd:enumeration value="Allocation_Size" />
+          <xsd:enumeration value="Acres" />
+          <xsd:enumeration value="Unit_of_Measure" />
+          <xsd:enumeration value="No_Of_Plots" />
+          <xsd:enumeration value="Invoiced" />
+          <xsd:enumeration value="Invoiced_To" />
+          <xsd:enumeration value="Asset_Type" />
+          <xsd:enumeration value="Captured_By" />
+          <xsd:enumeration value="Threshold_Amount" />
+          <xsd:enumeration value="Selling_Price" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="Portal_Status" />
+          <xsd:enumeration value="View" />
+          <xsd:enumeration value="Plot_Type" />
+          <xsd:enumeration value="AddToPortal" />
+          <xsd:enumeration value="Sold_To" />
+          <xsd:enumeration value="Customer_Name" />
+          <xsd:enumeration value="Phone" />
+          <xsd:enumeration value="Email" />
+          <xsd:enumeration value="FA_Class_Code" />
+          <xsd:enumeration value="FA_Subclass_Code" />
+          <xsd:enumeration value="FA_Location_Code" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Property_Card_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:Property_Card_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="No" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="Property_Card" type="tns:Property_Card" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="Property_Card" type="tns:Property_Card" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:Property_Card_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:Property_Card_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Property_Card" type="tns:Property_Card" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Property_Card" type="tns:Property_Card" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Property_Card_List" type="tns:Property_Card_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Property_Card_List" type="tns:Property_Card_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_DepreciationBook">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="DepreciationBook_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_DepreciationBook_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_DepreciationBook_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete_DepreciationBook">
+    <part name="parameters" element="tns:Delete_DepreciationBook" />
+  </message>
+  <message name="Delete_DepreciationBook_Result">
+    <part name="parameters" element="tns:Delete_DepreciationBook_Result" />
+  </message>
+  <portType name="Property_Card_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete_DepreciationBook">
+      <input name="Delete_DepreciationBook" message="tns:Delete_DepreciationBook" />
+      <output name="Delete_DepreciationBook_Result" message="tns:Delete_DepreciationBook_Result" />
+    </operation>
+  </portType>
+  <binding name="Property_Card_Binding" type="tns:Property_Card_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_DepreciationBook">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/property_card:Delete_DepreciationBook" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_DepreciationBook">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_DepreciationBook_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Property_Card_Service">
+    <port name="Property_Card_Port" binding="tns:Property_Card_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Page/Property_Card" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

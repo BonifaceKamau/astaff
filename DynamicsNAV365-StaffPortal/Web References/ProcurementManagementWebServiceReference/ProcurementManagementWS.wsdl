@@ -1,0 +1,2652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="FormatText">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="originalString" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="FormatText_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRFXList">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetRFXList_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRFXByNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRFXByNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRFXLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRFXLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOList">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOList_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOByNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOByNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPOLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetItems">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetItems_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetServices">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetServices_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFixedAssets">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetFixedAssets_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetItemUOMs">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetItemUOMs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetServiceUOMs">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetServiceUOMs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetInventoryItems">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetInventoryItems_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFixedAssetUOMs">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetFixedAssetUOMs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventory">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="store" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventory_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionUOMs">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="classification" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionUOMs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionCodes">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requisitionType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionCodes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProcurementPlan">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetProcurementPlan_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanItems">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanItems_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanServices">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanServices_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanFixedAssets">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetProcurementPlanFixedAssets_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLocationCodes">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLocationCodes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PopulateRequisitionFields">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requisitionCode" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PopulateRequisitionFields_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitions_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionByLineNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionByLineNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPurchaseRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPurchaseRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="expectedReceiptDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPurchaseRequisitionStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGlobalDimension1Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGlobalDimension1Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGlobalDimension2Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGlobalDimension2Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="unitCost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="procPlan" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="procPlanItem" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="unitCost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="procurementPlans" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="procurementPlanItem" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePurchaseRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePurchaseRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidatePurchaseRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidatePurchaseRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseRequisitionApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPurchaseRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPurchaseRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPurchaseRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPurchaseRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPurchaseRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenPurchaseRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckBudgetPurchaseRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchReqNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckBudgetPurchaseRequisition_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelBudgetCommitmentPurchaseRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchReqNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelBudgetCommitmentPurchaseRequisition_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CheckIfGLAccountBlocked">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="budgetName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckIfGLAccountBlocked_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CheckPurchaseOrderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vendorNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPurchaseOrderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPurchaseOrderExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenPurchaseOrderExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseOrder">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseOrder_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseOrder">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postingDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vendorInvoiceNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseOrder_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseOrderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="orderType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="orderCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="unitCost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uoM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="directUnitCostExclVAT" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmountExclVAT" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="amountIncludingVAT" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreatePurchaseOrderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseOrderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="orderType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="orderCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="unitCost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uoM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="directUnitCostExclVAT" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineAmountExclVAT" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="amountIncludingVAT" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPurchaseOrderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePurchaseOrderLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeletePurchaseOrderLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventoryCopy">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="itemNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unitOfMeasure" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventoryCopy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitions_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionByLineNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionByLineNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenStoreRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenStoreRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="expectedReceiptDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="facilityNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionLocation">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionLocation_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uOM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="inventory" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uOM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStoreRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStoreRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendStoreRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendStoreRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchaseRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckBudgetStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchReqNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckBudgetStoreRequisition_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionBudgetCommitment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="purchReqNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionBudgetCommitment_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetBidAnalysisLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetBidAnalysisLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetBidAnalysisByNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetBidAnalysisByNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="FormatText">
+    <part name="parameters" element="tns:FormatText" />
+  </message>
+  <message name="FormatText_Result">
+    <part name="parameters" element="tns:FormatText_Result" />
+  </message>
+  <message name="GetRFXList">
+    <part name="parameters" element="tns:GetRFXList" />
+  </message>
+  <message name="GetRFXList_Result">
+    <part name="parameters" element="tns:GetRFXList_Result" />
+  </message>
+  <message name="GetRFXByNo">
+    <part name="parameters" element="tns:GetRFXByNo" />
+  </message>
+  <message name="GetRFXByNo_Result">
+    <part name="parameters" element="tns:GetRFXByNo_Result" />
+  </message>
+  <message name="GetRFXLines">
+    <part name="parameters" element="tns:GetRFXLines" />
+  </message>
+  <message name="GetRFXLines_Result">
+    <part name="parameters" element="tns:GetRFXLines_Result" />
+  </message>
+  <message name="GetPOList">
+    <part name="parameters" element="tns:GetPOList" />
+  </message>
+  <message name="GetPOList_Result">
+    <part name="parameters" element="tns:GetPOList_Result" />
+  </message>
+  <message name="GetPOByNo">
+    <part name="parameters" element="tns:GetPOByNo" />
+  </message>
+  <message name="GetPOByNo_Result">
+    <part name="parameters" element="tns:GetPOByNo_Result" />
+  </message>
+  <message name="GetPOLines">
+    <part name="parameters" element="tns:GetPOLines" />
+  </message>
+  <message name="GetPOLines_Result">
+    <part name="parameters" element="tns:GetPOLines_Result" />
+  </message>
+  <message name="GetItems">
+    <part name="parameters" element="tns:GetItems" />
+  </message>
+  <message name="GetItems_Result">
+    <part name="parameters" element="tns:GetItems_Result" />
+  </message>
+  <message name="GetServices">
+    <part name="parameters" element="tns:GetServices" />
+  </message>
+  <message name="GetServices_Result">
+    <part name="parameters" element="tns:GetServices_Result" />
+  </message>
+  <message name="GetFixedAssets">
+    <part name="parameters" element="tns:GetFixedAssets" />
+  </message>
+  <message name="GetFixedAssets_Result">
+    <part name="parameters" element="tns:GetFixedAssets_Result" />
+  </message>
+  <message name="GetItemUOMs">
+    <part name="parameters" element="tns:GetItemUOMs" />
+  </message>
+  <message name="GetItemUOMs_Result">
+    <part name="parameters" element="tns:GetItemUOMs_Result" />
+  </message>
+  <message name="GetServiceUOMs">
+    <part name="parameters" element="tns:GetServiceUOMs" />
+  </message>
+  <message name="GetServiceUOMs_Result">
+    <part name="parameters" element="tns:GetServiceUOMs_Result" />
+  </message>
+  <message name="GetInventoryItems">
+    <part name="parameters" element="tns:GetInventoryItems" />
+  </message>
+  <message name="GetInventoryItems_Result">
+    <part name="parameters" element="tns:GetInventoryItems_Result" />
+  </message>
+  <message name="GetFixedAssetUOMs">
+    <part name="parameters" element="tns:GetFixedAssetUOMs" />
+  </message>
+  <message name="GetFixedAssetUOMs_Result">
+    <part name="parameters" element="tns:GetFixedAssetUOMs_Result" />
+  </message>
+  <message name="GetAvailableInventory">
+    <part name="parameters" element="tns:GetAvailableInventory" />
+  </message>
+  <message name="GetAvailableInventory_Result">
+    <part name="parameters" element="tns:GetAvailableInventory_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionUOMs">
+    <part name="parameters" element="tns:GetPurchaseRequisitionUOMs" />
+  </message>
+  <message name="GetPurchaseRequisitionUOMs_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionUOMs_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionCodes">
+    <part name="parameters" element="tns:GetPurchaseRequisitionCodes" />
+  </message>
+  <message name="GetPurchaseRequisitionCodes_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionCodes_Result" />
+  </message>
+  <message name="GetProcurementPlan">
+    <part name="parameters" element="tns:GetProcurementPlan" />
+  </message>
+  <message name="GetProcurementPlan_Result">
+    <part name="parameters" element="tns:GetProcurementPlan_Result" />
+  </message>
+  <message name="GetProcurementPlanItems">
+    <part name="parameters" element="tns:GetProcurementPlanItems" />
+  </message>
+  <message name="GetProcurementPlanItems_Result">
+    <part name="parameters" element="tns:GetProcurementPlanItems_Result" />
+  </message>
+  <message name="GetProcurementPlanServices">
+    <part name="parameters" element="tns:GetProcurementPlanServices" />
+  </message>
+  <message name="GetProcurementPlanServices_Result">
+    <part name="parameters" element="tns:GetProcurementPlanServices_Result" />
+  </message>
+  <message name="GetProcurementPlanFixedAssets">
+    <part name="parameters" element="tns:GetProcurementPlanFixedAssets" />
+  </message>
+  <message name="GetProcurementPlanFixedAssets_Result">
+    <part name="parameters" element="tns:GetProcurementPlanFixedAssets_Result" />
+  </message>
+  <message name="GetLocationCodes">
+    <part name="parameters" element="tns:GetLocationCodes" />
+  </message>
+  <message name="GetLocationCodes_Result">
+    <part name="parameters" element="tns:GetLocationCodes_Result" />
+  </message>
+  <message name="PopulateRequisitionFields">
+    <part name="parameters" element="tns:PopulateRequisitionFields" />
+  </message>
+  <message name="PopulateRequisitionFields_Result">
+    <part name="parameters" element="tns:PopulateRequisitionFields_Result" />
+  </message>
+  <message name="GetPurchaseRequisitions">
+    <part name="parameters" element="tns:GetPurchaseRequisitions" />
+  </message>
+  <message name="GetPurchaseRequisitions_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitions_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionLines">
+    <part name="parameters" element="tns:GetPurchaseRequisitionLines" />
+  </message>
+  <message name="GetPurchaseRequisitionLines_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionLines_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionByLineNo">
+    <part name="parameters" element="tns:GetPurchaseRequisitionByLineNo" />
+  </message>
+  <message name="GetPurchaseRequisitionByLineNo_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionByLineNo_Result" />
+  </message>
+  <message name="CheckPurchaseRequisitionExists">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionExists" />
+  </message>
+  <message name="CheckPurchaseRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionExists_Result" />
+  </message>
+  <message name="CheckOpenPurchaseRequisitionExists">
+    <part name="parameters" element="tns:CheckOpenPurchaseRequisitionExists" />
+  </message>
+  <message name="CheckOpenPurchaseRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckOpenPurchaseRequisitionExists_Result" />
+  </message>
+  <message name="CreatePurchaseRequisition">
+    <part name="parameters" element="tns:CreatePurchaseRequisition" />
+  </message>
+  <message name="CreatePurchaseRequisition_Result">
+    <part name="parameters" element="tns:CreatePurchaseRequisition_Result" />
+  </message>
+  <message name="ModifyPurchaseRequisition">
+    <part name="parameters" element="tns:ModifyPurchaseRequisition" />
+  </message>
+  <message name="ModifyPurchaseRequisition_Result">
+    <part name="parameters" element="tns:ModifyPurchaseRequisition_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionAmount">
+    <part name="parameters" element="tns:GetPurchaseRequisitionAmount" />
+  </message>
+  <message name="GetPurchaseRequisitionAmount_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionAmount_Result" />
+  </message>
+  <message name="GetPurchaseRequisitionStatus">
+    <part name="parameters" element="tns:GetPurchaseRequisitionStatus" />
+  </message>
+  <message name="GetPurchaseRequisitionStatus_Result">
+    <part name="parameters" element="tns:GetPurchaseRequisitionStatus_Result" />
+  </message>
+  <message name="GetGlobalDimension1Code">
+    <part name="parameters" element="tns:GetGlobalDimension1Code" />
+  </message>
+  <message name="GetGlobalDimension1Code_Result">
+    <part name="parameters" element="tns:GetGlobalDimension1Code_Result" />
+  </message>
+  <message name="GetGlobalDimension2Code">
+    <part name="parameters" element="tns:GetGlobalDimension2Code" />
+  </message>
+  <message name="GetGlobalDimension2Code_Result">
+    <part name="parameters" element="tns:GetGlobalDimension2Code_Result" />
+  </message>
+  <message name="CreatePurchaseRequisitionLine">
+    <part name="parameters" element="tns:CreatePurchaseRequisitionLine" />
+  </message>
+  <message name="CreatePurchaseRequisitionLine_Result">
+    <part name="parameters" element="tns:CreatePurchaseRequisitionLine_Result" />
+  </message>
+  <message name="ModifyPurchaseRequisitionLine">
+    <part name="parameters" element="tns:ModifyPurchaseRequisitionLine" />
+  </message>
+  <message name="ModifyPurchaseRequisitionLine_Result">
+    <part name="parameters" element="tns:ModifyPurchaseRequisitionLine_Result" />
+  </message>
+  <message name="DeletePurchaseRequisitionLine">
+    <part name="parameters" element="tns:DeletePurchaseRequisitionLine" />
+  </message>
+  <message name="DeletePurchaseRequisitionLine_Result">
+    <part name="parameters" element="tns:DeletePurchaseRequisitionLine_Result" />
+  </message>
+  <message name="CheckPurchaseRequisitionLinesExist">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionLinesExist" />
+  </message>
+  <message name="CheckPurchaseRequisitionLinesExist_Result">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionLinesExist_Result" />
+  </message>
+  <message name="ValidatePurchaseRequisitionLines">
+    <part name="parameters" element="tns:ValidatePurchaseRequisitionLines" />
+  </message>
+  <message name="ValidatePurchaseRequisitionLines_Result">
+    <part name="parameters" element="tns:ValidatePurchaseRequisitionLines_Result" />
+  </message>
+  <message name="CheckPurchaseRequisitionApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckPurchaseRequisitionApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckPurchaseRequisitionApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendPurchaseRequisitionApprovalRequest">
+    <part name="parameters" element="tns:SendPurchaseRequisitionApprovalRequest" />
+  </message>
+  <message name="SendPurchaseRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:SendPurchaseRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="CancelPurchaseRequisitionApprovalRequest">
+    <part name="parameters" element="tns:CancelPurchaseRequisitionApprovalRequest" />
+  </message>
+  <message name="CancelPurchaseRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelPurchaseRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="ReopenPurchaseRequisition">
+    <part name="parameters" element="tns:ReopenPurchaseRequisition" />
+  </message>
+  <message name="ReopenPurchaseRequisition_Result">
+    <part name="parameters" element="tns:ReopenPurchaseRequisition_Result" />
+  </message>
+  <message name="CheckBudgetPurchaseRequisition">
+    <part name="parameters" element="tns:CheckBudgetPurchaseRequisition" />
+  </message>
+  <message name="CheckBudgetPurchaseRequisition_Result">
+    <part name="parameters" element="tns:CheckBudgetPurchaseRequisition_Result" />
+  </message>
+  <message name="CancelBudgetCommitmentPurchaseRequisition">
+    <part name="parameters" element="tns:CancelBudgetCommitmentPurchaseRequisition" />
+  </message>
+  <message name="CancelBudgetCommitmentPurchaseRequisition_Result">
+    <part name="parameters" element="tns:CancelBudgetCommitmentPurchaseRequisition_Result" />
+  </message>
+  <message name="CheckIfGLAccountBlocked">
+    <part name="parameters" element="tns:CheckIfGLAccountBlocked" />
+  </message>
+  <message name="CheckIfGLAccountBlocked_Result">
+    <part name="parameters" element="tns:CheckIfGLAccountBlocked_Result" />
+  </message>
+  <message name="CheckPurchaseOrderExists">
+    <part name="parameters" element="tns:CheckPurchaseOrderExists" />
+  </message>
+  <message name="CheckPurchaseOrderExists_Result">
+    <part name="parameters" element="tns:CheckPurchaseOrderExists_Result" />
+  </message>
+  <message name="CheckOpenPurchaseOrderExists">
+    <part name="parameters" element="tns:CheckOpenPurchaseOrderExists" />
+  </message>
+  <message name="CheckOpenPurchaseOrderExists_Result">
+    <part name="parameters" element="tns:CheckOpenPurchaseOrderExists_Result" />
+  </message>
+  <message name="CreatePurchaseOrder">
+    <part name="parameters" element="tns:CreatePurchaseOrder" />
+  </message>
+  <message name="CreatePurchaseOrder_Result">
+    <part name="parameters" element="tns:CreatePurchaseOrder_Result" />
+  </message>
+  <message name="ModifyPurchaseOrder">
+    <part name="parameters" element="tns:ModifyPurchaseOrder" />
+  </message>
+  <message name="ModifyPurchaseOrder_Result">
+    <part name="parameters" element="tns:ModifyPurchaseOrder_Result" />
+  </message>
+  <message name="CreatePurchaseOrderLine">
+    <part name="parameters" element="tns:CreatePurchaseOrderLine" />
+  </message>
+  <message name="CreatePurchaseOrderLine_Result">
+    <part name="parameters" element="tns:CreatePurchaseOrderLine_Result" />
+  </message>
+  <message name="ModifyPurchaseOrderLine">
+    <part name="parameters" element="tns:ModifyPurchaseOrderLine" />
+  </message>
+  <message name="ModifyPurchaseOrderLine_Result">
+    <part name="parameters" element="tns:ModifyPurchaseOrderLine_Result" />
+  </message>
+  <message name="DeletePurchaseOrderLine">
+    <part name="parameters" element="tns:DeletePurchaseOrderLine" />
+  </message>
+  <message name="DeletePurchaseOrderLine_Result">
+    <part name="parameters" element="tns:DeletePurchaseOrderLine_Result" />
+  </message>
+  <message name="GetAvailableInventoryCopy">
+    <part name="parameters" element="tns:GetAvailableInventoryCopy" />
+  </message>
+  <message name="GetAvailableInventoryCopy_Result">
+    <part name="parameters" element="tns:GetAvailableInventoryCopy_Result" />
+  </message>
+  <message name="GetStoreRequisitions">
+    <part name="parameters" element="tns:GetStoreRequisitions" />
+  </message>
+  <message name="GetStoreRequisitions_Result">
+    <part name="parameters" element="tns:GetStoreRequisitions_Result" />
+  </message>
+  <message name="GetStoreRequisitionLines">
+    <part name="parameters" element="tns:GetStoreRequisitionLines" />
+  </message>
+  <message name="GetStoreRequisitionLines_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionLines_Result" />
+  </message>
+  <message name="GetStoreRequisitionByLineNo">
+    <part name="parameters" element="tns:GetStoreRequisitionByLineNo" />
+  </message>
+  <message name="GetStoreRequisitionByLineNo_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionByLineNo_Result" />
+  </message>
+  <message name="CheckStoreRequisitionExists">
+    <part name="parameters" element="tns:CheckStoreRequisitionExists" />
+  </message>
+  <message name="CheckStoreRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionExists_Result" />
+  </message>
+  <message name="CheckOpenStoreRequisitionExists">
+    <part name="parameters" element="tns:CheckOpenStoreRequisitionExists" />
+  </message>
+  <message name="CheckOpenStoreRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckOpenStoreRequisitionExists_Result" />
+  </message>
+  <message name="CreateStoreRequisition">
+    <part name="parameters" element="tns:CreateStoreRequisition" />
+  </message>
+  <message name="CreateStoreRequisition_Result">
+    <part name="parameters" element="tns:CreateStoreRequisition_Result" />
+  </message>
+  <message name="ModifyStoreRequisition">
+    <part name="parameters" element="tns:ModifyStoreRequisition" />
+  </message>
+  <message name="ModifyStoreRequisition_Result">
+    <part name="parameters" element="tns:ModifyStoreRequisition_Result" />
+  </message>
+  <message name="UpdateHeader">
+    <part name="parameters" element="tns:UpdateHeader" />
+  </message>
+  <message name="UpdateHeader_Result">
+    <part name="parameters" element="tns:UpdateHeader_Result" />
+  </message>
+  <message name="GetStoreRequisitionAmount">
+    <part name="parameters" element="tns:GetStoreRequisitionAmount" />
+  </message>
+  <message name="GetStoreRequisitionAmount_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionAmount_Result" />
+  </message>
+  <message name="GetStoreRequisitionStatus">
+    <part name="parameters" element="tns:GetStoreRequisitionStatus" />
+  </message>
+  <message name="GetStoreRequisitionStatus_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionStatus_Result" />
+  </message>
+  <message name="GetStoreRequisitionLocation">
+    <part name="parameters" element="tns:GetStoreRequisitionLocation" />
+  </message>
+  <message name="GetStoreRequisitionLocation_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionLocation_Result" />
+  </message>
+  <message name="CreateStoreRequisitionLine">
+    <part name="parameters" element="tns:CreateStoreRequisitionLine" />
+  </message>
+  <message name="CreateStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:CreateStoreRequisitionLine_Result" />
+  </message>
+  <message name="ModifyStoreRequisitionLine">
+    <part name="parameters" element="tns:ModifyStoreRequisitionLine" />
+  </message>
+  <message name="ModifyStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:ModifyStoreRequisitionLine_Result" />
+  </message>
+  <message name="DeleteStoreRequisitionLine">
+    <part name="parameters" element="tns:DeleteStoreRequisitionLine" />
+  </message>
+  <message name="DeleteStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:DeleteStoreRequisitionLine_Result" />
+  </message>
+  <message name="CheckStoreRequisitionLinesExist">
+    <part name="parameters" element="tns:CheckStoreRequisitionLinesExist" />
+  </message>
+  <message name="CheckStoreRequisitionLinesExist_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionLinesExist_Result" />
+  </message>
+  <message name="ValidateStoreRequisitionLines">
+    <part name="parameters" element="tns:ValidateStoreRequisitionLines" />
+  </message>
+  <message name="ValidateStoreRequisitionLines_Result">
+    <part name="parameters" element="tns:ValidateStoreRequisitionLines_Result" />
+  </message>
+  <message name="CheckStoreRequisitionApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckStoreRequisitionApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendStoreRequisitionApprovalRequest">
+    <part name="parameters" element="tns:SendStoreRequisitionApprovalRequest" />
+  </message>
+  <message name="SendStoreRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:SendStoreRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="CancelStoreRequisitionApprovalRequest">
+    <part name="parameters" element="tns:CancelStoreRequisitionApprovalRequest" />
+  </message>
+  <message name="CancelStoreRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelStoreRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="ReopenStoreRequisition">
+    <part name="parameters" element="tns:ReopenStoreRequisition" />
+  </message>
+  <message name="ReopenStoreRequisition_Result">
+    <part name="parameters" element="tns:ReopenStoreRequisition_Result" />
+  </message>
+  <message name="CheckBudgetStoreRequisition">
+    <part name="parameters" element="tns:CheckBudgetStoreRequisition" />
+  </message>
+  <message name="CheckBudgetStoreRequisition_Result">
+    <part name="parameters" element="tns:CheckBudgetStoreRequisition_Result" />
+  </message>
+  <message name="CancelStoreRequisitionBudgetCommitment">
+    <part name="parameters" element="tns:CancelStoreRequisitionBudgetCommitment" />
+  </message>
+  <message name="CancelStoreRequisitionBudgetCommitment_Result">
+    <part name="parameters" element="tns:CancelStoreRequisitionBudgetCommitment_Result" />
+  </message>
+  <message name="GetBidAnalysisLines">
+    <part name="parameters" element="tns:GetBidAnalysisLines" />
+  </message>
+  <message name="GetBidAnalysisLines_Result">
+    <part name="parameters" element="tns:GetBidAnalysisLines_Result" />
+  </message>
+  <message name="GetBidAnalysisByNo">
+    <part name="parameters" element="tns:GetBidAnalysisByNo" />
+  </message>
+  <message name="GetBidAnalysisByNo_Result">
+    <part name="parameters" element="tns:GetBidAnalysisByNo_Result" />
+  </message>
+  <portType name="ProcurementManagementWS_Port">
+    <operation name="FormatText">
+      <input name="FormatText" message="tns:FormatText" />
+      <output name="FormatText_Result" message="tns:FormatText_Result" />
+    </operation>
+    <operation name="GetRFXList">
+      <input name="GetRFXList" message="tns:GetRFXList" />
+      <output name="GetRFXList_Result" message="tns:GetRFXList_Result" />
+    </operation>
+    <operation name="GetRFXByNo">
+      <input name="GetRFXByNo" message="tns:GetRFXByNo" />
+      <output name="GetRFXByNo_Result" message="tns:GetRFXByNo_Result" />
+    </operation>
+    <operation name="GetRFXLines">
+      <input name="GetRFXLines" message="tns:GetRFXLines" />
+      <output name="GetRFXLines_Result" message="tns:GetRFXLines_Result" />
+    </operation>
+    <operation name="GetPOList">
+      <input name="GetPOList" message="tns:GetPOList" />
+      <output name="GetPOList_Result" message="tns:GetPOList_Result" />
+    </operation>
+    <operation name="GetPOByNo">
+      <input name="GetPOByNo" message="tns:GetPOByNo" />
+      <output name="GetPOByNo_Result" message="tns:GetPOByNo_Result" />
+    </operation>
+    <operation name="GetPOLines">
+      <input name="GetPOLines" message="tns:GetPOLines" />
+      <output name="GetPOLines_Result" message="tns:GetPOLines_Result" />
+    </operation>
+    <operation name="GetItems">
+      <input name="GetItems" message="tns:GetItems" />
+      <output name="GetItems_Result" message="tns:GetItems_Result" />
+    </operation>
+    <operation name="GetServices">
+      <input name="GetServices" message="tns:GetServices" />
+      <output name="GetServices_Result" message="tns:GetServices_Result" />
+    </operation>
+    <operation name="GetFixedAssets">
+      <input name="GetFixedAssets" message="tns:GetFixedAssets" />
+      <output name="GetFixedAssets_Result" message="tns:GetFixedAssets_Result" />
+    </operation>
+    <operation name="GetItemUOMs">
+      <input name="GetItemUOMs" message="tns:GetItemUOMs" />
+      <output name="GetItemUOMs_Result" message="tns:GetItemUOMs_Result" />
+    </operation>
+    <operation name="GetServiceUOMs">
+      <input name="GetServiceUOMs" message="tns:GetServiceUOMs" />
+      <output name="GetServiceUOMs_Result" message="tns:GetServiceUOMs_Result" />
+    </operation>
+    <operation name="GetInventoryItems">
+      <input name="GetInventoryItems" message="tns:GetInventoryItems" />
+      <output name="GetInventoryItems_Result" message="tns:GetInventoryItems_Result" />
+    </operation>
+    <operation name="GetFixedAssetUOMs">
+      <input name="GetFixedAssetUOMs" message="tns:GetFixedAssetUOMs" />
+      <output name="GetFixedAssetUOMs_Result" message="tns:GetFixedAssetUOMs_Result" />
+    </operation>
+    <operation name="GetAvailableInventory">
+      <input name="GetAvailableInventory" message="tns:GetAvailableInventory" />
+      <output name="GetAvailableInventory_Result" message="tns:GetAvailableInventory_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionUOMs">
+      <input name="GetPurchaseRequisitionUOMs" message="tns:GetPurchaseRequisitionUOMs" />
+      <output name="GetPurchaseRequisitionUOMs_Result" message="tns:GetPurchaseRequisitionUOMs_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionCodes">
+      <input name="GetPurchaseRequisitionCodes" message="tns:GetPurchaseRequisitionCodes" />
+      <output name="GetPurchaseRequisitionCodes_Result" message="tns:GetPurchaseRequisitionCodes_Result" />
+    </operation>
+    <operation name="GetProcurementPlan">
+      <input name="GetProcurementPlan" message="tns:GetProcurementPlan" />
+      <output name="GetProcurementPlan_Result" message="tns:GetProcurementPlan_Result" />
+    </operation>
+    <operation name="GetProcurementPlanItems">
+      <input name="GetProcurementPlanItems" message="tns:GetProcurementPlanItems" />
+      <output name="GetProcurementPlanItems_Result" message="tns:GetProcurementPlanItems_Result" />
+    </operation>
+    <operation name="GetProcurementPlanServices">
+      <input name="GetProcurementPlanServices" message="tns:GetProcurementPlanServices" />
+      <output name="GetProcurementPlanServices_Result" message="tns:GetProcurementPlanServices_Result" />
+    </operation>
+    <operation name="GetProcurementPlanFixedAssets">
+      <input name="GetProcurementPlanFixedAssets" message="tns:GetProcurementPlanFixedAssets" />
+      <output name="GetProcurementPlanFixedAssets_Result" message="tns:GetProcurementPlanFixedAssets_Result" />
+    </operation>
+    <operation name="GetLocationCodes">
+      <input name="GetLocationCodes" message="tns:GetLocationCodes" />
+      <output name="GetLocationCodes_Result" message="tns:GetLocationCodes_Result" />
+    </operation>
+    <operation name="PopulateRequisitionFields">
+      <input name="PopulateRequisitionFields" message="tns:PopulateRequisitionFields" />
+      <output name="PopulateRequisitionFields_Result" message="tns:PopulateRequisitionFields_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitions">
+      <input name="GetPurchaseRequisitions" message="tns:GetPurchaseRequisitions" />
+      <output name="GetPurchaseRequisitions_Result" message="tns:GetPurchaseRequisitions_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionLines">
+      <input name="GetPurchaseRequisitionLines" message="tns:GetPurchaseRequisitionLines" />
+      <output name="GetPurchaseRequisitionLines_Result" message="tns:GetPurchaseRequisitionLines_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionByLineNo">
+      <input name="GetPurchaseRequisitionByLineNo" message="tns:GetPurchaseRequisitionByLineNo" />
+      <output name="GetPurchaseRequisitionByLineNo_Result" message="tns:GetPurchaseRequisitionByLineNo_Result" />
+    </operation>
+    <operation name="CheckPurchaseRequisitionExists">
+      <input name="CheckPurchaseRequisitionExists" message="tns:CheckPurchaseRequisitionExists" />
+      <output name="CheckPurchaseRequisitionExists_Result" message="tns:CheckPurchaseRequisitionExists_Result" />
+    </operation>
+    <operation name="CheckOpenPurchaseRequisitionExists">
+      <input name="CheckOpenPurchaseRequisitionExists" message="tns:CheckOpenPurchaseRequisitionExists" />
+      <output name="CheckOpenPurchaseRequisitionExists_Result" message="tns:CheckOpenPurchaseRequisitionExists_Result" />
+    </operation>
+    <operation name="CreatePurchaseRequisition">
+      <input name="CreatePurchaseRequisition" message="tns:CreatePurchaseRequisition" />
+      <output name="CreatePurchaseRequisition_Result" message="tns:CreatePurchaseRequisition_Result" />
+    </operation>
+    <operation name="ModifyPurchaseRequisition">
+      <input name="ModifyPurchaseRequisition" message="tns:ModifyPurchaseRequisition" />
+      <output name="ModifyPurchaseRequisition_Result" message="tns:ModifyPurchaseRequisition_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionAmount">
+      <input name="GetPurchaseRequisitionAmount" message="tns:GetPurchaseRequisitionAmount" />
+      <output name="GetPurchaseRequisitionAmount_Result" message="tns:GetPurchaseRequisitionAmount_Result" />
+    </operation>
+    <operation name="GetPurchaseRequisitionStatus">
+      <input name="GetPurchaseRequisitionStatus" message="tns:GetPurchaseRequisitionStatus" />
+      <output name="GetPurchaseRequisitionStatus_Result" message="tns:GetPurchaseRequisitionStatus_Result" />
+    </operation>
+    <operation name="GetGlobalDimension1Code">
+      <input name="GetGlobalDimension1Code" message="tns:GetGlobalDimension1Code" />
+      <output name="GetGlobalDimension1Code_Result" message="tns:GetGlobalDimension1Code_Result" />
+    </operation>
+    <operation name="GetGlobalDimension2Code">
+      <input name="GetGlobalDimension2Code" message="tns:GetGlobalDimension2Code" />
+      <output name="GetGlobalDimension2Code_Result" message="tns:GetGlobalDimension2Code_Result" />
+    </operation>
+    <operation name="CreatePurchaseRequisitionLine">
+      <input name="CreatePurchaseRequisitionLine" message="tns:CreatePurchaseRequisitionLine" />
+      <output name="CreatePurchaseRequisitionLine_Result" message="tns:CreatePurchaseRequisitionLine_Result" />
+    </operation>
+    <operation name="ModifyPurchaseRequisitionLine">
+      <input name="ModifyPurchaseRequisitionLine" message="tns:ModifyPurchaseRequisitionLine" />
+      <output name="ModifyPurchaseRequisitionLine_Result" message="tns:ModifyPurchaseRequisitionLine_Result" />
+    </operation>
+    <operation name="DeletePurchaseRequisitionLine">
+      <input name="DeletePurchaseRequisitionLine" message="tns:DeletePurchaseRequisitionLine" />
+      <output name="DeletePurchaseRequisitionLine_Result" message="tns:DeletePurchaseRequisitionLine_Result" />
+    </operation>
+    <operation name="CheckPurchaseRequisitionLinesExist">
+      <input name="CheckPurchaseRequisitionLinesExist" message="tns:CheckPurchaseRequisitionLinesExist" />
+      <output name="CheckPurchaseRequisitionLinesExist_Result" message="tns:CheckPurchaseRequisitionLinesExist_Result" />
+    </operation>
+    <operation name="ValidatePurchaseRequisitionLines">
+      <input name="ValidatePurchaseRequisitionLines" message="tns:ValidatePurchaseRequisitionLines" />
+      <output name="ValidatePurchaseRequisitionLines_Result" message="tns:ValidatePurchaseRequisitionLines_Result" />
+    </operation>
+    <operation name="CheckPurchaseRequisitionApprovalWorkflowEnabled">
+      <input name="CheckPurchaseRequisitionApprovalWorkflowEnabled" message="tns:CheckPurchaseRequisitionApprovalWorkflowEnabled" />
+      <output name="CheckPurchaseRequisitionApprovalWorkflowEnabled_Result" message="tns:CheckPurchaseRequisitionApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendPurchaseRequisitionApprovalRequest">
+      <input name="SendPurchaseRequisitionApprovalRequest" message="tns:SendPurchaseRequisitionApprovalRequest" />
+      <output name="SendPurchaseRequisitionApprovalRequest_Result" message="tns:SendPurchaseRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelPurchaseRequisitionApprovalRequest">
+      <input name="CancelPurchaseRequisitionApprovalRequest" message="tns:CancelPurchaseRequisitionApprovalRequest" />
+      <output name="CancelPurchaseRequisitionApprovalRequest_Result" message="tns:CancelPurchaseRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenPurchaseRequisition">
+      <input name="ReopenPurchaseRequisition" message="tns:ReopenPurchaseRequisition" />
+      <output name="ReopenPurchaseRequisition_Result" message="tns:ReopenPurchaseRequisition_Result" />
+    </operation>
+    <operation name="CheckBudgetPurchaseRequisition">
+      <input name="CheckBudgetPurchaseRequisition" message="tns:CheckBudgetPurchaseRequisition" />
+      <output name="CheckBudgetPurchaseRequisition_Result" message="tns:CheckBudgetPurchaseRequisition_Result" />
+    </operation>
+    <operation name="CancelBudgetCommitmentPurchaseRequisition">
+      <input name="CancelBudgetCommitmentPurchaseRequisition" message="tns:CancelBudgetCommitmentPurchaseRequisition" />
+      <output name="CancelBudgetCommitmentPurchaseRequisition_Result" message="tns:CancelBudgetCommitmentPurchaseRequisition_Result" />
+    </operation>
+    <operation name="CheckIfGLAccountBlocked">
+      <input name="CheckIfGLAccountBlocked" message="tns:CheckIfGLAccountBlocked" />
+      <output name="CheckIfGLAccountBlocked_Result" message="tns:CheckIfGLAccountBlocked_Result" />
+    </operation>
+    <operation name="CheckPurchaseOrderExists">
+      <input name="CheckPurchaseOrderExists" message="tns:CheckPurchaseOrderExists" />
+      <output name="CheckPurchaseOrderExists_Result" message="tns:CheckPurchaseOrderExists_Result" />
+    </operation>
+    <operation name="CheckOpenPurchaseOrderExists">
+      <input name="CheckOpenPurchaseOrderExists" message="tns:CheckOpenPurchaseOrderExists" />
+      <output name="CheckOpenPurchaseOrderExists_Result" message="tns:CheckOpenPurchaseOrderExists_Result" />
+    </operation>
+    <operation name="CreatePurchaseOrder">
+      <input name="CreatePurchaseOrder" message="tns:CreatePurchaseOrder" />
+      <output name="CreatePurchaseOrder_Result" message="tns:CreatePurchaseOrder_Result" />
+    </operation>
+    <operation name="ModifyPurchaseOrder">
+      <input name="ModifyPurchaseOrder" message="tns:ModifyPurchaseOrder" />
+      <output name="ModifyPurchaseOrder_Result" message="tns:ModifyPurchaseOrder_Result" />
+    </operation>
+    <operation name="CreatePurchaseOrderLine">
+      <input name="CreatePurchaseOrderLine" message="tns:CreatePurchaseOrderLine" />
+      <output name="CreatePurchaseOrderLine_Result" message="tns:CreatePurchaseOrderLine_Result" />
+    </operation>
+    <operation name="ModifyPurchaseOrderLine">
+      <input name="ModifyPurchaseOrderLine" message="tns:ModifyPurchaseOrderLine" />
+      <output name="ModifyPurchaseOrderLine_Result" message="tns:ModifyPurchaseOrderLine_Result" />
+    </operation>
+    <operation name="DeletePurchaseOrderLine">
+      <input name="DeletePurchaseOrderLine" message="tns:DeletePurchaseOrderLine" />
+      <output name="DeletePurchaseOrderLine_Result" message="tns:DeletePurchaseOrderLine_Result" />
+    </operation>
+    <operation name="GetAvailableInventoryCopy">
+      <input name="GetAvailableInventoryCopy" message="tns:GetAvailableInventoryCopy" />
+      <output name="GetAvailableInventoryCopy_Result" message="tns:GetAvailableInventoryCopy_Result" />
+    </operation>
+    <operation name="GetStoreRequisitions">
+      <input name="GetStoreRequisitions" message="tns:GetStoreRequisitions" />
+      <output name="GetStoreRequisitions_Result" message="tns:GetStoreRequisitions_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionLines">
+      <input name="GetStoreRequisitionLines" message="tns:GetStoreRequisitionLines" />
+      <output name="GetStoreRequisitionLines_Result" message="tns:GetStoreRequisitionLines_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionByLineNo">
+      <input name="GetStoreRequisitionByLineNo" message="tns:GetStoreRequisitionByLineNo" />
+      <output name="GetStoreRequisitionByLineNo_Result" message="tns:GetStoreRequisitionByLineNo_Result" />
+    </operation>
+    <operation name="CheckStoreRequisitionExists">
+      <input name="CheckStoreRequisitionExists" message="tns:CheckStoreRequisitionExists" />
+      <output name="CheckStoreRequisitionExists_Result" message="tns:CheckStoreRequisitionExists_Result" />
+    </operation>
+    <operation name="CheckOpenStoreRequisitionExists">
+      <input name="CheckOpenStoreRequisitionExists" message="tns:CheckOpenStoreRequisitionExists" />
+      <output name="CheckOpenStoreRequisitionExists_Result" message="tns:CheckOpenStoreRequisitionExists_Result" />
+    </operation>
+    <operation name="CreateStoreRequisition">
+      <input name="CreateStoreRequisition" message="tns:CreateStoreRequisition" />
+      <output name="CreateStoreRequisition_Result" message="tns:CreateStoreRequisition_Result" />
+    </operation>
+    <operation name="ModifyStoreRequisition">
+      <input name="ModifyStoreRequisition" message="tns:ModifyStoreRequisition" />
+      <output name="ModifyStoreRequisition_Result" message="tns:ModifyStoreRequisition_Result" />
+    </operation>
+    <operation name="UpdateHeader">
+      <input name="UpdateHeader" message="tns:UpdateHeader" />
+      <output name="UpdateHeader_Result" message="tns:UpdateHeader_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionAmount">
+      <input name="GetStoreRequisitionAmount" message="tns:GetStoreRequisitionAmount" />
+      <output name="GetStoreRequisitionAmount_Result" message="tns:GetStoreRequisitionAmount_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionStatus">
+      <input name="GetStoreRequisitionStatus" message="tns:GetStoreRequisitionStatus" />
+      <output name="GetStoreRequisitionStatus_Result" message="tns:GetStoreRequisitionStatus_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionLocation">
+      <input name="GetStoreRequisitionLocation" message="tns:GetStoreRequisitionLocation" />
+      <output name="GetStoreRequisitionLocation_Result" message="tns:GetStoreRequisitionLocation_Result" />
+    </operation>
+    <operation name="CreateStoreRequisitionLine">
+      <input name="CreateStoreRequisitionLine" message="tns:CreateStoreRequisitionLine" />
+      <output name="CreateStoreRequisitionLine_Result" message="tns:CreateStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="ModifyStoreRequisitionLine">
+      <input name="ModifyStoreRequisitionLine" message="tns:ModifyStoreRequisitionLine" />
+      <output name="ModifyStoreRequisitionLine_Result" message="tns:ModifyStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="DeleteStoreRequisitionLine">
+      <input name="DeleteStoreRequisitionLine" message="tns:DeleteStoreRequisitionLine" />
+      <output name="DeleteStoreRequisitionLine_Result" message="tns:DeleteStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="CheckStoreRequisitionLinesExist">
+      <input name="CheckStoreRequisitionLinesExist" message="tns:CheckStoreRequisitionLinesExist" />
+      <output name="CheckStoreRequisitionLinesExist_Result" message="tns:CheckStoreRequisitionLinesExist_Result" />
+    </operation>
+    <operation name="ValidateStoreRequisitionLines">
+      <input name="ValidateStoreRequisitionLines" message="tns:ValidateStoreRequisitionLines" />
+      <output name="ValidateStoreRequisitionLines_Result" message="tns:ValidateStoreRequisitionLines_Result" />
+    </operation>
+    <operation name="CheckStoreRequisitionApprovalWorkflowEnabled">
+      <input name="CheckStoreRequisitionApprovalWorkflowEnabled" message="tns:CheckStoreRequisitionApprovalWorkflowEnabled" />
+      <output name="CheckStoreRequisitionApprovalWorkflowEnabled_Result" message="tns:CheckStoreRequisitionApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendStoreRequisitionApprovalRequest">
+      <input name="SendStoreRequisitionApprovalRequest" message="tns:SendStoreRequisitionApprovalRequest" />
+      <output name="SendStoreRequisitionApprovalRequest_Result" message="tns:SendStoreRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelStoreRequisitionApprovalRequest">
+      <input name="CancelStoreRequisitionApprovalRequest" message="tns:CancelStoreRequisitionApprovalRequest" />
+      <output name="CancelStoreRequisitionApprovalRequest_Result" message="tns:CancelStoreRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenStoreRequisition">
+      <input name="ReopenStoreRequisition" message="tns:ReopenStoreRequisition" />
+      <output name="ReopenStoreRequisition_Result" message="tns:ReopenStoreRequisition_Result" />
+    </operation>
+    <operation name="CheckBudgetStoreRequisition">
+      <input name="CheckBudgetStoreRequisition" message="tns:CheckBudgetStoreRequisition" />
+      <output name="CheckBudgetStoreRequisition_Result" message="tns:CheckBudgetStoreRequisition_Result" />
+    </operation>
+    <operation name="CancelStoreRequisitionBudgetCommitment">
+      <input name="CancelStoreRequisitionBudgetCommitment" message="tns:CancelStoreRequisitionBudgetCommitment" />
+      <output name="CancelStoreRequisitionBudgetCommitment_Result" message="tns:CancelStoreRequisitionBudgetCommitment_Result" />
+    </operation>
+    <operation name="GetBidAnalysisLines">
+      <input name="GetBidAnalysisLines" message="tns:GetBidAnalysisLines" />
+      <output name="GetBidAnalysisLines_Result" message="tns:GetBidAnalysisLines_Result" />
+    </operation>
+    <operation name="GetBidAnalysisByNo">
+      <input name="GetBidAnalysisByNo" message="tns:GetBidAnalysisByNo" />
+      <output name="GetBidAnalysisByNo_Result" message="tns:GetBidAnalysisByNo_Result" />
+    </operation>
+  </portType>
+  <binding name="ProcurementManagementWS_Binding" type="tns:ProcurementManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="FormatText">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:FormatText" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="FormatText">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="FormatText_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRFXList">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetRFXList" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRFXList">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRFXList_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRFXByNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetRFXByNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRFXByNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRFXByNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRFXLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetRFXLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRFXLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRFXLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPOList">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPOList" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPOList">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPOList_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPOByNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPOByNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPOByNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPOByNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPOLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPOLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPOLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPOLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetItems">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetItems" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetItems">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetItems_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetServices">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetServices" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetServices">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetServices_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetFixedAssets">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetFixedAssets" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetFixedAssets">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetFixedAssets_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetItemUOMs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetItemUOMs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetItemUOMs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetItemUOMs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetServiceUOMs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetServiceUOMs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetServiceUOMs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetServiceUOMs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetInventoryItems">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetInventoryItems" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetInventoryItems">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetInventoryItems_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetFixedAssetUOMs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetFixedAssetUOMs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetFixedAssetUOMs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetFixedAssetUOMs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAvailableInventory">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetAvailableInventory" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAvailableInventory">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAvailableInventory_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionUOMs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionUOMs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionUOMs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionUOMs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionCodes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionCodes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionCodes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionCodes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProcurementPlan">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetProcurementPlan" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProcurementPlan">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProcurementPlan_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProcurementPlanItems">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetProcurementPlanItems" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProcurementPlanItems">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProcurementPlanItems_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProcurementPlanServices">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetProcurementPlanServices" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProcurementPlanServices">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProcurementPlanServices_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProcurementPlanFixedAssets">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetProcurementPlanFixedAssets" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProcurementPlanFixedAssets">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProcurementPlanFixedAssets_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLocationCodes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetLocationCodes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLocationCodes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLocationCodes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PopulateRequisitionFields">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:PopulateRequisitionFields" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PopulateRequisitionFields">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PopulateRequisitionFields_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionByLineNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionByLineNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionByLineNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionByLineNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPurchaseRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckPurchaseRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPurchaseRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPurchaseRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenPurchaseRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckOpenPurchaseRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenPurchaseRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenPurchaseRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePurchaseRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreatePurchaseRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePurchaseRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePurchaseRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPurchaseRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyPurchaseRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPurchaseRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPurchaseRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPurchaseRequisitionStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetPurchaseRequisitionStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPurchaseRequisitionStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPurchaseRequisitionStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetGlobalDimension1Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetGlobalDimension1Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetGlobalDimension1Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetGlobalDimension1Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetGlobalDimension2Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetGlobalDimension2Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetGlobalDimension2Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetGlobalDimension2Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePurchaseRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreatePurchaseRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePurchaseRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePurchaseRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPurchaseRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyPurchaseRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPurchaseRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPurchaseRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePurchaseRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:DeletePurchaseRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePurchaseRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePurchaseRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPurchaseRequisitionLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckPurchaseRequisitionLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPurchaseRequisitionLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPurchaseRequisitionLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidatePurchaseRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ValidatePurchaseRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidatePurchaseRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidatePurchaseRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPurchaseRequisitionApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckPurchaseRequisitionApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPurchaseRequisitionApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPurchaseRequisitionApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendPurchaseRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:SendPurchaseRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendPurchaseRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendPurchaseRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelPurchaseRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CancelPurchaseRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelPurchaseRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelPurchaseRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenPurchaseRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ReopenPurchaseRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenPurchaseRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenPurchaseRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckBudgetPurchaseRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckBudgetPurchaseRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckBudgetPurchaseRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckBudgetPurchaseRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelBudgetCommitmentPurchaseRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CancelBudgetCommitmentPurchaseRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelBudgetCommitmentPurchaseRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelBudgetCommitmentPurchaseRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckIfGLAccountBlocked">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckIfGLAccountBlocked" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckIfGLAccountBlocked">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckIfGLAccountBlocked_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPurchaseOrderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckPurchaseOrderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPurchaseOrderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPurchaseOrderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenPurchaseOrderExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckOpenPurchaseOrderExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenPurchaseOrderExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenPurchaseOrderExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePurchaseOrder">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreatePurchaseOrder" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePurchaseOrder">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePurchaseOrder_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPurchaseOrder">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyPurchaseOrder" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPurchaseOrder">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPurchaseOrder_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreatePurchaseOrderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreatePurchaseOrderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePurchaseOrderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreatePurchaseOrderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPurchaseOrderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyPurchaseOrderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPurchaseOrderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPurchaseOrderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeletePurchaseOrderLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:DeletePurchaseOrderLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeletePurchaseOrderLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeletePurchaseOrderLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAvailableInventoryCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetAvailableInventoryCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAvailableInventoryCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAvailableInventoryCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionByLineNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitionByLineNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionByLineNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionByLineNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckStoreRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckStoreRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenStoreRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckOpenStoreRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenStoreRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenStoreRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreateStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:UpdateHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitionAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitionStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionLocation">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetStoreRequisitionLocation" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionLocation">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionLocation_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CreateStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ModifyStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:DeleteStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckStoreRequisitionLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckStoreRequisitionLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateStoreRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ValidateStoreRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateStoreRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateStoreRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckStoreRequisitionApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckStoreRequisitionApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendStoreRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:SendStoreRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendStoreRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendStoreRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelStoreRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CancelStoreRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelStoreRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelStoreRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:ReopenStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckBudgetStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CheckBudgetStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckBudgetStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckBudgetStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelStoreRequisitionBudgetCommitment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:CancelStoreRequisitionBudgetCommitment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelStoreRequisitionBudgetCommitment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelStoreRequisitionBudgetCommitment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetBidAnalysisLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetBidAnalysisLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetBidAnalysisLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetBidAnalysisLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetBidAnalysisByNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProcurementManagementWS:GetBidAnalysisByNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetBidAnalysisByNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetBidAnalysisByNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ProcurementManagementWS">
+    <port name="ProcurementManagementWS_Port" binding="tns:ProcurementManagementWS_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/ProcurementManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

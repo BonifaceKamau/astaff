@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckOpenEmployeeAppraisalExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenEmployeeAppraisalExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAppraisalStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAppraisalStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalPeriod" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendEmployeeAppraisalApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendEmployeeAppraisalApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelEmployeeAppraisalApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelEmployeeAppraisalApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalPeriod" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="organizationalActivityCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="departmentalActivityCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activityDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activityWeight" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="targetValue" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalScoreType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="parameterType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bUM" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalPeriod" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activityCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="organizationalAppraisalCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="departmentalAppraisalCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activityDescription" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activityWeight" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="targetValue" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalScoreType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="parameterType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bUM" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteEmployeeAppraisalLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="activityCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalPeriod" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="organizationActivityCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="departmentActivityCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteEmployeeAppraisalLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenEmployeeAppraisalEvaluationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenEmployeeAppraisalEvaluationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalEvaluationExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalEvaluationExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalEvaluationHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeAppraisalEvaluationHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAppraisalEvaluationStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalEvaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAppraisalEvaluationStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalEvaluationHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalEvaluationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="evaluationStage" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyEmployeeAppraisalEvaluationHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalEvaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendEmployeeAppraisalEvaluationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalEvaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendEmployeeAppraisalEvaluationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelEmployeeAppraisalEvaluationApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelEmployeeAppraisalEvaluationApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateEmployeeAppraisalLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalEvaluationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateEmployeeAppraisalLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckAppraisalEvaluationLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckAppraisalEvaluationLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalEvaluationLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualValue" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalEvaluationLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAppraisalEvaluationLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="evaluationNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAppraisalEvaluationLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetObjectiveWeight">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="generalAppraisalObjective" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetObjectiveWeight_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckOpenEmployeeAppraisalExists">
+    <part name="parameters" element="tns:CheckOpenEmployeeAppraisalExists" />
+  </message>
+  <message name="CheckOpenEmployeeAppraisalExists_Result">
+    <part name="parameters" element="tns:CheckOpenEmployeeAppraisalExists_Result" />
+  </message>
+  <message name="CheckEmployeeAppraisalExists">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalExists" />
+  </message>
+  <message name="CheckEmployeeAppraisalExists_Result">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalExists_Result" />
+  </message>
+  <message name="CreateEmployeeAppraisalHeader">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalHeader" />
+  </message>
+  <message name="CreateEmployeeAppraisalHeader_Result">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalHeader_Result" />
+  </message>
+  <message name="GetEmployeeAppraisalStatus">
+    <part name="parameters" element="tns:GetEmployeeAppraisalStatus" />
+  </message>
+  <message name="GetEmployeeAppraisalStatus_Result">
+    <part name="parameters" element="tns:GetEmployeeAppraisalStatus_Result" />
+  </message>
+  <message name="ModifyEmployeeAppraisalHeader">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalHeader" />
+  </message>
+  <message name="ModifyEmployeeAppraisalHeader_Result">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalHeader_Result" />
+  </message>
+  <message name="CheckEmployeeAppraisalApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckEmployeeAppraisalApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendEmployeeAppraisalApprovalRequest">
+    <part name="parameters" element="tns:SendEmployeeAppraisalApprovalRequest" />
+  </message>
+  <message name="SendEmployeeAppraisalApprovalRequest_Result">
+    <part name="parameters" element="tns:SendEmployeeAppraisalApprovalRequest_Result" />
+  </message>
+  <message name="CancelEmployeeAppraisalApprovalRequest">
+    <part name="parameters" element="tns:CancelEmployeeAppraisalApprovalRequest" />
+  </message>
+  <message name="CancelEmployeeAppraisalApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelEmployeeAppraisalApprovalRequest_Result" />
+  </message>
+  <message name="CreateEmployeeAppraisalLine">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalLine" />
+  </message>
+  <message name="CreateEmployeeAppraisalLine_Result">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalLine_Result" />
+  </message>
+  <message name="ModifyEmployeeAppraisalLine">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalLine" />
+  </message>
+  <message name="ModifyEmployeeAppraisalLine_Result">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalLine_Result" />
+  </message>
+  <message name="CheckEmployeeAppraisalLinesExist">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalLinesExist" />
+  </message>
+  <message name="CheckEmployeeAppraisalLinesExist_Result">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalLinesExist_Result" />
+  </message>
+  <message name="DeleteEmployeeAppraisalLine">
+    <part name="parameters" element="tns:DeleteEmployeeAppraisalLine" />
+  </message>
+  <message name="DeleteEmployeeAppraisalLine_Result">
+    <part name="parameters" element="tns:DeleteEmployeeAppraisalLine_Result" />
+  </message>
+  <message name="CheckOpenEmployeeAppraisalEvaluationExists">
+    <part name="parameters" element="tns:CheckOpenEmployeeAppraisalEvaluationExists" />
+  </message>
+  <message name="CheckOpenEmployeeAppraisalEvaluationExists_Result">
+    <part name="parameters" element="tns:CheckOpenEmployeeAppraisalEvaluationExists_Result" />
+  </message>
+  <message name="CheckEmployeeAppraisalEvaluationExists">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalEvaluationExists" />
+  </message>
+  <message name="CheckEmployeeAppraisalEvaluationExists_Result">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalEvaluationExists_Result" />
+  </message>
+  <message name="CreateEmployeeAppraisalEvaluationHeader">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalEvaluationHeader" />
+  </message>
+  <message name="CreateEmployeeAppraisalEvaluationHeader_Result">
+    <part name="parameters" element="tns:CreateEmployeeAppraisalEvaluationHeader_Result" />
+  </message>
+  <message name="GetEmployeeAppraisalEvaluationStatus">
+    <part name="parameters" element="tns:GetEmployeeAppraisalEvaluationStatus" />
+  </message>
+  <message name="GetEmployeeAppraisalEvaluationStatus_Result">
+    <part name="parameters" element="tns:GetEmployeeAppraisalEvaluationStatus_Result" />
+  </message>
+  <message name="ModifyEmployeeAppraisalEvaluationHeader">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalEvaluationHeader" />
+  </message>
+  <message name="ModifyEmployeeAppraisalEvaluationHeader_Result">
+    <part name="parameters" element="tns:ModifyEmployeeAppraisalEvaluationHeader_Result" />
+  </message>
+  <message name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendEmployeeAppraisalEvaluationApprovalRequest">
+    <part name="parameters" element="tns:SendEmployeeAppraisalEvaluationApprovalRequest" />
+  </message>
+  <message name="SendEmployeeAppraisalEvaluationApprovalRequest_Result">
+    <part name="parameters" element="tns:SendEmployeeAppraisalEvaluationApprovalRequest_Result" />
+  </message>
+  <message name="CancelEmployeeAppraisalEvaluationApprovalRequest">
+    <part name="parameters" element="tns:CancelEmployeeAppraisalEvaluationApprovalRequest" />
+  </message>
+  <message name="CancelEmployeeAppraisalEvaluationApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelEmployeeAppraisalEvaluationApprovalRequest_Result" />
+  </message>
+  <message name="ValidateEmployeeAppraisalLines">
+    <part name="parameters" element="tns:ValidateEmployeeAppraisalLines" />
+  </message>
+  <message name="ValidateEmployeeAppraisalLines_Result">
+    <part name="parameters" element="tns:ValidateEmployeeAppraisalLines_Result" />
+  </message>
+  <message name="CheckAppraisalEvaluationLinesExist">
+    <part name="parameters" element="tns:CheckAppraisalEvaluationLinesExist" />
+  </message>
+  <message name="CheckAppraisalEvaluationLinesExist_Result">
+    <part name="parameters" element="tns:CheckAppraisalEvaluationLinesExist_Result" />
+  </message>
+  <message name="ModifyAppraisalEvaluationLine">
+    <part name="parameters" element="tns:ModifyAppraisalEvaluationLine" />
+  </message>
+  <message name="ModifyAppraisalEvaluationLine_Result">
+    <part name="parameters" element="tns:ModifyAppraisalEvaluationLine_Result" />
+  </message>
+  <message name="DeleteAppraisalEvaluationLine">
+    <part name="parameters" element="tns:DeleteAppraisalEvaluationLine" />
+  </message>
+  <message name="DeleteAppraisalEvaluationLine_Result">
+    <part name="parameters" element="tns:DeleteAppraisalEvaluationLine_Result" />
+  </message>
+  <message name="GetObjectiveWeight">
+    <part name="parameters" element="tns:GetObjectiveWeight" />
+  </message>
+  <message name="GetObjectiveWeight_Result">
+    <part name="parameters" element="tns:GetObjectiveWeight_Result" />
+  </message>
+  <portType name="EmployeeAppraisalManagementWS_Port">
+    <operation name="CheckOpenEmployeeAppraisalExists">
+      <input name="CheckOpenEmployeeAppraisalExists" message="tns:CheckOpenEmployeeAppraisalExists" />
+      <output name="CheckOpenEmployeeAppraisalExists_Result" message="tns:CheckOpenEmployeeAppraisalExists_Result" />
+    </operation>
+    <operation name="CheckEmployeeAppraisalExists">
+      <input name="CheckEmployeeAppraisalExists" message="tns:CheckEmployeeAppraisalExists" />
+      <output name="CheckEmployeeAppraisalExists_Result" message="tns:CheckEmployeeAppraisalExists_Result" />
+    </operation>
+    <operation name="CreateEmployeeAppraisalHeader">
+      <input name="CreateEmployeeAppraisalHeader" message="tns:CreateEmployeeAppraisalHeader" />
+      <output name="CreateEmployeeAppraisalHeader_Result" message="tns:CreateEmployeeAppraisalHeader_Result" />
+    </operation>
+    <operation name="GetEmployeeAppraisalStatus">
+      <input name="GetEmployeeAppraisalStatus" message="tns:GetEmployeeAppraisalStatus" />
+      <output name="GetEmployeeAppraisalStatus_Result" message="tns:GetEmployeeAppraisalStatus_Result" />
+    </operation>
+    <operation name="ModifyEmployeeAppraisalHeader">
+      <input name="ModifyEmployeeAppraisalHeader" message="tns:ModifyEmployeeAppraisalHeader" />
+      <output name="ModifyEmployeeAppraisalHeader_Result" message="tns:ModifyEmployeeAppraisalHeader_Result" />
+    </operation>
+    <operation name="CheckEmployeeAppraisalApprovalWorkflowEnabled">
+      <input name="CheckEmployeeAppraisalApprovalWorkflowEnabled" message="tns:CheckEmployeeAppraisalApprovalWorkflowEnabled" />
+      <output name="CheckEmployeeAppraisalApprovalWorkflowEnabled_Result" message="tns:CheckEmployeeAppraisalApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendEmployeeAppraisalApprovalRequest">
+      <input name="SendEmployeeAppraisalApprovalRequest" message="tns:SendEmployeeAppraisalApprovalRequest" />
+      <output name="SendEmployeeAppraisalApprovalRequest_Result" message="tns:SendEmployeeAppraisalApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelEmployeeAppraisalApprovalRequest">
+      <input name="CancelEmployeeAppraisalApprovalRequest" message="tns:CancelEmployeeAppraisalApprovalRequest" />
+      <output name="CancelEmployeeAppraisalApprovalRequest_Result" message="tns:CancelEmployeeAppraisalApprovalRequest_Result" />
+    </operation>
+    <operation name="CreateEmployeeAppraisalLine">
+      <input name="CreateEmployeeAppraisalLine" message="tns:CreateEmployeeAppraisalLine" />
+      <output name="CreateEmployeeAppraisalLine_Result" message="tns:CreateEmployeeAppraisalLine_Result" />
+    </operation>
+    <operation name="ModifyEmployeeAppraisalLine">
+      <input name="ModifyEmployeeAppraisalLine" message="tns:ModifyEmployeeAppraisalLine" />
+      <output name="ModifyEmployeeAppraisalLine_Result" message="tns:ModifyEmployeeAppraisalLine_Result" />
+    </operation>
+    <operation name="CheckEmployeeAppraisalLinesExist">
+      <input name="CheckEmployeeAppraisalLinesExist" message="tns:CheckEmployeeAppraisalLinesExist" />
+      <output name="CheckEmployeeAppraisalLinesExist_Result" message="tns:CheckEmployeeAppraisalLinesExist_Result" />
+    </operation>
+    <operation name="DeleteEmployeeAppraisalLine">
+      <input name="DeleteEmployeeAppraisalLine" message="tns:DeleteEmployeeAppraisalLine" />
+      <output name="DeleteEmployeeAppraisalLine_Result" message="tns:DeleteEmployeeAppraisalLine_Result" />
+    </operation>
+    <operation name="CheckOpenEmployeeAppraisalEvaluationExists">
+      <input name="CheckOpenEmployeeAppraisalEvaluationExists" message="tns:CheckOpenEmployeeAppraisalEvaluationExists" />
+      <output name="CheckOpenEmployeeAppraisalEvaluationExists_Result" message="tns:CheckOpenEmployeeAppraisalEvaluationExists_Result" />
+    </operation>
+    <operation name="CheckEmployeeAppraisalEvaluationExists">
+      <input name="CheckEmployeeAppraisalEvaluationExists" message="tns:CheckEmployeeAppraisalEvaluationExists" />
+      <output name="CheckEmployeeAppraisalEvaluationExists_Result" message="tns:CheckEmployeeAppraisalEvaluationExists_Result" />
+    </operation>
+    <operation name="CreateEmployeeAppraisalEvaluationHeader">
+      <input name="CreateEmployeeAppraisalEvaluationHeader" message="tns:CreateEmployeeAppraisalEvaluationHeader" />
+      <output name="CreateEmployeeAppraisalEvaluationHeader_Result" message="tns:CreateEmployeeAppraisalEvaluationHeader_Result" />
+    </operation>
+    <operation name="GetEmployeeAppraisalEvaluationStatus">
+      <input name="GetEmployeeAppraisalEvaluationStatus" message="tns:GetEmployeeAppraisalEvaluationStatus" />
+      <output name="GetEmployeeAppraisalEvaluationStatus_Result" message="tns:GetEmployeeAppraisalEvaluationStatus_Result" />
+    </operation>
+    <operation name="ModifyEmployeeAppraisalEvaluationHeader">
+      <input name="ModifyEmployeeAppraisalEvaluationHeader" message="tns:ModifyEmployeeAppraisalEvaluationHeader" />
+      <output name="ModifyEmployeeAppraisalEvaluationHeader_Result" message="tns:ModifyEmployeeAppraisalEvaluationHeader_Result" />
+    </operation>
+    <operation name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled">
+      <input name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled" message="tns:CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled" />
+      <output name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result" message="tns:CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendEmployeeAppraisalEvaluationApprovalRequest">
+      <input name="SendEmployeeAppraisalEvaluationApprovalRequest" message="tns:SendEmployeeAppraisalEvaluationApprovalRequest" />
+      <output name="SendEmployeeAppraisalEvaluationApprovalRequest_Result" message="tns:SendEmployeeAppraisalEvaluationApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelEmployeeAppraisalEvaluationApprovalRequest">
+      <input name="CancelEmployeeAppraisalEvaluationApprovalRequest" message="tns:CancelEmployeeAppraisalEvaluationApprovalRequest" />
+      <output name="CancelEmployeeAppraisalEvaluationApprovalRequest_Result" message="tns:CancelEmployeeAppraisalEvaluationApprovalRequest_Result" />
+    </operation>
+    <operation name="ValidateEmployeeAppraisalLines">
+      <input name="ValidateEmployeeAppraisalLines" message="tns:ValidateEmployeeAppraisalLines" />
+      <output name="ValidateEmployeeAppraisalLines_Result" message="tns:ValidateEmployeeAppraisalLines_Result" />
+    </operation>
+    <operation name="CheckAppraisalEvaluationLinesExist">
+      <input name="CheckAppraisalEvaluationLinesExist" message="tns:CheckAppraisalEvaluationLinesExist" />
+      <output name="CheckAppraisalEvaluationLinesExist_Result" message="tns:CheckAppraisalEvaluationLinesExist_Result" />
+    </operation>
+    <operation name="ModifyAppraisalEvaluationLine">
+      <input name="ModifyAppraisalEvaluationLine" message="tns:ModifyAppraisalEvaluationLine" />
+      <output name="ModifyAppraisalEvaluationLine_Result" message="tns:ModifyAppraisalEvaluationLine_Result" />
+    </operation>
+    <operation name="DeleteAppraisalEvaluationLine">
+      <input name="DeleteAppraisalEvaluationLine" message="tns:DeleteAppraisalEvaluationLine" />
+      <output name="DeleteAppraisalEvaluationLine_Result" message="tns:DeleteAppraisalEvaluationLine_Result" />
+    </operation>
+    <operation name="GetObjectiveWeight">
+      <input name="GetObjectiveWeight" message="tns:GetObjectiveWeight" />
+      <output name="GetObjectiveWeight_Result" message="tns:GetObjectiveWeight_Result" />
+    </operation>
+  </portType>
+  <binding name="EmployeeAppraisalManagementWS_Binding" type="tns:EmployeeAppraisalManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckOpenEmployeeAppraisalExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckOpenEmployeeAppraisalExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenEmployeeAppraisalExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenEmployeeAppraisalExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckEmployeeAppraisalExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckEmployeeAppraisalExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckEmployeeAppraisalExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckEmployeeAppraisalExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateEmployeeAppraisalHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CreateEmployeeAppraisalHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateEmployeeAppraisalHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateEmployeeAppraisalHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeAppraisalStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:GetEmployeeAppraisalStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeAppraisalStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeAppraisalStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyEmployeeAppraisalHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:ModifyEmployeeAppraisalHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyEmployeeAppraisalHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyEmployeeAppraisalHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckEmployeeAppraisalApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckEmployeeAppraisalApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckEmployeeAppraisalApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckEmployeeAppraisalApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendEmployeeAppraisalApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:SendEmployeeAppraisalApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendEmployeeAppraisalApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendEmployeeAppraisalApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelEmployeeAppraisalApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CancelEmployeeAppraisalApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelEmployeeAppraisalApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelEmployeeAppraisalApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateEmployeeAppraisalLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CreateEmployeeAppraisalLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateEmployeeAppraisalLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateEmployeeAppraisalLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyEmployeeAppraisalLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:ModifyEmployeeAppraisalLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyEmployeeAppraisalLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyEmployeeAppraisalLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckEmployeeAppraisalLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckEmployeeAppraisalLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckEmployeeAppraisalLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckEmployeeAppraisalLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteEmployeeAppraisalLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:DeleteEmployeeAppraisalLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteEmployeeAppraisalLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteEmployeeAppraisalLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenEmployeeAppraisalEvaluationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckOpenEmployeeAppraisalEvaluationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenEmployeeAppraisalEvaluationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenEmployeeAppraisalEvaluationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckEmployeeAppraisalEvaluationExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckEmployeeAppraisalEvaluationExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckEmployeeAppraisalEvaluationExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckEmployeeAppraisalEvaluationExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateEmployeeAppraisalEvaluationHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CreateEmployeeAppraisalEvaluationHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateEmployeeAppraisalEvaluationHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateEmployeeAppraisalEvaluationHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeAppraisalEvaluationStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:GetEmployeeAppraisalEvaluationStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeAppraisalEvaluationStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeAppraisalEvaluationStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyEmployeeAppraisalEvaluationHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:ModifyEmployeeAppraisalEvaluationHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyEmployeeAppraisalEvaluationHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyEmployeeAppraisalEvaluationHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckEmployeeAppraisalEvaluationApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendEmployeeAppraisalEvaluationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:SendEmployeeAppraisalEvaluationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendEmployeeAppraisalEvaluationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendEmployeeAppraisalEvaluationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelEmployeeAppraisalEvaluationApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CancelEmployeeAppraisalEvaluationApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelEmployeeAppraisalEvaluationApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelEmployeeAppraisalEvaluationApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateEmployeeAppraisalLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:ValidateEmployeeAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateEmployeeAppraisalLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateEmployeeAppraisalLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckAppraisalEvaluationLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:CheckAppraisalEvaluationLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckAppraisalEvaluationLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckAppraisalEvaluationLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyAppraisalEvaluationLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:ModifyAppraisalEvaluationLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyAppraisalEvaluationLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyAppraisalEvaluationLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteAppraisalEvaluationLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:DeleteAppraisalEvaluationLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteAppraisalEvaluationLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteAppraisalEvaluationLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetObjectiveWeight">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAppraisalManagementWS:GetObjectiveWeight" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetObjectiveWeight">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetObjectiveWeight_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EmployeeAppraisalManagementWS">
+    <port name="EmployeeAppraisalManagementWS_Port" binding="tns:EmployeeAppraisalManagementWS_Binding">
+      <address location="http://102.133.239.194:3032/Regent/WS/Regent%20Ltd/Codeunit/EmployeeAppraisalManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckFundsClaimExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckFundsClaimExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenFundsClaimExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenFundsClaimExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateFundsClaimHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateFundsClaimHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyFundsClaimHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employee_Noa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyFundsClaimHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFundsClaimAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFundsClaimAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFundsClaimStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFundsClaimStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateFundsClaimLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="fromCity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="toCity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateFundsClaimLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyFundsClaimLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="fromCity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="toCity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyFundsClaimLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteFundsClaimLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteFundsClaimLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckFundsClaimLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckFundsClaimLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckFundsClaimApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckFundsClaimApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendFundsClaimApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendFundsClaimApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelFundsClaimApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fundsClaimNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelFundsClaimApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPortalDocumentsLocalURL">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="localURL" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPortalDocumentsLocalURL_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPortalDocumentsAttached">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckPortalDocumentsAttached_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckFundsClaimExists">
+    <part name="parameters" element="tns:CheckFundsClaimExists" />
+  </message>
+  <message name="CheckFundsClaimExists_Result">
+    <part name="parameters" element="tns:CheckFundsClaimExists_Result" />
+  </message>
+  <message name="CheckOpenFundsClaimExists">
+    <part name="parameters" element="tns:CheckOpenFundsClaimExists" />
+  </message>
+  <message name="CheckOpenFundsClaimExists_Result">
+    <part name="parameters" element="tns:CheckOpenFundsClaimExists_Result" />
+  </message>
+  <message name="CreateFundsClaimHeader">
+    <part name="parameters" element="tns:CreateFundsClaimHeader" />
+  </message>
+  <message name="CreateFundsClaimHeader_Result">
+    <part name="parameters" element="tns:CreateFundsClaimHeader_Result" />
+  </message>
+  <message name="ModifyFundsClaimHeader">
+    <part name="parameters" element="tns:ModifyFundsClaimHeader" />
+  </message>
+  <message name="ModifyFundsClaimHeader_Result">
+    <part name="parameters" element="tns:ModifyFundsClaimHeader_Result" />
+  </message>
+  <message name="GetFundsClaimAmount">
+    <part name="parameters" element="tns:GetFundsClaimAmount" />
+  </message>
+  <message name="GetFundsClaimAmount_Result">
+    <part name="parameters" element="tns:GetFundsClaimAmount_Result" />
+  </message>
+  <message name="GetFundsClaimStatus">
+    <part name="parameters" element="tns:GetFundsClaimStatus" />
+  </message>
+  <message name="GetFundsClaimStatus_Result">
+    <part name="parameters" element="tns:GetFundsClaimStatus_Result" />
+  </message>
+  <message name="CreateFundsClaimLine">
+    <part name="parameters" element="tns:CreateFundsClaimLine" />
+  </message>
+  <message name="CreateFundsClaimLine_Result">
+    <part name="parameters" element="tns:CreateFundsClaimLine_Result" />
+  </message>
+  <message name="ModifyFundsClaimLine">
+    <part name="parameters" element="tns:ModifyFundsClaimLine" />
+  </message>
+  <message name="ModifyFundsClaimLine_Result">
+    <part name="parameters" element="tns:ModifyFundsClaimLine_Result" />
+  </message>
+  <message name="DeleteFundsClaimLine">
+    <part name="parameters" element="tns:DeleteFundsClaimLine" />
+  </message>
+  <message name="DeleteFundsClaimLine_Result">
+    <part name="parameters" element="tns:DeleteFundsClaimLine_Result" />
+  </message>
+  <message name="CheckFundsClaimLinesExist">
+    <part name="parameters" element="tns:CheckFundsClaimLinesExist" />
+  </message>
+  <message name="CheckFundsClaimLinesExist_Result">
+    <part name="parameters" element="tns:CheckFundsClaimLinesExist_Result" />
+  </message>
+  <message name="CheckFundsClaimApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckFundsClaimApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckFundsClaimApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckFundsClaimApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendFundsClaimApprovalRequest">
+    <part name="parameters" element="tns:SendFundsClaimApprovalRequest" />
+  </message>
+  <message name="SendFundsClaimApprovalRequest_Result">
+    <part name="parameters" element="tns:SendFundsClaimApprovalRequest_Result" />
+  </message>
+  <message name="CancelFundsClaimApprovalRequest">
+    <part name="parameters" element="tns:CancelFundsClaimApprovalRequest" />
+  </message>
+  <message name="CancelFundsClaimApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelFundsClaimApprovalRequest_Result" />
+  </message>
+  <message name="ModifyPortalDocumentsLocalURL">
+    <part name="parameters" element="tns:ModifyPortalDocumentsLocalURL" />
+  </message>
+  <message name="ModifyPortalDocumentsLocalURL_Result">
+    <part name="parameters" element="tns:ModifyPortalDocumentsLocalURL_Result" />
+  </message>
+  <message name="CheckPortalDocumentsAttached">
+    <part name="parameters" element="tns:CheckPortalDocumentsAttached" />
+  </message>
+  <message name="CheckPortalDocumentsAttached_Result">
+    <part name="parameters" element="tns:CheckPortalDocumentsAttached_Result" />
+  </message>
+  <portType name="FundsClaimManagementWebService_Port">
+    <operation name="CheckFundsClaimExists">
+      <input name="CheckFundsClaimExists" message="tns:CheckFundsClaimExists" />
+      <output name="CheckFundsClaimExists_Result" message="tns:CheckFundsClaimExists_Result" />
+    </operation>
+    <operation name="CheckOpenFundsClaimExists">
+      <input name="CheckOpenFundsClaimExists" message="tns:CheckOpenFundsClaimExists" />
+      <output name="CheckOpenFundsClaimExists_Result" message="tns:CheckOpenFundsClaimExists_Result" />
+    </operation>
+    <operation name="CreateFundsClaimHeader">
+      <input name="CreateFundsClaimHeader" message="tns:CreateFundsClaimHeader" />
+      <output name="CreateFundsClaimHeader_Result" message="tns:CreateFundsClaimHeader_Result" />
+    </operation>
+    <operation name="ModifyFundsClaimHeader">
+      <input name="ModifyFundsClaimHeader" message="tns:ModifyFundsClaimHeader" />
+      <output name="ModifyFundsClaimHeader_Result" message="tns:ModifyFundsClaimHeader_Result" />
+    </operation>
+    <operation name="GetFundsClaimAmount">
+      <input name="GetFundsClaimAmount" message="tns:GetFundsClaimAmount" />
+      <output name="GetFundsClaimAmount_Result" message="tns:GetFundsClaimAmount_Result" />
+    </operation>
+    <operation name="GetFundsClaimStatus">
+      <input name="GetFundsClaimStatus" message="tns:GetFundsClaimStatus" />
+      <output name="GetFundsClaimStatus_Result" message="tns:GetFundsClaimStatus_Result" />
+    </operation>
+    <operation name="CreateFundsClaimLine">
+      <input name="CreateFundsClaimLine" message="tns:CreateFundsClaimLine" />
+      <output name="CreateFundsClaimLine_Result" message="tns:CreateFundsClaimLine_Result" />
+    </operation>
+    <operation name="ModifyFundsClaimLine">
+      <input name="ModifyFundsClaimLine" message="tns:ModifyFundsClaimLine" />
+      <output name="ModifyFundsClaimLine_Result" message="tns:ModifyFundsClaimLine_Result" />
+    </operation>
+    <operation name="DeleteFundsClaimLine">
+      <input name="DeleteFundsClaimLine" message="tns:DeleteFundsClaimLine" />
+      <output name="DeleteFundsClaimLine_Result" message="tns:DeleteFundsClaimLine_Result" />
+    </operation>
+    <operation name="CheckFundsClaimLinesExist">
+      <input name="CheckFundsClaimLinesExist" message="tns:CheckFundsClaimLinesExist" />
+      <output name="CheckFundsClaimLinesExist_Result" message="tns:CheckFundsClaimLinesExist_Result" />
+    </operation>
+    <operation name="CheckFundsClaimApprovalWorkflowEnabled">
+      <input name="CheckFundsClaimApprovalWorkflowEnabled" message="tns:CheckFundsClaimApprovalWorkflowEnabled" />
+      <output name="CheckFundsClaimApprovalWorkflowEnabled_Result" message="tns:CheckFundsClaimApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendFundsClaimApprovalRequest">
+      <input name="SendFundsClaimApprovalRequest" message="tns:SendFundsClaimApprovalRequest" />
+      <output name="SendFundsClaimApprovalRequest_Result" message="tns:SendFundsClaimApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelFundsClaimApprovalRequest">
+      <input name="CancelFundsClaimApprovalRequest" message="tns:CancelFundsClaimApprovalRequest" />
+      <output name="CancelFundsClaimApprovalRequest_Result" message="tns:CancelFundsClaimApprovalRequest_Result" />
+    </operation>
+    <operation name="ModifyPortalDocumentsLocalURL">
+      <input name="ModifyPortalDocumentsLocalURL" message="tns:ModifyPortalDocumentsLocalURL" />
+      <output name="ModifyPortalDocumentsLocalURL_Result" message="tns:ModifyPortalDocumentsLocalURL_Result" />
+    </operation>
+    <operation name="CheckPortalDocumentsAttached">
+      <input name="CheckPortalDocumentsAttached" message="tns:CheckPortalDocumentsAttached" />
+      <output name="CheckPortalDocumentsAttached_Result" message="tns:CheckPortalDocumentsAttached_Result" />
+    </operation>
+  </portType>
+  <binding name="FundsClaimManagementWebService_Binding" type="tns:FundsClaimManagementWebService_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckFundsClaimExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CheckFundsClaimExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckFundsClaimExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckFundsClaimExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenFundsClaimExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CheckOpenFundsClaimExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenFundsClaimExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenFundsClaimExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateFundsClaimHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CreateFundsClaimHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateFundsClaimHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateFundsClaimHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyFundsClaimHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:ModifyFundsClaimHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyFundsClaimHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyFundsClaimHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetFundsClaimAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:GetFundsClaimAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetFundsClaimAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetFundsClaimAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetFundsClaimStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:GetFundsClaimStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetFundsClaimStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetFundsClaimStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateFundsClaimLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CreateFundsClaimLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateFundsClaimLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateFundsClaimLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyFundsClaimLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:ModifyFundsClaimLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyFundsClaimLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyFundsClaimLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteFundsClaimLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:DeleteFundsClaimLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteFundsClaimLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteFundsClaimLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckFundsClaimLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CheckFundsClaimLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckFundsClaimLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckFundsClaimLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckFundsClaimApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CheckFundsClaimApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckFundsClaimApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckFundsClaimApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendFundsClaimApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:SendFundsClaimApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendFundsClaimApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendFundsClaimApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelFundsClaimApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CancelFundsClaimApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelFundsClaimApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelFundsClaimApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPortalDocumentsLocalURL">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:ModifyPortalDocumentsLocalURL" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPortalDocumentsLocalURL">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPortalDocumentsLocalURL_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckPortalDocumentsAttached">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/FundsClaimManagementWebService:CheckPortalDocumentsAttached" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckPortalDocumentsAttached">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckPortalDocumentsAttached_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="FundsClaimManagementWebService">
+    <port name="FundsClaimManagementWebService_Port" binding="tns:FundsClaimManagementWebService_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/FundsClaimManagementWebService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,25 @@
+@model OdataRef.RecruitmentNeedsOther_Qualifications
+
+<div class="bg-soft-dark" style="color:black">
+    <form id="OtherRequirementsModalForm">
+        <div class="row">
+            @Html.HiddenFor(model => model.Code)
+            @*@Html.HiddenFor(model => model.Line_No)*@
+            <input type="hidden" name="OldQualification" value="@Model.Qualification" >
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Qualification, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Qualification, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger"})
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div align="center">
+                <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="CreateOrUpdateOtherRequirementsLine();"/>
+            </div>
+        </div> 
+    </form>
+    
+</div>

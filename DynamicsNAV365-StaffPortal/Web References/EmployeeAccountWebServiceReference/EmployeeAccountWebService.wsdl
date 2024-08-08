@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="EmployeeExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EmployeeExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EmployeeAccountIsActive">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EmployeeAccountIsActive_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCleanedEmployeeNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCleanedEmployeeNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeGender">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeGender_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeDateOfBirth">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeDateOfBirth_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAge">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeAge_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeRetirementDate">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeRetirementDate_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeEmailAddress">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeEmailAddress_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeUserID">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeUserID_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeDirectory">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployeeDirectory_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CreateEmployee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="address" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="phone" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="customerType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="creditLimit" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="tin" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="notes" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="layaltyNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="discount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateEmployee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="LoginEmployee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="LoginEmployee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="IsEmployeeDefaultPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="IsEmployeeDefaultPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SetPasswordResetToken">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="passwordResetToken" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SetPasswordResetToken_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPasswordResetToken">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPasswordResetToken_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="IsPasswordResetTokenExpired">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="passwordResetToken" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="IsPasswordResetTokenExpired_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPasswordResetLink">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="emailMessage" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPasswordResetLink_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ResetEmployeePortalPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="newPassword" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ResetEmployeePortalPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeePassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeePassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeProfile">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeProfile_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNoOrEmail" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="EmployeeExists">
+    <part name="parameters" element="tns:EmployeeExists" />
+  </message>
+  <message name="EmployeeExists_Result">
+    <part name="parameters" element="tns:EmployeeExists_Result" />
+  </message>
+  <message name="EmployeeAccountIsActive">
+    <part name="parameters" element="tns:EmployeeAccountIsActive" />
+  </message>
+  <message name="EmployeeAccountIsActive_Result">
+    <part name="parameters" element="tns:EmployeeAccountIsActive_Result" />
+  </message>
+  <message name="GetCleanedEmployeeNo">
+    <part name="parameters" element="tns:GetCleanedEmployeeNo" />
+  </message>
+  <message name="GetCleanedEmployeeNo_Result">
+    <part name="parameters" element="tns:GetCleanedEmployeeNo_Result" />
+  </message>
+  <message name="GetEmployeeName">
+    <part name="parameters" element="tns:GetEmployeeName" />
+  </message>
+  <message name="GetEmployeeName_Result">
+    <part name="parameters" element="tns:GetEmployeeName_Result" />
+  </message>
+  <message name="GetEmployeeGender">
+    <part name="parameters" element="tns:GetEmployeeGender" />
+  </message>
+  <message name="GetEmployeeGender_Result">
+    <part name="parameters" element="tns:GetEmployeeGender_Result" />
+  </message>
+  <message name="GetEmployeeDateOfBirth">
+    <part name="parameters" element="tns:GetEmployeeDateOfBirth" />
+  </message>
+  <message name="GetEmployeeDateOfBirth_Result">
+    <part name="parameters" element="tns:GetEmployeeDateOfBirth_Result" />
+  </message>
+  <message name="GetEmployeeAge">
+    <part name="parameters" element="tns:GetEmployeeAge" />
+  </message>
+  <message name="GetEmployeeAge_Result">
+    <part name="parameters" element="tns:GetEmployeeAge_Result" />
+  </message>
+  <message name="GetEmployeeRetirementDate">
+    <part name="parameters" element="tns:GetEmployeeRetirementDate" />
+  </message>
+  <message name="GetEmployeeRetirementDate_Result">
+    <part name="parameters" element="tns:GetEmployeeRetirementDate_Result" />
+  </message>
+  <message name="GetEmployeeEmailAddress">
+    <part name="parameters" element="tns:GetEmployeeEmailAddress" />
+  </message>
+  <message name="GetEmployeeEmailAddress_Result">
+    <part name="parameters" element="tns:GetEmployeeEmailAddress_Result" />
+  </message>
+  <message name="GetEmployeeUserID">
+    <part name="parameters" element="tns:GetEmployeeUserID" />
+  </message>
+  <message name="GetEmployeeUserID_Result">
+    <part name="parameters" element="tns:GetEmployeeUserID_Result" />
+  </message>
+  <message name="CreateEmployeeDirectory">
+    <part name="parameters" element="tns:CreateEmployeeDirectory" />
+  </message>
+  <message name="CreateEmployeeDirectory_Result">
+    <part name="parameters" element="tns:CreateEmployeeDirectory_Result" />
+  </message>
+  <message name="CreateEmployee">
+    <part name="parameters" element="tns:CreateEmployee" />
+  </message>
+  <message name="CreateEmployee_Result">
+    <part name="parameters" element="tns:CreateEmployee_Result" />
+  </message>
+  <message name="LoginEmployee">
+    <part name="parameters" element="tns:LoginEmployee" />
+  </message>
+  <message name="LoginEmployee_Result">
+    <part name="parameters" element="tns:LoginEmployee_Result" />
+  </message>
+  <message name="IsEmployeeDefaultPassword">
+    <part name="parameters" element="tns:IsEmployeeDefaultPassword" />
+  </message>
+  <message name="IsEmployeeDefaultPassword_Result">
+    <part name="parameters" element="tns:IsEmployeeDefaultPassword_Result" />
+  </message>
+  <message name="SetPasswordResetToken">
+    <part name="parameters" element="tns:SetPasswordResetToken" />
+  </message>
+  <message name="SetPasswordResetToken_Result">
+    <part name="parameters" element="tns:SetPasswordResetToken_Result" />
+  </message>
+  <message name="GetPasswordResetToken">
+    <part name="parameters" element="tns:GetPasswordResetToken" />
+  </message>
+  <message name="GetPasswordResetToken_Result">
+    <part name="parameters" element="tns:GetPasswordResetToken_Result" />
+  </message>
+  <message name="IsPasswordResetTokenExpired">
+    <part name="parameters" element="tns:IsPasswordResetTokenExpired" />
+  </message>
+  <message name="IsPasswordResetTokenExpired_Result">
+    <part name="parameters" element="tns:IsPasswordResetTokenExpired_Result" />
+  </message>
+  <message name="SendPasswordResetLink">
+    <part name="parameters" element="tns:SendPasswordResetLink" />
+  </message>
+  <message name="SendPasswordResetLink_Result">
+    <part name="parameters" element="tns:SendPasswordResetLink_Result" />
+  </message>
+  <message name="ResetEmployeePortalPassword">
+    <part name="parameters" element="tns:ResetEmployeePortalPassword" />
+  </message>
+  <message name="ResetEmployeePortalPassword_Result">
+    <part name="parameters" element="tns:ResetEmployeePortalPassword_Result" />
+  </message>
+  <message name="GetEmployeePassword">
+    <part name="parameters" element="tns:GetEmployeePassword" />
+  </message>
+  <message name="GetEmployeePassword_Result">
+    <part name="parameters" element="tns:GetEmployeePassword_Result" />
+  </message>
+  <message name="GetEmployeeProfile">
+    <part name="parameters" element="tns:GetEmployeeProfile" />
+  </message>
+  <message name="GetEmployeeProfile_Result">
+    <part name="parameters" element="tns:GetEmployeeProfile_Result" />
+  </message>
+  <message name="GetEmployee">
+    <part name="parameters" element="tns:GetEmployee" />
+  </message>
+  <message name="GetEmployee_Result">
+    <part name="parameters" element="tns:GetEmployee_Result" />
+  </message>
+  <portType name="EmployeeAccountWebService_Port">
+    <operation name="EmployeeExists">
+      <input name="EmployeeExists" message="tns:EmployeeExists" />
+      <output name="EmployeeExists_Result" message="tns:EmployeeExists_Result" />
+    </operation>
+    <operation name="EmployeeAccountIsActive">
+      <input name="EmployeeAccountIsActive" message="tns:EmployeeAccountIsActive" />
+      <output name="EmployeeAccountIsActive_Result" message="tns:EmployeeAccountIsActive_Result" />
+    </operation>
+    <operation name="GetCleanedEmployeeNo">
+      <input name="GetCleanedEmployeeNo" message="tns:GetCleanedEmployeeNo" />
+      <output name="GetCleanedEmployeeNo_Result" message="tns:GetCleanedEmployeeNo_Result" />
+    </operation>
+    <operation name="GetEmployeeName">
+      <input name="GetEmployeeName" message="tns:GetEmployeeName" />
+      <output name="GetEmployeeName_Result" message="tns:GetEmployeeName_Result" />
+    </operation>
+    <operation name="GetEmployeeGender">
+      <input name="GetEmployeeGender" message="tns:GetEmployeeGender" />
+      <output name="GetEmployeeGender_Result" message="tns:GetEmployeeGender_Result" />
+    </operation>
+    <operation name="GetEmployeeDateOfBirth">
+      <input name="GetEmployeeDateOfBirth" message="tns:GetEmployeeDateOfBirth" />
+      <output name="GetEmployeeDateOfBirth_Result" message="tns:GetEmployeeDateOfBirth_Result" />
+    </operation>
+    <operation name="GetEmployeeAge">
+      <input name="GetEmployeeAge" message="tns:GetEmployeeAge" />
+      <output name="GetEmployeeAge_Result" message="tns:GetEmployeeAge_Result" />
+    </operation>
+    <operation name="GetEmployeeRetirementDate">
+      <input name="GetEmployeeRetirementDate" message="tns:GetEmployeeRetirementDate" />
+      <output name="GetEmployeeRetirementDate_Result" message="tns:GetEmployeeRetirementDate_Result" />
+    </operation>
+    <operation name="GetEmployeeEmailAddress">
+      <input name="GetEmployeeEmailAddress" message="tns:GetEmployeeEmailAddress" />
+      <output name="GetEmployeeEmailAddress_Result" message="tns:GetEmployeeEmailAddress_Result" />
+    </operation>
+    <operation name="GetEmployeeUserID">
+      <input name="GetEmployeeUserID" message="tns:GetEmployeeUserID" />
+      <output name="GetEmployeeUserID_Result" message="tns:GetEmployeeUserID_Result" />
+    </operation>
+    <operation name="CreateEmployeeDirectory">
+      <input name="CreateEmployeeDirectory" message="tns:CreateEmployeeDirectory" />
+      <output name="CreateEmployeeDirectory_Result" message="tns:CreateEmployeeDirectory_Result" />
+    </operation>
+    <operation name="CreateEmployee">
+      <input name="CreateEmployee" message="tns:CreateEmployee" />
+      <output name="CreateEmployee_Result" message="tns:CreateEmployee_Result" />
+    </operation>
+    <operation name="LoginEmployee">
+      <input name="LoginEmployee" message="tns:LoginEmployee" />
+      <output name="LoginEmployee_Result" message="tns:LoginEmployee_Result" />
+    </operation>
+    <operation name="IsEmployeeDefaultPassword">
+      <input name="IsEmployeeDefaultPassword" message="tns:IsEmployeeDefaultPassword" />
+      <output name="IsEmployeeDefaultPassword_Result" message="tns:IsEmployeeDefaultPassword_Result" />
+    </operation>
+    <operation name="SetPasswordResetToken">
+      <input name="SetPasswordResetToken" message="tns:SetPasswordResetToken" />
+      <output name="SetPasswordResetToken_Result" message="tns:SetPasswordResetToken_Result" />
+    </operation>
+    <operation name="GetPasswordResetToken">
+      <input name="GetPasswordResetToken" message="tns:GetPasswordResetToken" />
+      <output name="GetPasswordResetToken_Result" message="tns:GetPasswordResetToken_Result" />
+    </operation>
+    <operation name="IsPasswordResetTokenExpired">
+      <input name="IsPasswordResetTokenExpired" message="tns:IsPasswordResetTokenExpired" />
+      <output name="IsPasswordResetTokenExpired_Result" message="tns:IsPasswordResetTokenExpired_Result" />
+    </operation>
+    <operation name="SendPasswordResetLink">
+      <input name="SendPasswordResetLink" message="tns:SendPasswordResetLink" />
+      <output name="SendPasswordResetLink_Result" message="tns:SendPasswordResetLink_Result" />
+    </operation>
+    <operation name="ResetEmployeePortalPassword">
+      <input name="ResetEmployeePortalPassword" message="tns:ResetEmployeePortalPassword" />
+      <output name="ResetEmployeePortalPassword_Result" message="tns:ResetEmployeePortalPassword_Result" />
+    </operation>
+    <operation name="GetEmployeePassword">
+      <input name="GetEmployeePassword" message="tns:GetEmployeePassword" />
+      <output name="GetEmployeePassword_Result" message="tns:GetEmployeePassword_Result" />
+    </operation>
+    <operation name="GetEmployeeProfile">
+      <input name="GetEmployeeProfile" message="tns:GetEmployeeProfile" />
+      <output name="GetEmployeeProfile_Result" message="tns:GetEmployeeProfile_Result" />
+    </operation>
+    <operation name="GetEmployee">
+      <input name="GetEmployee" message="tns:GetEmployee" />
+      <output name="GetEmployee_Result" message="tns:GetEmployee_Result" />
+    </operation>
+  </portType>
+  <binding name="EmployeeAccountWebService_Binding" type="tns:EmployeeAccountWebService_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="EmployeeExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:EmployeeExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EmployeeExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EmployeeExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EmployeeAccountIsActive">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:EmployeeAccountIsActive" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EmployeeAccountIsActive">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EmployeeAccountIsActive_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCleanedEmployeeNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetCleanedEmployeeNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCleanedEmployeeNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCleanedEmployeeNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeGender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeGender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeGender">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeGender_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeDateOfBirth">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeDateOfBirth" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeDateOfBirth">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeDateOfBirth_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeAge">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeAge" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeAge">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeAge_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeRetirementDate">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeRetirementDate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeRetirementDate">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeRetirementDate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeEmailAddress">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeEmailAddress" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeEmailAddress">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeEmailAddress_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeUserID">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeUserID" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeUserID">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeUserID_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateEmployeeDirectory">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:CreateEmployeeDirectory" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateEmployeeDirectory">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateEmployeeDirectory_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateEmployee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:CreateEmployee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateEmployee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateEmployee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="LoginEmployee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:LoginEmployee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="LoginEmployee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="LoginEmployee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsEmployeeDefaultPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:IsEmployeeDefaultPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsEmployeeDefaultPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsEmployeeDefaultPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SetPasswordResetToken">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:SetPasswordResetToken" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SetPasswordResetToken">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SetPasswordResetToken_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPasswordResetToken">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetPasswordResetToken" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPasswordResetToken">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPasswordResetToken_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsPasswordResetTokenExpired">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:IsPasswordResetTokenExpired" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsPasswordResetTokenExpired">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsPasswordResetTokenExpired_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendPasswordResetLink">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:SendPasswordResetLink" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendPasswordResetLink">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendPasswordResetLink_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ResetEmployeePortalPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:ResetEmployeePortalPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ResetEmployeePortalPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ResetEmployeePortalPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeePassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeePassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeePassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeePassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeProfile">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployeeProfile" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeProfile">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeProfile_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/EmployeeAccountWebService:GetEmployee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EmployeeAccountWebService">
+    <port name="EmployeeAccountWebService_Port" binding="tns:EmployeeAccountWebService_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/EmployeeAccountWebService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

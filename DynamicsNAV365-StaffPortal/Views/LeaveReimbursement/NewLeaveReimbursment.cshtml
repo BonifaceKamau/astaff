@@ -1,0 +1,176 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.LeaveReimbursementModels.LeaveReimbursementModel
+
+@{
+    ViewBag.Title = "New Leave Recall Request";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("NewLeaveReimbursement", "LeaveReimbursement", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>New Leave Recall Request</i></h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("LeaveReimbursementHistory", "LeaveReimbursement")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                        <button class="btn btn-white btn-xs pull-right ladda-button" type="submit" data-style="slide-right" data-background-color="login_card">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-rotate-right"></i>
+                                                Submit For Approval
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ApprovedLeaveApplication, htmlAttributes: new { @id = "ApprovedLeaveApplicationLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.ApprovedLeaveApplication, Model.LeaveApplicationNos, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.ApprovedLeaveApplication, "", new { @id = "ApprovedLeaveApplicationError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.LeaveStartDate, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.LeaveStartDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.LeaveStartDate, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.DaysApplied, htmlAttributes: new { @id = "DaysAppliedLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DaysApplied, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.DaysApplied, "", new { @id = "DaysAppliedError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.DaysApproved, htmlAttributes: new { @id = "DaysApprovedLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DaysApproved, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.DaysApproved, "", new { @id = "DaysApprovedError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.LeaveEndDate, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.LeaveEndDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.LeaveEndDate, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.LeaveReturnDate, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.LeaveReturnDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.LeaveReturnDate, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.SubstituteNo, htmlAttributes: new { @id = "SubstituteNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SubstituteNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.SubstituteNo, "", new { @id = "SubstituteNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.SubstituteName, htmlAttributes: new { @id = "SubstituteNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SubstituteName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.SubstituteName, "", new { @id = "SubstituteNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.ReasonForLeave, htmlAttributes: new { @id = "ReasonForLeaveLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ReasonForLeave, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.ReasonForLeave, "", new { @id = "ReasonForLeaveError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ActualReturnDate, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ActualReturnDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.ActualReturnDate, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ReasonForReimbursement, htmlAttributes: new { @id = "ReasonForReimbursementLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ReasonForReimbursement, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ReasonForReimbursement, "", new { @id = "ReasonForReimbursementError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"></div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/LeaveReimbursementScripts/LeaveReimbursementScript.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Initialize leave reimbursement
+            InitializeLeaveReimbursmentScripts();
+
+            var approvedLeaveApplication = $("#ApprovedLeaveApplication").val();
+            LoadApprovedLeave(approvedLeaveApplication);
+        });
+    </script>
+}

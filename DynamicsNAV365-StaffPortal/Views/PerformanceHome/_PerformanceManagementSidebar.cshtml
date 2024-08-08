@@ -1,0 +1,184 @@
+﻿@{ 
+    Layout = null;
+}
+<aside class="left-side sidebar-offcanvas">
+    <style>
+        .form-group.label-static label.control-label,
+        .form-group.label-floating label.control-label,
+        .form-group label.control-label{                                    
+            font-size:14px;       
+            color:#808080;                                                            
+            }
+    </style>
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <a href="@Url.Action("EmployeeProfile", "Account")">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    @if (Model != null && Model.PassportAttached == true)
+                    {
+                        <img src="~/EmployeeData/@Model.EmployeePassportPath" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/photo_placeholder.png" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                </div>
+                <div class="pull-left info">
+                    <p>@HttpContext.Current.User.Identity.Name</p>
+                    <div class="online-status" style="font-size: 10px;">
+                        <span class="fa fa-circle text-success" style="vertical-align: middle;"></span>
+                        <span class="status-text" style="vertical-align: middle;">Online</span>
+                    </div>
+                </div>
+            </div>
+        </a>  
+        @*<div id="render1">
+            @{Html.RenderAction("_FillWorkplan", "WorkPlans");}  
+        </div>*@  
+        <!-- Sidebar menu -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="@Url.Action("Index", "Home")"> 
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span> 
+                </a>
+            </li>
+           
+            <li id="HumanResourceInfoMenuItem" style="font-weight:bold;">
+             
+                <a href="@Url.Action("PerformanceInfo", "PerformanceHome")">
+                    <i class="fa fa-briefcase"></i> <span>Work Plans</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="sidebar-menu">
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("LeaveApplicationHistory", "LeaveApplication")">
+                <i class="fa fa-bed"></i> <span>Leave Applications</span>
+            </a>
+        </li>*@
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("TargetsHome", "PerformanceHome")">
+                    <i class="fa fa-percent"></i> <span>Performance Targets</span>
+                </a>
+            </li>
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EmployeePerformanceTargetHistory", "PerformanceTarget")">
+                <i class="fa fa-percent"></i> <span>Performance Targets</span>
+            </a>
+        </li>*@
+
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiseeEvaluationHistory", "AppraiseeEvaluation")">
+                <i class="fa fa-calculator"></i> <span>Self Appraisal</span>
+            </a>
+        </li>*@
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("AppraisalsHome", "PerformanceHome")">
+                    <i class="fa fa-calculator"></i> <span>Self Appraisal</span>
+                </a>
+            </li>
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiserEvaluationHistory", "AppraiserEvaluation")">
+                <i class="fa fa-calendar-check-o"></i> <span>Supervisor Appraisal</span>
+            </a>
+        </li>*@
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("SupervisorAppraisalHome", "PerformanceHome")">
+                    <i class="fa fa-calendar-check-o"></i> <span>Supervisors Section</span>
+                </a>
+            </li>
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiserEvaluationHistory", "AppraiserEvaluation")">
+                <i class="fa fa-calendar-check-o"></i> <span>Peer Appraisal</span>
+            </a>
+        </li>*@
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("PeerAppraisalHome", "PerformanceHome")">
+                    <i class="fa fa-calendar-check-o"></i> <span>Peers Section</span>
+                </a>
+            </li>
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiserEvaluationHistory", "AppraiserEvaluation")">
+                <i class="fa fa-calendar-check-o"></i> <span>Customer Appraisal</span>
+            </a>
+        </li>*@
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("CustomerAppraisalHome", "PerformanceHome")">
+                    <i class="fa fa-calendar-check-o"></i> <span>Appraise As Customer</span>
+                </a>
+            </li>
+            <li id="HumanResourceInfoMenuItem">
+                <a href="@Url.Action("SubordinateAppraisalHome", "PerformanceHome")">
+                    <i class="fa fa-calendar-check-o"></i> <span>Subordinate Staff</span>
+                </a>
+            </li>
+            <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraisalResultsHome", "PerformanceHome")"> 
+                <i class="fa fa-info-circle"></i> <span>My Appraisal Results</span> 
+            </a>
+            </li>
+
+        @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EndYearEvaluationHistory", "EndYearEvaluation")">
+                <i class="fa fa-info-circle"></i> <span>End Year/HR Appraisal</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("CompleteAppraiseeAppraisal", "CompleteAppraisal")">
+                <i class="fa fa-calendar-check-o"></i> <span>Closed Appraisal</span>
+            </a>
+        </li>
+
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("ModeratedAppraisalHistory", "ModeratedAppraisal")">
+                <i class="fa fa-calculator"></i> <span>Moderated Evaluation</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("CompleteAppraisalHistory", "CompleteAppraisal")">
+                <i class="fa fa-briefcase"></i> <span>Closed Appraiser Appraisal</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EmployeePerformanceTargetHistory", "PerformanceTarget")">
+                <i class="fa fa-calendar"></i> <span>Appraiser Evaluation</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("LeaveReimbursementHistory", "LeaveReimbursement")">
+                <i class="fa fa-wheelchair-alt"></i> <span>Leave Recall</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EmployeeAppraisalHistory", "EmployeeAppraisal")">
+                <i class="fa fa-google-wallet"></i> <span>Individual PC-Target Setting</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraisalEvaluationHistory", "EmployeeEvaluation")">
+                <i class="fa fa-info-circle"></i> <span>Appraisal Evaluation</span>
+            </a>
+        </li>*@
+        </ul>
+        @*<ul class="sidebar-menu">
+                <li>
+                    <a href="@Url.Action("TrainingNeedsHistory", "EmployeeTraining")">
+                        <i class="fa fa-pencil"></i> <span>Training Needs Identification</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("EmployeeApplicationsHistory", "EmployeeTraining")">
+                        <i class="fa fa-briefcase"></i> <span>Training Applications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("TrainingEvaluationsHistory", "EmployeeTraining")">
+                        <i class="fa fa-book"></i> <span>Training Evaluation</span>
+                    </a>
+                </li>
+            </ul>*@
+
+    </section>
+</aside>
+

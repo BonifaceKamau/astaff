@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckStoreRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenStoreRequisitionExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckOpenStoreRequisitionExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="requiredDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionAmount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionAmount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionGlobalDimension1Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionGlobalDimension1Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionGlobalDimension2Code">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStoreRequisitionGlobalDimension2Code_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="itemNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uOM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension4" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension5" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension6" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension7" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="itemNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantity" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="uOM" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension1" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension2" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dimension3" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNoa46" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventory">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="itemNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unitOfMeasure" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAvailableInventory_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionLinesExist">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionLinesExist_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStoreRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStoreRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionApprovalWorkflowEnabled">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendStoreRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendStoreRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenStoreRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReopenStoreRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionBudgetCommitment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeRequisitionNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelStoreRequisitionBudgetCommitment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckStoreRequisitionExists">
+    <part name="parameters" element="tns:CheckStoreRequisitionExists" />
+  </message>
+  <message name="CheckStoreRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionExists_Result" />
+  </message>
+  <message name="CheckOpenStoreRequisitionExists">
+    <part name="parameters" element="tns:CheckOpenStoreRequisitionExists" />
+  </message>
+  <message name="CheckOpenStoreRequisitionExists_Result">
+    <part name="parameters" element="tns:CheckOpenStoreRequisitionExists_Result" />
+  </message>
+  <message name="CreateStoreRequisition">
+    <part name="parameters" element="tns:CreateStoreRequisition" />
+  </message>
+  <message name="CreateStoreRequisition_Result">
+    <part name="parameters" element="tns:CreateStoreRequisition_Result" />
+  </message>
+  <message name="ModifyStoreRequisition">
+    <part name="parameters" element="tns:ModifyStoreRequisition" />
+  </message>
+  <message name="ModifyStoreRequisition_Result">
+    <part name="parameters" element="tns:ModifyStoreRequisition_Result" />
+  </message>
+  <message name="GetStoreRequisitionAmount">
+    <part name="parameters" element="tns:GetStoreRequisitionAmount" />
+  </message>
+  <message name="GetStoreRequisitionAmount_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionAmount_Result" />
+  </message>
+  <message name="GetStoreRequisitionStatus">
+    <part name="parameters" element="tns:GetStoreRequisitionStatus" />
+  </message>
+  <message name="GetStoreRequisitionStatus_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionStatus_Result" />
+  </message>
+  <message name="GetStoreRequisitionGlobalDimension1Code">
+    <part name="parameters" element="tns:GetStoreRequisitionGlobalDimension1Code" />
+  </message>
+  <message name="GetStoreRequisitionGlobalDimension1Code_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionGlobalDimension1Code_Result" />
+  </message>
+  <message name="GetStoreRequisitionGlobalDimension2Code">
+    <part name="parameters" element="tns:GetStoreRequisitionGlobalDimension2Code" />
+  </message>
+  <message name="GetStoreRequisitionGlobalDimension2Code_Result">
+    <part name="parameters" element="tns:GetStoreRequisitionGlobalDimension2Code_Result" />
+  </message>
+  <message name="CreateStoreRequisitionLine">
+    <part name="parameters" element="tns:CreateStoreRequisitionLine" />
+  </message>
+  <message name="CreateStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:CreateStoreRequisitionLine_Result" />
+  </message>
+  <message name="ModifyStoreRequisitionLine">
+    <part name="parameters" element="tns:ModifyStoreRequisitionLine" />
+  </message>
+  <message name="ModifyStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:ModifyStoreRequisitionLine_Result" />
+  </message>
+  <message name="DeleteStoreRequisitionLine">
+    <part name="parameters" element="tns:DeleteStoreRequisitionLine" />
+  </message>
+  <message name="DeleteStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:DeleteStoreRequisitionLine_Result" />
+  </message>
+  <message name="GetAvailableInventory">
+    <part name="parameters" element="tns:GetAvailableInventory" />
+  </message>
+  <message name="GetAvailableInventory_Result">
+    <part name="parameters" element="tns:GetAvailableInventory_Result" />
+  </message>
+  <message name="CheckStoreRequisitionLinesExist">
+    <part name="parameters" element="tns:CheckStoreRequisitionLinesExist" />
+  </message>
+  <message name="CheckStoreRequisitionLinesExist_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionLinesExist_Result" />
+  </message>
+  <message name="ValidateStoreRequisitionLines">
+    <part name="parameters" element="tns:ValidateStoreRequisitionLines" />
+  </message>
+  <message name="ValidateStoreRequisitionLines_Result">
+    <part name="parameters" element="tns:ValidateStoreRequisitionLines_Result" />
+  </message>
+  <message name="CheckStoreRequisitionApprovalWorkflowEnabled">
+    <part name="parameters" element="tns:CheckStoreRequisitionApprovalWorkflowEnabled" />
+  </message>
+  <message name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+    <part name="parameters" element="tns:CheckStoreRequisitionApprovalWorkflowEnabled_Result" />
+  </message>
+  <message name="SendStoreRequisitionApprovalRequest">
+    <part name="parameters" element="tns:SendStoreRequisitionApprovalRequest" />
+  </message>
+  <message name="SendStoreRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:SendStoreRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="CancelStoreRequisitionApprovalRequest">
+    <part name="parameters" element="tns:CancelStoreRequisitionApprovalRequest" />
+  </message>
+  <message name="CancelStoreRequisitionApprovalRequest_Result">
+    <part name="parameters" element="tns:CancelStoreRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="ReopenStoreRequisition">
+    <part name="parameters" element="tns:ReopenStoreRequisition" />
+  </message>
+  <message name="ReopenStoreRequisition_Result">
+    <part name="parameters" element="tns:ReopenStoreRequisition_Result" />
+  </message>
+  <message name="CancelStoreRequisitionBudgetCommitment">
+    <part name="parameters" element="tns:CancelStoreRequisitionBudgetCommitment" />
+  </message>
+  <message name="CancelStoreRequisitionBudgetCommitment_Result">
+    <part name="parameters" element="tns:CancelStoreRequisitionBudgetCommitment_Result" />
+  </message>
+  <portType name="InventoryManagementWS_Port">
+    <operation name="CheckStoreRequisitionExists">
+      <input name="CheckStoreRequisitionExists" message="tns:CheckStoreRequisitionExists" />
+      <output name="CheckStoreRequisitionExists_Result" message="tns:CheckStoreRequisitionExists_Result" />
+    </operation>
+    <operation name="CheckOpenStoreRequisitionExists">
+      <input name="CheckOpenStoreRequisitionExists" message="tns:CheckOpenStoreRequisitionExists" />
+      <output name="CheckOpenStoreRequisitionExists_Result" message="tns:CheckOpenStoreRequisitionExists_Result" />
+    </operation>
+    <operation name="CreateStoreRequisition">
+      <input name="CreateStoreRequisition" message="tns:CreateStoreRequisition" />
+      <output name="CreateStoreRequisition_Result" message="tns:CreateStoreRequisition_Result" />
+    </operation>
+    <operation name="ModifyStoreRequisition">
+      <input name="ModifyStoreRequisition" message="tns:ModifyStoreRequisition" />
+      <output name="ModifyStoreRequisition_Result" message="tns:ModifyStoreRequisition_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionAmount">
+      <input name="GetStoreRequisitionAmount" message="tns:GetStoreRequisitionAmount" />
+      <output name="GetStoreRequisitionAmount_Result" message="tns:GetStoreRequisitionAmount_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionStatus">
+      <input name="GetStoreRequisitionStatus" message="tns:GetStoreRequisitionStatus" />
+      <output name="GetStoreRequisitionStatus_Result" message="tns:GetStoreRequisitionStatus_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionGlobalDimension1Code">
+      <input name="GetStoreRequisitionGlobalDimension1Code" message="tns:GetStoreRequisitionGlobalDimension1Code" />
+      <output name="GetStoreRequisitionGlobalDimension1Code_Result" message="tns:GetStoreRequisitionGlobalDimension1Code_Result" />
+    </operation>
+    <operation name="GetStoreRequisitionGlobalDimension2Code">
+      <input name="GetStoreRequisitionGlobalDimension2Code" message="tns:GetStoreRequisitionGlobalDimension2Code" />
+      <output name="GetStoreRequisitionGlobalDimension2Code_Result" message="tns:GetStoreRequisitionGlobalDimension2Code_Result" />
+    </operation>
+    <operation name="CreateStoreRequisitionLine">
+      <input name="CreateStoreRequisitionLine" message="tns:CreateStoreRequisitionLine" />
+      <output name="CreateStoreRequisitionLine_Result" message="tns:CreateStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="ModifyStoreRequisitionLine">
+      <input name="ModifyStoreRequisitionLine" message="tns:ModifyStoreRequisitionLine" />
+      <output name="ModifyStoreRequisitionLine_Result" message="tns:ModifyStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="DeleteStoreRequisitionLine">
+      <input name="DeleteStoreRequisitionLine" message="tns:DeleteStoreRequisitionLine" />
+      <output name="DeleteStoreRequisitionLine_Result" message="tns:DeleteStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="GetAvailableInventory">
+      <input name="GetAvailableInventory" message="tns:GetAvailableInventory" />
+      <output name="GetAvailableInventory_Result" message="tns:GetAvailableInventory_Result" />
+    </operation>
+    <operation name="CheckStoreRequisitionLinesExist">
+      <input name="CheckStoreRequisitionLinesExist" message="tns:CheckStoreRequisitionLinesExist" />
+      <output name="CheckStoreRequisitionLinesExist_Result" message="tns:CheckStoreRequisitionLinesExist_Result" />
+    </operation>
+    <operation name="ValidateStoreRequisitionLines">
+      <input name="ValidateStoreRequisitionLines" message="tns:ValidateStoreRequisitionLines" />
+      <output name="ValidateStoreRequisitionLines_Result" message="tns:ValidateStoreRequisitionLines_Result" />
+    </operation>
+    <operation name="CheckStoreRequisitionApprovalWorkflowEnabled">
+      <input name="CheckStoreRequisitionApprovalWorkflowEnabled" message="tns:CheckStoreRequisitionApprovalWorkflowEnabled" />
+      <output name="CheckStoreRequisitionApprovalWorkflowEnabled_Result" message="tns:CheckStoreRequisitionApprovalWorkflowEnabled_Result" />
+    </operation>
+    <operation name="SendStoreRequisitionApprovalRequest">
+      <input name="SendStoreRequisitionApprovalRequest" message="tns:SendStoreRequisitionApprovalRequest" />
+      <output name="SendStoreRequisitionApprovalRequest_Result" message="tns:SendStoreRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="CancelStoreRequisitionApprovalRequest">
+      <input name="CancelStoreRequisitionApprovalRequest" message="tns:CancelStoreRequisitionApprovalRequest" />
+      <output name="CancelStoreRequisitionApprovalRequest_Result" message="tns:CancelStoreRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="ReopenStoreRequisition">
+      <input name="ReopenStoreRequisition" message="tns:ReopenStoreRequisition" />
+      <output name="ReopenStoreRequisition_Result" message="tns:ReopenStoreRequisition_Result" />
+    </operation>
+    <operation name="CancelStoreRequisitionBudgetCommitment">
+      <input name="CancelStoreRequisitionBudgetCommitment" message="tns:CancelStoreRequisitionBudgetCommitment" />
+      <output name="CancelStoreRequisitionBudgetCommitment_Result" message="tns:CancelStoreRequisitionBudgetCommitment_Result" />
+    </operation>
+  </portType>
+  <binding name="InventoryManagementWS_Binding" type="tns:InventoryManagementWS_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckStoreRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CheckStoreRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckOpenStoreRequisitionExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CheckOpenStoreRequisitionExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckOpenStoreRequisitionExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckOpenStoreRequisitionExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CreateStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:ModifyStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionAmount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:GetStoreRequisitionAmount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionAmount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionAmount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:GetStoreRequisitionStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionGlobalDimension1Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:GetStoreRequisitionGlobalDimension1Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionGlobalDimension1Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionGlobalDimension1Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStoreRequisitionGlobalDimension2Code">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:GetStoreRequisitionGlobalDimension2Code" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStoreRequisitionGlobalDimension2Code">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStoreRequisitionGlobalDimension2Code_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CreateStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:ModifyStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:DeleteStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAvailableInventory">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:GetAvailableInventory" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAvailableInventory">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAvailableInventory_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckStoreRequisitionLinesExist">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CheckStoreRequisitionLinesExist" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionLinesExist">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionLinesExist_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateStoreRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:ValidateStoreRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateStoreRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateStoreRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckStoreRequisitionApprovalWorkflowEnabled">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CheckStoreRequisitionApprovalWorkflowEnabled" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckStoreRequisitionApprovalWorkflowEnabled">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckStoreRequisitionApprovalWorkflowEnabled_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendStoreRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:SendStoreRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendStoreRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendStoreRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelStoreRequisitionApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CancelStoreRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelStoreRequisitionApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelStoreRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReopenStoreRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:ReopenStoreRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReopenStoreRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReopenStoreRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelStoreRequisitionBudgetCommitment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/InventoryManagementWS:CancelStoreRequisitionBudgetCommitment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelStoreRequisitionBudgetCommitment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelStoreRequisitionBudgetCommitment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="InventoryManagementWS">
+    <port name="InventoryManagementWS_Port" binding="tns:InventoryManagementWS_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/InventoryManagementWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

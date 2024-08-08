@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetOpenApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetOpenApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApprovedApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApprovedApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRejectedApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRejectedApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApprovers">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApprovers_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectionComments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectionComments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveImprestRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveImprestRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectImprestRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectImprestRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveLeave">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveLeave_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectLeave">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectLeave_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveStaffRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveStaffRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectStaffRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectStaffRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRequisitionCopy">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="comments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRequisitionCopy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRequisition">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRequisition_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApprovePurchaseOrder">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApprovePurchaseOrder_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectPurchaseOrder">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectPurchaseOrder_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRFX">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRFX_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRFX">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRFX_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveBidAnalysis">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverEmpNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveBidAnalysis_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectBidAnalysis">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectBidAnalysis_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApprovePaymentVoucher">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApprovePaymentVoucher_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectPaymentVoucher">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNoa46" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rejectionComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectPaymentVoucher_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requestNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendApprovalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetOpenApprovalEntries">
+    <part name="parameters" element="tns:GetOpenApprovalEntries" />
+  </message>
+  <message name="GetOpenApprovalEntries_Result">
+    <part name="parameters" element="tns:GetOpenApprovalEntries_Result" />
+  </message>
+  <message name="GetApprovedApprovalEntries">
+    <part name="parameters" element="tns:GetApprovedApprovalEntries" />
+  </message>
+  <message name="GetApprovedApprovalEntries_Result">
+    <part name="parameters" element="tns:GetApprovedApprovalEntries_Result" />
+  </message>
+  <message name="GetRejectedApprovalEntries">
+    <part name="parameters" element="tns:GetRejectedApprovalEntries" />
+  </message>
+  <message name="GetRejectedApprovalEntries_Result">
+    <part name="parameters" element="tns:GetRejectedApprovalEntries_Result" />
+  </message>
+  <message name="GetApprovers">
+    <part name="parameters" element="tns:GetApprovers" />
+  </message>
+  <message name="GetApprovers_Result">
+    <part name="parameters" element="tns:GetApprovers_Result" />
+  </message>
+  <message name="RejectionComments">
+    <part name="parameters" element="tns:RejectionComments" />
+  </message>
+  <message name="RejectionComments_Result">
+    <part name="parameters" element="tns:RejectionComments_Result" />
+  </message>
+  <message name="ApproveImprestRequest">
+    <part name="parameters" element="tns:ApproveImprestRequest" />
+  </message>
+  <message name="ApproveImprestRequest_Result">
+    <part name="parameters" element="tns:ApproveImprestRequest_Result" />
+  </message>
+  <message name="RejectImprestRequest">
+    <part name="parameters" element="tns:RejectImprestRequest" />
+  </message>
+  <message name="RejectImprestRequest_Result">
+    <part name="parameters" element="tns:RejectImprestRequest_Result" />
+  </message>
+  <message name="ApproveLeave">
+    <part name="parameters" element="tns:ApproveLeave" />
+  </message>
+  <message name="ApproveLeave_Result">
+    <part name="parameters" element="tns:ApproveLeave_Result" />
+  </message>
+  <message name="RejectLeave">
+    <part name="parameters" element="tns:RejectLeave" />
+  </message>
+  <message name="RejectLeave_Result">
+    <part name="parameters" element="tns:RejectLeave_Result" />
+  </message>
+  <message name="ApproveStaffRequisition">
+    <part name="parameters" element="tns:ApproveStaffRequisition" />
+  </message>
+  <message name="ApproveStaffRequisition_Result">
+    <part name="parameters" element="tns:ApproveStaffRequisition_Result" />
+  </message>
+  <message name="RejectStaffRequisition">
+    <part name="parameters" element="tns:RejectStaffRequisition" />
+  </message>
+  <message name="RejectStaffRequisition_Result">
+    <part name="parameters" element="tns:RejectStaffRequisition_Result" />
+  </message>
+  <message name="ApproveRequisition">
+    <part name="parameters" element="tns:ApproveRequisition" />
+  </message>
+  <message name="ApproveRequisition_Result">
+    <part name="parameters" element="tns:ApproveRequisition_Result" />
+  </message>
+  <message name="ApproveRequisitionCopy">
+    <part name="parameters" element="tns:ApproveRequisitionCopy" />
+  </message>
+  <message name="ApproveRequisitionCopy_Result">
+    <part name="parameters" element="tns:ApproveRequisitionCopy_Result" />
+  </message>
+  <message name="RejectRequisition">
+    <part name="parameters" element="tns:RejectRequisition" />
+  </message>
+  <message name="RejectRequisition_Result">
+    <part name="parameters" element="tns:RejectRequisition_Result" />
+  </message>
+  <message name="ApprovePurchaseOrder">
+    <part name="parameters" element="tns:ApprovePurchaseOrder" />
+  </message>
+  <message name="ApprovePurchaseOrder_Result">
+    <part name="parameters" element="tns:ApprovePurchaseOrder_Result" />
+  </message>
+  <message name="RejectPurchaseOrder">
+    <part name="parameters" element="tns:RejectPurchaseOrder" />
+  </message>
+  <message name="RejectPurchaseOrder_Result">
+    <part name="parameters" element="tns:RejectPurchaseOrder_Result" />
+  </message>
+  <message name="ApproveRFX">
+    <part name="parameters" element="tns:ApproveRFX" />
+  </message>
+  <message name="ApproveRFX_Result">
+    <part name="parameters" element="tns:ApproveRFX_Result" />
+  </message>
+  <message name="RejectRFX">
+    <part name="parameters" element="tns:RejectRFX" />
+  </message>
+  <message name="RejectRFX_Result">
+    <part name="parameters" element="tns:RejectRFX_Result" />
+  </message>
+  <message name="ApproveBidAnalysis">
+    <part name="parameters" element="tns:ApproveBidAnalysis" />
+  </message>
+  <message name="ApproveBidAnalysis_Result">
+    <part name="parameters" element="tns:ApproveBidAnalysis_Result" />
+  </message>
+  <message name="RejectBidAnalysis">
+    <part name="parameters" element="tns:RejectBidAnalysis" />
+  </message>
+  <message name="RejectBidAnalysis_Result">
+    <part name="parameters" element="tns:RejectBidAnalysis_Result" />
+  </message>
+  <message name="ApprovePaymentVoucher">
+    <part name="parameters" element="tns:ApprovePaymentVoucher" />
+  </message>
+  <message name="ApprovePaymentVoucher_Result">
+    <part name="parameters" element="tns:ApprovePaymentVoucher_Result" />
+  </message>
+  <message name="RejectPaymentVoucher">
+    <part name="parameters" element="tns:RejectPaymentVoucher" />
+  </message>
+  <message name="RejectPaymentVoucher_Result">
+    <part name="parameters" element="tns:RejectPaymentVoucher_Result" />
+  </message>
+  <message name="SendApprovalRequest">
+    <part name="parameters" element="tns:SendApprovalRequest" />
+  </message>
+  <message name="SendApprovalRequest_Result">
+    <part name="parameters" element="tns:SendApprovalRequest_Result" />
+  </message>
+  <portType name="PortalApprovalManager_Port">
+    <operation name="GetOpenApprovalEntries">
+      <input name="GetOpenApprovalEntries" message="tns:GetOpenApprovalEntries" />
+      <output name="GetOpenApprovalEntries_Result" message="tns:GetOpenApprovalEntries_Result" />
+    </operation>
+    <operation name="GetApprovedApprovalEntries">
+      <input name="GetApprovedApprovalEntries" message="tns:GetApprovedApprovalEntries" />
+      <output name="GetApprovedApprovalEntries_Result" message="tns:GetApprovedApprovalEntries_Result" />
+    </operation>
+    <operation name="GetRejectedApprovalEntries">
+      <input name="GetRejectedApprovalEntries" message="tns:GetRejectedApprovalEntries" />
+      <output name="GetRejectedApprovalEntries_Result" message="tns:GetRejectedApprovalEntries_Result" />
+    </operation>
+    <operation name="GetApprovers">
+      <input name="GetApprovers" message="tns:GetApprovers" />
+      <output name="GetApprovers_Result" message="tns:GetApprovers_Result" />
+    </operation>
+    <operation name="RejectionComments">
+      <input name="RejectionComments" message="tns:RejectionComments" />
+      <output name="RejectionComments_Result" message="tns:RejectionComments_Result" />
+    </operation>
+    <operation name="ApproveImprestRequest">
+      <input name="ApproveImprestRequest" message="tns:ApproveImprestRequest" />
+      <output name="ApproveImprestRequest_Result" message="tns:ApproveImprestRequest_Result" />
+    </operation>
+    <operation name="RejectImprestRequest">
+      <input name="RejectImprestRequest" message="tns:RejectImprestRequest" />
+      <output name="RejectImprestRequest_Result" message="tns:RejectImprestRequest_Result" />
+    </operation>
+    <operation name="ApproveLeave">
+      <input name="ApproveLeave" message="tns:ApproveLeave" />
+      <output name="ApproveLeave_Result" message="tns:ApproveLeave_Result" />
+    </operation>
+    <operation name="RejectLeave">
+      <input name="RejectLeave" message="tns:RejectLeave" />
+      <output name="RejectLeave_Result" message="tns:RejectLeave_Result" />
+    </operation>
+    <operation name="ApproveStaffRequisition">
+      <input name="ApproveStaffRequisition" message="tns:ApproveStaffRequisition" />
+      <output name="ApproveStaffRequisition_Result" message="tns:ApproveStaffRequisition_Result" />
+    </operation>
+    <operation name="RejectStaffRequisition">
+      <input name="RejectStaffRequisition" message="tns:RejectStaffRequisition" />
+      <output name="RejectStaffRequisition_Result" message="tns:RejectStaffRequisition_Result" />
+    </operation>
+    <operation name="ApproveRequisition">
+      <input name="ApproveRequisition" message="tns:ApproveRequisition" />
+      <output name="ApproveRequisition_Result" message="tns:ApproveRequisition_Result" />
+    </operation>
+    <operation name="ApproveRequisitionCopy">
+      <input name="ApproveRequisitionCopy" message="tns:ApproveRequisitionCopy" />
+      <output name="ApproveRequisitionCopy_Result" message="tns:ApproveRequisitionCopy_Result" />
+    </operation>
+    <operation name="RejectRequisition">
+      <input name="RejectRequisition" message="tns:RejectRequisition" />
+      <output name="RejectRequisition_Result" message="tns:RejectRequisition_Result" />
+    </operation>
+    <operation name="ApprovePurchaseOrder">
+      <input name="ApprovePurchaseOrder" message="tns:ApprovePurchaseOrder" />
+      <output name="ApprovePurchaseOrder_Result" message="tns:ApprovePurchaseOrder_Result" />
+    </operation>
+    <operation name="RejectPurchaseOrder">
+      <input name="RejectPurchaseOrder" message="tns:RejectPurchaseOrder" />
+      <output name="RejectPurchaseOrder_Result" message="tns:RejectPurchaseOrder_Result" />
+    </operation>
+    <operation name="ApproveRFX">
+      <input name="ApproveRFX" message="tns:ApproveRFX" />
+      <output name="ApproveRFX_Result" message="tns:ApproveRFX_Result" />
+    </operation>
+    <operation name="RejectRFX">
+      <input name="RejectRFX" message="tns:RejectRFX" />
+      <output name="RejectRFX_Result" message="tns:RejectRFX_Result" />
+    </operation>
+    <operation name="ApproveBidAnalysis">
+      <input name="ApproveBidAnalysis" message="tns:ApproveBidAnalysis" />
+      <output name="ApproveBidAnalysis_Result" message="tns:ApproveBidAnalysis_Result" />
+    </operation>
+    <operation name="RejectBidAnalysis">
+      <input name="RejectBidAnalysis" message="tns:RejectBidAnalysis" />
+      <output name="RejectBidAnalysis_Result" message="tns:RejectBidAnalysis_Result" />
+    </operation>
+    <operation name="ApprovePaymentVoucher">
+      <input name="ApprovePaymentVoucher" message="tns:ApprovePaymentVoucher" />
+      <output name="ApprovePaymentVoucher_Result" message="tns:ApprovePaymentVoucher_Result" />
+    </operation>
+    <operation name="RejectPaymentVoucher">
+      <input name="RejectPaymentVoucher" message="tns:RejectPaymentVoucher" />
+      <output name="RejectPaymentVoucher_Result" message="tns:RejectPaymentVoucher_Result" />
+    </operation>
+    <operation name="SendApprovalRequest">
+      <input name="SendApprovalRequest" message="tns:SendApprovalRequest" />
+      <output name="SendApprovalRequest_Result" message="tns:SendApprovalRequest_Result" />
+    </operation>
+  </portType>
+  <binding name="PortalApprovalManager_Binding" type="tns:PortalApprovalManager_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetOpenApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:GetOpenApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetOpenApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetOpenApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApprovedApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:GetApprovedApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApprovedApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApprovedApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRejectedApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:GetRejectedApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRejectedApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRejectedApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApprovers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:GetApprovers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApprovers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApprovers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectionComments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectionComments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectionComments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectionComments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveImprestRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveImprestRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveImprestRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveImprestRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectImprestRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectImprestRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectImprestRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectImprestRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveLeave">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveLeave" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveLeave">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveLeave_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectLeave">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectLeave" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectLeave">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectLeave_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveStaffRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveStaffRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveStaffRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveStaffRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectStaffRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectStaffRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectStaffRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectStaffRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveRequisitionCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveRequisitionCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveRequisitionCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveRequisitionCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectRequisition">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectRequisition">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectRequisition_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApprovePurchaseOrder">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApprovePurchaseOrder" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApprovePurchaseOrder">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApprovePurchaseOrder_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectPurchaseOrder">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectPurchaseOrder" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectPurchaseOrder">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectPurchaseOrder_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveRFX">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveRFX" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveRFX">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveRFX_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectRFX">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectRFX" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectRFX">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectRFX_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApproveBidAnalysis">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApproveBidAnalysis" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveBidAnalysis">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveBidAnalysis_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectBidAnalysis">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectBidAnalysis" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectBidAnalysis">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectBidAnalysis_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ApprovePaymentVoucher">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:ApprovePaymentVoucher" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApprovePaymentVoucher">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApprovePaymentVoucher_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectPaymentVoucher">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:RejectPaymentVoucher" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectPaymentVoucher">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectPaymentVoucher_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PortalApprovalManager:SendApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PortalApprovalManager">
+    <port name="PortalApprovalManager_Port" binding="tns:PortalApprovalManager_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/PortalApprovalManager" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

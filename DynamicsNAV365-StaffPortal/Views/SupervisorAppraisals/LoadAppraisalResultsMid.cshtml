@@ -1,0 +1,140 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.AppraisalResultsModel>
+@{
+    ViewBag.Title = "Appraisal Results Mid Year";
+    string resultsendyrUrl = Url.Action("LoadAppraisalResults", "SupervisorAppraisals") + "?AppraisalNo=" + ViewBag.AppraisalNo;
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");} 
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="title" style="text-align:center">Appraisal Results - Mid Year</h4>
+
+                                </div>
+                                @*<div class="col-md-3">
+                                    <a class="btn btn-success btn-xs pull-right" href="@resultsendyrUrl" style="color:white; font-weight:bold;">
+                                        End Year Results
+                                    </a>
+                                    </div>*@
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("SupervisorAppraisalHome", "PerformanceHome")">
+                                            <strong style="color:white">
+                                                <i class=""></i>
+                                                Close
+                                            </strong>
+                                        </a>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="card-content">
+                            <input value="@ViewBag.AppraisalNo" id="AppraisalNoItem" readonly="readonly" hidden="hidden">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="col-lg-11">
+                                        <p style="background-color:#d4edda; color:#155724; padding:8px;">
+                                            Appraisal results - Overall Computation & Grading
+                                        </p>
+                                    </div>
+                                    <table id="PeerAppTable" class="table" style="margin-left:20px;">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Employee Name</th>
+                                                <th>Designation</th>
+                                                <th>Appraisal Period</th>
+                                                <th>Appraised Score</th>
+                                                <th>Score Grading</th>
+                                                <th>Appraised Narration</th>
+                                                <th>Accepted by Appraisee</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                //ResultsAppLinesObj.PerformanceLineScore = Lines.Performance_Line_Scores ?? 0;
+                                                //ResultsAppLinesObj.PeerLineScore = Lines.Peer_Line_Scores ?? 0;
+                                                //ResultsAppLinesObj.SubordinateLineScore = Lines.Surbodinate_Line_Scores ?? 0;
+                                                //ResultsAppLinesObj.CompetencyLineScore = Lines.Competencies_Line_Scores ?? 0;
+                                                //ResultsAppLinesObj.ExternalLineScore = Lines.External_Line_Scores ?? 0;
+                                                //string editUrl = "";
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+                                                    //    editUrl = Url.Action("GetPTAppraiseeLine", "SupervisorAppraisals") + "?SupLineNo=" + Model[i].SupLineNo;
+
+                                                    <tr>
+                                                        <td>@Model[i].EmployeeName</td>
+                                                        <td>@Model[i].Designation</td>
+                                                        <td>@Model[i].AppraisalPeriod</td>
+                                                        <td>@Model[i].AppraisedScore</td>
+                                                        <td>@Model[i].ScoreGrading</td>
+                                                        <td>@Model[i].AppraisedNarration</td>
+                                                        @{
+                                                            if (@Model[i].AcceptResults == true)
+                                                            {
+                                                                <td style="color:darkblue;text-align:center;">@Html.CheckBox("isActive", true, new { @onclick = "return false" })</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                                            }
+                                                        }
+
+                                                    </tr>}
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                    <div class="col-lg-11" style="margin-top:30px;">
+                                        <p style="background-color:#f8d7da; color:#721c24; padding:8px;">
+                                            Breakdown of the Appraisal results
+                                        </p>
+                                        <table class="table">
+                                            @*<tr>
+                                                <th>Peer Score</th>
+                                                <td>
+                                                    @ViewBag.Peer
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Subordinate Score</th>
+                                                <td>
+                                                    @ViewBag.Subordinate
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>External Score</th>
+                                                <td>
+                                                    @ViewBag.External
+                                                </td>
+                                            </tr>*@
+                                            <tr>
+                                                <th>Core Competencies Score</th>
+                                                <td>
+                                                    @ViewBag.Competency
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Performance Targets Score</th>
+                                                <td>
+                                                    @ViewBag.Performance
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

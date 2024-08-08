@@ -1,0 +1,60 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Account.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+<br />
+<div class="row" style="margin-bottom:10px">
+    <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+        <div class="logo text-center" style="background-color:inherit">
+            <a href="@Url.Action("Index", "Home")" class="simple-text">
+                <img src="~/Content/images/log.png" class="simple-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="card">
+            <div class="card-header text-center" data-background-color="company_card">
+                <h4 class="title"><i>Employee Self-Service Portal</i></h4>
+            </div>
+            <div class="card-content">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    if (Model != null && Model.ErrorStatus == true)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                        </div>
+                    }
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.EmployeeNoOrEmail, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EmployeeNoOrEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EmployeeNoOrEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn ladda-button" type="submit" data-style="slide-right" data-background-color="company_card">
+                            <span class="ladda-label">
+                                Login
+                            </span>
+                        </button>
+                    </div>
+                }
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12 text-center" data-background-color="login_card">
+                        Forgot Password ? <a href="@Url.Action("SendPasswordResetLink", "Account")"><strong>Create New Password</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

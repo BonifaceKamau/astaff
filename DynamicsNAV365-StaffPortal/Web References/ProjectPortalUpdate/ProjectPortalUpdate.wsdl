@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/ProjectPortalUpdate" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProjectPortalUpdate" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/ProjectPortalUpdate" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="UpdateStatus">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="projectCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="status" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateStatus_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="UpdateStatus">
+    <part name="parameters" element="tns:UpdateStatus" />
+  </message>
+  <message name="UpdateStatus_Result">
+    <part name="parameters" element="tns:UpdateStatus_Result" />
+  </message>
+  <portType name="ProjectPortalUpdate_Port">
+    <operation name="UpdateStatus">
+      <input name="UpdateStatus" message="tns:UpdateStatus" />
+      <output name="UpdateStatus_Result" message="tns:UpdateStatus_Result" />
+    </operation>
+  </portType>
+  <binding name="ProjectPortalUpdate_Binding" type="tns:ProjectPortalUpdate_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="UpdateStatus">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/ProjectPortalUpdate:UpdateStatus" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateStatus">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateStatus_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ProjectPortalUpdate">
+    <port name="ProjectPortalUpdate_Port" binding="tns:ProjectPortalUpdate_Binding">
+      <address location="http://192.168.0.5:8047/Optiven/WS/ReplaceWithAPercentEncodedCompanyName/Codeunit/ProjectPortalUpdate" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

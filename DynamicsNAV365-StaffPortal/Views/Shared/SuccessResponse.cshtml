@@ -1,0 +1,127 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Responses.SuccessResponseModel
+
+@{
+	ViewBag.Title = "Success";
+
+	string button1Url = "";
+	string button2Url = "";
+
+	if (Model != null)
+	{
+		if (Model.Button1HasParameters)
+		{
+			button1Url = Url.Action(Model.Button1ActionName, Model.Button1ControllerName) + Model.Button1Parameters;
+		}
+		else
+		{
+			button1Url = Url.Action(Model.Button1ActionName, Model.Button1ControllerName);
+		}
+
+		if (Model.Button2HasParameters)
+		{
+			button2Url = Url.Action(Model.Button2ActionName, Model.Button2ControllerName) + Model.Button2Parameters;
+		}
+		else
+		{
+			button2Url = Url.Action(Model.Button2ActionName, Model.Button2ControllerName);
+		}
+	}
+}
+
+<div class="row" style="margin-bottom:10px">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="logo text-center" style="background-color:inherit;">
+			<a href="@Url.Action("Index", "Home")" class="simple-text">
+				<img src="~/Content/images/log.png" class="simple-logo" />
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="card">
+			@if (Model != null)
+			{
+				<div class="card-header text-center" data-background-color="green">
+					<h4 class="title"><i>@Html.Raw(HttpUtility.HtmlDecode(Model.ResponseHeader))</i></h4>
+				</div>
+				<div class="card-content">
+					<div class="row">
+						<div class="hidden-sm col-md-4 text-center">
+							<img src="~/Content/images/success.png" />
+						</div>
+						<div class="col-md-8">
+							@Html.Raw(HttpUtility.HtmlDecode(Model.ResponseMessage))
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						@if (Model.Button2Name.Equals(""))
+						{
+							<div class="col-md-4 col-md-offset-4 text-center">
+								<a href="@button1Url" class="btn btn-success">
+									<i class='fa fa-check'></i>
+									@Html.Raw(HttpUtility.HtmlDecode(Model.Button1Name))
+								</a>
+							</div>
+						}
+						else
+						{
+							<div class="col-md-6 text-center">
+								<a href="@button1Url" class="btn btn-success">
+									<i class='fa fa-check'></i>
+									@Html.Raw(HttpUtility.HtmlDecode(Model.Button1Name))
+								</a>
+							</div>
+							<div class="col-md-6 text-center">
+								<a href="@button2Url" class="btn btn-danger">
+									<i class='fa fa-close'></i>
+									@Html.Raw(HttpUtility.HtmlDecode(Model.Button2Name))
+								</a>
+							</div>
+						}
+					</div>
+				</div>
+			}
+			else
+			{
+				<div class="card-header text-center" data-background-color="red">
+					<h4 class="title">404 Server Error</h4>
+				</div>
+				<div class="card-content">
+					<div class="row">
+						<div class="hidden-sm col-md-4 text-center">
+							<img src="~/Content/images/error.png" />
+						</div>
+						<div class="col-md-8">
+							<p>!404 Page Not Found!</p>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4 text-center">
+							<a href="@Url.Action("Index", "Home")" class="btn btn-danger">
+								<i class='fa fa-close'></i>
+								Close
+							</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+
+@section scripts{
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $("#navheader").hide();
+        });
+	</script>
+}
+
+
+

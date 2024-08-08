@@ -1,0 +1,116 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SupervisorAppraisalsModel
+
+@{
+    ViewBag.Title = "Get Appraisers End Year";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EndYearGetAppraisees", "SupervisorAppraisals", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">                                  
+                                    <div class="col-md-6">
+                                        <h4 class="title"> Assign Appraisers - For End year Appraisals </h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        @{
+                                            var saved = TempData["saved"];
+                                        }
+                                        @if (saved != null)
+                                        {
+                                            <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                                @saved
+                                            </a>
+
+                                        }
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("SupervisorAppraisalEnd", "SupervisorAppraisals");
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    @Html.HiddenFor(model => model.AppraisalNo)
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PeerAppraiser, "Assign a Peer", htmlAttributes: new { @class = "control-label", @id = "Labels" })
+                                            @Html.DropDownListFor(model => model.PeerAppraiser, Model.AppraiserCodes, "--Select--", new { @class = "form-control", @id = "PeerAppraiserItem" })
+                                            @Html.ValidationMessageFor(model => model.PeerAppraiser, "", new { @id = "PeerAppraiserError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CustomerAppraiser, htmlAttributes: new { @id = "Labels", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.CustomerAppraiser, Model.AppraiserCodes, "--Select--", new { @class = "form-control", @id = "CustomerAppraiserItem" })
+                                            @Html.ValidationMessageFor(model => model.CustomerAppraiser, "", new { @id = "CustomerAppraiserError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubordinateAppraiser, htmlAttributes: new { @id = "Labels", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.SubordinateAppraiser, Model.AppraiserCodes, "--Select-- ", new { @class = "form-control", @id = "SubordinateAppraiserItem" })
+                                            @Html.ValidationMessageFor(model => model.SubordinateAppraiser, "", new { @id = "CAgreedScoreError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                                            }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+     $("#PeerAppraiserItem").select2({
+        placeholder: $("#PeerAppraiserLbl").text(),
+        allowClear: true
+    });
+
+      $("#CustomerAppraiserItem").select2({
+        placeholder: $("#CustomerAppraiserLbl").text(),
+        allowClear: true
+    });
+
+     $("#SubordinateAppraiserItem").select2({
+        placeholder: $("#SubordinateAppraiserLbl").text(),
+        allowClear: true
+    });
+   window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+})
+
+</script>

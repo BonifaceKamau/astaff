@@ -1,0 +1,174 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.AppraisalResultsModel>
+@{
+    ViewBag.Title = "Appraisal Results";
+}
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="title" style="text-align:left;">My Appraisal Results -Mid Year</h4> 
+                            </div>
+                            <div class="col-md-3">
+                                @{
+                                    var success = TempData["success"];                                    
+                                }
+                                @if (success != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                        @success
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-3">
+                                <a class="btn btn-success btn-xs pull-right" href="@Url.Action("LoadAppraisalResultsEnd", "AppraisalResults")" style="color:white; font-weight:bold;">
+                                   View End-Year Results  
+                                </a>
+                            </div>
+                          
+                            </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>You have been Assigned the following projects as a Project Manager</p>
+                                <table id="ManagerProjectsTbl" class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Stage</th>
+                                            <th>Employee Name</th>
+                                            <th>Designation</th>
+                                            <th>Appraisal Period</th>
+                                            <th>Appraised Score</th>
+                                            <th>Score Grading</th>
+                                            <th>Appraised Narration</th>
+                                            <th>Accepted</th>
+                                            <th>Decline</th>
+                                            <th>&nbsp;</th>   
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>                                     
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            string detailsUrl = "";
+                                            string acceptUrl = "";
+                                            string declineUrl = "";
+                                            string appealUrl = "";
+                                            string benefitsUrl = "";
+                                            string risksUrl = "";
+                                            string manageUrl = "";
+                                            string projectplanUrl = "";
+                                            //string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                detailsUrl = Url.Action("DetailedResults", "AppraisalResults") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                                acceptUrl = Url.Action("AcceptResults", "AppraisalResults") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                                declineUrl = Url.Action("DeclineResults", "AppraisalResults") + "?AppraisalNo=" + Model[i].AppraisalNo;
+                                                appealUrl = Url.Action("AppealResults", "AppraisalResults") + "?AppraisalNo=" + Model[i].AppraisalNo;
+
+                                                //viewUrl = Url.Action("ViewProjectDetails", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                //benefitsUrl = Url.Action("ProjectBenefits", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                // manageUrl = Url.Action("ManageProject", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                //projectplanUrl = Url.Action("ProjectPlan", "Projects") + "?ProjectNo=" + Model[i].Code;
+
+                                                <tr>
+                                                    @{
+                                                        if (Model[i].Appeal == true)
+                                                        {
+
+                                                            <td style="color:red;text-align:center;">Appealed</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td style="color:darkblue;text-align:center">New</td>
+                                                        }
+                                                    }
+
+                                                    <td>@Model[i].AppraisalStage</td>
+                                                    <td>@Model[i].EmployeeName</td>                                                   
+                                                    <td>@Model[i].Designation</td>
+                                                    <td>@Model[i].AppraisalPeriod</td>
+                                                    <td>@Model[i].AppraisedScore</td>
+                                                    <td>@Model[i].ScoreGrading</td>
+                                                    <td>@Model[i].AppraisedNarration</td>
+                                        @{
+                                            if (Model[i].AcceptResults == true)
+                                            {
+
+                                                <td style="color:darkblue;text-align:center;">@Html.CheckBox("isActive", true, new { @onclick = "return false" })</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                            }
+                                        }
+                                                    @{
+                                                        if (Model[i].DeclineResults == true)
+                                                        {
+
+                                                            <td style="color:red;text-align:center;">@Html.CheckBox("isActive", true, new { @onclick = "return false" })</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td style="color:red;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                                        }
+                                                    }
+                                                    <td>
+                                                        <a href="@detailsUrl" class=""><b>Details</b></a>                                                             
+                                                    </td>
+                                                    <td>
+                                                        <a href="@acceptUrl" class=""><b>Accept</b></a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="@declineUrl" class=""><b>Decline</b></a>
+                                                    </td>
+                                                    @*@{
+                                                        if (Model[i].Appeal == true)
+                                                        {
+
+                                                            <td style="color:red;text-align:center;"></td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>
+                                                                <a href="@appealUrl" class=""><b>Appeal</b></a>
+                                                            </td>
+                                                        }
+                                                    }*@
+                                                    
+
+                                                    
+                                                </tr>}
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    //Success or Failed Script
+$(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+
+    </script>

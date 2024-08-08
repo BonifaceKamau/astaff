@@ -1,0 +1,144 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Procurement.PurchaseRequistion.PurchaseRequisitionHeaderModel
+
+@{
+	ViewBag.Title = "View Purchase Requisition";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render procurement sidebar-->
+	@{Html.RenderAction("_ProcurementSidebar", "ProcurementHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						@using (Html.BeginForm("ViewPurchaseRequisition", "PurchaseRequisition", FormMethod.Post, new { @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>View Purchase Requisition</i></h4>
+                                    </div>
+                                    @*<div class="col-md-4">
+                                        <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                    </div>*@
+                                    <div class="col-md-4">
+                                        <input type="button" class="btn btn-warning btn-xs pull-right ladda-button" value="Requisition Report" onclick="GenerateReport('@Model.No');" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("PurchaseRequisitionHistory", "PurchaseRequisition")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+							</div>
+
+							<div class="card-content">
+								@if (Model != null && Model.ErrorStatus == true)
+								{
+									<div class="alert alert-danger">
+										<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+									</div>
+								}
+
+								@Html.HiddenFor(model => model.EmployeeNo)
+								<div class="row">
+									<div class="col-md-12">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#">Purchase Requisition Details</a></li>
+										</ul>
+										<br />
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly=true} })
+													@Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.RequestedReceiptDate, htmlAttributes: new { @id = "RequestedReceiptDateLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.RequestedReceiptDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+													@Html.ValidationMessageFor(model => model.RequestedReceiptDate, "", new { @id = "RequestedReceiptDateError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+													@Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+									</div>
+									@*<div class="col-md-6">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#"> Attached Document</a></li>
+										</ul>
+										<br />
+										<div class="col-md-12">
+											@{Html.RenderAction("_ViewPurchaseRequisitionDocument", "PurchaseRequisition", new { DocumentNo = Model.No });}
+										</div>
+									</div>*@
+								</div>
+							</div>
+												}
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-12">
+									<!--Render purchase requisition line partial view-->
+									@{Html.RenderAction("_PurchaseRequisitionLine", "PurchaseRequisition", new { PurchaseRequisitionNo = Model.No });}
+								</div>
+							</div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+	<script src="~/Scripts/Procurement/PurchaseRequisitionScripts/PurchaseRequisition.js"></script>
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+        	//Add CSS Classes
+            $("#PurchaseRequisitionHistoryMenuItem").addClass("active");
+
+            var DocumentNo = $("#No").val();
+            LoadPurchaseRequisitionLines(DocumentNo);
+            LoadPurchaseRequisitionDocuments(DocumentNo);
+        });
+        var GenerateReport = function (DocNo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ DocNo: DocNo }),
+
+                url: '/PurchaseRequisition/GenerateReport',
+                success: function (data) {
+                    window.open(data.message, '_blank').focus();
+                    //window.alert(data.message);
+                    //window.location.reload();
+                },
+                error: function () {
+                    window.alert(data.message);
+                }
+            });
+        };
+	</script>
+}

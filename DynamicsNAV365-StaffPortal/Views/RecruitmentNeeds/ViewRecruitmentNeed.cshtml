@@ -1,0 +1,191 @@
+@model DynamicsNAV365_StaffPortal.Models.HumanResource.StaffRecruitmentNeeds
+
+
+@{
+    ViewBag.Title = "View Recruitment need";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{ Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ViewRecruitmentNeed", "RecruitmentNeeds", FormMethod.Post, new {@class = ""}))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="title">
+                                            <i>View recruitment Need</i>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("RecruitmentNeeds", "RecruitmentNeeds")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                        <a href="@Url.Action("RecruitmentNeedsSendApproval", new {id= Model.No})" id="submitBtn" value="Send approval request " class="btn btn-danger btn-sm pull-right ladda-button fa fa-send-o" data-style="slide-right">Send approval request</a>
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-sm pull-right ladda-button fa fa-save" data-style="slide-right" data-background-color="login_card"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.No, new {htmlAttributes = new {@class = "form-control", @readonly = true}})
+                                            @Html.ValidationMessageFor(model => model.No, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Job_ID, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Job_ID, Model.Job_ID_Select, "", new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.Job_ID, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control", @disabled = "disabled"}})
+                                            @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Requisition_Type, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Requisition_Type, Model.Requisition_Type_Select, "", new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.Requisition_Type, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Appointment_Type, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Appointment_Type, Model.Appointment_Type_Select, "", new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.Appointment_Type, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Location, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Location, Model.Location_Select, "", new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.Location, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Reporting_To, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Reporting_To, Model.Reporting_To_Select, "", new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(model => model.Reporting_To, "", new {@class = "text-danger"})
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.NoOfPositions, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.NoOfPositions, new {@class = "form-control", @readonly = "true"})
+                                            @Html.ValidationMessageFor(model => model.NoOfPositions, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Reason_for_Recruitment, htmlAttributes: new {@class = "control-label"})
+                                            @Html.DropDownListFor(model => model.Reason_for_Recruitment, Model.Reason_for_Recruitment_Select, new {htmlAttributes = new {@class = "form-control"}})
+                                            @Html.ValidationMessageFor(model => model.Reason_for_Recruitment, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @*<div class="col-md-12">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Start_Date, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.Start_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                            @Html.ValidationMessageFor(model => model.Start_Date, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.End_Date, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.End_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                            @Html.ValidationMessageFor(model => model.End_Date, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Expected_Reporting_Date, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.Expected_Reporting_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                            @Html.ValidationMessageFor(model => model.Expected_Reporting_Date, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Expected_Reporting_Date, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.Expected_Reporting_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                            @Html.ValidationMessageFor(model => model.Expected_Reporting_Date, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-12">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.Status, htmlAttributes: new {@class = "control-label"})
+                                            @Html.EditorFor(model => model.Status, new {htmlAttributes = new {@class = "form-control", @disabled = "disabled"}})
+                                            @Html.ValidationMessageFor(model => model.Status, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div >
+                                @{ Html.RenderAction("AcademicRequirements", "RecruitmentNeeds", new {id = Model.No}); }
+                            </div>
+                            <hr/>
+                            <div >
+                                @{ Html.RenderAction("OtherRequirements", "RecruitmentNeeds", new {id = Model.No}); }
+                            </div>
+                            <hr/>
+                            <div >
+                                @{ Html.RenderAction("Skills", "RecruitmentNeeds", new {id = Model.No}); }
+                            </div>
+                            <hr/>
+                            @*<div >
+                                @{ Html.RenderAction("MandatoryDocuments","RecruitmentNeeds", new {id=Model.No}); }
+                            </div>*@
+                            <hr/>
+                            <div >
+                                @{ Html.RenderAction("JobResponsibility", "RecruitmentNeeds", new {id = Model.Job_ID}); }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#LeaveApplicationHistoryMenuItem").addClass("active");
+        	// EditLeaveApplication();
+
+            var LeaveApplicationNo = $("#No").val();
+            LoadLeaveApplicationDocuments(LeaveApplicationNo);
+        });
+        
+	</script>
+}

@@ -1,0 +1,76 @@
+@model System.Collections.Generic.List<OdataRef.SalesInstallment>
+
+@{
+    ViewBag.Title = "SalesInstallment"; 
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Sales Installment Statistics</i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Employee No.</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Plot Name</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var SalesInstallment in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@SalesInstallment.Code</td>
+                                                        <td>@SalesInstallment.Name</td>
+                                                        <td>@SalesInstallment.Plot_No</td>
+                                                        <td>@String.Format("{0:MM/dd/yyyy}", SalesInstallment.Date_Posted)</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ActiveTab = '@ViewBag.ActiveTab';
+            console.log(ActiveTab);
+            ////Add CSS Classes
+            if (ActiveTab === 'SalesInstallment') $("#TargetSettings").addClass("active");
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "fixedColumns": true
+
+            });
+        });
+    </script>
+}

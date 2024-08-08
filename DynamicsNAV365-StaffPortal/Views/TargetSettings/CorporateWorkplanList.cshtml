@@ -1,0 +1,90 @@
+@model System.Collections.Generic.List<DynamicsNAV365_StaffPortal.Models.HumanResource.CorporateWorkplan>
+
+
+@{
+    ViewBag.Title = "Corporate Workplan";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceSidebar", "TargetSettings");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Corporate Workplan</i></h4>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Performance Objective</th>
+                                                    <th>Project</th>
+                                                    <th>Activity</th>
+                                                    <th>Performance Measure</th>
+                                                    <th>CompletionDate</th>
+                                                    <th>Staff Department</th>
+                                                    <th>Frequency Reporting</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var staffTargetObjectives in Model)
+                                            {
+                                                <tr>
+                                                    <td>@staffTargetObjectives.Number</td>
+                                                    <td>@staffTargetObjectives.PerformanceObjective</td>
+                                                    <td>@staffTargetObjectives.Project</td>
+                                                    <td>@staffTargetObjectives.Activity</td>
+                                                    <td>@staffTargetObjectives.PerformanceMeasure</td>
+                                                    <td>@staffTargetObjectives.CompletionDate</td>
+                                                    <td>@staffTargetObjectives.FrequencyReporting</td>
+                                                    <td>
+                                                        <a href="@Url.Action("ViewCorporateWorkplan", new {staffTargetObjectives.Number})" class=""><b>View</b></a>
+                                                    </td>
+                                                </tr>   
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#ApplicationsMenuItem").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}
+

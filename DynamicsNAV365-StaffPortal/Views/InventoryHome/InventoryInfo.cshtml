@@ -1,0 +1,36 @@
+﻿@{
+	ViewBag.Title = "Inventory Services Summary";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render inventrory sidebar-->
+	@{Html.RenderAction("_InventorySidebar", "InventoryHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="card">
+						<div class="card-header text-center" data-background-color="company_card">
+							<h4 class="title">Inventory Services</h4>
+						</div>
+						<div class="card-content">
+
+						</div>
+						<div class="card-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+
+</div>
+@section scripts{
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#InventoryInfoMenuItem").addClass("active");
+        });
+	</script>
+}
+

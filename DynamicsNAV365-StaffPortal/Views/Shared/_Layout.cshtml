@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@ServiceConnection.AppName">
+    <meta name="author" content="@ServiceConnection.PoweredBy">
+    <meta name="keyword" content="@ServiceConnection.AppName">
+
+    <title>OPTIVEN - ESS Portal</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/icon.ico" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <!--Sysre CSS-->
+    <link href="~/Content/MaterialUI/assets/css/material-dashboard-new.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE/css/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <!--End Sysre CSS-->
+
+    <link href="~/Content/ladda-themeless.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/SysreThemes/dynamics-nav-theme.css" rel="stylesheet" />
+
+    <!--Select2 Plugin-->
+    <link href="~/Content/Select2Plugin/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--End Select2 Plugin-->
+
+</head>
+<body class="skin-blue dynamics-nav-skin">
+    @if (Request.IsAuthenticated)
+    {
+        <!--Page Header-->
+        <header class="header" id="navheader">
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <img src="~/Content/images/log.png" class="simple-logo" style="height:82%;width:80%;" />
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a id="toggleSideMenu" href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+                                <span>@Session["OPT"] <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header" style="color:#0f3d7b">
+                                    <a href="@Url.Action("EmployeeProfile", "Account")" alt="User Image">
+                                        <img src="~/Content/images/photo_placeholder.png" class="img-circle" alt="User Image" style="width:36%;"/>
+                                    </a>
+                                    <p>
+                                        
+                                    @Session["OPT"]
+                                    <small>ESS PORTAL ACCOUNT</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat">
+                                            <i class="material-icons text-gray">power_settings_new</i>
+                                            Sign out
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--End Page Header-->
+    }
+<div class="container-fluid" style="padding:0px;">
+    @if (TempData["Success"] != null)
+    {
+        <div id="successMessage" class="success-message">
+            <i class="fa fa-check-circle"></i>
+            @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div id="successMessage" class="success-message">
+            <i class="fa fa-check-circle"></i>
+            @TempData["Error"]
+        </div>
+    }
+    @RenderBody()
+    <hr style="margin:0px" />
+    <footer class="text-center">
+        <p><strong>@ServiceConnection.CompanyName  &copy; @DateTime.Now.Year. | <i>Powered by <a href="@ServiceConnection.CompanyWebsite" target="_blank">@ServiceConnection.PoweredBy</a></i></strong></p>
+    </footer>
+</div>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.intellisense.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/scripts/moment.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+    <!--Admin LTE Dashboard JS-->
+    <script src="~/Content/AdminLTE/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+    <script src="~/Content/AdminLTE/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/Content/AdminLTE/js/AdminLTE/app.js" type="text/javascript"></script>
+    <script src="~/Content/AdminLTE/js/AdminLTE/dashboard.js" type="text/javascript"></script>
+    <!--End Admin LTE Dashboard JS-->
+
+    <!--Material Dashboard JS-->
+    <script src="~/Content/MaterialUI/assets/js/material.min.js"></script>
+    <script src="~/Content/MaterialUI/assets/js/arrive.min.js"></script>
+    <script src="~/Content/MaterialUI/assets/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Content/MaterialUI/assets/js/bootstrap-notify.js"></script>
+    <script src="~/Content/MaterialUI/assets/js/material-dashboard.js?v=1.2.0"></script>
+    <!--End Material Dashboard JS-->
+
+    <script src="~/Scripts/Select2Plugin/select2.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" type="text/javascript" async defer></script>
+    <script src="~/scripts/spin.min.js"></script>
+    <script src="~/scripts/ladda.min.js"></script>
+    <script src="~/scripts/SysreAddons/control-ladda-btn.js"></script>
+    <script src="~/Scripts/SysreAddons/custom-alert.js"></script>
+
+    <!--Block UI-->
+    <script src="~/Scripts/jquery.validate.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script type="text/javascript">
+        var AJAXUrls = {
+
+            //Dimension urls
+            GetGlobalDimension1Codes: '@Url.Action("GetGlobalDimension1Codes", "FinanceHome")',
+            GetGlobalDimension2Codes: '@Url.Action("GetDimension2", "PurchaseRequisition")',
+            GetGlobalDimension3Codes: '@Url.Action("GetDimension3", "PurchaseRequisition")',
+            GetGlobalDimension4Codes: '@Url.Action("GetDimension4", "PurchaseRequisition")',
+            GetGlobalDimension5Codes: '@Url.Action("GetDimension5", "PurchaseRequisition")',
+            GetGlobalDimension6Codes: '@Url.Action("GetDimension6", "PurchaseRequisition")',
+            GetGlobalDimension7Codes: '@Url.Action("GetDimension7", "PurchaseRequisition")',
+            //GetShortcutDimension3Codes: '@Url.Action("GetShortcutDimension3Codes", "FinanceHome")',
+            //GetShortcutDimension4Codes: '@Url.Action("GetShortcutDimension4Codes", "FinanceHome")',
+            //GetShortcutDimension5Codes: '@Url.Action("GetShortcutDimension5Codes", "FinanceHome")',
+            //GetShortcutDimension6Codes: '@Url.Action("GetShortcutDimension6Codes", "FinanceHome")',
+            //GetShortcutDimension7Codes: '@Url.Action("GetShortcutDimension7Codes", "FinanceHome")',
+            //GetShortcutDimension8Codes: '@Url.Action("GetShortcutDimension8Codes", "FinanceHome")',
+
+            //Staff Requisition Urls
+            UploadDetailedJobDescription: '@Url.Action("UploadDetailedJobDescription", "StaffRequisition")',
+            GetJobDescriptionDocuments: '@Url.Action("GetJobDescriptionDocuments", "StaffRequisition")',
+            GetJobDescriptionDocument: '@Url.Action("GetJobDescriptionDocument", "StaffRequisition")',
+            GetJobAcademicRequirements: '@Url.Action("GetJobAcademicRequirements", "StaffRequisition")',
+            GetJobProfessionalQualifications: '@Url.Action("GetJobProfessionalQualifications", "StaffRequisition")',
+            GetJobProfessionalBodiesRequirements: '@Url.Action("GetJobProfessionalBodiesRequirements", "StaffRequisition")',
+            GetJobResponsibilities: '@Url.Action("GetJobResponsibilities", "StaffRequisition")',
+            GetJobChapter6Requirements: '@Url.Action("GetJobChapter6Requirements", "StaffRequisition")',
+            GetJobExperienceRequirements: '@Url.Action("GetJobExperienceRequirements", "StaffRequisition")',
+            GetOtherRequirements: '@Url.Action("GetOtherRequirements", "StaffRequisition")',
+            CreateChapter6Requirement: '@Url.Action("CreateChapter6Requirement", "StaffRequisition")',
+            ModifyChapter6Requirement: '@Url.Action("ModifyChapter6Requirement", "StaffRequisition")',
+            DeleteChapter6Requirement: '@Url.Action("DeleteChapter6Requirement", "StaffRequisition")',
+
+            CreateJobAcademicQualification: '@Url.Action("CreateJobAcademicQualification", "StaffRequisition")',
+            ModifyJobAcademicQualification: '@Url.Action("ModifyJobAcademicQualification", "StaffRequisition")',
+            DeleteJobAcademicQualification: '@Url.Action("DeleteJobAcademicQualification", "StaffRequisition")',
+            CreateJobProfessionalQualification: '@Url.Action("CreateJobProfessionalQualification", "StaffRequisition")',
+            ModifyJobProfessionalQualification: '@Url.Action("ModifyJobProfessionalQualification", "StaffRequisition")',
+            DeleteJobProfessionalQualification: '@Url.Action("DeleteJobProfessionalQualification", "StaffRequisition")',
+            CreateJobProfessionalBody: '@Url.Action("CreateJobProfessionalBody", "StaffRequisition")',
+            ModifyJobProfessionalBody: '@Url.Action("ModifyJobProfessionalBody", "StaffRequisition")',
+            DeleteJobProfessionalBody: '@Url.Action("DeleteJobProfessionalBody", "StaffRequisition")',
+            CreateJobRequirementResponsibility: '@Url.Action("CreateJobRequirementResponsibility", "StaffRequisition")',
+            ModifyJobRequirementResponsibility: '@Url.Action("ModifyJobRequirementResponsibility", "StaffRequisition")',
+            DeleteJobRequirementResponsibility: '@Url.Action("DeleteJobRequirementResponsibility", "StaffRequisition")',
+            CreateJobExperienceRequirement: '@Url.Action("CreateJobExperienceRequirement", "StaffRequisition")',
+            ModifyJobExperienceRequirement: '@Url.Action("ModifyJobExperienceRequirement", "StaffRequisition")',
+            DeleteJobExperienceRequirement: '@Url.Action("DeleteJobExperienceRequirement", "StaffRequisition")',
+            CreateJobOtherRequirement: '@Url.Action("CreateJobOtherRequirement", "StaffRequisition")',
+            ModifyJobOtherRequirement: '@Url.Action("ModifyJobOtherRequirement", "StaffRequisition")',
+            DeleteJobOtherRequirement: '@Url.Action("DeleteJobOtherRequirement", "StaffRequisition")',
+
+            //Purchase Urls
+            GetPurchaseOrderLines: '@Url.Action("GetPurchaseOrderLines", "PurchaseOrder")',
+            GetRFXLines: '@Url.Action("GetRFXLines", "RFX")',
+            GetBidAnalysisLines: '@Url.Action("GetBidAnalysisLines", "BidAnalysis")',
+
+            //Performance targets Urls
+            GetGlobalAppraisalPerspectives: '@Url.Action("GetGlobalAppraisalPerspectives", "PerformanceTarget")',
+            GetBusinessCoreValuesAndCompetencies: '@Url.Action("GetBusinessCoreValuesAndCompetencies", "PerformanceTarget")',
+            GetJobPerformanceTargets: '@Url.Action("GetJobPerformanceTargets", "PerformanceTarget")',
+            GetEmployeePerformanceTargetLines: '@Url.Action("GetEmployeePerformanceTargetLines", "PerformanceTarget")',
+            GetEmployeePerformanceTargetByLineNo: '@Url.Action("GetEmployeePerformanceTargetByLineNo", "PerformanceTarget")',
+            CreateEmployeePerformanceTargetLine: '@Url.Action("CreateEmployeePerformanceTargetLine", "PerformanceTarget")',
+            ModifyEmployeePerformanceTargetLine: '@Url.Action("ModifyEmployeePerformanceTargetLine", "PerformanceTarget")',
+            DeleteEmployeePerformanceTargetLine:'@Url.Action("DeleteEmployeePerformanceTargetLine", "PerformanceTarget")',
+
+           // Appraisee Evaluation Urls
+            GetAppraiseeEvaluationLines: '@Url.Action("GetAppraiseeEvaluationLines", "AppraiseeEvaluation")',
+            GetAppraiseeEvaluationByLineNo: '@Url.Action("GetAppraiseeEvaluationByLineNo", "AppraiseeEvaluation")',
+            ModifyAppraiseeEvaluationLine: '@Url.Action("ModifyAppraiseeEvaluationLine", "AppraiseeEvaluation")',
+
+             // Appraiser Evaluation Urls
+            GetAppraiserEvaluationLines: '@Url.Action("GetAppraiserEvaluationLines", "AppraiserEvaluation")',
+            GetAppraiserEvaluationByLineNo: '@Url.Action("GetAppraiserEvaluationByLineNo", "AppraiserEvaluation")',
+            ModifyAppraiserEvaluationLine: '@Url.Action("ModifyAppraiserEvaluationLine", "AppraiserEvaluation")',
+
+             //Moderated Appraisal Urls
+            GetModeratedAppraisalLines: '@Url.Action("GetModeratedAppraisalLines", "ModeratedAppraisal")',
+            GetModeratedAppraisalByLineNo: '@Url.Action("GetModeratedAppraisalByLineNo", "ModeratedAppraisal")',
+            ModifyModeratedAppraisalLine: '@Url.Action("ModifyModeratedAppraisalLine", "ModeratedAppraisal")',
+
+            //End Year Evaluation Urls
+            GetEndYearEvaluationLines: '@Url.Action("GetEndYearEvaluationLines", "EndYearEvaluation")',
+            GetEndYearEvaluationByLineNo: '@Url.Action("GetEndYearEvaluationByLineNo", "EndYearEvaluation")',
+            ModifyEndYearEvaluationLine: '@Url.Action("ModifyEndYearEvaluationLine", "EndYearEvaluation")',
+
+            //Closed Appraisal Lines
+            GetCompleteAppraisalLines: '@Url.Action("GetCompleteAppraisalLines", "CompleteAppraisal")',
+
+
+            //Employee training Urls
+            GetTrainingApplicationDocuments: '@Url.Action("GetTrainingApplicationDocuments", "EmployeeTraining")',
+            GetTrainingNeedApplicationDocument: '@Url.Action("GetTrainingApplicationDocument", "EmployeeTraining")',
+            UploadTrainingNeedApplicationDocument: '@Url.Action("UploadTrainingApplicationDocument", "EmployeeTraining")',
+
+
+            //Employee training need Urls
+            GetTrainingNeedApplicationDocuments: '@Url.Action("GetTrainingNeedApplicationDocuments", "EmployeeTraining")',
+            GetTrainingNeedApplicationDocument: '@Url.Action("GetTrainingNeedApplicationDocument", "EmployeeTraining")',
+            UploadTrainingNeedApplicationDocument: '@Url.Action("UploadTrainingNeedApplicationDocument", "EmployeeTraining")',
+
+
+            //Employee training Evaluation  Urls
+            GetTrainingEvaluationApplicationDocuments: '@Url.Action("GetTrainingEvaluationApplicationDocuments", "EmployeeTraining")',
+            GetTrainingEvaluationApplicationDocument: '@Url.Action("GetTrainingEvaluationApplicationDocument", "EmployeeTraining")',
+            UploadTrainingEvaluationApplicationDocument: '@Url.Action("UploadTrainingEvaluationApplicationDocument", "EmployeeTraining")',
+            GetAttendedTrainingApplicationDetails:'@Url.Action("GetAttendedTrainingApplicationDetails", "EmployeeTraining")',
+
+            LoadPurchaseRequisitionDocuments: '@Url.Action("LoadPurchaseRequisitionDocuments", "PurchaseRequisition")',
+            GetPurchaseRequisitionDocumentByLineNo: '@Url.Action("GetPurchaseRequisitionDocument", "PurchaseRequisition")',
+            UploadPurchaseRequsitionAttachments: '@Url.Action("UploadPurchaseRequsitionAttachments", "PurchaseRequisition")',
+
+
+            LoadStoreRequisitionDocuments: '@Url.Action("LoadStoreRequisitionDocuments", "StoreRequisition")',
+            GetStoreRequisitionDocumentByLineNo: '@Url.Action("GetStoreRequisitionDocument", "StoreRequisition")',
+            UploadStoreRequisitionAttachments: '@Url.Action("UploadStoreRequisitionAttachments", "StoreRequisition")',
+
+            LoadAttachedDocuments: '@Url.Action("LoadAttachedDocuments", "FundsClaim")',
+            UploadDocument: '@Url.Action("UploadDocument", "FundsClaim")',
+            GetAttachedDocument: '@Url.Action("GetAttachedDocument", "FundsClaim")',
+
+            GetDocumentLinks: '@Url.Action("GetDocumentLinks", "TrainingApplication")',
+            GetAttachedDocumentLink: '@Url.Action("GetAttachedDocumentLink", "TrainingApplication")',
+            UploadAttachedDocumentLink: '@Url.Action("UploadAttachedDocumentLink", "TrainingApplication")',
+            //Payment Voucher
+            GetPVLinesAjax: '@Url.Action("GetPVLinesAjax", "PaymentVoucher")',
+            //Imprest urls
+            GetImprestLinesAjax: '@Url.Action("GetImprestLinesAjax", "Imprest")',
+            GetImprestLineByLineNo: '@Url.Action("GetImprestLine", "Imprest")',
+            GetImprestAmount: '@Url.Action("GetImprestAmount", "Imprest")',
+            CreateImprestLine: '@Url.Action("CreateImprestLine", "Imprest")',
+            ModifyImprestLine: '@Url.Action("ModifyImprestLine", "Imprest")',
+            DeleteImprestLine: '@Url.Action("DeleteImprestLine", "Imprest")',
+            GetImprestPortalDocuments: '@Url.Action("GetImprestPortalDocuments", "Imprest")',
+            GetImprestPortalDocumentLink: '@Url.Action("GetImprestPortalDocumentLink", "Imprest")',
+            UploadImprestDocumentLink: '@Url.Action("UploadImprestDocumentLink", "Imprest")',
+            GetImprestElements: '@Url.Action("GetImprestElements", "Imprest")',
+            GetSalaryScales: '@Url.Action("GetSalaryScales", "Imprest")',
+            GetSRCLocalDestinations: '@Url.Action("GetSRCLocalDestinations", "Imprest")',
+            GetSRCInternationalDestinations: '@Url.Action("GetSRCInternationalDestinations", "Imprest")',
+            GetSRCAmount: '@Url.Action("GetSRCAmount", "Imprest")',
+            GetSRCAmountCopy: '@Url.Action("GetSRCAmountCopy", "Imprest")',
+            GetEmployeeSalaryScale: '@Url.Action("GetEmployeeSalaryScale", "Imprest")',
+            GetImprestAmountPerCategory: '@Url.Action("GetImprestAmountPerCategory", "Imprest")',
+
+            //Claims/Refund urls
+            GetClaimsRefundLines: '@Url.Action("GetClaimsRefundLines", "ClaimsRefund")',
+            GetClaimsRefundLine: '@Url.Action("GetClaimsRefundLine", "ClaimsRefund")',
+            GetClaimsRefundAmount: '@Url.Action("GetClaimsRefundAmount", "ClaimsRefund")',
+            CreateClaimsRefundLine: '@Url.Action("CreateClaimsRefundLine", "ClaimsRefund")',
+            ModifyClaimsRefundLine: '@Url.Action("ModifyClaimsRefundLine", "ClaimsRefund")',
+            DeleteClaimsRefundLine: '@Url.Action("DeleteClaimsRefundLine", "ClaimsRefund")',
+            GetClaimsRefundPortalDocuments: '@Url.Action("GetClaimsRefundPortalDocuments", "ClaimsRefund")',
+            GetClaimsRefundDocumentLink: '@Url.Action("GetClaimsRefundDocumentLink", "ClaimsRefund")',
+            UploadClaimsRefundDocumentLink:'@Url.Action("UploadClaimsRefundDocumentLink", "ClaimsRefund")',
+
+            //Petty Cash urls
+            GetPettyCashLinesAjax: '@Url.Action("GetPettyCashLinesAjax", "PettyCash")',
+            GetPettyCashLineByLineNo: '@Url.Action("GetPettyCashLine", "PettyCash")',
+            GetPettyCashAmount: '@Url.Action("GetPettyCashAmount", "PettyCash")',
+            CreatePettyCashLine: '@Url.Action("CreatePettyCashLine", "PettyCash")',
+            ModifyPettyCashLine: '@Url.Action("ModifyPettyCashLine", "PettyCash")',
+            DeletePettyCashLine: '@Url.Action("DeletePettyCashLine", "PettyCash")',
+            GetPettyCashPortalDocuments: '@Url.Action("GetPettyCashPortalDocuments", "PettyCash")',
+            GetPettyCashPortalDocumentLink: '@Url.Action("GetPettyCashPortalDocumentLink", "PettyCash")',
+            UploadPettyCashDocumentLink: '@Url.Action("UploadPettyCashDocumentLink", "PettyCash")',
+            GetPettyCashAccounts: '@Url.Action("GetPettyCashAccounts", "PettyCash")',
+
+            //Petty Cash Surrender urls
+            GetPettyCashSurrenderLines: '@Url.Action("GetPettyCashSurrenderLines", "PettyCashSurrender")',
+            GetPettyCashSurrenderLine: '@Url.Action("GetPettyCashSurrenderLine", "PettyCashSurrender")',
+            GetPettyCashSurrenderAmount: '@Url.Action("GetPettyCashSurrenderAmount", "PettyCashSurrender")',
+            CreatePettyCashSurrenderLine: '@Url.Action("CreatePettyCashSurrenderLine", "PettyCashSurrender")',
+            ModifyPettyCashSurrenderLine: '@Url.Action("ModifyPettyCashSurrenderLine", "PettyCashSurrender")',
+            DeletePettyCashSurrenderLine: '@Url.Action("DeletePettyCashSurrenderLine", "PettyCashSurrender")',
+            GetPettyCashSurrenderDocuments: '@Url.Action("GetPettyCashSurrenderDocuments", "PettyCashSurrender")',
+            GetPettyCashSurrenderDocumentLink: '@Url.Action("GetPettyCashSurrenderDocumentLink", "PettyCashSurrender")',
+            UploadPettyCashSurrenderDocumentLink: '@Url.Action("UploadPettyCashSurrenderDocumentLink", "PettyCashSurrender")',
+            ValidatePettyCashSurrenderLines: '@Url.Action("ValidatePettyCashSurrenderLines", "PettyCashSurrender")',
+
+            //Imprest Surrender urls
+            CreateImprestSurrenderLine: '@Url.Action("CreateImprestSurrenderLine", "ImprestSurrender")',
+            GetImprestSurrenderLinesAjax: '@Url.Action("GetImprestSurrenderLinesAjax", "ImprestSurrender")',
+            DeleteImprestSurrenderLine: '@Url.Action("DeleteImprestSurrenderLine", "ImprestSurrender")',
+            ModifyImprestSurrenderLine: '@Url.Action("ModifyImprestSurrenderLine", "ImprestSurrender")',
+            ValidateImprestSurrenderLines: '@Url.Action("ValidateImprestSurrenderLines", "ImprestSurrender")',
+            GetImprestDetails: '@Url.Action("GetImprestDetails", "ImprestSurrender")',
+            GetImprestBalance: '@Url.Action("GetImprestBalance", "ImprestSurrender")',
+            GetImprestSurrenderAmount: '@Url.Action("GetImprestSurrenderAmount", "ImprestSurrender")',
+            GetImprestLines: '@Url.Action("GetImprestLines", "ImprestSurrender")',
+            GetImprestSurrenderLine: '@Url.Action("GetImprestSurrenderLine", "ImprestSurrender")',
+            GetImprestSurrenderPortalDocuments: '@Url.Action("GetImprestSurrenderPortalDocuments", "ImprestSurrender")',
+            GetImprestSurrenderPortalDocumentPerLineNo: '@Url.Action("GetImprestSurrenderPortalDocumentPerLineNo", "ImprestSurrender")',
+            UploadImprestSurrenderPortalDocument: '@Url.Action("UploadImprestSurrenderPortalDocument", "ImprestSurrender")',
+
+
+            //Funds Claim Urls
+            CreateFundsClaimLine: '@Url.Action("CreateFundsClaimLine", "FundsClaim")',
+            GetFundsClaimLines: '@Url.Action("GetFundsClaimLines", "FundsClaim")',
+            DeleteFundsClaimLine: '@Url.Action("DeleteFundsClaimLine", "FundsClaim")',
+            ModifyFundsClaimLine: '@Url.Action("ModifyFundsClaimLine", "FundsClaim")',
+            GetFundsClaimLineByLineNo: '@Url.Action("GetFundsClaimLine", "FundsClaim")',
+            GetFundsClaimAmount: '@Url.Action("GetFundsClaimAmount", "FundsClaim")',
+
+            //Purchase requisition urls
+            GetPurchaseRequisitionAmount: '@Url.Action("GetPurchaseRequisitionAmount", "PurchaseRequisition")',
+            GetPurchaseRequisitionLines: '@Url.Action("GetPurchaseRequisitionLines", "PurchaseRequisition")',
+            CreatePurchaseRequisitionLine: '@Url.Action("CreatePurchaseRequisitionLine", "PurchaseRequisition")',
+            ModifyPurchaseRequisitionLine: '@Url.Action("ModifyPurchaseRequisitionLine", "PurchaseRequisition")',
+            DeletePurchaseRequisitionLine: '@Url.Action("DeletePurchaseRequisitionLine", "PurchaseRequisition")',
+            GetPurchaseRequisitionLineByLineNo: '@Url.Action("GetPurchaseRequisitionLine", "PurchaseRequisition")',
+            GetPurchaseRequisitionUOMs: '@Url.Action("GetPurchaseRequisitionUOMs", "PurchaseRequisition")',
+            GetPurchaseRequisitionItems: '@Url.Action("GetPurchaseRequisitionItems", "PurchaseRequisition")',
+            GetPurchaseRequisitionFixedAssets: '@Url.Action("GetPurchaseRequisitionFixedAssets", "PurchaseRequisition")',
+            GetProcurementPlanItems: '@Url.Action("GetProcurementPlanItems", "PurchaseRequisition")',
+            GetProcurementPlanFixedAssets:'@Url.Action("GetProcurementPlanFixedAssets", "PurchaseRequisition")',
+            GetProcurementPlanServices: '@Url.Action("GetProcurementPlanServices", "PurchaseRequisition")',
+            GetProcurementPlan: '@Url.Action("GetProcurementPlan", "PurchaseRequisition")',
+            GetProcPlanItems: '@Url.Action("GetProcurementPlanItemsre", "PurchaseRequisition")',
+
+            //Individual Appraisal urls
+            GetObjectiveWeight:'@Url.Action("GetObjectiveWeight", "EmployeeAppraisal")',
+            GetOrganizationActivityCodes: '@Url.Action("GetOrganizationActivityCodes", "EmployeeAppraisal")',
+            GetDepartmentalAppraisalCodes: '@Url.Action("GetDepartmentalAppraisalCodes", "EmployeeAppraisal")',
+            GetDivisionalAppraisalCodes: '@Url.Action("GetDivisionalAppraisalCodes", "EmployeeAppraisal")',
+            CreateIndividualAppraisalLine: '@Url.Action("CreateIndividualAppraisalLine", "EmployeeAppraisal")',
+            GetIndividualAppraisalLines: '@Url.Action("GetIndividualAppraisalLines", "EmployeeAppraisal")',
+            ModifyIndividualAppraisalLine: '@Url.Action("ModifyIndividualAppraisalLine", "EmployeeAppraisal")',
+            GetIndividualAppraisalLineByLineNo: '@Url.Action("GetIndividualAppraisalLine", "EmployeeAppraisal")',
+
+            //Store requisition urls
+            GetStoreRequisitionAmount: '@Url.Action("GetStoreRequisitionAmount", "StoreRequisition")',
+            GetAvailableInventory: '@Url.Action("GetAvailableInventory", "StoreRequisition")',
+            GetStoreRequisitionLines: '@Url.Action("GetStoreRequisitionLines", "StoreRequisition")',
+            GetItemUOMs: '@Url.Action("GetItemUOMs", "StoreRequisition")',
+            CreateStoreRequisitionLine: '@Url.Action("CreateStoreRequisitionLine", "StoreRequisition")',
+            ModifyStoreRequisitionLine: '@Url.Action("ModifyStoreRequisitionLine", "StoreRequisition")',
+            DeleteStoreRequisitionLine: '@Url.Action("DeleteStoreRequisitionLine", "StoreRequisition")',
+            GetStoreRequisitionLineByLineNo: '@Url.Action("GetStoreRequisitionLine", "StoreRequisition")',
+            ValidateQuantityRequested: '@Url.Action("ValidateQuantityRequested", "StoreRequisition")',
+            GetItemUOMs:'@Url.Action("GetItemUOMs", "StoreRequisition")',
+
+            //Leave application urls
+            GetLeaveEndDate: '@Url.Action("GetLeaveEndDate", "LeaveApplication")',
+            GetLeaveReturnDate: '@Url.Action("GetLeaveReturnDate", "LeaveApplication")',
+            TargetSettingToReliever: '@Url.Action("TargetSettingToReliever", "LeaveApplication")',
+            InsertLeaveApplicationDocuments: '@Url.Action("InsertLeaveApplicationDocuments", "LeaveApplication")',
+            GetLeaveApplicationDocuments: '@Url.Action("GetLeaveApplicationDocuments", "LeaveApplication")',
+            UploadLeaveApplicationDocument: '@Url.Action("UploadLeaveApplicationDocument", "LeaveApplication")',
+            GetLeaveApplicationDocumentByLineNo: '@Url.Action("GetLeaveApplicationDocumentByLineNo", "LeaveApplication")',
+            GetEmployeeSplittedLeaveBalance: '@Url.Action("GetEmployeeSplittedLeaveBalance", "LeaveApplication")',
+            getEmployeeLeaveSplittedBalance:'@Url.Action("getEmployeeLeaveSplittedBalance", "LeaveApplication")',
+
+            //Salary Advance Urls
+            GetSalaryAdvanceLines: '@Url.Action("GetSalaryAdvanceLines", "SalaryAdvance")',
+            GetSalaryAdvanceLine: '@Url.Action("GetSalaryAdvanceLine", "SalaryAdvance")',
+            CreateSalaryAdvanceLine: '@Url.Action("CreateSalaryAdvanceLine", "SalaryAdvance")',
+            ModifySalaryAdvanceLine: '@Url.Action("ModifySalaryAdvanceLine", "SalaryAdvance")',
+            DeleteSalaryAdvanceLine: '@Url.Action("DeleteSalaryAdvanceLine", "SalaryAdvance")',
+            GetSalaryAdvanceAmount: '@Url.Action("GetSalaryAdvanceAmount", "SalaryAdvance")',
+
+            //Leave Reimbursement urls
+            GetLeaveApplicationDetails: '@Url.Action("GetLeaveApplicationDetails", "LeaveReimbursement")',
+
+            //Training Evaluations urls
+            GetTrainingApplicationDetails: '@Url.Action("GetTrainingApplicationDetails", "TrainingEvaluation")',
+            InsertHRRequiredDocuments: '@Url.Action("InsertHRRequiredDocuments", "TrainingEvaluation")',
+            LoadHRRequiredDocuments: '@Url.Action("LoadHRRequiredDocuments", "TrainingEvaluation")',
+            GetHRRequiredDocument: '@Url.Action("GetHRRequiredDocument", "TrainingEvaluation")',
+            UploadHRRequiredDocument: '@Url.Action("UploadHRRequiredDocument", "TrainingEvaluation")',
+            DeleteHRRequiredDocuments: '@Url.Action("DeleteHRRequiredDocuments", "TrainingEvaluation")',
+
+            // HR Training Needs Urls
+            CreateHRTrainingNeedsLine: '@Url.Action("CreateHRTrainingNeedsLine", "TrainingNeeds")',
+            ModifyHRTrainingNeedsLine: '@Url.Action("ModifyHRTrainingNeedsLine", "TrainingNeeds")',
+            GetHRTrainingNeedsLineByLineNo: '@Url.Action("GetHRTrainingNeedsLine", "TrainingNeeds")',
+            GetHRTrainingNeedsLines: '@Url.Action("GetHRTrainingNeedsLines", "TrainingNeeds")',
+            DeleteHRTrainingNeedsLine: '@Url.Action("DeleteHRTrainingNeedsLine", "TrainingNeeds")',
+
+            //Employee Loan Applications
+            GetLoanProductDetails: '@Url.Action("GetLoanProductDetails", "StaffLoans")',
+            GetLoanApplicationDocumentsLines: '@Url.Action("GetLoanApplicationDocumentsLines", "StaffLoans")',
+            GetApplicationDocument: '@Url.Action("GetApplicationDocument", "StaffLoans")',
+            GetEmployeeEntitlement: '@Url.Action("GetEmployeeEntitlement", "StaffLoans")',
+            GetEmployeeRepaymentAmount: '@Url.Action("GetEmployeeRepaymentAmount", "StaffLoans")',
+            InsertEmployeeLoanProduct: '@Url.Action("InsertEmployeeLoanProduct", "StaffLoans")',
+            InsertEmployeeLoanAmount: '@Url.Action("InsertEmployeeLoanAmount", "StaffLoans")',
+            ValidateLoanApliedAmount: '@Url.Action("ValidateLoanApliedAmount", "StaffLoans")',
+            UploadApplicationDocument: '@Url.Action("UploadApplicationDocument", "StaffLoans")',
+            LoadApplicationDocuments: '@Url.Action("LoadApplicationDocuments", "StaffLoans")',
+            CheckAppliedAmountWithinLimit: '@Url.Action("CheckAppliedAmountWithinLimit", "StaffLoans")',
+            CheckEmployeeEntitlement: '@Url.Action("CheckEmployeeEntitlement", "StaffLoans")',
+            ValidateRepaymentPeriod: '@Url.Action("ValidateRepaymentPeriod", "StaffLoans")',
+
+            //Employee Appraisal Urls
+            GetEmployeeAppraisalLines: '@Url.Action("GetEmployeeAppraisalLines", "EmployeeAppraisal")',
+            GetEmployeeAppraisalLine: '@Url.Action("GetEmployeeAppraisalLine", "EmployeeAppraisal")',
+            CreateEmployeeAppraisalLine: '@Url.Action("CreateEmployeeAppraisalLine", "EmployeeAppraisal")',
+            ModifyEmployeeAppraisalLine: '@Url.Action("ModifyEmployeeAppraisalLine", "EmployeeAppraisal")',
+            DeleteEmployeeAppraisalLine: '@Url.Action("DeleteEmployeeAppraisalLine", "EmployeeAppraisal")',
+            GetAppraisalObjectiveCodes: '@Url.Action("GetAppraisalObjectiveCodes", "EmployeeAppraisal")',
+
+            //Appraisal Evaluation Urls
+            GetAppraisalEvaluationLine: '@Url.Action("GetAppraisalEvaluationLine", "EmployeeEvaluation")',
+            GetAppraisalEvaluationLines: '@Url.Action("GetAppraisalEvaluationLines", "EmployeeEvaluation")',
+            ModifyAppraisalEvaluationLine: '@Url.Action("ModifyAppraisalEvaluationLine", "EmployeeEvaluation")',
+            DeleteAppraisalEvaluationLine: '@Url.Action("DeleteAppraisalEvaluationLine", "EmployeeEvaluation")',
+            GetAppraisalEvaluationDocuments: '@Url.Action("GetAppraisalEvaluationDocuments", "EmployeeEvaluation")',
+            GetAppraisalEvaluationDocument: '@Url.Action("GetAppraisalEvaluationDocument", "EmployeeEvaluation")',
+            UploadAppraisalEvaluationDocument: '@Url.Action("UploadAppraisalEvaluationDocument", "EmployeeEvaluation")',
+            GetAppraisalEvaluationDocumentsView: '@Url.Action("GetAppraisalEvaluationDocumentsView", "EmployeeEvaluation")',
+            InsertAppraisalEvaluationLines: '@Url.Action("InsertAppraisalEvaluationLines", "EmployeeEvaluation")',
+
+            //Vehicle requisition urls
+            GetTripReturnDate: '@Url.Action("GetTripReturnDate", "VehicleRequisition")',
+            InsertTransportRequisitionType: '@Url.Action("InsertTransportRequisitionType", "VehicleRequisition")',
+            GetTransportRequisitionDocuments: '@Url.Action("GetTransportRequisitionDocuments", "VehicleRequisition")',
+            GetTransportRequisitionDocumentByLineNo: '@Url.Action("GetTransportRequisitionDocumentByLineNo", "VehicleRequisition")',
+            UploadTransportRequisitionDocument: '@Url.Action("UploadTransportRequisitionDocument", "VehicleRequisition")'
+        }
+
+        $("input[type=text]").keyup(function () {
+            $("#submitBtn").prop("disabled", true);
+
+            $("input[type=text]").each(function () {
+                if (this.value.length > 0) {
+
+                    $("#submitBtn").prop("disabled", false);
+                    $("#submitBtn").removeAttr("disabled");
+                    return false;
+
+                }
+                else {
+                    $("#submitBtn").attr("disabled", "disabled");
+                }
+            });
+
+        });
+        $("select").select2({
+          allowClear: true,
+          placeholder:'select'
+        });
+
+        $('.selectpicker').selectpicker({
+            liveSearch: true,
+            showSubtext: true
+        });
+        window.onload = function () {
+            setTimeout(function () {
+                var successMessage = document.getElementById('successMessage');
+                successMessage.classList.add('show');
+                setTimeout(function () {
+                    successMessage.classList.remove('show');
+                }, 19000);
+            }, 500);
+        };
+        /*$("#Date").flatpickr({
+                                 dateFormat: "d/m/Y",
+                                 enableTime: true,
+                             });*/
+        /*$('#Date').datepicker({
+              autoclose: true,
+              format: 'yyyy-mm-dd',
+              changeMonth: true,
+              changeYear: true,
+              minDate: new Date(0)
+            });
+        $('#Date').change(function(){
+            $(this).attr('value', $('#Date').val());
+        });*/
+
+        /*$("select").searchit({
+            textFieldClass: 'searchbox',
+            selected: true
+        });*/
+
+    </script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

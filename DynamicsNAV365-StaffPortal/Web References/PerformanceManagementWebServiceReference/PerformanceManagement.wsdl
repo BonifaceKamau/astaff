@@ -1,0 +1,1505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="InsertCeoWorkplanLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pMI" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="headerNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertCeoWorkplanLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateCEOWorkPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateCEOWorkPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteCEOWorkPlanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteCEOWorkPlanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCEOWPL">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pMI" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="userCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCEOWPL_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateDirectorWorkPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateDirectorWorkPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertDirectorWorkplanLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="activity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pMI" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="headerNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertDirectorWorkplanLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDirectorsWorkPlanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDirectorsWorkPlanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateManagerWorkPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateManagerWorkPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteManagerWorkplanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteManagerWorkplanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAsstManagerWorkPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAsstManagerWorkPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOfficerWorkPlanHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOfficerWorkPlanHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOfficerTargetsHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="myUserId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOfficerTargetsHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetsApprovalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="workplanHeaderNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetsApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTargetLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="targetScore" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="primaryCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyTargetLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="endYearAppraiseeComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="endYearSelfScore" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCompetencyLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="score" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="appraiseeComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCompetencyLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetToSupervisor">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetToSupervisor_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseePT">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="endSupervisorScore" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="endSupervisorAgreedScore" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="endSupervisorComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="endAsmComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseePT_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseeCC">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="coreCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="supervisorScore" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="agreedScore" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseeCC_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPeerLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="peerRating" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="peerComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyPeerLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCustomerLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="customerRating" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="customerComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyCustomerLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifySubordinateLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="subordinateRating" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="subordinateComments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifySubordinateLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AppraiseStaff">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="aUserId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AppraiseStaff_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ModifyDirectorWorkplanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="userCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyDirectorWorkplanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AssignAppraisers">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="peerAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="customerAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subordinateAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AssignAppraisers_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyManagerWorkplanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="userCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="deptObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyManagerWorkplanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAsstManagerWorkplanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAsstManagerWorkplanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAsstManagerWorkplanLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="completionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="userCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="weightTotal" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="performanceOutcome" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="project" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="performanceObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="headerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="perspective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="deptObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAsstManagerWorkplanLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppraisalHeaderMid">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="usersId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppraisalHeaderMid_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReturntoAppraisee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ReturntoAppraisee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNoa46" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmployeeName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseePTMidYear">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="midYearSupervisorScore" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="midYearSupervisorComm" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="midyearAgreedScore" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SupervisorModifyAppraiseePTMidYear_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalLineMidYear">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="midAppraiseeComm" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="midSelfScore" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModifyAppraisalLineMidYear_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AcceptResults">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AcceptResults_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppraisalHeaderEnd">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="usersId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppraisalHeaderEnd_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetToSupervisorEnd">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTargetToSupervisorEnd_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AppraiseStaffMidYear">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="aUserId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AppraiseStaffMidYear_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="AssignAppraisersEndYear">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="peerAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="customerAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subordinateAppraiser" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AssignAppraisersEndYear_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppealHeaderMid">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="usersId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppealHeaderMid_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppealHeaderEnd">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="usersId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appealReason" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppealHeaderEnd_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeclineResults">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="reasonforDecline" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeclineResults_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeclineResultsMidYr">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="reasonforDecline" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeclineResultsMidYr_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="InsertCeoWorkplanLines">
+    <part name="parameters" element="tns:InsertCeoWorkplanLines" />
+  </message>
+  <message name="InsertCeoWorkplanLines_Result">
+    <part name="parameters" element="tns:InsertCeoWorkplanLines_Result" />
+  </message>
+  <message name="CreateCEOWorkPlanHeader">
+    <part name="parameters" element="tns:CreateCEOWorkPlanHeader" />
+  </message>
+  <message name="CreateCEOWorkPlanHeader_Result">
+    <part name="parameters" element="tns:CreateCEOWorkPlanHeader_Result" />
+  </message>
+  <message name="DeleteCEOWorkPlanLine">
+    <part name="parameters" element="tns:DeleteCEOWorkPlanLine" />
+  </message>
+  <message name="DeleteCEOWorkPlanLine_Result">
+    <part name="parameters" element="tns:DeleteCEOWorkPlanLine_Result" />
+  </message>
+  <message name="ModifyCEOWPL">
+    <part name="parameters" element="tns:ModifyCEOWPL" />
+  </message>
+  <message name="ModifyCEOWPL_Result">
+    <part name="parameters" element="tns:ModifyCEOWPL_Result" />
+  </message>
+  <message name="CreateDirectorWorkPlanHeader">
+    <part name="parameters" element="tns:CreateDirectorWorkPlanHeader" />
+  </message>
+  <message name="CreateDirectorWorkPlanHeader_Result">
+    <part name="parameters" element="tns:CreateDirectorWorkPlanHeader_Result" />
+  </message>
+  <message name="InsertDirectorWorkplanLines">
+    <part name="parameters" element="tns:InsertDirectorWorkplanLines" />
+  </message>
+  <message name="InsertDirectorWorkplanLines_Result">
+    <part name="parameters" element="tns:InsertDirectorWorkplanLines_Result" />
+  </message>
+  <message name="DeleteDirectorsWorkPlanLine">
+    <part name="parameters" element="tns:DeleteDirectorsWorkPlanLine" />
+  </message>
+  <message name="DeleteDirectorsWorkPlanLine_Result">
+    <part name="parameters" element="tns:DeleteDirectorsWorkPlanLine_Result" />
+  </message>
+  <message name="CreateManagerWorkPlanHeader">
+    <part name="parameters" element="tns:CreateManagerWorkPlanHeader" />
+  </message>
+  <message name="CreateManagerWorkPlanHeader_Result">
+    <part name="parameters" element="tns:CreateManagerWorkPlanHeader_Result" />
+  </message>
+  <message name="DeleteManagerWorkplanLine">
+    <part name="parameters" element="tns:DeleteManagerWorkplanLine" />
+  </message>
+  <message name="DeleteManagerWorkplanLine_Result">
+    <part name="parameters" element="tns:DeleteManagerWorkplanLine_Result" />
+  </message>
+  <message name="CreateAsstManagerWorkPlanHeader">
+    <part name="parameters" element="tns:CreateAsstManagerWorkPlanHeader" />
+  </message>
+  <message name="CreateAsstManagerWorkPlanHeader_Result">
+    <part name="parameters" element="tns:CreateAsstManagerWorkPlanHeader_Result" />
+  </message>
+  <message name="CreateOfficerWorkPlanHeader">
+    <part name="parameters" element="tns:CreateOfficerWorkPlanHeader" />
+  </message>
+  <message name="CreateOfficerWorkPlanHeader_Result">
+    <part name="parameters" element="tns:CreateOfficerWorkPlanHeader_Result" />
+  </message>
+  <message name="CreateOfficerTargetsHeader">
+    <part name="parameters" element="tns:CreateOfficerTargetsHeader" />
+  </message>
+  <message name="CreateOfficerTargetsHeader_Result">
+    <part name="parameters" element="tns:CreateOfficerTargetsHeader_Result" />
+  </message>
+  <message name="SendTargetsApprovalRequest">
+    <part name="parameters" element="tns:SendTargetsApprovalRequest" />
+  </message>
+  <message name="SendTargetsApprovalRequest_Result">
+    <part name="parameters" element="tns:SendTargetsApprovalRequest_Result" />
+  </message>
+  <message name="ModifyTargetLine">
+    <part name="parameters" element="tns:ModifyTargetLine" />
+  </message>
+  <message name="ModifyTargetLine_Result">
+    <part name="parameters" element="tns:ModifyTargetLine_Result" />
+  </message>
+  <message name="ModifyAppraisalLine">
+    <part name="parameters" element="tns:ModifyAppraisalLine" />
+  </message>
+  <message name="ModifyAppraisalLine_Result">
+    <part name="parameters" element="tns:ModifyAppraisalLine_Result" />
+  </message>
+  <message name="ModifyCompetencyLine">
+    <part name="parameters" element="tns:ModifyCompetencyLine" />
+  </message>
+  <message name="ModifyCompetencyLine_Result">
+    <part name="parameters" element="tns:ModifyCompetencyLine_Result" />
+  </message>
+  <message name="SendTargetToSupervisor">
+    <part name="parameters" element="tns:SendTargetToSupervisor" />
+  </message>
+  <message name="SendTargetToSupervisor_Result">
+    <part name="parameters" element="tns:SendTargetToSupervisor_Result" />
+  </message>
+  <message name="SupervisorModifyAppraiseePT">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseePT" />
+  </message>
+  <message name="SupervisorModifyAppraiseePT_Result">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseePT_Result" />
+  </message>
+  <message name="SupervisorModifyAppraiseeCC">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseeCC" />
+  </message>
+  <message name="SupervisorModifyAppraiseeCC_Result">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseeCC_Result" />
+  </message>
+  <message name="ModifyPeerLine">
+    <part name="parameters" element="tns:ModifyPeerLine" />
+  </message>
+  <message name="ModifyPeerLine_Result">
+    <part name="parameters" element="tns:ModifyPeerLine_Result" />
+  </message>
+  <message name="ModifyCustomerLine">
+    <part name="parameters" element="tns:ModifyCustomerLine" />
+  </message>
+  <message name="ModifyCustomerLine_Result">
+    <part name="parameters" element="tns:ModifyCustomerLine_Result" />
+  </message>
+  <message name="ModifySubordinateLine">
+    <part name="parameters" element="tns:ModifySubordinateLine" />
+  </message>
+  <message name="ModifySubordinateLine_Result">
+    <part name="parameters" element="tns:ModifySubordinateLine_Result" />
+  </message>
+  <message name="AppraiseStaff">
+    <part name="parameters" element="tns:AppraiseStaff" />
+  </message>
+  <message name="AppraiseStaff_Result">
+    <part name="parameters" element="tns:AppraiseStaff_Result" />
+  </message>
+  <message name="ModifyDirectorWorkplanLine">
+    <part name="parameters" element="tns:ModifyDirectorWorkplanLine" />
+  </message>
+  <message name="ModifyDirectorWorkplanLine_Result">
+    <part name="parameters" element="tns:ModifyDirectorWorkplanLine_Result" />
+  </message>
+  <message name="AssignAppraisers">
+    <part name="parameters" element="tns:AssignAppraisers" />
+  </message>
+  <message name="AssignAppraisers_Result">
+    <part name="parameters" element="tns:AssignAppraisers_Result" />
+  </message>
+  <message name="ModifyManagerWorkplanLine">
+    <part name="parameters" element="tns:ModifyManagerWorkplanLine" />
+  </message>
+  <message name="ModifyManagerWorkplanLine_Result">
+    <part name="parameters" element="tns:ModifyManagerWorkplanLine_Result" />
+  </message>
+  <message name="DeleteAsstManagerWorkplanLine">
+    <part name="parameters" element="tns:DeleteAsstManagerWorkplanLine" />
+  </message>
+  <message name="DeleteAsstManagerWorkplanLine_Result">
+    <part name="parameters" element="tns:DeleteAsstManagerWorkplanLine_Result" />
+  </message>
+  <message name="ModifyAsstManagerWorkplanLine">
+    <part name="parameters" element="tns:ModifyAsstManagerWorkplanLine" />
+  </message>
+  <message name="ModifyAsstManagerWorkplanLine_Result">
+    <part name="parameters" element="tns:ModifyAsstManagerWorkplanLine_Result" />
+  </message>
+  <message name="CreateAppraisalHeaderMid">
+    <part name="parameters" element="tns:CreateAppraisalHeaderMid" />
+  </message>
+  <message name="CreateAppraisalHeaderMid_Result">
+    <part name="parameters" element="tns:CreateAppraisalHeaderMid_Result" />
+  </message>
+  <message name="ReturntoAppraisee">
+    <part name="parameters" element="tns:ReturntoAppraisee" />
+  </message>
+  <message name="ReturntoAppraisee_Result">
+    <part name="parameters" element="tns:ReturntoAppraisee_Result" />
+  </message>
+  <message name="GetEmployeeName">
+    <part name="parameters" element="tns:GetEmployeeName" />
+  </message>
+  <message name="GetEmployeeName_Result">
+    <part name="parameters" element="tns:GetEmployeeName_Result" />
+  </message>
+  <message name="SupervisorModifyAppraiseePTMidYear">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseePTMidYear" />
+  </message>
+  <message name="SupervisorModifyAppraiseePTMidYear_Result">
+    <part name="parameters" element="tns:SupervisorModifyAppraiseePTMidYear_Result" />
+  </message>
+  <message name="ModifyAppraisalLineMidYear">
+    <part name="parameters" element="tns:ModifyAppraisalLineMidYear" />
+  </message>
+  <message name="ModifyAppraisalLineMidYear_Result">
+    <part name="parameters" element="tns:ModifyAppraisalLineMidYear_Result" />
+  </message>
+  <message name="AcceptResults">
+    <part name="parameters" element="tns:AcceptResults" />
+  </message>
+  <message name="AcceptResults_Result">
+    <part name="parameters" element="tns:AcceptResults_Result" />
+  </message>
+  <message name="CreateAppraisalHeaderEnd">
+    <part name="parameters" element="tns:CreateAppraisalHeaderEnd" />
+  </message>
+  <message name="CreateAppraisalHeaderEnd_Result">
+    <part name="parameters" element="tns:CreateAppraisalHeaderEnd_Result" />
+  </message>
+  <message name="SendTargetToSupervisorEnd">
+    <part name="parameters" element="tns:SendTargetToSupervisorEnd" />
+  </message>
+  <message name="SendTargetToSupervisorEnd_Result">
+    <part name="parameters" element="tns:SendTargetToSupervisorEnd_Result" />
+  </message>
+  <message name="AppraiseStaffMidYear">
+    <part name="parameters" element="tns:AppraiseStaffMidYear" />
+  </message>
+  <message name="AppraiseStaffMidYear_Result">
+    <part name="parameters" element="tns:AppraiseStaffMidYear_Result" />
+  </message>
+  <message name="AssignAppraisersEndYear">
+    <part name="parameters" element="tns:AssignAppraisersEndYear" />
+  </message>
+  <message name="AssignAppraisersEndYear_Result">
+    <part name="parameters" element="tns:AssignAppraisersEndYear_Result" />
+  </message>
+  <message name="CreateAppealHeaderMid">
+    <part name="parameters" element="tns:CreateAppealHeaderMid" />
+  </message>
+  <message name="CreateAppealHeaderMid_Result">
+    <part name="parameters" element="tns:CreateAppealHeaderMid_Result" />
+  </message>
+  <message name="CreateAppealHeaderEnd">
+    <part name="parameters" element="tns:CreateAppealHeaderEnd" />
+  </message>
+  <message name="CreateAppealHeaderEnd_Result">
+    <part name="parameters" element="tns:CreateAppealHeaderEnd_Result" />
+  </message>
+  <message name="DeclineResults">
+    <part name="parameters" element="tns:DeclineResults" />
+  </message>
+  <message name="DeclineResults_Result">
+    <part name="parameters" element="tns:DeclineResults_Result" />
+  </message>
+  <message name="DeclineResultsMidYr">
+    <part name="parameters" element="tns:DeclineResultsMidYr" />
+  </message>
+  <message name="DeclineResultsMidYr_Result">
+    <part name="parameters" element="tns:DeclineResultsMidYr_Result" />
+  </message>
+  <portType name="PerformanceManagement_Port">
+    <operation name="InsertCeoWorkplanLines">
+      <input name="InsertCeoWorkplanLines" message="tns:InsertCeoWorkplanLines" />
+      <output name="InsertCeoWorkplanLines_Result" message="tns:InsertCeoWorkplanLines_Result" />
+    </operation>
+    <operation name="CreateCEOWorkPlanHeader">
+      <input name="CreateCEOWorkPlanHeader" message="tns:CreateCEOWorkPlanHeader" />
+      <output name="CreateCEOWorkPlanHeader_Result" message="tns:CreateCEOWorkPlanHeader_Result" />
+    </operation>
+    <operation name="DeleteCEOWorkPlanLine">
+      <input name="DeleteCEOWorkPlanLine" message="tns:DeleteCEOWorkPlanLine" />
+      <output name="DeleteCEOWorkPlanLine_Result" message="tns:DeleteCEOWorkPlanLine_Result" />
+    </operation>
+    <operation name="ModifyCEOWPL">
+      <input name="ModifyCEOWPL" message="tns:ModifyCEOWPL" />
+      <output name="ModifyCEOWPL_Result" message="tns:ModifyCEOWPL_Result" />
+    </operation>
+    <operation name="CreateDirectorWorkPlanHeader">
+      <input name="CreateDirectorWorkPlanHeader" message="tns:CreateDirectorWorkPlanHeader" />
+      <output name="CreateDirectorWorkPlanHeader_Result" message="tns:CreateDirectorWorkPlanHeader_Result" />
+    </operation>
+    <operation name="InsertDirectorWorkplanLines">
+      <input name="InsertDirectorWorkplanLines" message="tns:InsertDirectorWorkplanLines" />
+      <output name="InsertDirectorWorkplanLines_Result" message="tns:InsertDirectorWorkplanLines_Result" />
+    </operation>
+    <operation name="DeleteDirectorsWorkPlanLine">
+      <input name="DeleteDirectorsWorkPlanLine" message="tns:DeleteDirectorsWorkPlanLine" />
+      <output name="DeleteDirectorsWorkPlanLine_Result" message="tns:DeleteDirectorsWorkPlanLine_Result" />
+    </operation>
+    <operation name="CreateManagerWorkPlanHeader">
+      <input name="CreateManagerWorkPlanHeader" message="tns:CreateManagerWorkPlanHeader" />
+      <output name="CreateManagerWorkPlanHeader_Result" message="tns:CreateManagerWorkPlanHeader_Result" />
+    </operation>
+    <operation name="DeleteManagerWorkplanLine">
+      <input name="DeleteManagerWorkplanLine" message="tns:DeleteManagerWorkplanLine" />
+      <output name="DeleteManagerWorkplanLine_Result" message="tns:DeleteManagerWorkplanLine_Result" />
+    </operation>
+    <operation name="CreateAsstManagerWorkPlanHeader">
+      <input name="CreateAsstManagerWorkPlanHeader" message="tns:CreateAsstManagerWorkPlanHeader" />
+      <output name="CreateAsstManagerWorkPlanHeader_Result" message="tns:CreateAsstManagerWorkPlanHeader_Result" />
+    </operation>
+    <operation name="CreateOfficerWorkPlanHeader">
+      <input name="CreateOfficerWorkPlanHeader" message="tns:CreateOfficerWorkPlanHeader" />
+      <output name="CreateOfficerWorkPlanHeader_Result" message="tns:CreateOfficerWorkPlanHeader_Result" />
+    </operation>
+    <operation name="CreateOfficerTargetsHeader">
+      <input name="CreateOfficerTargetsHeader" message="tns:CreateOfficerTargetsHeader" />
+      <output name="CreateOfficerTargetsHeader_Result" message="tns:CreateOfficerTargetsHeader_Result" />
+    </operation>
+    <operation name="SendTargetsApprovalRequest">
+      <input name="SendTargetsApprovalRequest" message="tns:SendTargetsApprovalRequest" />
+      <output name="SendTargetsApprovalRequest_Result" message="tns:SendTargetsApprovalRequest_Result" />
+    </operation>
+    <operation name="ModifyTargetLine">
+      <input name="ModifyTargetLine" message="tns:ModifyTargetLine" />
+      <output name="ModifyTargetLine_Result" message="tns:ModifyTargetLine_Result" />
+    </operation>
+    <operation name="ModifyAppraisalLine">
+      <input name="ModifyAppraisalLine" message="tns:ModifyAppraisalLine" />
+      <output name="ModifyAppraisalLine_Result" message="tns:ModifyAppraisalLine_Result" />
+    </operation>
+    <operation name="ModifyCompetencyLine">
+      <input name="ModifyCompetencyLine" message="tns:ModifyCompetencyLine" />
+      <output name="ModifyCompetencyLine_Result" message="tns:ModifyCompetencyLine_Result" />
+    </operation>
+    <operation name="SendTargetToSupervisor">
+      <input name="SendTargetToSupervisor" message="tns:SendTargetToSupervisor" />
+      <output name="SendTargetToSupervisor_Result" message="tns:SendTargetToSupervisor_Result" />
+    </operation>
+    <operation name="SupervisorModifyAppraiseePT">
+      <input name="SupervisorModifyAppraiseePT" message="tns:SupervisorModifyAppraiseePT" />
+      <output name="SupervisorModifyAppraiseePT_Result" message="tns:SupervisorModifyAppraiseePT_Result" />
+    </operation>
+    <operation name="SupervisorModifyAppraiseeCC">
+      <input name="SupervisorModifyAppraiseeCC" message="tns:SupervisorModifyAppraiseeCC" />
+      <output name="SupervisorModifyAppraiseeCC_Result" message="tns:SupervisorModifyAppraiseeCC_Result" />
+    </operation>
+    <operation name="ModifyPeerLine">
+      <input name="ModifyPeerLine" message="tns:ModifyPeerLine" />
+      <output name="ModifyPeerLine_Result" message="tns:ModifyPeerLine_Result" />
+    </operation>
+    <operation name="ModifyCustomerLine">
+      <input name="ModifyCustomerLine" message="tns:ModifyCustomerLine" />
+      <output name="ModifyCustomerLine_Result" message="tns:ModifyCustomerLine_Result" />
+    </operation>
+    <operation name="ModifySubordinateLine">
+      <input name="ModifySubordinateLine" message="tns:ModifySubordinateLine" />
+      <output name="ModifySubordinateLine_Result" message="tns:ModifySubordinateLine_Result" />
+    </operation>
+    <operation name="AppraiseStaff">
+      <input name="AppraiseStaff" message="tns:AppraiseStaff" />
+      <output name="AppraiseStaff_Result" message="tns:AppraiseStaff_Result" />
+    </operation>
+    <operation name="ModifyDirectorWorkplanLine">
+      <input name="ModifyDirectorWorkplanLine" message="tns:ModifyDirectorWorkplanLine" />
+      <output name="ModifyDirectorWorkplanLine_Result" message="tns:ModifyDirectorWorkplanLine_Result" />
+    </operation>
+    <operation name="AssignAppraisers">
+      <input name="AssignAppraisers" message="tns:AssignAppraisers" />
+      <output name="AssignAppraisers_Result" message="tns:AssignAppraisers_Result" />
+    </operation>
+    <operation name="ModifyManagerWorkplanLine">
+      <input name="ModifyManagerWorkplanLine" message="tns:ModifyManagerWorkplanLine" />
+      <output name="ModifyManagerWorkplanLine_Result" message="tns:ModifyManagerWorkplanLine_Result" />
+    </operation>
+    <operation name="DeleteAsstManagerWorkplanLine">
+      <input name="DeleteAsstManagerWorkplanLine" message="tns:DeleteAsstManagerWorkplanLine" />
+      <output name="DeleteAsstManagerWorkplanLine_Result" message="tns:DeleteAsstManagerWorkplanLine_Result" />
+    </operation>
+    <operation name="ModifyAsstManagerWorkplanLine">
+      <input name="ModifyAsstManagerWorkplanLine" message="tns:ModifyAsstManagerWorkplanLine" />
+      <output name="ModifyAsstManagerWorkplanLine_Result" message="tns:ModifyAsstManagerWorkplanLine_Result" />
+    </operation>
+    <operation name="CreateAppraisalHeaderMid">
+      <input name="CreateAppraisalHeaderMid" message="tns:CreateAppraisalHeaderMid" />
+      <output name="CreateAppraisalHeaderMid_Result" message="tns:CreateAppraisalHeaderMid_Result" />
+    </operation>
+    <operation name="ReturntoAppraisee">
+      <input name="ReturntoAppraisee" message="tns:ReturntoAppraisee" />
+      <output name="ReturntoAppraisee_Result" message="tns:ReturntoAppraisee_Result" />
+    </operation>
+    <operation name="GetEmployeeName">
+      <input name="GetEmployeeName" message="tns:GetEmployeeName" />
+      <output name="GetEmployeeName_Result" message="tns:GetEmployeeName_Result" />
+    </operation>
+    <operation name="SupervisorModifyAppraiseePTMidYear">
+      <input name="SupervisorModifyAppraiseePTMidYear" message="tns:SupervisorModifyAppraiseePTMidYear" />
+      <output name="SupervisorModifyAppraiseePTMidYear_Result" message="tns:SupervisorModifyAppraiseePTMidYear_Result" />
+    </operation>
+    <operation name="ModifyAppraisalLineMidYear">
+      <input name="ModifyAppraisalLineMidYear" message="tns:ModifyAppraisalLineMidYear" />
+      <output name="ModifyAppraisalLineMidYear_Result" message="tns:ModifyAppraisalLineMidYear_Result" />
+    </operation>
+    <operation name="AcceptResults">
+      <input name="AcceptResults" message="tns:AcceptResults" />
+      <output name="AcceptResults_Result" message="tns:AcceptResults_Result" />
+    </operation>
+    <operation name="CreateAppraisalHeaderEnd">
+      <input name="CreateAppraisalHeaderEnd" message="tns:CreateAppraisalHeaderEnd" />
+      <output name="CreateAppraisalHeaderEnd_Result" message="tns:CreateAppraisalHeaderEnd_Result" />
+    </operation>
+    <operation name="SendTargetToSupervisorEnd">
+      <input name="SendTargetToSupervisorEnd" message="tns:SendTargetToSupervisorEnd" />
+      <output name="SendTargetToSupervisorEnd_Result" message="tns:SendTargetToSupervisorEnd_Result" />
+    </operation>
+    <operation name="AppraiseStaffMidYear">
+      <input name="AppraiseStaffMidYear" message="tns:AppraiseStaffMidYear" />
+      <output name="AppraiseStaffMidYear_Result" message="tns:AppraiseStaffMidYear_Result" />
+    </operation>
+    <operation name="AssignAppraisersEndYear">
+      <input name="AssignAppraisersEndYear" message="tns:AssignAppraisersEndYear" />
+      <output name="AssignAppraisersEndYear_Result" message="tns:AssignAppraisersEndYear_Result" />
+    </operation>
+    <operation name="CreateAppealHeaderMid">
+      <input name="CreateAppealHeaderMid" message="tns:CreateAppealHeaderMid" />
+      <output name="CreateAppealHeaderMid_Result" message="tns:CreateAppealHeaderMid_Result" />
+    </operation>
+    <operation name="CreateAppealHeaderEnd">
+      <input name="CreateAppealHeaderEnd" message="tns:CreateAppealHeaderEnd" />
+      <output name="CreateAppealHeaderEnd_Result" message="tns:CreateAppealHeaderEnd_Result" />
+    </operation>
+    <operation name="DeclineResults">
+      <input name="DeclineResults" message="tns:DeclineResults" />
+      <output name="DeclineResults_Result" message="tns:DeclineResults_Result" />
+    </operation>
+    <operation name="DeclineResultsMidYr">
+      <input name="DeclineResultsMidYr" message="tns:DeclineResultsMidYr" />
+      <output name="DeclineResultsMidYr_Result" message="tns:DeclineResultsMidYr_Result" />
+    </operation>
+  </portType>
+  <binding name="PerformanceManagement_Binding" type="tns:PerformanceManagement_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="InsertCeoWorkplanLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:InsertCeoWorkplanLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertCeoWorkplanLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertCeoWorkplanLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateCEOWorkPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateCEOWorkPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateCEOWorkPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateCEOWorkPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteCEOWorkPlanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeleteCEOWorkPlanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteCEOWorkPlanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteCEOWorkPlanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyCEOWPL">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyCEOWPL" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyCEOWPL">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyCEOWPL_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateDirectorWorkPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateDirectorWorkPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateDirectorWorkPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateDirectorWorkPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertDirectorWorkplanLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:InsertDirectorWorkplanLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertDirectorWorkplanLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertDirectorWorkplanLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteDirectorsWorkPlanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeleteDirectorsWorkPlanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDirectorsWorkPlanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDirectorsWorkPlanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateManagerWorkPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateManagerWorkPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateManagerWorkPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateManagerWorkPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteManagerWorkplanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeleteManagerWorkplanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteManagerWorkplanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteManagerWorkplanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateAsstManagerWorkPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateAsstManagerWorkPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAsstManagerWorkPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAsstManagerWorkPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateOfficerWorkPlanHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateOfficerWorkPlanHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateOfficerWorkPlanHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateOfficerWorkPlanHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateOfficerTargetsHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateOfficerTargetsHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateOfficerTargetsHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateOfficerTargetsHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTargetsApprovalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SendTargetsApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTargetsApprovalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTargetsApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyTargetLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyTargetLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyTargetLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyTargetLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyAppraisalLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyAppraisalLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyAppraisalLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyAppraisalLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyCompetencyLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyCompetencyLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyCompetencyLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyCompetencyLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTargetToSupervisor">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SendTargetToSupervisor" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTargetToSupervisor">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTargetToSupervisor_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SupervisorModifyAppraiseePT">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SupervisorModifyAppraiseePT" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SupervisorModifyAppraiseePT">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SupervisorModifyAppraiseePT_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SupervisorModifyAppraiseeCC">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SupervisorModifyAppraiseeCC" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SupervisorModifyAppraiseeCC">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SupervisorModifyAppraiseeCC_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyPeerLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyPeerLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyPeerLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyPeerLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyCustomerLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyCustomerLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyCustomerLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyCustomerLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifySubordinateLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifySubordinateLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifySubordinateLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifySubordinateLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AppraiseStaff">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:AppraiseStaff" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AppraiseStaff">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AppraiseStaff_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyDirectorWorkplanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyDirectorWorkplanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyDirectorWorkplanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyDirectorWorkplanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AssignAppraisers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:AssignAppraisers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AssignAppraisers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AssignAppraisers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyManagerWorkplanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyManagerWorkplanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyManagerWorkplanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyManagerWorkplanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteAsstManagerWorkplanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeleteAsstManagerWorkplanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteAsstManagerWorkplanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteAsstManagerWorkplanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyAsstManagerWorkplanLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyAsstManagerWorkplanLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyAsstManagerWorkplanLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyAsstManagerWorkplanLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateAppraisalHeaderMid">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateAppraisalHeaderMid" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAppraisalHeaderMid">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAppraisalHeaderMid_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReturntoAppraisee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ReturntoAppraisee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReturntoAppraisee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReturntoAppraisee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmployeeName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:GetEmployeeName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmployeeName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmployeeName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SupervisorModifyAppraiseePTMidYear">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SupervisorModifyAppraiseePTMidYear" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SupervisorModifyAppraiseePTMidYear">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SupervisorModifyAppraiseePTMidYear_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ModifyAppraisalLineMidYear">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:ModifyAppraisalLineMidYear" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ModifyAppraisalLineMidYear">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ModifyAppraisalLineMidYear_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AcceptResults">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:AcceptResults" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AcceptResults">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AcceptResults_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateAppraisalHeaderEnd">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateAppraisalHeaderEnd" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAppraisalHeaderEnd">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAppraisalHeaderEnd_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTargetToSupervisorEnd">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:SendTargetToSupervisorEnd" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTargetToSupervisorEnd">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTargetToSupervisorEnd_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AppraiseStaffMidYear">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:AppraiseStaffMidYear" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AppraiseStaffMidYear">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AppraiseStaffMidYear_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AssignAppraisersEndYear">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:AssignAppraisersEndYear" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AssignAppraisersEndYear">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AssignAppraisersEndYear_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateAppealHeaderMid">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateAppealHeaderMid" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAppealHeaderMid">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAppealHeaderMid_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateAppealHeaderEnd">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:CreateAppealHeaderEnd" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAppealHeaderEnd">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAppealHeaderEnd_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeclineResults">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeclineResults" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeclineResults">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeclineResults_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeclineResultsMidYr">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/PerformanceManagement:DeclineResultsMidYr" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeclineResultsMidYr">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeclineResultsMidYr_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PerformanceManagement">
+    <port name="PerformanceManagement_Port" binding="tns:PerformanceManagement_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Codeunit/PerformanceManagement" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

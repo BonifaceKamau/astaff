@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/impreststaffadvance" targetNamespace="urn:microsoft-dynamics-schemas/page/impreststaffadvance" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/impreststaffadvance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Advance_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Shared" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="Released" />
+          <xsd:enumeration value="Pending_Approval" />
+          <xsd:enumeration value="Pending_Prepayment" />
+          <xsd:enumeration value="Rejected" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Imprest_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Individual" />
+          <xsd:enumeration value="Group" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Imprest_Purpose">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="DSA" />
+          <xsd:enumeration value="OTHER" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Attachement">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No" />
+          <xsd:enumeration value="Yes" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Account_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Imprest_claim_Lines_T">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Transaction_Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Category" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Local_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="International_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Element" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Destination" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Destination_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_Type" type="tns:Account_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode3" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode4" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode5" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode6" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode7" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode8" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Currency_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="USD_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Salary_Scale" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_of_Measure" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_Price" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Budgetted_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Available_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Current_Budget" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Committment" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Actual_Spent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Activity" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Imprest_claim_Lines_T_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Imprest_claim_Lines_T" type="tns:Imprest_claim_Lines_T" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Account_Type_8">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Imprest_claim_Lines_Non_Staff">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_Job_Group" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Transaction_Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Category" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Local_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="International_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Element" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Destination" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_Type" type="tns:Account_Type_8" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode3" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode4" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode5" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode6" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode7" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortcutDimCode8" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Currency_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="USD_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Salary_Scale" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_of_Measure" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_Price" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Budgetted_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Available_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Current_Budget" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Committment" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Actual_Spent" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Imprest_claim_Lines_Non_Staff_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Imprest_claim_Lines_Non_Staff" type="tns:Imprest_claim_Lines_Non_Staff" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Account_Type_8">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Advance_Claim_Lines">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_Type" type="tns:Account_Type_8" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_3_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Salary_Advance_Start_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Salary_Advance_End_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Salary_Advance_Installlments" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Advance_Claim_Lines_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Advance_Claim_Lines" type="tns:Advance_Claim_Lines" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Account_Type_8">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Imprest_Lines">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_Type" type="tns:Account_Type_8" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_3_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Account_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Local_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="International_Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Category" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Element" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Destination" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Currency_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_of_Measure" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unit_Price" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="USD_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Exchange_Rate" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Available_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Current_Budget" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Imprest_Lines_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Imprest_Lines" type="tns:Imprest_Lines" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImprestStaffAdvance">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Request_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Transaction_Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Total_Amount_Requested" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Department_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Advance_Type" type="tns:Advance_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Purpose_of_Imprest" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Activity_End_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Training" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Travel" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Training_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Trip_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Trip_Start_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Trip_Expected_End_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Days" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Days_Allowed" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Deadline_for_Return" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bank_Account" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Pay_Mode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Cheque_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Cheque_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Balance" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Activity_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="External" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Customer_A_C" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_Group" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Approvals" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CBK_Website_Address" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Type" type="tns:Imprest_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Purpose" type="tns:Imprest_Purpose" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Attachement" type="tns:Attachement" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Attached_to_PV_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Memo" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Memo_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_claim_Lines_T" type="tns:Imprest_claim_Lines_T_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_claim_Lines_Non_Staff" type="tns:Imprest_claim_Lines_Non_Staff_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Advance_Claim_Lines" type="tns:Advance_Claim_Lines_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Imprest_Lines" type="tns:Imprest_Lines_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImprestStaffAdvance_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ImprestStaffAdvance_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No" />
+          <xsd:enumeration value="Request_Date" />
+          <xsd:enumeration value="Transaction_Type" />
+          <xsd:enumeration value="Employee_No" />
+          <xsd:enumeration value="Employee_Name" />
+          <xsd:enumeration value="Global_Dimension_2_Code" />
+          <xsd:enumeration value="Global_Dimension_1_Code" />
+          <xsd:enumeration value="Imprest_Amount" />
+          <xsd:enumeration value="Total_Amount_Requested" />
+          <xsd:enumeration value="Department_Name" />
+          <xsd:enumeration value="Advance_Type" />
+          <xsd:enumeration value="Purpose_of_Imprest" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="Activity_End_Date" />
+          <xsd:enumeration value="Training" />
+          <xsd:enumeration value="Travel" />
+          <xsd:enumeration value="Training_Code" />
+          <xsd:enumeration value="Trip_No" />
+          <xsd:enumeration value="Trip_Start_Date" />
+          <xsd:enumeration value="Trip_Expected_End_Date" />
+          <xsd:enumeration value="No_of_Days" />
+          <xsd:enumeration value="Days_Allowed" />
+          <xsd:enumeration value="Deadline_for_Return" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Pay_Mode" />
+          <xsd:enumeration value="Cheque_No" />
+          <xsd:enumeration value="Cheque_Date" />
+          <xsd:enumeration value="Balance" />
+          <xsd:enumeration value="Activity_Date" />
+          <xsd:enumeration value="External" />
+          <xsd:enumeration value="Customer_A_C" />
+          <xsd:enumeration value="Job_Group" />
+          <xsd:enumeration value="No_of_Approvals" />
+          <xsd:enumeration value="CBK_Website_Address" />
+          <xsd:enumeration value="Imprest_Type" />
+          <xsd:enumeration value="Imprest_Purpose" />
+          <xsd:enumeration value="Attachement" />
+          <xsd:enumeration value="Attached_to_PV_No" />
+          <xsd:enumeration value="Memo" />
+          <xsd:enumeration value="Memo_No" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ImprestStaffAdvance_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:ImprestStaffAdvance_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="No" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:ImprestStaffAdvance_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:ImprestStaffAdvance_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance_List" type="tns:ImprestStaffAdvance_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance_List" type="tns:ImprestStaffAdvance_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance" type="tns:ImprestStaffAdvance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance_List" type="tns:ImprestStaffAdvance_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ImprestStaffAdvance_List" type="tns:ImprestStaffAdvance_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_claim_Lines_T">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Imprest_claim_Lines_T_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_claim_Lines_T_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Imprest_claim_Lines_T_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_claim_Lines_Non_Staff">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Imprest_claim_Lines_Non_Staff_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_claim_Lines_Non_Staff_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Imprest_claim_Lines_Non_Staff_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Advance_Claim_Lines">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Advance_Claim_Lines_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Advance_Claim_Lines_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Advance_Claim_Lines_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_Lines">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Imprest_Lines_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Imprest_Lines_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Imprest_Lines_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete_Imprest_claim_Lines_T">
+    <part name="parameters" element="tns:Delete_Imprest_claim_Lines_T" />
+  </message>
+  <message name="Delete_Imprest_claim_Lines_T_Result">
+    <part name="parameters" element="tns:Delete_Imprest_claim_Lines_T_Result" />
+  </message>
+  <message name="Delete_Imprest_claim_Lines_Non_Staff">
+    <part name="parameters" element="tns:Delete_Imprest_claim_Lines_Non_Staff" />
+  </message>
+  <message name="Delete_Imprest_claim_Lines_Non_Staff_Result">
+    <part name="parameters" element="tns:Delete_Imprest_claim_Lines_Non_Staff_Result" />
+  </message>
+  <message name="Delete_Advance_Claim_Lines">
+    <part name="parameters" element="tns:Delete_Advance_Claim_Lines" />
+  </message>
+  <message name="Delete_Advance_Claim_Lines_Result">
+    <part name="parameters" element="tns:Delete_Advance_Claim_Lines_Result" />
+  </message>
+  <message name="Delete_Imprest_Lines">
+    <part name="parameters" element="tns:Delete_Imprest_Lines" />
+  </message>
+  <message name="Delete_Imprest_Lines_Result">
+    <part name="parameters" element="tns:Delete_Imprest_Lines_Result" />
+  </message>
+  <portType name="ImprestStaffAdvance_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete_Imprest_claim_Lines_T">
+      <input name="Delete_Imprest_claim_Lines_T" message="tns:Delete_Imprest_claim_Lines_T" />
+      <output name="Delete_Imprest_claim_Lines_T_Result" message="tns:Delete_Imprest_claim_Lines_T_Result" />
+    </operation>
+    <operation name="Delete_Imprest_claim_Lines_Non_Staff">
+      <input name="Delete_Imprest_claim_Lines_Non_Staff" message="tns:Delete_Imprest_claim_Lines_Non_Staff" />
+      <output name="Delete_Imprest_claim_Lines_Non_Staff_Result" message="tns:Delete_Imprest_claim_Lines_Non_Staff_Result" />
+    </operation>
+    <operation name="Delete_Advance_Claim_Lines">
+      <input name="Delete_Advance_Claim_Lines" message="tns:Delete_Advance_Claim_Lines" />
+      <output name="Delete_Advance_Claim_Lines_Result" message="tns:Delete_Advance_Claim_Lines_Result" />
+    </operation>
+    <operation name="Delete_Imprest_Lines">
+      <input name="Delete_Imprest_Lines" message="tns:Delete_Imprest_Lines" />
+      <output name="Delete_Imprest_Lines_Result" message="tns:Delete_Imprest_Lines_Result" />
+    </operation>
+  </portType>
+  <binding name="ImprestStaffAdvance_Binding" type="tns:ImprestStaffAdvance_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Imprest_claim_Lines_T">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Delete_Imprest_claim_Lines_T" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Imprest_claim_Lines_T">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Imprest_claim_Lines_T_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Imprest_claim_Lines_Non_Staff">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Delete_Imprest_claim_Lines_Non_Staff" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Imprest_claim_Lines_Non_Staff">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Imprest_claim_Lines_Non_Staff_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Advance_Claim_Lines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Delete_Advance_Claim_Lines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Advance_Claim_Lines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Advance_Claim_Lines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Imprest_Lines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/impreststaffadvance:Delete_Imprest_Lines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Imprest_Lines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Imprest_Lines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ImprestStaffAdvance_Service">
+    <port name="ImprestStaffAdvance_Port" binding="tns:ImprestStaffAdvance_Binding">
+      <address location="http://cihebsvr.cihebk.local:7047/CIHEBK/WS/CIHEBKENYA/Page/ImprestStaffAdvance" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,123 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DynamicsNAV365_StaffPortal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DynamicsNAV365_StaffPortal_EmployeeAppraisalManagementWebServiceRef_EmployeeAppraisalManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://102.133.239.194:3032/Regent/WS/Regent%20Ltd/Codeunit/EmployeeAppraisalManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_EmployeeTrainingManagementWebServiceRef_EmployeeTrainingManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://102.133.239.194:3032/Regent/WS/Regent%20Ltd/Codeunit/EmployeeTrainingManagementWS</Value>
+    </Setting>
+    <Setting Name="protocol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://</Value>
+    </Setting>
+    <Setting Name="secureprotocol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://</Value>
+    </Setting>
+    <Setting Name="PoweredBy" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Panache Technohub Limited.</Value>
+    </Setting>
+    <Setting Name="AppName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Employee Self-Service Portal</Value>
+    </Setting>
+    <Setting Name="CompanyWebsite" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://panachetechnohub.co.ke/</Value>
+    </Setting>
+    <Setting Name="passwordResetProtocol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http</Value>
+    </Setting>
+    <Setting Name="ConnPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Nav365@</Value>
+    </Setting>
+    <Setting Name="SOAPPortNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8047</Value>
+    </Setting>
+    <Setting Name="ODATAPortNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8048</Value>
+    </Setting>
+    <Setting Name="DynamicsNAVServiceName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OPTIVEN</Value>
+    </Setting>
+    <Setting Name="DefaultCompanyURLName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Optiven R.E</Value>
+    </Setting>
+    <Setting Name="DynamicsNAVServer2" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConnUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">erp2</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_LoanManagementWebServiceReference_LoanManagementWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/LoanManagementWebService</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_MemoSalaryAdvanceWebServiceReference_MemoSalaryAdvanceWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/MemoSalaryAdvanceWebService</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_PerformanceManagementWebServiceReference_PerformanceManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/PerformanceManagement</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_ProjectManagementWebServiceReference_ProjectManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/ProjectManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_ApprovalManagementWebServiceReference_PortalApprovalManager" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/PortalApprovalManager</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_DocumentManagementWebServiceRef_DocumentMgmt" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/DocumentMgmt</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_EmployeeAccountWebServiceReference_EmployeeAccountWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/EmployeeAccountWebService</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_HumanResourceManagmentWebServiceReference_HumanResourceManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/HumanResourceManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_PayrollManagementWebServiceReference_PayrollManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/PayrollManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_FundsClaimManagementWebServiceReference_FundsClaimManagementWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/FundsClaimManagementWebService</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_InventoryManagementWebServiceReference_InventoryManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/InventoryManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_ProcurementManagementWebServiceReference_ProcurementManagementWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/ProcurementManagementWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_ActivityRequestWs_ActivityRequest" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/ActivityRequest</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_TimeSheet_TimeSheetWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Codeunit/TimeSheetWS</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_FundsManagementWebServiceReference_FundsManagementWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/FundsManagementWebService</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_Page_ImprestStaffAdvance" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Page/ImprestStaffAdvance</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_local_cihebk_cihebsvr_ImprestStaffAdvance_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven R.E/Page/ImprestStaffAdvance</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_StaffAdvanceWebServiceReference2_StaffAdvance" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Codeunit/StaffAdvance</Value>
+    </Setting>
+    <Setting Name="DynamicsNAVServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.0.5</Value>
+    </Setting>
+    <Setting Name="CompanyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Optiven Group</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_PerformanceManagement_PerformanceManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5/:8047/Optiven/WS/Optiven R.E/Codeunit/PerformanceManagement</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_NativeApprovalsMgmtWebReference_Approvals_Mgmt" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/ReplaceWithAPercentEncodedCompanyName/Codeunit/Approvals_Mgmt</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_Property_Card_Property_Card_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/Optiven%20R.E/Page/Property_Card</Value>
+    </Setting>
+    <Setting Name="DynamicsNAV365_StaffPortal_ProjectPortalUpdate_ProjectPortalUpdate" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.5:8047/Optiven/WS/ReplaceWithAPercentEncodedCompanyName/Codeunit/ProjectPortalUpdate</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

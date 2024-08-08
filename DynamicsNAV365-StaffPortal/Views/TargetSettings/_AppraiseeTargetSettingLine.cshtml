@@ -1,0 +1,492 @@
+@model IEnumerable<OdataRef.Staff_Target_Lines>
+@{
+    var headerNumber = ViewBag.workplanno;
+    var editable = ViewBag.editable;
+    var currentUser = ViewBag.CurrentEmployee;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div id="tableWrapper">
+
+            <!-- Grouped by objectives -->
+            @foreach (var objectiveGroup in Model.GroupBy(x => x.Objective))
+            {
+                <div class="objective-group" data-objective="@objectiveGroup.Key">
+                    <h3>@objectiveGroup.Key</h3>
+
+                    @*@if (Model.Any(x => x.Closed == true))
+                    {*@
+                        <button class="btn btn-xs btn-primary" type="button" onclick="AddStaffMarks (this, '@objectiveGroup.Key')">
+                            Success Mesure
+                        </button>
+
+
+                   @* }*@
+
+                    <div id="" class="table-responsive">
+                        <table id="LineTbl" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;">@Html.DisplayNameFor(model => model.Marks)</th>
+                                    <th style="display: none;">@Html.DisplayNameFor(model => model.Objective)</th>
+                                    <th>How</th>
+                                    <th style="display: none;">@Html.DisplayNameFor(model => model.Specific_Action_Plan)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var workplanLine in objectiveGroup)
+                                {
+                                    <tr>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.Marks)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.SupervisorMarks)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.StaffMarks)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.Objective)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.Staff_Remark)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.SupervisorComment)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.Target_Amount)</td>
+                                        <td style="display: none;">@Html.HiddenFor(model => workplanLine.KPIDescription)</td>
+                                        <td id="data_Specific_Action_Plan">@Html.DisplayFor(model => workplanLine.Specific_Action_Plan)</td>
+                                        <td>
+                                            <a style="cursor: pointer" onclick="return EditMidYearLine(this, '@workplanLine.Objective', '@workplanLine.Marks')">View</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+
+            <div id="supervisorMarksModal" class="modal fade" role="dialog" aria-labelledby="supervisorMarksModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="btn close" type="button" data-dismiss="modal">
+                                <i class="fa fa-close"></i>
+                            </button>
+                            <h4 id="supervisorMarksModalLabel" class="modal-title">Add Staff Rating</h4>
+                          @*  <p>Sent to HR: <span>@(Model.Any(x => x.Sent_to_Supervisor ?? false) ? "Yes" : "No")</span></p>*@
+                        </div>
+                        <div class="modal-body">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="Doc_No" value="@ViewBag.workplanno" />
+                            <input type="hidden" name="Period" value="@ViewBag.Period" />
+                            <input type="hidden" id="SupervisorObjective" name="SupervisorObjective" value="" />
+                            @if (Model.Any(x => x.Closed == true))
+                            {
+                                <div class="form-group">
+                                    <label for="supervisorMarks">Supervisor Rating:</label>
+                                    @if (Model.Any(x => x.Supervisor == currentUser))
+                                    {
+                                        <input type="number" step="any" name="SupervisorMarks" class="form-control" id="SupervisorMarks">
+                                    }
+                                    else
+                                    {
+                                        <input type="number" step="any" name="SupervisorMarks" class="form-control" id="SupervisorMarks" readonly>
+                                    }
+                                </div>
+                            }
+
+                            @if (Model.Any(x => x.Closed == true))
+                            {
+                                <div class="form-group">
+                                    <label for="supervisorMarks">Staff Rating:</label>
+                                    @if (Model.Any(x => x.Staff_No == currentUser && x.Sent_to_Supervisor == false))
+                                    {
+                                        <input type="number" step="any" name="StaffMarks" class="form-control" id="StaffMarks">
+                                    }
+                                    else
+                                    {
+                                        <input type="number" step="any" name="StaffMarks" class="form-control" id="StaffMarks" readonly>
+                                    }
+                                </div>
+                            }
+                            <div class="form-group">
+                                <label for="KPIesc">Success Measure:</label>
+                                @if (Model.Any(x => x.Sent_To_HR == false))
+                                {
+                                    <textarea name="KPIesc" class="form-control" id="KPIesc"></textarea>
+                                }
+                                else
+                                {
+                                    <textarea name="KPIesc" class="form-control" id="KPIesc" readonly></textarea>
+                                }
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Marks">Marks</label>
+                                @if (Model.Any(x => x.Supervisor == currentUser))
+                                {
+                                    <input type="number" step="any" class="form-control" name="SMarks" id="SMarks">
+                                }
+                                else
+                                {
+                                    <input type="number" step="any" class="form-control" name="SMarks" id="SMarks" readonly>
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                <label for="TargetAmount">Target Amount</label>
+                                @if (Model.Any(x => x.Sent_To_HR == true))
+                                {
+                                    <input type="number" step="any" class="form-control" name="TargetAmount" id="TargetAmount" readonly>
+                                }
+                                else
+                                {
+                                    <input type="number" step="any" class="form-control" name="TargetAmount" id="TargetAmount">
+                                }
+                            </div>
+
+                            @if (Model.Any(x => x.Closed == true))
+                            {
+                                <div class="form-group">
+                                    <label for="supervisorComment">Supervisor Comment:</label>
+                                    @if (Model.Any(x => x.Supervisor == currentUser && x.Accepted_by_Supervisor == false))
+                                    {
+                                        <textarea name="SupervisorComment" class="form-control" id="SupervisorComment"></textarea>
+                                    }
+                                    else
+                                    {
+                                        <textarea name="SupervisorComment" class="form-control" id="SupervisorComment" readonly></textarea>
+                                    }
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="SStaffComment">Staff Comment:</label>
+                                    @if (Model.Any(x => x.Staff_No == currentUser && x.Sent_to_Supervisor == false))
+                                    {
+                                        <textarea name="SStaffComment" class="form-control" id="SStaffComment"></textarea>
+                                    }
+                                    else
+                                    {
+                                        <textarea name="SStaffComment" class="form-control" id="SStaffComment" readonly></textarea>
+
+                                    }
+                                </div>
+
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    @if (Model.Any(x => x.Closed == true))
+                                    {
+                                        <button id="AddSupervisorMarksBtn" class="btn btn-primary btn-xs" type="button" onclick="ModifyMarksLine(this);">Save</button>
+                                    }
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="MidYearLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "MiddleYearLineForm", @class = "" }))
+                            {
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" type="button" data-dismiss="modal">
+                                            <i class="fa fa-close"></i>
+                                        </button>
+                                        <h4 id="StoreRequisitionLineModalLabel" class="modal-title">Planning</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="Doc_No" value="@ViewBag.workplanno" />
+                                        <input type="hidden" name="Period" value="@ViewBag.Period" />
+                                        <input type="hidden" id="Command" name="Command" value="Create" />
+                                        @* <input type="hidden" name="SStaffComment" value="SStaffComment" />*@
+                                        @*<input type="hidden" name="No" id="No" value=""/>*@
+                                        <div class="row">
+                                            @*<div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    <label for="Marks">Marks</label>
+                                                    <input type="number" step="any" class="form-control" name="Marks" id="Marks" readonly>
+                                                </div>
+                                            </div>*@
+
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    <label for="">Objective</label>
+                                                    <input type="text" required class="form-control" name="Objective" id="Objective" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    <label for="">Specific Action Plan</label>
+                                                    <textarea required class="form-control" name="Specific_Action_Plan" id="Specific_Action_Plan" readonly></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                    </div>
+                                </div>
+                             }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+          
+    
+    </div>
+ </div>
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script type="text/javascript">
+
+    function EditMidYearLine(element, objective) {
+        // Retrieve the closest row to the clicked element
+        var row = $(element).closest("tr");
+
+        var Marks = $(row).find("input[name='workplanLine.Marks']").val();
+        var Objective = $(row).find("input[name='workplanLine.Objective']").val();
+        var comment = $(row).find("input[name='workplanLine.Staff_Remark']").val();
+        var supervisorComment = $(row).find("input[name='workplanLine.SupervisorComment']").val();
+        var Specific_Action_Plan = $(row).find("#data_Specific_Action_Plan").text();
+
+        //console.log("Marks: ", Marks);
+        //console.log("Objective: ", Objective);
+        //console.log("Specific Action Plan: ", Specific_Action_Plan);
+        //console.log("Remarks: ", comment);
+
+        // Set the Marks input field value
+        $("#Marks").val(Marks);
+        $("#Objective").val(Objective);
+        $("#Specific_Action_Plan").val(Specific_Action_Plan);
+        $("#SStaffComment").val(comment);
+        $("#SStaffComment").text(comment);
+
+
+        // Show the modal
+        $("#Command").val('edit');
+        $("#MidYearLineModal").modal("show");
+    }
+
+    function AddStaffMarks(element, objective) {
+
+        var row = $(element).closest(".objective-group");
+
+        var marks = row.find("input[name='workplanLine.Marks']").val();
+        var staffMarks = row.find("input[name='workplanLine.StaffMarks']").val();
+        var supervisorMarks = row.find("input[name='workplanLine.SupervisorMarks']").val();
+        var objectiveValue = objective;
+        var comment = $(row).find("input[name='workplanLine.Staff_Remark']").val();
+        var supervisorComment = row.find("input[name='workplanLine.SupervisorComment']").val();
+        var TargAmount = row.find('input[name="workplanLine.Target_Amount"]').val();
+        var KPIdesc = row.find('input[name="workplanLine.KPIDescription"]').val();
+
+        $("#SMarks").val(marks);
+        $("#StaffMarks").val(staffMarks);
+        $("#SupervisorMarks").val(supervisorMarks);
+        $("#SStaffComment").val(comment);
+        $("#SStaffComment").text(comment);
+        $("#TargetAmount").val(TargAmount);
+        $("#KPIesc").val(KPIdesc);
+        $("#KPIesc").text(KPIdesc);
+
+        //console.log('Add staff Comment :', comment);
+        
+        $("#SupervisorComment").text(supervisorComment);
+        $("#SupervisorObjective").val(objectiveValue);
+
+        $("#Command").val('edit');
+        $('#supervisorMarksModal').modal('show');
+    }
+
+
+
+    function ModifyMarksLine(element) {
+
+       var modal = $(element).closest(".modal-content");
+
+       var docNo = modal.find('input[name="Doc_No"]').val();
+       var objective = modal.find('input[name="SupervisorObjective"]').val();
+       var marks = modal.find('input[name="SMarks"]').val();
+       var supervisorMarks = modal.find('input[name="SupervisorMarks"]').val();
+       var staffMarks = modal.find('input[name="StaffMarks"]').val();
+        var supervisorComment = modal.find('textarea[name="SupervisorComment"]').val();
+        var staffComment = modal.find('textarea[name="SStaffComment"]').val(); 
+
+        //console.log('Objective is:', objective);
+        //console.log('STAFF Comment :', staffComment);
+
+    var data = {
+        Doc_No: docNo,
+        Objective: objective,
+        Marks: marks,
+        SupervisorMarks: supervisorMarks,
+        StaffMarks: staffMarks,
+        Supervisor_Comment: supervisorComment,
+        Staff_Remark: staffComment
+    };
+
+    $.ajax({
+        type: 'POST', 
+        url: '@Url.Action("ModifyMarksLine")',
+        data: data,
+        dataType: 'json',
+        success: function (result) {
+            if (result.success) {
+                $("#supervisorMarksModal").modal("hide");
+                LoadLines(result.No);
+                Swal.fire("success", "Saved Successfully", "success");
+                location.reload();
+            } else {
+                Swal.fire("error", result.message, "error");
+            }
+        },
+        error: function (xhr, errorType, exception) {
+            Swal.fire("error", xhr.responseText, "error");
+        }
+    });
+}
+
+
+
+
+    function ModifyTargetLine(element) {
+    var data = $(element).closest("form").serialize();
+
+    // Collect dynamically added Specific Action Plans
+    var plans = [];
+    $("#dynamicPlans textarea").each(function() {
+        plans.push($(this).val());
+    });
+
+    // Append the collected plans to the data
+    data += "&Plans=" + JSON.stringify(plans);
+
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("ModifyTargetLine")',
+        data: data,
+        dataType: 'json',
+        success: function (result) {
+            if (result.success){
+                $("#MidYearLineModal").modal("hide");
+                LoadLines(result.No);
+                Swal.fire("success", "Saved Successfully", "success");
+                location.reload();
+            } else {
+                Swal.fire("error", result.message, "error");
+            }
+        },
+        error: function (xhr, errorType, exception) {
+            Swal.fire("error",xhr.responseText,"error");
+        }
+    })
+}
+    function LoadLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadStaffTargetlines")',
+            type: "GET",
+            dataType: "json",
+            data: { No: '@ViewBag.workplanno' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+                jsonLines = JSON.parse(Lines);
+
+                $.each(jsonLines, function (i, Line) {
+                    let row = `
+                        <tr>
+                            <td id="data_Specific_Action_Plan">${Line.Specific_Action_Plan}</td>
+                            <td>
+                                <a style="cursor: pointer" onclick="return EditMidYearLine(this)">Edit</a>|
+                                <a style="cursor: pointer" onclick="DeleteTargetLine(this,'${Line.No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+
+                $("#LineTbl tbody tr").remove();
+
+                // add new table rows
+                $("#LineTbl tbody").append(rows);
+            },
+            //error: function (xhr, errorType, exception) {
+            //    Swal.fire("error",xhr.responseText,"error");
+            //}
+        });
+    }
+
+    function ClearLineModal() {
+        $("#No").val("");
+        $("#Marks").val("");
+        $("#Objective").val("");
+        $("#Specific_Action_Plan").val("");
+        $("#Specific_Action_Plan").text("");
+        $("#Marks").text("");
+        $("#Command").val('Create');
+
+        $('#dynamicPlans').empty();
+    }
+
+    function DeleteTargetLine(element,entryNo) {
+        if (confirm("Are you sure you want to delete this line ?")){
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("DeleteTargetLine")',
+                data: {No:entryNo, DocNo:'@ViewBag.workplanno'},
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success){
+                            $(element).closest("tr").remove();
+                        Swal.fire("success", "Deleted Successfully", "success");
+                        location.reload();
+                    }
+                    else Swal.fire("error",result.message,"error");
+                },
+                error: function (xhr, errorType, exception) {
+                    Swal.fire("error",xhr.responseText,"error");
+                }
+            })
+        }
+    }
+
+
+    function AddPlanning() {
+        $('#MidYearLineModal').modal('show');
+    }
+
+    var planIndex = 0;
+
+    function AddNewPlan() {
+        var html = '<div class="row">' +
+            '<div class="col-md-12">' +
+            '<div class="form-group label-floating">' +
+            '<label for="Specific_Action_Plan">Specific Action Plan</label>' +
+            '<textarea required class="form-control" name="Specific_Action_Plan" id="Specific_Action_Plan"></textarea>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        $('#dynamicPlans').append(html);
+        planIndex++;
+        }
+
+
+</script>

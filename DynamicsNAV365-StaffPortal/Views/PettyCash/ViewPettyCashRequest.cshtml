@@ -1,0 +1,138 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.PettyCash.PettyCashHeaderModel
+
+@{
+	ViewBag.Title = "View PettyCash Request";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render Finance Sidebar-->
+	@{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						@using (Html.BeginForm("ViewPettyCashRequest", "PettyCash", FormMethod.Post, new { @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="card-header" data-background-color="company_card">
+								<div class="row">
+									<div class="col-md-4">
+										<h4 class="title"><i>View PettyCash Request</i></h4>
+									</div>
+									<div class="col-md-2">
+										<input type="button" class="btn btn-warning btn-xs pull-right ladda-button" value="Petty Cash Report" onclick="GenerateReport('@Model.No');" />
+									</div>
+									<p>@Model.Status</p>
+									@if (Model.Status == "Pending Approval")
+									{
+										<a class="btn btn-danger pull-right btn-xs" type="submit" href="@Url.Action("CancelRequest", "Imprest", new {no = Model.No, url = Url.Action("PettyCashRequestHistory")})">
+											<i class="fa fa-close"></i>
+											Cancel request
+										</a>
+									}
+                                    <div class="col-md-6">
+                                        <a class="btn btn-danger pull-right btn-xs" type="submit" href="@Url.Action("PettyCashRequestHistory", "PettyCash")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+								</div>
+							</div>
+							<div class="card-content">
+								@if (Model != null && Model.ErrorStatus == true)
+								{
+									<div class="alert alert-danger">
+										<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+									</div>
+								}
+								<div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</div>
+							</div>
+													}
+                        <div class="card-footer">
+	                        <div class="row">
+		                        <div class="col-md-12">
+			                        <!--Render imprest line partial view-->
+			                        @{Html.RenderAction("_PettyCashLine", "PettyCash", new { PettyCashNo = Model.No });}
+
+		                        </div>
+	                        </div>
+	                        <div class="row">
+		                        <div class="col-md-12">
+			                        @{Html.RenderAction("ApprovalCommentLines", "Imprest", new { documentNo = Model.No, documentType ="Request Header" });}
+		                        </div>
+	                        </div>
+	                        <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+<script src="~/Scripts/Finance/PettyCashRequestScripts/PettyCashScripts.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+            var headerNo = $("#No").val();
+            LoadPettyCashLines(headerNo);
+            LoadPettyCashDocuments(headerNo);
+
+        });
+	</script>
+}
+
+

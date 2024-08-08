@@ -1,0 +1,22 @@
+@model System.Linq.IQueryable<OdataRef.AcademicRequirements>
+
+@foreach (var academicRequirements in Model)
+{
+<tr>
+    <td>@academicRequirements.Qualification_Type</td>
+    @*<td>@academicRequirements.Education_Level_Id</td>*@
+
+    <td>@academicRequirements.Education_Level_Name</td>
+    @*<td>@academicRequirements.Course_Id</td>*@
+
+    <td>@academicRequirements.Course_Name</td>
+    @*<td>@academicRequirements.Grade_Id</td>
+								<td>@academicRequirements.Grade_Name</td>*@
+
+    <td>@academicRequirements.Mandatory</td>
+    <td>
+        <a onclick="EditAcademicProffessionalLine(this,@academicRequirements.Line_No,'@academicRequirements.Need_Id')">edit</a>|
+        <a onclick="DeleteAcademicProffessionalLine(this,@academicRequirements.Line_No)">delete</a>
+    </td>
+</tr>
+}

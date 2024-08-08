@@ -1,0 +1,102 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.EmployeeAppraisal.EmployeeAppraisalHeaderModel
+
+@{
+    ViewBag.Title = "New PC-Targets ";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render procurement sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("NewEmployeeAppraisal", "EmployeeAppraisal", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>New PC-Targets </i></h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <a class="btn btn-xs pull-right" style="background-color:red" href="@Url.Action("EmployeeAppraisalHistory", "EmployeeAppraisal")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                        <button id="SubmitBtn" class="btn btn-wh btn-xs pull-right ladda-button" type="submit" data-style="slide-right" data-background-color="login_card">
+                                            <span class="ladda-label">
+                                                <i class="fa fa-rotate-right"></i>
+                                                Submit For Approval
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+
+                                @Html.HiddenFor(model => model.EmployeeNo)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.DocumentNo, htmlAttributes: new { @id = "DocumentNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DocumentNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.DocumentNo, "", new { @id = "DocumentNoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.CalendarPeriod, htmlAttributes: new { @id = "CalendarPeriodLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.CalendarPeriod, Model.CalendarPeriods, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CalendarPeriod, "", new { @id = "CalendarPeriodError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render employee Appraisal line partial view-->
+                                    @{Html.RenderAction("_EmployeeAppraisalLine", "EmployeeAppraisal", new { DocumentNo = Model.DocumentNo });}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/EmployeeAppraisalScripts/EmployeeAppraisalScripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        	//Add CSS Classes
+        	$("#EmployeeAppraisalHistoryMenuItem").addClass("active");
+
+        	//Initialize Employee Appraisal Scripts
+        	InitializeEmlpoyeeAppraisalScripts();
+
+        	var DocumentNo = $("#DocumentNo").val();
+        	LoadEmployeeAppraisalLines(DocumentNo);
+        });
+    </script>
+}

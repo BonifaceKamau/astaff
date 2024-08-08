@@ -1,0 +1,171 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.ProjectManagement.PlanActivitiesModel
+
+@{
+    ViewBag.Title = "Edit Project Plan Activity";
+}
+@{
+    var StatusList = new SelectList(
+          new List<SelectListItem>
+          {
+                new SelectListItem {Text = "Not Started", Value = "Not Started"},
+                new SelectListItem {Text = "In progress", Value = "In Progress"},
+                new SelectListItem {Text = "Completed", Value = "Completed"},
+                new SelectListItem {Text = "Overdue", Value = "Overdue"},
+                new SelectListItem {Text = "Cancelled", Value = "Cancelled"},
+
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditPlanActivity", "Projects", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title">Edit Project Plan Activity</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("ProjectPlanDetails", "Projects") + "?ProjectNo=" + Model.ProjectNumber;
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @*@if (Model != null && Model.ErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                        </div>
+                                    }
+
+                                    @Html.HiddenFor(model => model.LineNo)*@
+
+                                @Html.HiddenFor(model => model.LineNo)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ProjectNumber, htmlAttributes: new { @id = "ProjectNumberLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ProjectNumber, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.ProjectNumber, "", new { @id = "ProjectNumberError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Activity, htmlAttributes: new { @id = "ActivityLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.Activity, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Activity, "", new { @id = "ActivityError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @id = "StatusLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.Status, StatusList, "--Select--", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Status, "", new { @id = "StatusError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.StrategicPlan, htmlAttributes: new { @id = "StrategicPlanLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.StrategicPlan, Model.StrategicPlanCodes, "--Select--", new { @class = "form-control", @id = "StrategicPlanItem" })
+                                            @Html.ValidationMessageFor(model => model.StrategicPlan, "", new { @id = "StrategicPlanError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.StrategicObjective, htmlAttributes: new { @id = "StrategicObjectiveLbl", @class = "control-label" })
+                                            <div id="MyObjective">
+                                                @Html.DropDownListFor(model => model.StrategicObjective, Model.StrategicObjectiveCodes, "--Select--", new { @class = "form-control", @id = "ObjectiveItem", @name = "StrategicObjective" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.StrategicObjective, "", new { @id = "StrategicObjectiveError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @id = "StartDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.StartDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @id = "StartDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @id = "EndDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EndDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @id = "EndDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                                            }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	InitializeLeaveApplication();
+        	var LeaveApplicationNo = $("#No").val();
+        	LoadLeaveApplicationDocuments(LeaveApplicationNo);
+        });
+    </script>
+}
+<script>
+        $(document).ready(function () {
+        $('#StrategicPlanItem').change(function () {
+        debugger;
+            $.ajax({
+                type: "post",
+                url: "/Projects/GetObjectives",
+                data: { StrategicCode: $('#StrategicPlanItem').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var myresult = "<select id='ObjectiveItem' name= 'StrategicObjective'  class='form-control'>";
+                    myresult = myresult + '<option value="">--Select--</option>';
+                    for (var i = 0; i < data.length; i++)
+                    {
+                        myresult = myresult + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    myresult = myresult + '</select>';
+                    $('#MyObjective').html(myresult);
+                }
+            });
+        });
+
+     });
+
+</script>

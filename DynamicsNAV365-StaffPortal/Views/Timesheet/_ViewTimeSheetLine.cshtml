@@ -1,0 +1,62 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.TimeSheets.TimeSheetLinesList
+<div class="table-responsive">
+    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Day Type</th>
+                <th>Day</th>
+                <th>Hours</th>
+                <th>Non-Working Day</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.ListOfTimeSheetLines != null && Model.ListOfTimeSheetLines.Count() > 0)
+                {
+                    foreach (var item in Model.ListOfTimeSheetLines)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DayType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Day)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.Hours)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.NonWorkingDay)
+                            </td>
+                            @if (item.ApprovalStatus == "Employee")
+                            {
+                                <td style="text-align:right" class="tdAction">
+                                       <a href="javascript:void(0);" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" onclick="EditItem('@item.LedgerNo','@item.DocNo');"><i class="fa fa-pencil-square"></i> Update Line</a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" style="color:red">
+                            No Records Found
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+

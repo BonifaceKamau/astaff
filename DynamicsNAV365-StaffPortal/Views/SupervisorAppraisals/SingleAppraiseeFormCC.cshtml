@@ -1,0 +1,116 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SupervisorAppraisalsModel>
+@{
+    ViewBag.Title = "Single Appraisee Form -Core Competencies";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4 class="title" style="text-align:center">Appraise as a Supervisor</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 class="title" style="text-align:center">Core Competencies</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    @using (Html.BeginForm("ReturntoAppraiseeCC", "SupervisorAppraisals", new { AppraisalNo = ViewBag.AppraisalNo }, FormMethod.Post, new { @class = "" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="submit" id="submitBtn" name="Command" value="Return to Appraisee" class="btn btn-success btn-xs pull-right" />
+                                    }
+                                </div>
+                                <div class="col-lg-2">
+                                    @{
+                                        var saved = TempData["saved"];
+                                    }
+                                    @if (saved != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                            @saved
+                                        </a>
+
+
+                                    }
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("SupervisorAppraisalHome", "PerformanceHome")">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Close
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>                    
+                        <iv class="card-content">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <table id="PeerAppTable" class="table" style="margin-left:20px;">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Appraisee Score</th>
+                                                <th>Appraisee Comments</th>
+                                                <th>Supervisor Score</th>
+                                                <th>Agreed Score</th>
+                                                <th>Score Descriptors</th>
+                                                <th>&nbsp;</th>   
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                string editUrl = "";
+                                                string viewUrl = "";
+                                                string benefitsUrl = "";
+                                                string risksUrl = "";
+                                                string manageUrl = "";
+                                                //string approverUrl = "";
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+
+                                                    editUrl = Url.Action("GetCCAppraiseeLine", "SupervisorAppraisals", new { AppraisalNo = Model[i].AppraisalNo, CoreCode = Model[i].CoreCode });
+
+                                                    <tr>
+                                                        <td>@Model[i].CoreDescription</td>
+                                                        <td>@Model[i].CAppScore</td>
+                                                        <td>@Model[i].CAppComments</td>
+                                                        <td>@Model[i].CSuperScore</td>
+                                                        <td>@Model[i].CAgreedScore</td>
+                                                        <td>@Model[i].ScoreDescriptors</td>                                                       
+
+                                                        <td>
+                                                            <a href="@editUrl" class=""><b>Edit</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                                        </td>
+                                                    </tr>}
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+})
+
+</script>

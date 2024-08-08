@@ -1,0 +1,50 @@
+@model DynamicsNAV365_StaffPortal.Models.HumanResource.TimeSheets.AcademicQualifications
+
+<div class="bg-soft-dark" style="color:black">
+    <form id="AcademicQualificationsForm">
+        <div class="row">
+            @Html.HiddenFor(model => model.Need_Id)
+            @Html.HiddenFor(model => model.Line_No)
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Education_Level_Id, htmlAttributes: new { @class = "control-label"})
+                    @Html.DropDownListFor(model => model.Education_Level_Id, Model.Education_Level_Id_Select, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Education_Level_Id, "", new { @class = "text-danger"})
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Course_Id, htmlAttributes: new {@id = "EndTimeeLbl", @class = "control-label"})
+                    @Html.DropDownListFor(model => model.Course_Id, Model.Course_Id_Select, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Course_Id, "", new {@id = "EndTimeError", @class = "text-danger"})
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group col-md-12 label-floating">
+                    @Html.LabelFor(model => model.Mandatory, htmlAttributes: new { @id = "EndTimeeLbl", @class = "control-label" })
+                    @Html.EditorFor(model => model.Mandatory, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mandatory, "", new { @id = "EndTimeError", @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+            <div class="form-group col-md-12">
+                <label class="control-label">Mandatory</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="MandatoryCheckbox" name="Mandatory" @(Model.Mandatory.HasValue && Model.Mandatory.Value ? "checked" : "") />
+                    <label class="form-check-label" for="MandatoryCheckbox"></label>
+                </div>
+                <span class="text-danger" id="EndTimeError">@Html.ValidationMessageFor(model => model.Mandatory)</span>
+            </div>
+        </div>*@
+            <div align="center">
+                <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="CreateOrUpdateAcademicProffessionalLine();" />
+            </div>
+        </div> 
+    </form>
+    
+</div>
