@@ -1,0 +1,374 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.LeaveApplicationModels.LeaveApplicationModel
+
+@{
+    ViewBag.Title = "Edit Leave Application";
+    var sentToReliever = Model.SentToReliever;
+    var RelieverAccept = Model.RelieverAcknowledgement;
+    var status = Model.Status;
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                @Html.ValidationSummary(true)
+                            </div>
+                        }
+
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["SuccessMessage"]
+                            </div>
+                        }
+
+                        @using (Html.BeginForm("EditLeaveApplication", "LeaveApplication", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title">
+                                            <i>Edit Leave Application</i>
+                                        </h4>
+                                    </div>
+
+                                    @if (!sentToReliever)
+                                    {
+                                        <a class="btn btn-danger btn-xs Notify-link">
+                                            <i class="fa fa-mail-forward"></i>
+                                            Notify Acknowledger
+                                        </a>
+                                    }
+
+                                    @if (RelieverAccept && status == "Open")
+                                    {
+                                        <div class="col-md-3">
+                                            <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                        </div>
+                                    }
+
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("LeaveApplicationHistory", "LeaveApplication")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @Html.HiddenFor(model => model.EmployeeNo, new { @id = "EmployeeNo" })
+                                @Html.HiddenFor(model => model.Status, new { @id = "Status" })
+                                @Html.HiddenFor(model => model.LeaveBalance, new { @id = "LeaveBalance" })
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.No, new { @id = "NoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.LeaveType, new { @id = "LeaveTypeLbl", @class = "control-label" })
+                                            @if (!sentToReliever)
+                                            {
+                                                @Html.DropDownListFor(model => model.LeaveType, Model.LeaveTypes, "", new { @id = "LeaveType", @class = "form-control" })
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.LeaveType, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.LeaveType, "", new { @id = "LeaveTypeError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.LeaveStartDate, new { @id = "LeaveStartDateLbl", @class = "control-label" })
+                                            @if (!sentToReliever)
+                                            {
+                                                @Html.EditorFor(model => model.LeaveStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.LeaveStartDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.LeaveStartDate, "", new { @id = "LeaveStartDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.DaysApplied, new { @id = "DaysAppliedLbl", @class = "control-label" })
+                                            @if (!sentToReliever)
+                                            {
+                                                @Html.EditorFor(model => model.DaysApplied, new { htmlAttributes = new { @class = "form-control" } })
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.DaysApplied, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.DaysApplied, "", new { @id = "DaysAppliedError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.LeaveEndDate, new { @id = "LeaveEndDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.LeaveEndDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.LeaveEndDate, "", new { @id = "LeaveEndDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-static">
+                                            @Html.LabelFor(model => model.LeaveReturnDate, new { @id = "LeaveReturnDateLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.LeaveReturnDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.LeaveReturnDate, "", new { @id = "LeaveReturnDateError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.SubstituteEmployeeNo, new { @id = "SubstituteEmployeeNoLbl", @class = "control-label" })
+                                            @if (!sentToReliever)
+                                            {
+                                                @Html.DropDownListFor(model => model.SubstituteEmployeeNo, Model.Employees, "", new { @id = "SubstituteEmployeeNo", @class = "form-control" })
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.SubstituteEmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.SubstituteEmployeeNo, "", new { @id = "SubstituteEmployeeNoError", @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-group label-floating">
+                                            <label class="control-label" for="RelieverAcknowledgement">Reliever Acknowledgement</label>
+                                            <div>
+                                                <input type="checkbox" id="RelieverAcknowledgement" name="RelieverAcknowledgement" @(Model.RelieverAcknowledgement ? "checked disabled" : "disabled") style="border-color: #2196F3;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ReasonForLeave, new { @id = "ReasonForLeaveLbl", @class = "control-label" })
+                                            @if (!sentToReliever)
+                                            {
+                                                @Html.TextAreaFor(model => model.ReasonForLeave, new { @id = "ReasonForLeave", @class = "form-control" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextAreaFor(model => model.ReasonForLeave, new { @class = "form-control", @readonly = true })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.ReasonForLeave, "", new { @id = "ReasonForLeaveError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_employeeSplittedLeaveBalance", "LeaveApplication"); }
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @{ Html.RenderAction("_EmployeeLeaveBalanceWidget", "HumanResourceHome"); }
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LeaveApplicationNo = $("#No").val();
+            LoadLeaveApplicationDocuments(LeaveApplicationNo);
+
+            var LeaveTypeAvailable = $('#LeaveType').val();
+            console.log('Available leave type: ' + LeaveTypeAvailable);
+
+            LoadEmployeeSplittedLeaveBalanaces(LeaveTypeAvailable);
+
+            InitializeLeaveApplication();
+            ValidateLeaveApplication();
+            validateStartDate();
+
+            $(document).on('click', '.Notify-link', function () {
+                var formData = {
+                    No: $('#No').val(),
+                    SubstituteEmployeeNo: $('#SubstituteEmployeeNo').val(),
+                    ReasonForLeave: $('#ReasonForLeave').val(),
+                    DaysApplied: $("#DaysApplied").val(),
+                    LeaveType: $('#LeaveType').val(),
+                    LeaveStartDate: $('#LeaveStartDate').val()
+                };
+
+                // Validate fields
+                var errors = [];
+                if (!formData.SubstituteEmployeeNo) {
+                    errors.push("Please select a substitute employee.");
+                }
+                if (!formData.ReasonForLeave) {
+                    errors.push("Please provide a reason for leave.");
+                }
+                if (isNaN(formData.DaysApplied) || formData.DaysApplied <= 0) {
+                    errors.push("Days applied must be a positive number.");
+                }
+                if (!formData.LeaveType) {
+                    errors.push("Please select a leave type.");
+                }
+                if (!formData.LeaveStartDate) {
+                    errors.push("Please select a leave start date.");
+                }
+
+                // If there are errors, display them and return
+                if (errors.length > 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validation Error',
+                        html: errors.join('<br>')
+                    });
+                    return;
+                }
+
+                // Show loading overlay
+                $.LoadingOverlay("show");
+
+                // Send data to server
+                $.ajax({
+                    url: '@Url.Action("TargetSettingToReliever")',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        $.LoadingOverlay("hide");
+                        if (response.success) {
+                            Swal.fire('Success', 'Sent To Reliever Successfully!', 'success')
+                                .then(() => {
+                                    window.location.href = '@Url.Action("LeaveApplicationHistory", "LeaveApplication")';
+                                });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                html: response.errors.join('<br>')
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        $.LoadingOverlay("hide");
+                        var errorMessage = xhr.responseJSON && xhr.responseJSON.errors ? xhr.responseJSON.errors.join('<br>') : 'An error occurred. Please try again.';
+                        Swal.fire('Error', errorMessage, 'error');
+                    }
+                });
+            });
+
+                $('#LeaveType, #ReasonForLeave, #SubstituteEmployeeNo').change(function () {
+                var SelectedNo = $('#No').val();
+                var selectedLeaveType = $('#LeaveType').val();
+                var selectedSubstituteEmployeeNo = $('#SubstituteEmployeeNo').val();
+                var reasonForLeave = $('#ReasonForLeave').val();
+
+                console.log('Field changed:', this.id);
+
+                $.ajax({
+                    url: '@Url.Action("ModifyLeave")',
+                    type: 'POST',
+                    data: {
+                        LeaveType: selectedLeaveType,
+                        SubstituteEmployeeNo: selectedSubstituteEmployeeNo,
+                        No: SelectedNo,
+                        ReasonForLeave: reasonForLeave
+                    },
+                    success: function (data) {
+                        console.log('Leave application modified successfully.');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error modifying leave application:', error);
+                    }
+                });
+            });
+
+            $('#LeaveType').change(function () {
+                updateType();
+            });
+
+            function updateType() {
+                var selectedLeaveType = $('#LeaveType').val();
+                console.log('Selected leave type:', selectedLeaveType);
+                LoadEmployeeSplittedLeaveBalanaces(selectedLeaveType);
+            }
+
+            function validateStartDate() {
+                var startDate = new Date($('#LeaveStartDate').val());
+                var today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (startDate < today) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Date',
+                        text: 'Start date cannot be in the past.'
+                    });
+                    $('#LeaveStartDate').val('');
+                }
+            }
+
+            $('#LeaveStartDate').change(function() {
+                validateStartDate();
+            });
+
+            $('#DaysApplied').change(function() {
+                calculateEndDate();
+            });
+
+            function calculateEndDate() {
+                var startDate = new Date($('#LeaveStartDate').val());
+                var daysApplied = parseInt($('#DaysApplied').val());
+
+                if (!isNaN(startDate.getTime()) && !isNaN(daysApplied)) {
+                    var endDate = new Date(startDate);
+                    endDate.setDate(startDate.getDate() + daysApplied - 1);
+
+                    $('#LeaveEndDate').val(endDate.toISOString().split('T')[0]);
+
+                    var returnDate = new Date(endDate);
+                    returnDate.setDate(endDate.getDate() + 1);
+                    $('#LeaveReturnDate').val(returnDate.toISOString().split('T')[0]);
+                }
+            }
+        });
+    </script>
+}

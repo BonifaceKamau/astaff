@@ -1,0 +1,248 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.Imprest.ActivityRequestHeader
+
+@{
+    ViewBag.Title = "Edit Activity Request";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditImprestRequest", "ActivityRequest", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>Edit Activity Request</i></h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="button" class="btn btn-warning btn-xs pull-right ladda-button" value="Activity Request Report" onclick="GenerateReport('@Model.No');" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("ImprestRequestHistory", "ActivityRequest")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.Status)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @id = "DateFromLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.DateFrom, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateFrom, "", new { @id = "DateFromError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.DateTo, htmlAttributes: new { @id = "DateToLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.DateTo, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateTo, "", new { @id = "DateToError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.CreatePV, htmlAttributes: new { @id = "CreatePVLbl", @class = "control-label" })
+                                                    @Html.CheckBoxFor(model => model.CreatePV, new { htmlAttributes = new { @class = "form-control"} })
+                                                    @Html.ValidationMessageFor(model => model.CreatePV, "", new { @id = "CreatePVError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.GlobalDimension2Code, htmlAttributes: new { @id = "GlobalDimension2CodeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.GlobalDimension2Code, Model.GlobalDimension2Codes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.GlobalDimension2Code, "", new { @id = "GlobalDimension2CodeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="button" class="btn btn-success btn-xs pull-right ladda-button" value="Update Header" onclick="UpdateHeader()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render imprest line partial view-->
+                                    @{Html.RenderAction("_ImprestLine", "ActivityRequest", new { ImprestNo = Model.No });}
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ApplicationDocumentForm", @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.No)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="errorMessage" class="alert alert-info" role="alert">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input id="ImprestDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-8">
+                    <button id="UploadImprestDocumentBtn" class="btn btn-primary btn-xs" type="button" onclick="UploadImprestDocument();"><i class="fa fa-adjust" style="align-content:center"></i>Upload Document</button>
+                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/Finance/ImprestRequestScripts/ImprestRequest.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        	//Initialize Imprest Scripts
+            InitializeImprestRequest();
+
+            var docNo = $("#No").val();
+            LoadImprestLines(docNo);
+            LoadImprestDocuments(docNo);
+            GetImprestAmount(docNo);
+
+        });
+        var GenerateReport = function (DocNo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ DocNo: DocNo }),
+
+                url: '/ActivityRequest/GenerateReport',
+                success: function (data) {
+                    window.open(data.message, '_blank').focus();
+                    //window.alert(data.message);
+                    //window.location.reload();
+                },
+                error: function () {
+                    window.alert(data.message);
+                }
+            });
+        };
+        function UpdateHeader() {
+            var Description = $("#Description").val();
+            var DateFrom = $("#DateFrom").val()
+            var GlobalDimension2Code = $("#GlobalDimension2Code").val();
+            var DateTo = $("#DateTo").val();
+            var DocNo = $("#No").val();
+
+
+            $.ajax({
+                type: "POST",
+                url: "/ActivityRequest/UpdateHeader",
+                data: JSON.stringify({ Description: Description, DateFrom: DateFrom, GlobalDimension2Code: GlobalDimension2Code, DateTo: DateTo, DocNo: DocNo }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    LoadImprestLines(DocNo);
+                    LoadImprestDocuments(DocNo);
+                    Swal.fire({
+                        title: data.message,
+                        //text: 'Do you want to continue',
+                        icon: 'info',
+                        confirmButtonText: 'Ok'
+                    })
+
+                    //window.alert(data.message);
+                    window.reload();
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,12 @@
+@model IEnumerable<OdataRef.RecruitmentNeedsKPA>
+
+@foreach (var responsibility in Model)
+{
+    <tr>
+        <td>@responsibility.Responsibility</td>
+        <td>
+            <a onclick="EditJobResponsibilityLine(this,@responsibility.Line_No,'@responsibility.Job_ID')">edit</a>|
+            <a onclick="DeleteJobResponsibilityLine(this,@responsibility.Line_No)">delete</a>
+        </td>
+    </tr>
+}

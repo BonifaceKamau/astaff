@@ -1,0 +1,93 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectTasksModel
+
+@{
+    ViewBag.Title = "Manager Editing Project Task";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditTaskManager", "Projects", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4 class="title"> Edit Selected Task</h4>
+                                        </div>
+                                        <div class="col-md-2">
+                                            @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                            <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            @*<input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />*@
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            @{
+                                                string backUrl = "";
+                                                backUrl = Url.Action("ManageProject", "Projects") + "?ProjectNo=" + Model.ProjectNo;
+                                            }
+                                            <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                                <i class="fa fa-close"></i>
+                                                Close
+                                            </a>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="card-content">
+                                @*@if (Model != null && Model.ErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                        </div>
+                                    }*@
+
+                                    @Html.HiddenFor(model => model.LineNo)
+                                    @Html.HiddenFor(model => model.ProjectNo)
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @id = "TaskDescriptionLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control"} })
+                                            @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @id = "TaskDescriptionError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ConfirmCompleted, htmlAttributes: new { @id = "ConfirmCompletedLbl", @class = "control-label" })
+                                            @Html.CheckBoxFor(model => model.ConfirmCompleted, new { htmlAttributes = new { @class = "customcheck", style="width:100px; height:100px;",@id = "ConfirmCompleted" } })
+                                            @Html.ValidationMessageFor(model => model.ConfirmCompleted, "", new { @id = "ConfirmCompletedError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PMRemarks, htmlAttributes: new { @id = "PMRemarksLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.PMRemarks, " ", new { htmlAttributes = new { @class = "form-control"} })
+                                            @Html.ValidationMessageFor(model => model.PMRemarks, "", new { @id = "PMRemarksError", @class = "text-danger" })
+                                        </div>
+                                    </div>                                    
+                                </div>
+
+                            </div>
+                             }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

@@ -1,0 +1,358 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectTasksModel
+
+@{
+    ViewBag.Title = "Member Editing Project Task";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditMemberTasks", "Projects", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="title"> Edit Selected Task</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />*@
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("ProjectMemberTasks", "Projects") + "?ProjectNo=" + Model.ProjectNo;
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @*@if (Model != null && Model.ErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                        </div>
+                                    }*@
+
+                                @Html.HiddenFor(model => model.LineNo)
+                                @Html.HiddenFor(model => model.ProjectNo)
+                                <input id="LineNoItem" value="@Model.LineNo" hidden="hidden">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.TaskDescription, htmlAttributes: new { @id = "TaskDescriptionLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.TaskDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TaskDescription, "", new { @id = "TaskDescriptionError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MarkCompleted, htmlAttributes: new { @id = "MarkCompletedLbl", @class = "control-label" })
+                                            @Html.CheckBoxFor(model => model.MarkCompleted, new { htmlAttributes = new { @class = "customcheck", style = "width:100px; height:100px;", @id = "ConfirmCompleted" } })
+                                            @Html.ValidationMessageFor(model => model.MarkCompleted, "", new { @id = "MarkCompletedError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>                               
+
+                            </div>
+                                            }
+                                            
+                        <table id="AttachedDocumentTbl" class="table">
+                            @*<table id="AttachedDocumentTbl" class="table table-striped table-bordered">*@
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Document Attached?</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+
+                        <div id="AttachedDocumentModal" class="modal fade" role="dialog" aria-labelledby="AttachedDocumentModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                        <h4 id="AttachedDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+                                        <div class="col-md-12">
+                                            <div id="errorMessage" class="alert alert-danger" role="alert">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "AttachedDocumentForm", @class = "" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            @*@Html.HiddenFor(model => model.Email)*@
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-static" style="display:none;">
+                                                        @Html.LabelFor(model => model.LineNo, htmlAttributes: new { @id = "CodeLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.LineNo, new { htmlAttributes = new { @class = "form-control", @readonly = true,@hidden="hidden"} })
+                                                        @Html.ValidationMessageFor(model => model.LineNo, "", new { @id = "CodeError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input id="AttachedDocumentFile" style="width:560px;"  type="file" name="files">
+                                                    @Html.ValidationMessageFor(model => model.AttachedFileName, "", new { @id = "AttachedDocumentFileError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="col-md-8">
+                                            <button id="UploadBtn" class="btn btn-success btn-xs" type="button" onclick="UploadAttachedLink();"><i class="fa fa-adjust" style="align-content:center"></i>Upload</button>
+                                            <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+</div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+//Load Scripts
+    $(document).ready(function () {
+        LoadAttachedLinks();
+ });
+
+//Load Attached Links
+function LoadAttachedLinks() {
+     var LineNo = $("#LineNoItem").val();
+     var frmData = new FormData();
+     frmData.append("LineNo", LineNo);
+
+	$.ajax({
+		url: "/Projects/GetAttachedLinks",
+		type: "post",
+		dataType: "json",
+        contentType: false,
+        processData: false,
+		data: frmData,
+		cache: false,
+		success: function (results) {
+			var rows = "";
+			$.each(results, function (i, result) {
+				rows += "<tr>";
+				rows += "<td>" +"Tasks Document/Completion Proof"+ "</td>";
+				if (result.FileAttached) {
+					rows += "<td>" + "<input type='checkbox' name='FileAttached' value='DocumentAttached' checked disabled>" + "</td>";
+				} else {
+					rows += "<td>" + "<input type='checkbox' name='FileAttached' value='DocumentAttached' disabled>" + "</td>";
+				}
+
+				rows += '<td><a href="#" onclick="return EditAttachedLink();"><i class="fa fa-paperclip" aria-hidden="true"></i>Attach File</a></td>';
+				rows += '<td><a href="#" onclick="return DeleteAttachedLink();"><i class="fa fa-trash" aria-hidden="true"></i>Remove</a></td>';
+				rows += "</tr>";
+			});
+			$("#AttachedDocumentTbl tbody").html(rows);
+
+			//$("#AjaxLoader2").css("display", "none");
+
+			//$("#AttachedDocumentTbl").css("display", "block");
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+}
+
+//Add or Edit Attached Link
+
+function EditAttachedLink() {
+    debugger;
+     var LineNo = $("#LineNoItem").val();
+     var frmData = new FormData();
+     frmData.append("LineNo", LineNo);
+	//Clear URL Path
+	//ResetAttachmentURL();
+	$.ajax({
+		url: "/Projects/GetAttachedLinksTwo",
+		type: "post",
+		dataType: "json",
+        contentType: false,
+        processData: false,
+		data: frmData,
+		cache: false,
+		success: function (result) {
+			$("#LineNoItemTwo").val(result.LineNo);
+
+			$('#errorMessage').hide();
+			$("#AttachedDocumentModal").modal("show");
+			$("#UploadBtn").show();
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+	return false;
+}
+
+
+   //Validate File Attachment
+function ValidateAttachedLinksFields() {
+
+	var isValid = true;
+	var label = "";
+    if ($("#AttachedDocumentFile").val().trim() == "") {
+     //alert("Please Select File");
+		$("#AttachedDocumentFileError").text("Please Select File");
+		isValid = false;
+	}
+	else {
+		$("#AttachedDocumentFileError").text("");
+	}
+    if($('#AttachedDocumentFile').val() != '') {
+              $.each($('#AttachedDocumentFile').prop("files"), function(k,v){
+                  var filename = v['name'];
+                  var ext = filename.split('.').pop().toLowerCase();
+                  if($.inArray(ext, ['pdf']) == -1) {
+                      alert('Please upload only pdf format files.');
+                      isValid = false;
+                  }
+              });
+        }
+    const fi = document.getElementById('AttachedDocumentFile');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+
+                var fsize = fi.files.item(i).size;
+                var file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 5120) {
+                    alert(
+                      "File size exceeds limit, Please ensure that the file size is less than 5 MB");
+                       isValid = false;
+                      }
+                   else {
+                    document.getElementById('AttachedDocumentFile').innerHTML = '<b>'
+                    + file + '</b> KB';
+                }
+            }
+        }
+
+	return isValid;
+	}
+
+//Upload Attached Link
+function UploadAttachedLink() {
+
+	var LineNo = $("#LineNoItem").val();
+
+	var filebase = $("#AttachedDocumentFile").get(0);
+	var files = filebase.files;
+
+	var form = $('AttachedDocumentForm')[0];
+	var frmData = new FormData();
+
+	frmData.append("LineNo", LineNo);
+
+	var validLine = ValidateAttachedLinksFields();
+	if (validLine == false) {
+	return false;
+	}
+	//Block UI
+    frmData.append(files[0].name, files[0]);
+	$.blockUI();
+	$.ajax({
+		url:"/Projects/UploadAttachedLink",
+		type: "POST",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			//$('#txtMessage').html(result.message);
+			if (result.message=="uploaded") {
+                alert("File Uploaded Successfully");
+				$('#AttachedDocumentModal').modal('hide');
+				$('#errorMessage').hide();
+    	        $.unblockUI();
+				LoadAttachedLinks();
+
+			} else {
+				//$('#errorMessage').html(result.message);
+				//$('#errorMessage').show();
+                alert("Failed, Please try again later");
+				$('#AttachedDocumentModal').modal('hide');
+                $.unblockUI();
+				LoadAttachedLinks();
+
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			$('#AttachedDocumentModal').modal('show');
+			$('#errorMessage').html(err.statusText);
+			$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+//Delete Attached Link
+function DeleteAttachedLink() {
+    debugger;
+     var LineNo = $("#LineNoItem").val();
+     var frmData = new FormData();
+     frmData.append("LineNo", LineNo);
+    var ans = confirm("Are you sure you want to Delete this record?");
+    if (ans) {
+        $.ajax({
+            url: "/Projects/DeleteAttachedLink",
+            type: "post",
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            data: frmData,
+            cache: false,
+            success: function (result) {
+                alert("Attachment Removed Successfully");
+				LoadAttachedLinks();
+
+            },
+            error: function (errormessage) {
+                alert("Error");
+            }
+        });
+    }
+}
+    </script>

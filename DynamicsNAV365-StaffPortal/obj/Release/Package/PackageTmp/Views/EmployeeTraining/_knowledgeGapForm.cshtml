@@ -1,0 +1,31 @@
+@model OdataRef.KnowledgeGapsInd
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "KnowledgegapindividualModalForm", @class = ""}))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Training_Need_No)
+    @Html.HiddenFor(model => model.Line_No)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="errorMessage" class="alert alert-danger" role="alert">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group label-static">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new {@id = "DocumentDescriptionLbl", @class = "control-label"})
+                @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Description, "", new {@id = "DocumentDescriptionError", @class = "text-danger"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div align="center">
+            <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="CreateOrUpdateKnowledgegapindividualLine();"/>
+        </div>
+    </div>
+    
+}

@@ -1,0 +1,83 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.TimeSheets.TimeSheetModelLines
+<style>
+    .ui-front {
+        z-index: 2000 !important;
+    }
+</style>
+<div class="bg-soft-dark" style="color:black">
+    <div class="row">
+        <div class="col-md-6">
+            Description
+            <input type="text" class="form-control" value="@Html.DisplayFor(m => m.Description)" readonly />
+        </div>
+        <div class="col-md-6">
+            Day Type
+            <input type="text" class="form-control" value="@Html.DisplayFor(m => m.DayType)" readonly />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            Date
+            <input type="text" class="form-control" value="@Html.DisplayFor(m => m.Date)" readonly />
+        </div>
+        <div class="col-md-6">
+            Day
+            <input type="text" class="form-control" value="@Html.DisplayFor(m => m.Day)" readonly />
+           
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            Hours
+            <input type="number" class="form-control" id="txtHours" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Tasks Undertaken(Max. 250 characters)
+            <input type="text" class="form-control" id="txttasks" />
+        </div>
+    </div>
+    <hr />
+    <div align="center">
+        <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="UpdateLineItem('@Model.DocNo', '@Model.LedgerNo');" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#txtHours').val(`@Model.Hours`);
+        
+    });
+    function functionDecimal(evt, val) {
+        try {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+
+            if (charCode == 46) {
+                if (!(val.indexOf(".") > -1)) {
+                    return true;
+                }
+                else {
+                   window.alert('Warning', 'Kindly ensure to specify numbers only', 'warning');
+                }
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                window.alert('Warning', 'Kindly ensure to specify numbers only', 'warning');
+                return false;
+            }
+            return true;
+        } catch (w) {
+            Swal.fire(w);
+        }
+    }
+    function functionx(evt) {
+        if (evt.charCode > 31 && (evt.charCode < 48 || evt.charCode > 57)) {
+            window.alert("Error", "Please enter only numeric characters in the text box", "error");
+            return false;
+        }
+    }
+</script>
+
+
+

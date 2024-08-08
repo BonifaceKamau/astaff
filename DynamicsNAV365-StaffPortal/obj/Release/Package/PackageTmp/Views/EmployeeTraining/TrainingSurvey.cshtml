@@ -1,0 +1,95 @@
+@model System.Collections.Generic.List<OdataRef.Training_Survey_Card>
+
+
+@{
+    ViewBag.Title = "training survey";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Training survey</i></h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewTrainingSurvey", "EmployeeTraining")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Training Survey
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table id="TrainingListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Training_Survey_No.</th>
+                                                    <th>Employee_Name</th>
+                                                    <th>Training_Description</th>
+                                                    <th>Date</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{     
+                                                    var approverUrl = "";
+                                                    foreach (var t in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@t.Training_Survey_No</td>
+                                                            <td>@t.Employee_Name</td>
+                                                            <td>@t.Training_Description</td>
+                                                            <td>@t.Date</td>
+                                                            <td>
+                                                                <a href="@Url.Action("ViewTrainingSurvey",new {id=t.Training_Survey_No})" class=""><b>View</b></a>
+                                                            </td>
+                                                            <td>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	$("#TrainingRequestHistoryMenuItem").addClass("active");
+
+        	$("#TrainingListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

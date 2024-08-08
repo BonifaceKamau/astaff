@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "TargetsHome";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+
+    @{Html.RenderAction("_TargetSetting", "PerformanceTargets");}
+
+</div>
+@*@section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Add CSS Classes
+                $("#HumanResourceInfoMenuItem").addClass("active");
+            });
+        </script>
+    }*@
+
+
+
+
+

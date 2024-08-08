@@ -1,0 +1,77 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.DocumentMgmt.DocumentMgmtModel
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="ImprestAjaxLoader" class="" style="color:forestgreen">
+					Loading supporting documents...
+					<img src="~/Content/images/ajax-loader.gif" alt="Loading supporting documents..." style="width:15px;height:15px;" />
+				</div>
+
+				<div id="TableContainer" class="table-responsive">
+					<table id="ImprestDocumentsTbl" class="table table-striped table-bordered" style="display:none;">
+						<thead class="text-primary">
+							<tr>
+								<th>Document Description</th>
+								@*<th>Document Attached</th>*@
+								<th style="color:red">Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+
+				<div id="ImprestDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="ImprestDocumentModalLabel" class="modal-title" style="text-align:center"></h4>
+							</div>
+							<div class="modal-body">
+
+								@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ImprestDocumentForm", @class = "" }))
+								{
+									@Html.AntiForgeryToken()
+
+									@Html.HiddenFor(model => model.DocumentNo)
+									@Html.HiddenFor(model => model.DocumentCode)
+
+									<div class="row">
+										<div class="col-md-12">
+											<div id="errorMessage" class="alert alert-danger" role="alert">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group label-static">
+												@Html.LabelFor(model => model.DocumentDescription, htmlAttributes: new { @id = "DocumentDescriptionLbl", @class = "control-label" })
+												@Html.EditorFor(model => model.DocumentDescription, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+												@Html.ValidationMessageFor(model => model.DocumentDescription, "", new { @id = "DocumentDescriptionError", @class = "text-danger" })
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<input id="ImprestDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+										</div>
+									</div>
+								}
+							</div>
+							<div class="modal-footer">
+								<div class="col-md-8">
+									<button id="UploadImprestDocumentBtn" class="btn btn-primary btn-xs" type="button" onclick="UploadImprestDocument();"><i class="fa fa-adjust" style="align-content:center"></i>Upload Document</button>
+									<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

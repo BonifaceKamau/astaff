@@ -1,0 +1,202 @@
+@model System.Collections.Generic.List<OdataRef.EmployeeLeaveApplications>
+
+@{
+    ViewBag.Title = "Leave Applications";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+
+        <!--<div class="modal fade" id="acknowledgeModal" tabindex="-1" role="dialog" aria-labelledby="acknowledgeModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="acknowledgeModalLabel"> Acknowledge Leave Application</h5>
+                    </div>
+                    <div class="modal-body" hidden>-->
+                        <!-- No need for a textarea, just a hidden input field for acknowledgment -->
+                        <!--<form id="acknowledgeForm">
+                            <input type="hidden" name="id" id="applicationNo">
+                            <input type="hidden" id="acknowledgmentValue" name="acknowledgmentValue" value="">
+                        </form>
+
+                    </div>
+
+                    <div class="modal-content">
+                        <textarea id="Handover" name="Handover" readonly></textarea>
+                    </div>
+
+                    <div class="modal-footer d-flex flex-column align-items-center">
+                        <button type="button" class="btn btn-success mb-2" id="acceptAcknowledge">Accept</button>
+                        <button type="button" class="btn btn-danger mb-2" id="rejectAcknowledge">Reject</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>-->
+        <div class="modal fade" id="acknowledgeModal" tabindex="-1" role="dialog" aria-labelledby="acknowledgeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="acknowledgeModalLabel"> Acknowledge Leave Application</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- No need for a textarea, just a hidden input field for acknowledgment -->
+                        <form id="acknowledgeForm">
+                            <input type="hidden" name="id" id="applicationNo">
+                            <div class="form-group">
+                                <label for="Handover">Handover Details:</label>
+                                <textarea class="form-control" id="Handover" name="Handover" rows="5" readonly></textarea>
+                            </div>
+                            <input type="hidden" id="acknowledgmentValue" name="acknowledgmentValue" value="">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="acceptAcknowledge">Accept</button>
+                        <button type="button" class="btn btn-danger" id="rejectAcknowledge">Reject</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Leave Applications Acknowledgment</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="LeaveApplicationsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Employee</th>
+                                                    <th>Employee Name</th>
+                                                    <th>LeaveType</th>
+                                                    <th>StartDate</th>
+                                                    <th>AppliedDays</th>
+                                                    <th>EndDate</th>
+                                                    <th>Status</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var t in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@t.Application_No</td>
+                                                        <td>@t.Employee_No</td>
+                                                        <td>@t.Employee_Name</td>
+                                                        <td>@t.Leave_Type</td>
+                                                        <td>@String.Format("{0:MM/dd/yyyy}", t.Start_Date)</td>
+                                                        <td>@t.Days_Applied</td>
+                                                        <td>@String.Format("{0:MM/dd/yyyy}", t.End_Date)</td>
+                                                        <td>@t.Status</td>
+                                                        <td class="comment-column" style="display: none;">@t.Comments</td>
+
+                                                        <td>
+                                                            <a href="#" id="button" class="fa fa-check acknowledge-link" data-application-no="@t.Application_No" style="padding: 8px 13px; background-color: lightgreen; color: black; text-decoration: none; border: 1px solid black; border-radius: 3px; cursor: pointer;"><b>Acknowledge</b></a>
+                                                        </td>
+                                                        @*<td>
+                                                            <a style="color:red" class="fa fa-check acknowledge-link" data-application-no="@t.Application_No"><b>Acknowledge</b></a>
+                                                        </td>*@
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#LeaveApplicationHistory").addClass("active");
+
+            $("#LeaveApplicationsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+
+        function showAcknowledgeModal(applicationNo, Handover) {
+            // Set the form action URL based on the application number
+            console.log(applicationNo)
+            console.log(Handover)
+
+            $('#Handover').val(Handover);
+            $('#applicationNo').val(applicationNo);
+            const formAction = `@Url.Action("acknowledgeleave")?id=${applicationNo}`; // Replace with your actual action URL
+
+            // Set the form action attribute dynamically
+            $('#acknowledgeForm').attr('action', formAction);
+
+            // Show the modal
+            $('#acknowledgeModal').modal('show');
+          }
+
+          // Attach a click event handler to the Acknowledge links
+          $('.acknowledge-link').on('click', function() {
+              const applicationNo = $(this).data('application-no');
+              const Handover = $(this).closest('tr').find('.comment-column').text();
+
+              showAcknowledgeModal(applicationNo, Handover);
+          });
+
+          // Handle accept action
+		  $('#acceptAcknowledge').on('click', function () {
+			  // Set the value of the hidden input to true
+			  $('#acknowledgmentValue').val('true');
+			  // Submit the form
+			  $('#acknowledgeForm').submit();
+			  // Close the modal
+			  $('#acknowledgeModal').modal('hide');
+		  });
+
+		  // Handle reject action
+		  $('#rejectAcknowledge').on('click', function () {
+			  // Set the value of the hidden input to false
+			  $('#acknowledgmentValue').val('false');
+			  // Submit the form
+			  $('#acknowledgeForm').submit();
+			  // Close the modal
+			  $('#acknowledgeModal').modal('hide');
+          });
+
+    </script>
+}
+

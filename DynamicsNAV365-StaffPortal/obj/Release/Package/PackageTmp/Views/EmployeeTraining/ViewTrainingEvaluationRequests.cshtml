@@ -1,0 +1,129 @@
+﻿
+@model  DynamicsNAV365_StaffPortal.Models.EmployeeTraining.TrainingAnalysisDTO
+
+@{
+    ViewBag.Title = "View Training Evaluation";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ViewTrainingEvaluationRequests", "EmployeeTraining", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>View Training Evaluations</i></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-danger btn-xs pull-right" type="button" href="@Url.Action("SubmittoHr", "EmployeeTraining")">
+                                            <i class="fa fa-send-o"></i>
+                                            Submit to Hr
+                                        </a>
+                                    
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-danger btn-xs pull-right" type="button" href="@Url.Action("TrainingSurvey", "EmployeeTraining")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @*@if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }*@
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Training_No, htmlAttributes: new { @id = "TrainingEvaluationNoLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Training_No, new { htmlAttributes = new { @class = "form-control"}, @disabled = "disabled" })
+                                                        @Html.ValidationMessageFor(model => model.Training_No, "", new { @id = "TrainingEvaluationNoError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Training_Need_Period, htmlAttributes: new { @id = "YearLbl", @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.Training_Need_Period, Model.YearCodes, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled" })
+                                                        @Html.ValidationMessageFor(model => model.Training_Need_Period, "", new { @id = "YearError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Employee_No, htmlAttributes: new { @id = "ObjectiveMetLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Employee_No, new { htmlAttributes = new { @class = "form-control" }, @disabled = "disabled" })
+                                                        @Html.ValidationMessageFor(model => model.Employee_No, "", new { @id = "ObjectiveMetError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Employee_Name, htmlAttributes: new { @id = "ParticipationEncouragedLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Employee_Name, new { htmlAttributes = new { @class = "form-control" }, @disabled = "disabled" })
+                                                        @Html.ValidationMessageFor(model => model.Employee_Name, "", new { @id = "ParticipationEncouragedError", @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{Html.RenderAction("_knowledgeGap", "EmployeeTraining", new { id = Model.Training_No });}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{Html.RenderAction("_knowledgeGapDepartment", "EmployeeTraining", new { id = Model.Training_No });}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{Html.RenderAction("_TrainingProgrammes", "EmployeeTraining", new { id = Model.Training_No });}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/EmployeeTrainingScripts/EmployeeTrainingEvaluation.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var ApplicationNo = $("#ApplicationNo").val();
+            GetAttendedTrainingApplicationDetails(ApplicationNo);
+
+            var EvaluationNo = $("#TrainingEvaluationNo").val();
+            LoadTrainingEvaluationDocumentsView(EvaluationNo);
+
+            //Add CSS Classes
+            InitializeTrainingEvaluationScripts();
+        });
+    </script>
+}
+

@@ -1,0 +1,164 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectTasksModel>
+
+@{
+    ViewBag.Title = "Project Member Tasks";}
+<!--Render Human Resource Sidebar-->
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");} 
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="title" style="text-align:center">Tasks for this Project</h4>
+                            </div>
+                            <div class="col-lg-5">
+                                @{
+                                    var success = TempData["success"];
+                                }
+                                @if (success != null)
+                                {
+                                    <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                        @success
+                                    </a>
+
+
+                                }
+                            </div>
+
+                            <div class="col-md-3">
+                                <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("ProjectInfo", "ProjectHome")">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Close
+                                    </strong>  
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="ProjectsBenefitsTbl" class="table">
+                                    <tr>
+                                      <p>Project Title : @ViewBag.ProjectTitle</p>
+                                        @*<p>Your Role: @ViewBag.YourRole</p>*@
+                                    <tr>
+                                        <thead class="text-primary">
+                                    <tr>
+                                            <th>Task Description/Title</th>
+                                            <th>Assigned On</th>
+                                            <th>Expected Completion Date</th>
+                                            <th>Completion Date</th>
+                                            <th>Time Taken</th>
+                                            <th>Completed?</th>
+                                            <th>Confirmed Completed?</th>
+                                            <th>Task Sent ?</th>
+                                            <th>PM Remarks</th>                                           
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+
+                                            string editUrl = "";
+
+                                            //string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+
+                                                editUrl = Url.Action("EditMemberTasks", "Projects") + "?LineNo=" + Model[i].LineNo;
+                                                
+                                                <tr>                                                  
+
+                                                    <td>@Model[i].TaskDescription</td>
+                                                    <td>@Model[i].AssignDate</td>
+                                                    <td>@Model[i].ExpectedCompletionDate.ToString("d")</td>
+                                                    @{if (@Model[i].CompletionDate == "01/01/0001")
+                                                        {
+                                                            <td>-------</td>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@Model[i].CompletionDate</td>
+                                                        }
+                                                    }
+                                                    @*<td>@Model[i].CompletionDate</td>*@
+                                                    <td>@Model[i].DurationTaken</td>
+                                                    @{
+                                                        if (@Model[i].MarkCompleted == true)
+                                                        {
+                                                    <td style="color:darkblue;text-align:center;">@Html.CheckBox("isActive", true, new {@onclick = "return false" })</td>
+                                                        }
+                                                        else
+                                                        {
+                                                    <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                                        }
+                                                        if (@Model[i].ConfirmCompleted == true)
+                                                        {
+                                                    <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", true, new { @onclick = "return false" })</td>
+                                                        }
+                                                        else
+                                                        {
+                                                    <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                                        }
+                                                        if (@Model[i].TaskSent == true)
+                                                        {
+                                                    <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", true, new { @onclick = "return false" })</td>
+                                                        }
+                                                        else
+                                                        {
+                                                    <td style="color:darkblue;text-align:center">@Html.CheckBox("isActive", false, new { @onclick = "return false" })</td>
+                                                            }
+                                                        }
+                                                    <td>@Model[i].PMRemarks</td>                                                  
+                                                    
+                                                    <td>                                                       
+                                                        <a href="@editUrl" class=""><b>Edit</b></a>                                                       
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ProjectsBenefitsTbl').DataTable({
+                order: [[2, 'asc']],
+                rowGroup: {
+                    dataSrc: 2
+                }
+            });
+        });
+
+    $(document).ready(function () {
+    window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+        }, 4000);
+
+})
+    </script>
+}
+
+
+

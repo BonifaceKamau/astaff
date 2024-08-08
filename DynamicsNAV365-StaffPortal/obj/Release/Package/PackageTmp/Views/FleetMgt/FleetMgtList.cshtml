@@ -1,0 +1,131 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.HumanResource.FleetMgt.FleetHeaderModel>
+@{
+    ViewBag.Title = "Fleet Log List";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_AdministrationSidebar", "Administration");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Vehicle Fleet Logs</i></h4>
+                                </div>
+                                <div class="col-md-8">
+                                    @*<a class="btn btn-white btn-xs pull-right" type="button" onclick="CreateNewLog();" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            Create New Vehicle Log Record
+                                        </strong>
+                                    </a>*@
+                                    <input type="button" class="btn btn-white btn-xs pull-right" data-background-color="login_card" value="Create New Vehicle Log Record" onclick="CreateNewLog();" />
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="FleetListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Description</th>
+                                                    <th>Created On</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{		string editUrl = "";
+                                                    string viewUrl = "";
+                                                    string approverUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        editUrl = Url.Action("ViewFleetMgt", "FleetMgt", new { DocNo = Model[i].No });
+                                                        viewUrl = Url.Action("ViewFleetMgt", "FleetMgt", new { DocNo = Model[i].No });
+                                                        approverUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].No;
+                                                        <tr>
+                                                            <td>@Model[i].No</td>
+                                                            <td>@Model[i].EmpName</td>
+                                                            <td>@Model[i].Description</td>
+                                                            <td>@Model[i].CreatedOn</td>
+                                                            <td>@Model[i].Status</td>
+
+                                                            <td>
+                                                                @if (Model[i].Status == "Open")
+                                                                {
+                                                                    <a href="@viewUrl" class=""><b>Edit</b></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="@viewUrl" class=""><b>View</b></a>
+                                                                }
+
+                                                            </td>
+
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#Indexfltmng").addClass("active");
+
+            $("#FleetListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+        var CreateNewLog = function () {
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ DocNo: "Test" }),
+
+                url: '/FleetMgt/NewVehicleLogRecord',
+                success: function (data) {
+                    window.location.reload();
+                },
+                error: function () {
+                    window.alert(data.message);
+                }
+            });
+        };
+    </script>
+}
+
+
+

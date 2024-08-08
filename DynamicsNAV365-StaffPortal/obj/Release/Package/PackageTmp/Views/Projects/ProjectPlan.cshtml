@@ -1,0 +1,156 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectPlanModel>
+
+@{
+    ViewBag.Title = "Project Plan";}
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+    <!--Render Human Resource Sidebar-->    
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="title" style="text-align:left">Project Plan:  @ViewBag.ProjectNumber </h4> 
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("ProjectInfo", "ProjectHome")">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Close
+                                        </strong> 
+                                    </a>
+                                </div>
+                            </div>  
+                            </div>                    
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    @{ 
+                                        string newUrl = @Url.Action("NewProjectPlan", "Projects")+ "?ProjectNo="+ ViewBag.ProjectNumber;
+                                        //backUrl = Url.Action("ProjectMemberTasks", "Projects") + "?ProjectNo=" + Model.ProjectNo;
+                                    }
+                                    <a class="btn btn-success btn-xs pull-left" href="@newUrl">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Create New
+                                        </strong>
+                                    </a>
+
+                                </div>
+                                <div class="col-lg-8"> 
+                                    @if (ViewBag.Nulldata != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#f8d7da; color:#721c24; text-transform:lowercase;">
+                                            @ViewBag.Nulldata
+                                        </a>
+
+                                    }
+                                    @{ 
+                                        var success = TempData["success"];                                      
+                                    }
+                                    @if (success != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                            @success
+                                        </a>
+
+                                    }    
+                                    @{
+                                        var error = TempData["error"];
+                                    }
+                                    @if (error != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#f8d7da; color:#721c24; text-transform:lowercase;">
+                                            @error
+                                        </a>
+
+                                    }                              
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    @*<p>You have been Assigned the following projects as a Project Manager</p>*@
+                                    <table id="ManagerProjectsTbl" class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>ProjectName</th>
+                                                <th>Plan Description</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Status</th>
+                                                <th>Approval Status</th>
+                                                <th>&nbsp;</th>
+                                                @*<th>&nbsp;</th>
+                                                <th>&nbsp;</th>*@
+                                                @*<th>&nbsp;</th>*@
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+
+                                                string projectplandetailsUrl = "";
+                                                //string approverUrl = "";
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+
+                                                    projectplandetailsUrl = Url.Action("ProjectPlanDetails", "Projects") + "?ProjectNo=" + Model[i].ProjectNumber;
+
+                                                    <tr>
+                                                        <td>@Model[i].ProjectName</td>
+                                                        <td>@Model[i].Description</td>
+                                                        <td>@Model[i].StartDate.Value.ToString("d")</td>
+                                                        <td>@Model[i].EndDate.Value.ToString("d")</td>
+                                                        <td>@Model[i].Status</td>
+                                                        <td>@Model[i].ApprovalStatus</td>
+                                                        <td>
+                                                            <a href="@projectplandetailsUrl" class=""><b>Details</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+       $(document).ready(function() {
+       $('#ManagerProjectsTbl').DataTable( {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+        }
+    } );
+} );
+    </script>
+}
+
+<script>
+
+    //Success Script
+    $(document).ready(function () {
+        window.setTimeout(function () {
+            $("#successalert").fadeTo(300, 0).slideUp(300, function () {
+                $(this).remove();
+            });
+        }, 18000);
+
+    });
+</script>
+
+
+

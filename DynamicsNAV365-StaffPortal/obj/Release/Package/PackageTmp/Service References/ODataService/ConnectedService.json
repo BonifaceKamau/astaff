@@ -1,0 +1,43 @@
+﻿{
+  "ProviderId": "Unchase.OData.ConnectedService",
+  "Version": "1.5.1.0",
+  "GettingStartedDocument": {
+    "Uri": "https://msdn.microsoft.com/en-us/library/cc668772(v=vs.110).aspx"
+  },
+  "ExtendedData": {
+    "OperationImportsGenerator": 0,
+    "IncludeExtensionsT4File": false,
+    "GenerateOperationImports": false,
+    "ServiceName": "ODataService",
+    "AcceptAllUntrustedCertificates": false,
+    "Endpoint": "http://192.168.0.5:8048/OPTIVEN/OData/$metadata",
+    "EdmxVersion": {
+      "Major": 1,
+      "Minor": 0,
+      "Build": 0,
+      "Revision": 0,
+      "MajorRevision": 0,
+      "MinorRevision": 0
+    },
+    "GeneratedFileNamePrefix": "BCReference",
+    "UseNameSpacePrefix": true,
+    "NamespacePrefix": "OdataRef",
+    "UseDataServiceCollection": true,
+    "UseAsyncDataServiceCollection": true,
+    "OpenGeneratedFilesOnComplete": false,
+    "LanguageOption": 0,
+    "FunctionImports": null,
+    "OperationImports": null,
+    "ExcludedOperationImportsNames": "",
+    "UseNetworkCredentials": true,
+    "NetworkCredentialsUserName": "erp2",
+    "NetworkCredentialsPassword": "Nav365@",
+    "NetworkCredentialsDomain": null,
+    "WebProxyUri": null,
+    "UseWebProxy": false,
+    "UseWebProxyCredentials": false,
+    "WebProxyNetworkCredentialsUserName": null,
+    "WebProxyNetworkCredentialsPassword": null,
+    "WebProxyNetworkCredentialsDomain": null
+  }
+}

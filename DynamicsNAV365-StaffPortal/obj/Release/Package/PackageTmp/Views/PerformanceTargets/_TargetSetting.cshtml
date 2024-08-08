@@ -1,0 +1,452 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.TargetsModel
+@{
+    ViewBag.Title = "TargetSetting";
+}
+@{
+    var MarksList = new SelectList(
+          new List<SelectListItem>
+          {           
+            new SelectListItem {Text = "   5", Value = "5"},
+
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4 class="title" style="text-align:center">Performance Targets</h4>
+                                </div>
+                                </div>
+                            </div>
+                                <div class="row" style="margin-top:15px;">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <button class="btn btn-success btn-sm" type="button" data-toggle="modal" onclick="CreateOfficerTargetHeader();" style=" color:white; font-weight:bold; font-size:14px; float:left; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px; ">
+                                            Get Started
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <button class="btn btn-success btn-sm" type="button" data-toggle="modal" id="ApprovalBtn" onclick="TargetApprovalRequest();" style=" color:white; font-weight:bold; font-size:14px; float:left; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px; display:none; ">
+                                            Send For Approval
+                                        </button>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="One" id="ApprovalStatus" style="display:none;">
+                                            Approval Status: <input id="ApprovalStatusItem" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <input id="UserIdItem" value="@Model.UserId" hidden="hidden">
+                                    <input id="DepartmentItem" value="@Model.Department" hidden="hidden">
+                                    <input id="DirectorateItem" value="@Model.Directorate" hidden="hidden">
+
+                                </div>
+                                <hr>
+                                <p style="margin-left:24px;"> <i>Load your Expected Targets and Send them for Approval</i></p>
+                                <div id="TableContainer" class="table-responsive">
+                                    <table id="ApplicationDocumentsTbl" class="table table-condensed" style="font-size:small;">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Performance Objective</th>
+                                                <th>Departmental Objective</th>
+                                                @*<th>Project</th>*@
+                                                <th>Activity</th>
+                                                <th>PMI</th>
+                                                <th>Performance Outcome</th>
+                                                <th>Completion Date</th>
+                                                <th>Perspective</th>
+                                                @*<th>Targets</th>
+                                                <th>Target Score</th>*@
+                                                <th>Weighted SCore (%)</th>
+                                                <th>Action</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+
+                                <div id="TargetsModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center;color:white;font-family:'Times New Roman';font-size:18px">Targets Card</h4>
+                                                <div class="col-md-12">
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="card-content">
+                                                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input id="PrimaryCodeItem" value="@Model.PrimaryCode" hidden="hidden">
+
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.TargetScore, htmlAttributes: new { @id = "TargetScoreLbl", @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.TargetScore, MarksList, new { @class = "form-control", @id = "TargetScoreItem" })
+                                                                    @Html.ValidationMessageFor(model => model.TargetScore, "", new { @id = "TargetScoreError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.WeightTotal, htmlAttributes: new { @id = "WeightTotalLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.WeightTotal, new { htmlAttributes = new { @class = "form-control", @id = "WeightTotalItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.WeightTotal, "", new { @id = "WeightTotalError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            @*<div class="col-md-8">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.CompletionDate, htmlAttributes: new { @id = "CompletionDateLbl", @class = "control-label" })
+                                                        @Html.EditorFor(model => model.CompletionDate, "", new { htmlAttributes = new { @class = "form-control", @id = "CompletionDateItem", @type = "date" } })
+                                                        @Html.ValidationMessageFor(model => model.CompletionDate, "", new { @id = "CompletionDateError", @class = "text-danger" })
+                                                    </div>
+                                                </div>*@
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.PerformanceObjective, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.PerformanceObjective, "", new { htmlAttributes = new { @class = "form-control", @id = "PerformanceObjectiveCodeItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.PerformanceObjective, "", new { @id = "POError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.DepartmentalObjective, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.DepartmentalObjective, "", new { htmlAttributes = new { @class = "form-control", @id = "DepartmentObItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.DepartmentalObjective, "", new { @id = "DeptObError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.Project, htmlAttributes: new { @id = "ProjectLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.Project, new { htmlAttributes = new { @class = "form-control", @id = "ProjectItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.Project, "", new { @id = "ProjectError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.Activity, htmlAttributes: new { @id = "ActivityLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.Activity, "  ", new { htmlAttributes = new { @class = "form-control", @id = "ActivityItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.Activity, "", new { @id = "ActivityError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.PMI, htmlAttributes: new { @id = "ActivityLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.PMI, " ", new { htmlAttributes = new { @class = "form-control", @id = "PMIItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.PMI, "", new { @id = "PMIError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.PerformanceOutcome, htmlAttributes: new { @id = "PerformanceOutcomeLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.PerformanceOutcome, new { htmlAttributes = new { @class = "form-control", @id = "POutcomeItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.PerformanceOutcome, "", new { @id = "POutcomeError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.Perspective, htmlAttributes: new { @id = "PerspectiveLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.Perspective, " ", new { htmlAttributes = new { @class = "form-control", @id = "PerspectiveItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.Perspective, "", new { @id = "PerspectiveError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    @Html.LabelFor(model => model.Targets, htmlAttributes: new { @id = "TargetsLbl", @class = "control-label" })
+                                                                    @Html.EditorFor(model => model.Targets, new { htmlAttributes = new { @class = "form-control", @id = "TargetsItem", @readonly = "true" } })
+                                                                    @Html.ValidationMessageFor(model => model.Targets, "", new { @id = "TargetsError", @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="col-md-8">
+                                                        @*<button id="UploadBtn" class="btn btn-success btn-xs" type="button" onclick="InsertWorkPlanLines();"><i class="fa fa-print" style="align-content:center"></i>Save</button>*@
+                                                        <button id="ModifyBtn" class="btn btn-success btn-xs" type="button" onclick="ModifyTargetLine();"><i class="fa fa-adjust" style="align-content:center"></i>Save</button>
+                                                        <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+//Load Scripts
+    $(document).ready(function () {
+		LoadTargetLines();
+    });
+
+
+//Load Target Lines
+    function LoadTargetLines() {
+    var Test="Test";
+	$.ajax({
+		url: "/PerformanceTargets/LoadTargetLines",
+		type: "post",
+		dataType: "json",
+		data: {Test:Test},
+		cache: false,
+		success: function (results) {
+			var rows = "";
+			$.each(results, function (i, result) {
+				rows += "<tr>";
+                rows += "<td>" + result.PerformanceObjective + "</td>";
+                rows += "<td>" + result.DepartmentalObjective + "</td>";
+                //rows += "<td>" + result.Project + "</td>";
+                rows += "<td>" + result.Activity + "</td>";
+                rows += "<td>" + result.PMI + "</td>";
+                rows += "<td>" + result.PerformanceOutcome + "</td>";
+                rows += "<td>" + result.CompletionDate + "</td>";
+                rows += "<td>" + result.Perspective + "</td>";
+                //rows += "<td>" + result.Targets + "</td>";
+               // rows += "<td>" + result.TargetScore + "</td>";
+                rows += "<td>" + result.WeightTotal + "</td>";
+                $("#ApprovalStatusItem").val(result.TargetApprovalStatus);
+
+    if( result.PerformanceObjective){
+     $("#ApprovalBtn").css("display", "block");
+     $("#ApprovalStatus").css("display", "block");
+    }
+    rows += '<td><a href="#" onclick="return EditTargetLine(\'' + result.PrimaryCode + '\');"><i class="fa fa-pencil" style="color:blue" aria-hidden="true"><strong>Edit</strong></i></a></td>';
+    //|<a href="#" onclick="return DeleteManagerLine(\'' + result.Code + '\');"><i class="fa fa-trash" style="color:red" aria-hidden="true"><strong>Remove</strong></i></a>
+    rows += "</tr>";
+	});
+		$("#ApplicationDocumentsTbl tbody").html(rows);
+		$("#AjaxLoader").css("display", "none");
+		$("#ApplicationDocumentsTbl").css("display", "block");
+
+
+	},
+		error: function (xhr, status, error) {
+		}
+	});
+}
+
+
+
+//Create Officer Workplan Target header
+   function CreateOfficerTargetHeader() {
+    //var Designation = $("#Designation").val();
+    var UserId = $("#UserIdItem").val();
+    //var Department=$("#DepartmentItem").val();
+    //var Directorate=$("#DirectorateItem").val();
+
+	var frmData = new FormData();
+
+	//frmData.append("Designation",Designation);
+	frmData.append("UserId",UserId);
+    //frmData.append("Department",Department);
+	//frmData.append("Directorate",Directorate);
+
+	//Block UI
+	$.blockUI();
+	$.ajax({
+		url: "/PerformanceTargets/CreateOfficerTargetsHeader",
+		type: "POST",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.message=="youexist") {
+                alert("You have already Initiated the Process")
+                LoadTargetLines();
+            }
+            else if(result.message=="succeeded") {
+             alert("Process Initiated Successfully");
+              LoadTargetLines();
+            }
+            else if(result.message=="managernill") {
+             alert("Failed, Managers can only Proceed after the Director workplan Lines have been filled.");
+             LoadTargetLines();
+            }
+            else{
+            alert(result.error);
+            //alert("Failed, Please ensure that Departmental Objectives have been filled");
+            }
+			$.unblockUI();
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+
+
+ //Edit Target Line
+    function EditTargetLine(PrimaryCode) {
+	$.ajax({
+		url: "/PerformanceTargets/GetTargetLineForEdit",
+		type: "post",
+		dataType: "json",
+		data: { PrimaryCode: PrimaryCode},
+		cache: false,
+		success: function (result) {
+           $("#CompletionDateItem").val(result.CompletionDate,'dd/mm/yyyy');
+           $("#PerformanceObjectiveCodeItem").val(result.PerformanceObjective);
+           $("#DepartmentObItem").val(result.DepartmentalObjective);
+    	   $("#ProjectItem").val(result.Project);
+		   $("#ActivityItem").val(result.Activity);
+           $("#PMIItem").val(result.PMI);
+		   $("#POutcomeItem").val(result.PerformanceOutcome);
+		   $("#PerspectiveItem").val(result.Perspective);
+           $("#TargetsItem").val(result.Targets);
+           $("#TargetScoreItem").val(result.TargetScore);
+           $("#WeightTotalItem").val(result.WeightTotal);
+           $("#PrimaryCodeItem").val(result.PrimaryCode);
+		   $("#TargetsModal").modal("show");
+		   $("#UploadBtn").hide();
+		   $("#ModifyBtn").show();
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+	return false;
+}
+
+
+//Validate Target Line Fields
+    function ValidateTargetLineFields() {
+	var isValid = true;
+	var label = "";
+
+	if ($("#TargetScoreItem").val().trim() == "") {
+		$("#TargetScoreError").text("Please Enter your target Score required");
+		isValid = false;
+	}
+	else {
+		$("#TargetScoreError").text("");
+	}
+	return isValid;
+}
+
+
+//Modify Selected Target  LIne
+
+    function ModifyTargetLine() {
+    debugger;
+    var PrimaryCode = $("#PrimaryCodeItem").val();
+    var TargetScore = $("#TargetScoreItem").val();
+
+	var frmData = new FormData();
+
+	frmData.append("PrimaryCode", PrimaryCode);
+	frmData.append("TargetScore", TargetScore);
+
+
+	var validLine = ValidateTargetLineFields();
+	if (validLine == false) {
+		return false;
+	}
+	//Block UI
+	$.blockUI();
+	$.ajax({
+		url: "/PerformanceTargets/ModifyTargetLine",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+	    async: true,
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.success) {
+				$('#TargetsModal').modal('hide');
+				$('#errorMessage').hide();
+                alert("Target  Saved Successfully");
+				LoadTargetLines();
+				$.unblockUI();
+			} else {
+				 alert("An error Occurred, Please try again later");
+                 LoadTargetLines();
+				$.unblockUI();
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			$('#TargetsModal').modal('show');
+			$('#errorMessage').html(err.statusText);
+			$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+//Send Targets Approval Request
+   function TargetApprovalRequest() {
+    var UserId = $("#UserIdItem").val();
+	var frmData = new FormData();
+	frmData.append("UserId",UserId);
+	//Block UI
+	$.blockUI();
+	$.ajax({
+		url: "/PerformanceTargets/SendTargetApprovalRequest",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.message=="succeeded") {
+                alert("Approval Request Sent")
+                LoadTargetLines();
+            }
+            else if (result.message=="alreadysent") {
+                alert("You have already Sent an Approval Request")
+                LoadTargetLines();
+            }
+            else if(result.message=="headernull") {
+             alert("Sorry, the system could not find your targets");
+              LoadTargetLines();
+            }
+            else{
+            alert("Failed, Please try again later");
+            }
+			$.unblockUI();
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			Ladda.stopAll();
+		}
+	});
+}
+    </script>

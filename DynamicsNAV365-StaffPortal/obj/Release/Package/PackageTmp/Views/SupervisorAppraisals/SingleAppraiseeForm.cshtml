@@ -1,0 +1,181 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SupervisorAppraisalsModel>
+@{
+    ViewBag.Title = "Single Appraisee Form";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h4 class="title" style="text-align:center">Appraise as a Supervisor - Mid year</h4>
+                                    
+                                </div>
+                                <div class="col-md-2">
+                                    <h5 class="title" style="text-align:center">Core Performance Targets</h5>
+                                </div>
+                                <div class="col-md-2">                                   
+                                    @using (Html.BeginForm("ReturntoAppraisee", "SupervisorAppraisals", new {AppraisalNo= ViewBag.AppraisalNo }, FormMethod.Post, new { @class = "" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="submit" id="submitBtn" name="Command" value="Return to Appraisee" class="btn btn-success btn-xs pull-right"/>
+                                    @*<a class="btn btn-success btn-xs pull-right" href="" onclick="return ReturntoAppraisee();">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Return to Appraisee
+                                        </strong>
+                                    </a>*@
+                                    }
+                                </div>
+                                <div class="col-lg-2">
+                                    @{
+                                        var saved = TempData["saved"];
+                                    }
+                                    @if (saved != null)
+                                    {
+                                        <a class="btn btn-sm" id="successalert" style="background-color:#d4edda; color:#155724; text-transform:lowercase;">
+                                            @saved
+                                        </a>
+
+
+                                    }
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("SupervisorAppraisalHome", "PerformanceHome")">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Close
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <iv class="card-content">
+                            <input value="@ViewBag.AppraisalNo" id="AppraisalNoItem" readonly="readonly" hidden="hidden">
+                            <div class="row">                               
+                                <div class="col-lg-11">
+                                    <table id="PeerAppTable" class="table" style="margin-left:20px;">                                      
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Objective</th>
+                                                <th>Appraisee-MidYr</th>
+                                                @*<th>Appraisee EndYr</th>*@
+                                                <th>Supervisor MidYr</th>
+                                                <th>Comments</th>
+                                                <th>Agreed MidYr</th>
+                                                @*<th>Supervisor EndYr</th>
+                                                <th>Comments</th>
+                                                <th>Agreed EndYr</th>
+                                                <th>EndYr Comments</th>*@
+                                                <th>Target Score</th>
+                                                <th>Action</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                string editEndUrl = "";
+                                                string editMidUrl = "";
+                                                string viewUrl = "";
+                                                string benefitsUrl = "";
+                                                string risksUrl = "";
+                                                string manageUrl = "";
+                                                //string approverUrl = "";
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+                                                    editEndUrl = Url.Action("GetPTAppraiseeLine", "SupervisorAppraisals") + "?SupLineNo=" + Model[i].SupLineNo;
+                                                    editMidUrl =Url.Action("MidYearPTAppraiseeLine", "SupervisorAppraisals") + "?SupLineNo=" + Model[i].SupLineNo;
+                                                    <tr>
+                                                        <td>@Model[i].Objective</td>
+                                                        <td>@Model[i].SelfAssessmentScore</td>
+                                                        @*<td>@Model[i].EndYearSelfScore</td>*@
+                                                        <td>@Model[i].MidYrSupervisorScore</td>
+                                                        <td>@Model[i].MidYrSupervisorComments</td>
+                                                        <td>@Model[i].MidYrAgreedScore</td>
+                                                        @*<td>@Model[i].EndYrSupervisorScore</td>
+                                                        <td>@Model[i].EndYrSupervisorComments</td>
+                                                        <td>@Model[i].EndYrAgreedScore</td>
+                                                        <td>@Model[i].EndYrAssessmentComments</td>*@
+                                                        <td>@Model[i].TargetScore</td>
+                                                      
+
+                                                        <td>
+                                                            <a  style="text-decoration:underline;" href="@editMidUrl" class=""><b>Edit</b></a> 
+                                                        </td>
+                                                        @*<td>
+                                                            <a style="text-decoration:underline;" href="@editEndUrl" class=""><b>EndYear</b></a>     
+                                                         </td>*@
+                                                    </tr>}
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+})
+
+
+//Return to Appraisee
+   function ReturntoAppraisee() {
+    var AppraisalNo = $("#AppraisalNoItem").val();
+    var frmData = new FormData();
+	frmData.append("AppraisalNo", AppraisalNo);
+	//Block UI
+    var ans = confirm("Return only if there are errors. Do you wish to continue ?");
+	if (ans) {
+	$.blockUI();
+	$.ajax({
+		url: "/SupervisorAppraisals/ReturntoAppraisee",
+		type: "POST",
+		data:frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		cache: false,
+		success: function (result) {
+			if (result.success) {
+                alert("Action was Successful");
+                 //location.reload();
+            }
+           // else if (result.message=="closed") {
+               // alert("Failed, This appraisal has been closed");
+                //location.reload();
+           // }            
+            else{
+            alert("Failed, Please try again later");
+             location.reload();
+            }
+			$.unblockUI();
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			Ladda.stopAll();
+		}
+	});
+}
+  }
+
+</script>

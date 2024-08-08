@@ -1,0 +1,141 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.Approvals.ApprovalEntryModel>
+
+@{
+	ViewBag.Title = "Requests To Approve";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render Approval Sidebar-->
+	@{Html.RenderAction("_ApprovalSidebar", "Approval");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header" data-background-color="company_card">
+							<div class="row">
+								<div class="col-md-4">
+									<h4 class="title"><i>Requests To Approve</i></h4>
+								</div>
+							</div>
+						</div>
+						<div class="card-content">
+							<div class="row">
+								<div class="col-md-12">
+									<div id="TableContainer" class="table-responsive">
+										<table id="RequestsToApprovalTbl" class="stripe">
+											<thead class="text-primary">
+                                                <tr>
+                                                    <th>Document Type</th>
+                                                    <th>Document No.</th>
+                                                    <th>Description</th>
+                                                    <th>Quantity</th>
+                                                    <th>Status</th>
+                                                    <th>ApprovalrequestDate</th>
+                                                    <th>SenderName</th>
+                                                    <th>ApproverName</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+											</thead>
+											<tbody>
+												@{		
+                                                    string viewUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        switch (Model[i].TableID)
+                                                        {
+                                                            //Finance Approval
+                                                            //case "51535008": viewUrl = Url.Action("ImprestApproval", "Imprest") + "?ImprestNo=" + Model[i].DocumentNo; break;
+                                                            //case "51535010": viewUrl = Url.Action("ImprestSurrenderApproval", "ImprestSurrender") + "?ImprestSurrenderNo=" + Model[i].DocumentNo; break;
+                                                            //case "51535012": viewUrl = Url.Action("FundsClaimApproval", "FundsClaim") + "?DocumentNo=" + Model[i].DocumentNo; break;
+
+                                                            //Staff Recruitment
+                                                            case "51525261": viewUrl = Url.Action("ViewStaffRequisitionApproval", "StaffRequisition") + "?StaffRequisitionNo=" + Model[i].DocumentNo; break;
+                                                            //End Staff Recruitment 
+
+                                                            case "51525003":
+                                                                switch (Model[i].DocumentType)
+                                                                {
+                                                                    case "Imprest": viewUrl = Url.Action("ImprestApproval", "Imprest") + "?ImprestNo=" + Model[i].DocumentNo; break;
+                                                                    case "Claim-Accounting": viewUrl = Url.Action("ImprestSurrenderApproval", "ImprestSurrender") + "?ImprestSurrenderNo=" + Model[i].DocumentNo; break;
+                                                                    case "PettyCash": viewUrl = Url.Action("PettyCashApproval", "PettyCash") + "?PettyCashNo=" + Model[i].DocumentNo; break;
+                                                                    case "PettyCash Surrender": viewUrl = Url.Action("PettyCashSurrenderApproval", "PettyCashSurrender") + "?PettyCashSurrenderNo=" + Model[i].DocumentNo; break;
+                                                                    case "Claim/Refund": viewUrl = Url.Action("ClaimsRefundApproval", "ClaimsRefund") + "?ClaimsRefundNo=" + Model[i].DocumentNo; break;
+                                                                }
+                                                                break;
+                                                            //End Finance Approval
+
+                                                            //Procurement Approval
+                                                            case "51535080": viewUrl = Url.Action("PurchaseRequisitionApproval", "PurchaseRequisition") + "?PurchaseRequisitionNo=" + Model[i].DocumentNo; break;
+                                                            case "38":
+                                                                switch (Model[i].DocumentType)
+                                                                {
+                                                                    case "Order": viewUrl = Url.Action("PurchaseOrderApproval", "PurchaseOrder") + "?PurchaseOrderNo=" + Model[i].DocumentNo; break;
+                                                                    case "Invoice": viewUrl = Url.Action("PurchaseInvoiceApproval", "PurchaseInvoice") + "?PurchaseInvoiceNo=" + Model[i].DocumentNo; break;
+                                                                }
+                                                                break;
+
+                                                            //Stores Approval
+                                                            case "51535140": viewUrl = Url.Action("StoreRequisitionApproval", "StoreRequisition") + "?StoreRequisitionNo=" + Model[i].DocumentNo; break;
+
+                                                            //End Procurement Approval
+
+                                                            //Human Resource Approval 
+                                                            case "51525209": viewUrl = Url.Action("LeaveApplicationApproval", "LeaveApplication") + "?LeaveApplicationNo=" + Model[i].DocumentNo; break;
+                                                            case "51535265": viewUrl = Url.Action("TrainingNeedApproval", "EmployeeTraining") + "?TrainingNeedNo=" + Model[i].DocumentNo; break;
+                                                            case "51535266": viewUrl = Url.Action("TrainingApplicationApproval", "EmployeeTraining") + "?ApplicationNo=" + Model[i].DocumentNo; break;
+                                                            case "51535268": viewUrl = Url.Action("TrainingEvaluationApprovals", "EmployeeTraining") + "?EvaluationNo=" + Model[i].DocumentNo; break;
+                                                            //End Human Resource Approval
+
+                                                            //Fleet Management Approval
+                                                            case "52137185": viewUrl = Url.Action("VehicleRequisitionApproval", "VehicleRequisition") + "?VehicleRequisitionNo=" + Model[i].DocumentNo; break;
+                                                                //End Fleet Management Approval
+                                                        }
+														<tr>
+															<td>@Model[i].DocumentType</td>
+															<td>@Model[i].DocumentNo</td>
+															<td>@Model[i].Description</td>
+															<td>@Model[i].Amount</td>
+															<td>@Model[i].Status</td>
+															<td>@Model[i].DateTimeSentforApproval</td>
+                                                            <td>@Model[i].SenderEmployeeName</td>
+                                                            <td>@Model[i].ApproverEmployeeName</td>
+															<td>
+																<a href="@viewUrl" class="btn btn-primary btn-xs"><i class="fa fa-sticky-note-o"></i>Open Record</a>
+															</td>
+														</tr>	
+														}
+												}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#RequestsToApprovalMenuItem").addClass("active");
+
+            $("#RequestsToApprovalTbl").dataTable({
+            	"order": [[0, "No"]],
+            	"columnDefs": [{
+            		"targets": [1,2,3,4,5,6,7,8],
+            		"orderable": false,
+            	}],
+
+            	"fixedColumns": true
+            });
+        });
+	</script>
+}
+

@@ -1,0 +1,89 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 10%;
+    font-weight:bold;
+    color:black;
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.showcss{ display:block;}
+.hidecss{ display:none;}
+
+
+.modal-header{
+    padding:5px;
+}
+
+.modal-footer{
+    padding:5px;
+}
+
+.skin-blue .modal-header{
+    background-color:#3c8dbc;
+}
+
+.skin-blue .modal-footer{
+    background-color:#3c8dbc;
+}
+
+.slim-btn{
+    padding: 5px;
+    margin: 0;
+}
+
+.table-hidden{
+    display: none;
+}
+
+.align-left{
+    float:left;
+}
+
+.align-right{
+    float:right;
+}
+
+.bootstrap-select .dropdown-toggle {
+    padding: 5px;
+    margin: 1px;
+    text-transform: none;
+}
+
+.select2-container {
+	border:0;
+    width:100% !important;
+}
+.success-message {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    transform: translate(0, -50%);
+    padding: 10px 20px;
+    background-color: rgb(99, 92, 159);
+    color: #ffffffff;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, background-color 2s linear;
+    text-align: center;
+}
+
+    .success-message.show {
+        opacity: 1;
+        background-color: rgb(24, 30, 27, 0.80);
+    }
+
+    .success-message i {
+        margin-right: 8px;
+    }
+          
+               
+                                  

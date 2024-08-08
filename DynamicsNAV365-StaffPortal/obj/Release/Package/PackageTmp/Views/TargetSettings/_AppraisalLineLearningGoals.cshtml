@@ -1,0 +1,264 @@
+@model System.Collections.Generic.List<OdataRef.Staff_Appraisal_Lines>
+@{
+    var editable = ViewBag.editable;
+    bool? isSupervisor = ViewBag.isSupervisor;
+    var supervisorComment = isSupervisor == false ? "readonly" : "";
+    var empComment = isSupervisor == true ? "readonly" : "";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            @if (editable == true)
+            {
+                <div class="col-md-12">
+                    <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#LearningGoalsLineModal" onclick="ClearLearningGoalsLineModal();">
+                        <i class="fa fa-shopping-cart"></i> Add learning goals
+                    </button>
+                </div> 
+            }
+            
+        </div>
+        <div id="" class="table-responsive">
+            <table id="LearningGoalsLineTbl" class="table table-striped table-bordered">
+                <thead class="text-primary">
+                <tr>
+                    <th>Peer_Remarks.</th>
+                    <th>Rate.</th>
+                    <th>Supervisor_Remarks.</th>
+                    <th>Supervisor_Rate.</th>
+                    <th>Section_Rating.</th>
+                    <th>Employees_Remarks.</th>
+                    <th>.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var midYearAppraisalLines in Model)
+                {
+                    <tr>
+                        <td>@midYearAppraisalLines.Remarks</td>
+                        <td>@midYearAppraisalLines.Rate</td>
+                        <td>@midYearAppraisalLines.Supervisor_Remarks</td>
+                        <td>@midYearAppraisalLines.Supervisor_Rate</td>
+                        <td>@midYearAppraisalLines.Section_Rating</td>
+                        <td>@midYearAppraisalLines.Employees_Remarks</td>
+                        @if (editable == true)
+                        {
+                            <td>
+                                <a onclick="return EditLearningGoalsLine(this,'@midYearAppraisalLines.Entry_No','@midYearAppraisalLines.Remarks','@midYearAppraisalLines.Rate',
+                                                                                                                '@midYearAppraisalLines.Supervisor_Remarks','@midYearAppraisalLines.Supervisor_Rate'
+                                                                                                                ,'@midYearAppraisalLines.Section_Rating','@midYearAppraisalLines.Employees_Remarks')">Edit</a>|
+                                <a onclick="DeleteLearningGoalsLine(this,'@midYearAppraisalLines.Entry_No')">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="LearningGoalsLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "MiddleYearLineForm", @class = ""}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn close" type="button" data-dismiss="modal">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <h4 id="StoreRequisitionLineModalLabel" class="modal-title">Learning goals</h4>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Doc_No" value="@ViewBag.no"/>
+                                    <input type="hidden" name="Entry_No" id="Entry_No" class="Entry_No" value=""/>
+                                    <input type="hidden" name="Type" id="Type" class="Type" value="6"/>
+                                    <input type="hidden" name="Command" id="Command" class="Command" value="create">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Peer_Remarks</label>
+                                                <input type="text" class="form-control Appraisee_Remarks" name="Remarks" id="Appraisee_Remarks">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Rate</label>
+                                                <input type="text" class="form-control Rate" name="Rate" id="Rate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Supervisor remarks</label>
+                                                <input type="text" class="form-control supervisorRemarks" @supervisorComment name="Supervisor_Remarks" id="supervisorRemarks">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Supervisor rate</label>
+                                                <input type="number" class="form-control supervisorRate" @supervisorComment name="Supervisor_Rate" id="supervisorRate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">section_Rating</label>
+                                                <input type="number" class="form-control sectionRating" name="Section_Rating" id="sectionRating">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Employees_Remarks</label>
+                                                <input type="number" class="form-control EmployeesRemarks" @empComment name="Employees_Remarks" id="Employees_Remarks">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button id="CreateMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateMidYearLine(this);"><i class="fa fa-plus"></i>Add Line</button>*@
+                                    <button id="ModifyMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyLearningGoalsLine(this);"><i class="fa fa-adjust"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    /*function CreateMidYearLine(element) {
+		var data = $(element).closest("form").serialize();
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("SaveLine")',
+			data: data,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data)
+				$('#Inventory').val(data.AvailableInventory);
+			},
+			error: function () {
+				Swal.fire("error","","error");
+			}
+		})
+    }*/
+	function EditLearningGoalsLine(element, entryNo, appraiseeRemarks, rate, supervisorRemarks, supervisorRate, sectionRating,EmpRemarks) {
+            // Set the values of the inputs in the ManagementReviewLineModal modal
+            $('.Entry_No').val(entryNo);
+            $('.Appraisee_Remarks').val(appraiseeRemarks);
+            $('.Rate').val(rate);
+            $('.supervisorRemarks').val(supervisorRemarks);
+            $('.supervisorRate').val(supervisorRate);
+            $('.sectionRating').val(sectionRating);
+            $('.EmployeesRemarks').val(EmpRemarks);
+            $('.Command').val("edit");
+            // Show the ManagementReviewLineModal modal
+            $('#LearningGoalsLineModal').modal('show');
+       }
+    
+	function ModifyLearningGoalsLine(element) {
+	  var data = $(element).closest("form").serialize();
+	  console.log(data)
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("ModifyAppraisalLine")',
+			data: data,
+			dataType: 'json',
+			success: function (result) {
+				if (result.success){
+                    $("#LearningGoalsLineModal").modal("hide");
+                    $("#MidYearLineConcernModal").modal("hide");
+                    $("#MidYearAgreedActionsLineModal").modal("hide");
+                    LoadLearningGoalsLines(result.entryNo)
+					Swal.fire("success","Saved Successfully","success");
+				}
+				else Swal.fire("error",result.message,"error");
+			},
+			error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+		})
+	}
+    
+    function LoadLearningGoalsLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadLearningGoalsLines")',
+            type: "GET",
+            dataType: "json",
+            data: { DocumentNo: '@ViewBag.no' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+    
+                $.each(Lines, function (i, Line) {
+                    $("#AddReqLine").css("display", "block");
+                    let row = `
+                        <tr>
+                            <td>${Line.Remarks}</td>
+                            <td>${Line.Rate}</td>
+                            <td>${Line.Supervisor_Remarks}</td>
+                            <td>${Line.Supervisor_Rate}</td>
+                            <td>${Line.Section_Rating}</td>
+                            <td>${Line.Employees_Remarks}</td>
+                            <td>
+                                <a href="#" onclick="EditLearningGoalsLine(this, '${Line.Entry_No}', '${Line.Remarks}', '${Line.Rate}',
+                                '${Line.Supervisor_Remarks}', '${Line.Supervisor_Rate}', '${Line.Section_Rating}', '${Line.Employees_Remarks}')">Edit</a> |
+                                <a href="#" onclick="DeleteLearningGoalsLine(this,'${Line.Entry_No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+    
+                // remove existing table rows
+                $("#LearningGoalsLineTbl tbody tr").remove();
+    
+                // add new table rows
+                $("#LearningGoalsLineTbl tbody").append(rows);
+            },
+            error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+        });
+    }
+    function ClearLearningGoalsLineModal() {
+       $('.Entry_No').val("");
+         $('.Appraisee_Remarks').val("");
+         $('.Rate').val("");
+         $('.supervisorRemarks').val("");
+         $('.supervisorRate').val("");
+         $('.sectionRating').val("");
+         $('.EmployeesRemarks').val("");
+         $('.Rate').text("");
+         $('.Appraisee_Remarks').text("");
+         $('.supervisorRemarks').text("");
+         $('.supervisorRate').text("");
+         $('.sectionRating').text("");
+         $('.EmployeesRemarks').text("");
+         $('.Command').val("create");
+     }
+    function DeleteLearningGoalsLine(element,entryNo) {
+        if (confirm("Are you sure you want to delete this line ?")){
+          $.ajax({
+                type: 'GET',
+                url: '@Url.Action("DeleteAppraisalLine")',
+                data: {no:entryNo , DocNo: '@ViewBag.no'},
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success){
+                          $(element).closest("tr").remove();
+                        Swal.fire("success","Deleted Successfully","success");
+                    }
+                    else Swal.fire("error",result.message,"error");
+                },
+                error: function (xhr, errorType, exception) {
+                    Swal.fire("error",xhr.responseText,"error");
+                }
+            })
+        }
+    }
+   
+</script>

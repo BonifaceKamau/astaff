@@ -1,0 +1,78 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.StaffRequisition.JobExperience
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <i class="fa fa-calculator fa-fw"></i> 4). Experience
+            </div>
+            <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#JobExperienceModal" onclick=" ClearJobExperienceModal();">
+                <i class="fa fa-plus"></i>
+               Add Experience 
+            </button><br />
+            <table id="JobExperienceTbl" class="table table-striped table-responsive table-condensed">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Minimum No. Of Years Required</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+        <div id="JobExperienceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="JobExperienceModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 id="JobExperienceModalLabel" class="modal-title">Job Experience</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "JobExperienceForm", @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model != null && Model.LineErrorStatus == true)
+                            {
+                                <div class="col-md-12">
+                                    <div id="errorMessage" class="alert alert-danger" role="alert">
+                                    </div>
+                                </div>
+                            }
+
+                            @Html.HiddenFor(model => model.LineNo)
+                            @Html.HiddenFor(model => model.DocumentNo)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Years, htmlAttributes: new { @id = "YearsLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.Years, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Years, "", new { @id = "YearsError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Description4, htmlAttributes: new { @id = "Description4Lbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.Description4, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description4, "", new { @id = "Description4Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer"> 
+                        <button id="CreateExperienceBtn" class="btn btn-xs btn-primary" type="button" onclick="CreateOtherRequirements();"><i class="fa fa-plus"></i>Save</button>
+                        <button id="ModifyExperienceBtn" class="btn btn-xs btn-primary" type="button" onclick="ModifyOtherRequirements();"><i class="fa fa-adjust"></i>Update</button>
+                        <button class="btn btn-xs btn-danger" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

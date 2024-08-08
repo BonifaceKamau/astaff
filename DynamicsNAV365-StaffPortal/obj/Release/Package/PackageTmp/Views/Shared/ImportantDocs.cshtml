@@ -1,0 +1,92 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.DocumentMgmt.DocumentAttachmentList
+<style>
+    .btnPadding {
+        padding: 3px;
+        font-size: 10px;
+    }
+</style>
+<div class="row">
+    <div class="HideLineButton col-md-12">
+        <button class="btn btn-xs btn-primary" type="button" onclick="AddAttachment();">
+            <i class="fa fa-paperclip"></i> Add Attachment
+        </button>
+    </div>
+</div>
+<table  class="table table-striped table-bordered" >
+    <thead class="text-primary">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                File Extension
+            </th>
+            <th>
+                Document Type
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.DocList != null)
+            {
+                if (Model.DocList.Count() > 0)
+                {
+                    foreach (var item in Model.DocList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileExt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DocType)
+                            </td>
+                            <td>
+                                <a href="#" onclick="ViewAttachment('@item.TabelID', '@item.No', '@item.ID', '@item.FileName', '@item.FileExt');">View Attachment </a>|
+                                @*<button id="btnview" class="btn btn-xs btn-primary" onclick="ViewAttachment('@item.TabelID','@item.No','@item.ID','@item.FileName','@item.FileExt');">View Attachment</button>*@
+                                @if (Model.Status == "Pending" || Model.Status == "Open")
+                                {
+                                    <a href="#" onclick="DeleteAttachment('@item.TabelID', '@item.No', '@item.ID');"> Delete</a>
+                                    @*<button id="btndelete" class="btn btn-xs btn-danger" onclick="DeleteAttachment('@item.TabelID','@item.No','@item.ID');">Delete</button>*@
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" style="color:red">
+                            No Files Found
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+    @*<tfoot>
+        <tr class="HideLineButton">
+            <td class="text-right" colspan="4">
+                <input type="button" value="Add Attachment" class="btn btn-xs btn-warning" onclick="AddAttachment();" />
+            </td>
+        </tr>
+    </tfoot>*@
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var status = '@Model.Status';
+        if (status == "Pending" || status == "Open") {
+            $(".HideLineButton").show();
+        }
+        else {
+            $(".HideLineButton").hide();
+        }
+    });
+</script>
+

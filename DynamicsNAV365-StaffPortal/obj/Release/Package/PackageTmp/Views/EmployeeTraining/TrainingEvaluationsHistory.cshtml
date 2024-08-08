@@ -1,0 +1,113 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.EmployeeTraining.EmployeeTrainingEvaluationModel>
+
+@{
+    ViewBag.Title = "Application Requests";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title"><i>Training Evaluations</i></h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewTrainingNeedApplication", "EmployeeTraining")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Training Evaluation
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table id="TrainingListTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Training Evaluation No.</th>
+                                                    <th>Training Application No.</th>
+                                                    <th>Year</th>
+                                                    <th>Training Provider</th>
+                                                    <th>Training Location</th>
+                                                    <th>Training Start Date</th>
+                                                    <th>Training End Date</th>
+                                                    <th>Comments</th>
+                                                     <th>Status</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    //var editUrl = "";
+                                                    for (var i = 0; i < Model.Count; i++)
+                                                    {
+                                                        //editUrl = Url.Action("OnBeforeEditEvaluation", "EmployeeTraining") + "?EmpTrainingEvaluationNo=" + Model[i].TrainingEvaluationNo;
+                                                        var viewUrl = Url.Action("ViewTrainingEvaluationRequests", "EmployeeTraining", new {id=Model[i].TrainingEvaluationNo});
+                                                        var approverUrl = Url.Action("Approvals", "Approval", new {DocumentNo =Model[i].TrainingEvaluationNo});
+                                                        <tr>
+                                                            <td>@Model[i].TrainingEvaluationNo</td>
+                                                            <td>@Model[i].ApplicationNo</td>
+                                                            <td>@Model[i].CalenderYear</td>
+                                                            <td>@Model[i].TrainingProvider</td>
+                                                            <td>@Model[i].TrainingLocation</td>
+                                                            <td>@Model[i].TrainingStartDate</td>
+                                                            <td>@Model[i].TrainingEndDate</td>
+                                                            <td>@Model[i].Comments</td>  
+                                                            <td>@Model[i].Status</td>
+                                                            <td>
+                                                                @*@if (@Model[i].Status == "Open")
+                                                                {
+                                                                    <a href="@editUrl" class=""><b>Edit</b></a>}*@
+                                                            </td>
+                                                            <td>
+                                                                <a href="@viewUrl" class=""><b>View</b></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="@approverUrl" style="color:red" class="fa fa-check"><b>Approver(s)</b></a>
+                                                            </td>
+                                                        </tr>	}
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	$("#TrainingRequestHistoryMenuItem").addClass("active");
+
+        	$("#TrainingListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

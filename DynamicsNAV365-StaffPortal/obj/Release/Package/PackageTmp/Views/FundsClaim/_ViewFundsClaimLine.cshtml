@@ -1,0 +1,71 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.FundsClaim.FundsClaimLineModel
+<div class="row">
+	<div class="col-md-12">
+		<div id="TableContainer" class="table-responsive">
+			<div id="AjaxLoader" class="text-center">
+				Loading Funds Claim Lines
+				<img src="~/Content/images/ajax-loader.gif" alt="Loading Funds Claim Lines..." style="width:15px; height:15px;" />
+			</div>
+			<table id="FundsClaimLineTbl" class="table table-striped table-bordered table-hidden">
+				<thead class="text-primary">
+					<tr>
+						<th>Funds Claim Code</th>
+						<th>Description</th>
+						<th>Amount Claimed</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div id="FundsClaimLineModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="FundsClaimLineModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+						<h4 id="FundsClaimLineModalLabel" class="modal-title">Funds Claim Line</h4>
+					</div>
+					<div class="modal-body">
+						@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "FundsClaimLineForm", @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+
+							@Html.HiddenFor(model => model.LineNo)
+							@Html.HiddenFor(model => model.DocumentNo)
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.ImprestCode, htmlAttributes: new { @id = "ImprestCodeLbl", @class = "control-label" })
+										@Html.DropDownListFor(model => model.ImprestCode, Model.ImprestCodes, "", new { @class = "form-control", @disabled = "disabled" })
+										@Html.ValidationMessageFor(model => model.ImprestCode, "", new { @id = "ImprestCodeError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineDescriptionLbl", @class = "control-label" })
+										@Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+										@Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineDescriptionError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.LineAmount, htmlAttributes: new { @id = "LineAmountLbl", @class = "control-label" })
+										@Html.EditorFor(model => model.LineAmount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+										@Html.ValidationMessageFor(model => model.LineAmount, "", new { @id = "LineAmountError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-xs btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

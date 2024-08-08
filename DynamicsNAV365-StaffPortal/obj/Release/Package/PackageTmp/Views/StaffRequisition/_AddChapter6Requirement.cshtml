@@ -1,0 +1,79 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.StaffRequisition.Chapter6Requirments
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <i class="fa fa-database fa-fw"></i> 5). Chapter 6 Requirements
+            </div>
+            <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#Chapter6RequirementsModal" onclick="ClearChapter6RequirementsModal();">
+                <i class="fa fa-plus"></i>
+                Add Chapter 6 Requirements
+            </button><br />
+            <table id="Chapter6RequirementsTbl" class="table table-striped table-responsive table-condensed">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+        <div id="Chapter6RequirementsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Chapter6RequirementsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 id="Chapter6RequirementsModalLabel" class="modal-title">Chapter 6 Requirements</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "Chapter6RequirementsForm", @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model != null && Model.LineErrorStatus == true)
+                            {
+                                <div class="col-md-12">
+                                    <div id="errorMessage" class="alert alert-danger" role="alert">
+                                    </div>
+                                </div>
+                            }
+
+                            @Html.HiddenFor(model => model.LineNo)
+                            @Html.HiddenFor(model => model.DocumentNo)
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Code, htmlAttributes: new { @id = "CodeLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Code, Model.Codes, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Code, "", new { @id = "CodeError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Description5, htmlAttributes: new { @id = "Description5Lbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.Description5, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description5, "", new { @id = "Description5Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CreateChapter6Btn" class="btn btn-xs btn-primary" type="button" onclick="CreateChapter6Requirement();"><i class="fa fa-plus"></i>Save</button>
+                        <button id="ModifyChapter6Btn" class="btn btn-xs btn-primary" type="button" onclick="ModifyChapter6Requirement();"><i class="fa fa-adjust"></i>Update</button>
+                        <button class="btn btn-xs btn-danger" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

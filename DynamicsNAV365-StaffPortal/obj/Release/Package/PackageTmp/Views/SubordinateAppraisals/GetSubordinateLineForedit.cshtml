@@ -1,0 +1,97 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.SubordinateAppraisalsModel
+
+@{
+    ViewBag.Title = "Edit Subordinate Line";
+}
+@{
+    var MarksList = new SelectList(
+          new List<SelectListItem>
+          {
+            new SelectListItem {Text = "----Select----", Value = "  "},
+            new SelectListItem {Text = "1", Value = "1"},
+            new SelectListItem {Text = "2", Value = "2"},
+            new SelectListItem {Text = "3", Value = "3"},
+            new SelectListItem {Text = "4", Value = "4"},
+            new SelectListItem {Text = "5", Value = "5"},
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("GetSubordinateLineForedit", "SubordinateAppraisals", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*@Html.HiddenFor(model => model.ProjectNo)*@
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="title"> Edit Record</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                        <input type="submit" id="submitBtn" name="Command" value="Save" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />*@
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("SingleSubordinateForm", "SubordinateAppraisals") + "?AppraisalNo=" + Model.AppraisalNo;
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <input id="LineNoItem" hidden="hidden">
+                                    @Html.HiddenFor(model => model.LineNo)
+                                    @Html.HiddenFor(model => model.AppraisalNo)                                
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubGoalsTargets, htmlAttributes: new { @id = "SubGoalsTargetsLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SubGoalsTargets, new { htmlAttributes = new { @class = "form-control", @id = "SubGoalsTargetsItem", @readonly = "true" } })
+                                            @Html.ValidationMessageFor(model => model.SubGoalsTargets, "", new { @id = "SubGoalsTargetsError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubordinateRating, htmlAttributes: new { @id = "SubordinateRatingLbl", @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.SubordinateRating, MarksList,new { @class = "form-control", @id = "SubordinateRatingItem" } )
+                                            @Html.ValidationMessageFor(model => model.SubordinateRating, "", new { @id = "SubordinateRatingLbl", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubordinateComments, htmlAttributes: new { @id = "SubordinateCommentsLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.SubordinateComments, "", new { htmlAttributes = new { @class = "form-control", @id = "SubordinateCommentsItem" } })
+                                            @Html.ValidationMessageFor(model => model.SubordinateComments, "", new { @id = "SubordinateCommentsError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                            </div>
+                                            }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

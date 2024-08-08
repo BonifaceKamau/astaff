@@ -1,0 +1,322 @@
+@model System.Collections.Generic.List<OdataRef.Staff_Appraisal_Lines>
+@{
+    var editable = ViewBag.editable;
+    bool? isSupervisor = ViewBag.isSupervisor;
+    var supervisorComment = isSupervisor == false ? "readonly" : "";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            @if (editable == true)
+            {
+                <div class="col-md-12">
+                    <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AppraisalLineModal" onclick="ClearAppraisalLineModal();">
+                        <i class="fa fa-shopping-cart"></i> Add operational objective
+                    </button>
+                </div>
+            }
+        </div>
+        <div id="" class="table-responsive">
+            <table id="operationalLineTbl" class="table table-striped table-bordered">
+                <thead class="text-primary">
+                <tr>
+                    <th>Objective_Code.</th>
+                    <th>Objective.</th>
+                    <th>Success_Measure.</th>
+                    <th>Due_Date.</th>
+                    <th>Evaluation scale.</th>
+                    <th>Remarks.</th>
+                    <th>Rate.</th>
+                    <th>Supervisor_Remarks.</th>
+                    <th>Supervisor_Rate.</th>
+                    <th>Section_Rating.</th>
+                    <th>.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var midYearAppraisalLines in Model)
+                {
+                    <tr>
+                        <td>@midYearAppraisalLines.Objective_Code</td>
+                        <td>@midYearAppraisalLines.Objective</td>
+                        <td>@midYearAppraisalLines.Success_Measure</td>
+                        <td>@midYearAppraisalLines.Due_Date</td>
+                        <td>@midYearAppraisalLines.Remark_Id</td>
+                        <td>@midYearAppraisalLines.Remarks</td>
+                        <td>@midYearAppraisalLines.Rate</td>
+                        <td>@midYearAppraisalLines.Supervisor_Remarks</td>
+                        <td>@midYearAppraisalLines.Supervisor_Rate</td>
+                        <td>@midYearAppraisalLines.Section_Rating</td>
+                        @if (editable == true)
+                        {
+                            <td>
+                                <a onclick="return EditAppraisalLine(this,'@midYearAppraisalLines.Entry_No','@midYearAppraisalLines.Objective_Code','@midYearAppraisalLines.Objective',
+                                                        '@midYearAppraisalLines.Success_Measure','@midYearAppraisalLines.Due_Date','@midYearAppraisalLines.Remark_Id','@midYearAppraisalLines.Remarks','@midYearAppraisalLines.Rate'
+                                                        ,'@midYearAppraisalLines.Supervisor_Remarks','@midYearAppraisalLines.Supervisor_Rate','@midYearAppraisalLines.Section_Rating')">Edit</a>|
+                                <a onclick="DeleteAppraisalLine(this,'@midYearAppraisalLines.Entry_No')">Delete</a>
+                            </td>
+                        }
+                        
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="AppraisalLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "AppraisalLineForm", @class = ""}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn close" type="button" data-dismiss="modal">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <h4 id="StoreRequisitionLineModalLabel" class="modal-title">operational objective</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Doc_No" value="@ViewBag.no"/>
+                                    <input type="hidden" name="Entry_No" id="entryNo" value=""/>
+                                    <input type="hidden" name="Type" id="Type" value="1"/>
+                                    <input type="hidden" name="Command" id="Command" class="Command" value="create">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">objective_Code</label>
+                                                <input type="text" class="form-control" name="Objective_Code" id="objectiveCode">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">objective</label>
+                                                <input type="text" class="form-control" name="Objective" id="objective">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">success_Measure</label>
+                                                <input type="text" class="form-control" name="Success_Measure" id="successMeasure">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">due_Date</label>
+                                                <input type="datetime-local" class="form-control" name="Due_Date" id="dueDate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Evaluation scale</label>
+                                                <input type="text" class="form-control" name="Remark_Id" id="remarkId">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">remarks</label>
+                                                <input type="text" class="form-control" name="Remarks" id="remarks">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">rate</label>
+                                                <input type="number" class="form-control" name="Rate" id="rate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Supervisor remarks</label>
+                                                <input type="text" class="form-control" name="Supervisor_Remarks" @supervisorComment id="supervisorRemarks">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Supervisor rate</label>
+                                                <input type="number" class="form-control" name="Supervisor_Rate" @supervisorComment id="supervisorRate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">section_Rating</label>
+                                                <input type="number" class="form-control" name="Section_Rating" id="sectionRating">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button id="CreateMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateMidYearLine(this);"><i class="fa fa-plus"></i>Add Line</button>*@
+                                    <button id="ModifyMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyAppraisalLine(this);"><i class="fa fa-adjust"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script>
+    String.prototype.toDate = function(format)
+        {
+          var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
+          var normalizedFormat= format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+          var formatItems     = normalizedFormat.split('-');
+          var dateItems       = normalized.split('-');
+        
+          var monthIndex  = formatItems.indexOf("mm");
+          var dayIndex    = formatItems.indexOf("dd");
+          var yearIndex   = formatItems.indexOf("yyyy");
+          var hourIndex     = formatItems.indexOf("hh");
+          var minutesIndex  = formatItems.indexOf("ii");
+          var secondsIndex  = formatItems.indexOf("ss");
+        
+          var today = new Date();
+        
+          var year  = yearIndex>-1  ? dateItems[yearIndex]    : today.getFullYear();
+          var month = monthIndex>-1 ? dateItems[monthIndex]-1 : today.getMonth()-1;
+          var day   = dayIndex>-1   ? dateItems[dayIndex]     : today.getDate();
+        
+          var hour    = hourIndex>-1      ? dateItems[hourIndex]    : today.getHours();
+          var minute  = minutesIndex>-1   ? dateItems[minutesIndex] : today.getMinutes();
+          var second  = secondsIndex>-1   ? dateItems[secondsIndex] : today.getSeconds();
+        
+          return new Date(year,month,day,hour,minute,second);
+        };
+	function EditAppraisalLine(element, entryNo, objectiveCode, objective, successMeasure, dueDate, remarkId, remarks, rate, supervisorRemarks, supervisorRate, sectionRating) {
+        // Set the values of the inputs in the AppraisalLineModal modal
+        document.getElementById('entryNo').value = entryNo;
+        document.getElementById('objectiveCode').value = objectiveCode;
+        document.getElementById('objective').value = objective;
+        document.getElementById('successMeasure').value = successMeasure;
+        let formattedDate = moment(dueDate.toDate("dd/mm/yyyy hh:ii:ss")).format("YYYY-MM-DDTHH:mm");
+        document.getElementById('dueDate').value = formattedDate;
+        document.getElementById('remarkId').value = remarkId;
+        document.getElementById('remarks').value = remarks;
+        document.getElementById('rate').value = rate;
+        document.getElementById('supervisorRemarks').value = supervisorRemarks;
+        document.getElementById('supervisorRate').value = supervisorRate;
+        document.getElementById('sectionRating').value = sectionRating;
+        $('.Command').val("edit");
+	    $("#AppraisalLineModal").modal("show");
+	}
+    
+	function ModifyAppraisalLine(element) {
+	  var data = $(element).closest("form").serialize();
+	  console.log(data)
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("ModifyAppraisalLine")',
+			data: data,
+			dataType: 'json',
+			success: function (result) {
+				if (result.success){
+                    $("#AppraisalLineModal").modal("hide");
+                    LoadAppraisalLines(result.entryNo)
+					Swal.fire("success","Saved Successfully","success");
+				}
+				else Swal.fire("error",result.message,"error");
+			},
+			error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+		})
+	}
+    
+    function LoadAppraisalLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadAppraisalLines")',
+            type: "GET",
+            dataType: "json",
+            data: { DocumentNo: '@ViewBag.no' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+    
+                $.each(Lines, function (i, Line) {
+                    $("#AddReqLine").css("display", "block");
+                    let row = `
+                        <tr>
+                            <td>${Line.Objective_Code}</td>
+                            <td>${Line.Objective}</td>
+                            <td>${Line.Success_Measure}</td>
+                            <td>${Line.Due_Date}</td>
+                            <td>${Line.Remark_Id}</td>
+                            <td>${Line.Remarks}</td>
+                            <td>${Line.Rate}</td>
+                            <td>${Line.Supervisor_Remarks}</td>
+                            <td>${Line.Supervisor_Rate}</td>
+                            <td>${Line.Section_Rating}</td>
+                            <td>
+                                <a href="#" onclick="EditAppraisalLine(
+                                    this, 
+                                    '${Line.Entry_No}', 
+                                    '${Line.Objective_Code}', 
+                                    '${Line.Objective}', 
+                                    '${Line.Success_Measure}', 
+                                    '${Line.Due_Date}', 
+                                    '${Line.Remark_Id}', 
+                                    '${Line.Remarks}', 
+                                    '${Line.Rate}', 
+                                    '${Line.Supervisor_Remarks}', 
+                                    '${Line.Supervisor_Rate}', 
+                                    '${Line.Section_Rating}')">Edit</a> |
+                                <a href="#" onclick="DeleteAppraisalLine(this,'${Line.Entry_No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+    
+                // remove existing table rows
+                $("#operationalLineTbl tbody tr").remove();
+    
+                // add new table rows
+                $("#operationalLineTbl tbody").append(rows);
+            },
+            error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+        });
+    }
+    function ClearAppraisalLineModal() {
+      $("#Entry_No").val("");
+      $('.Command').val("create");
+        console.log($("#Entry_No").val())
+      $("#Items_Description").val("");
+      $("#Success_Measure").val("");
+      $("#Staff_Comments").val("");
+      $("#Supervisor_Comment").val("");
+        $("#Items_Description").text('');
+        $("#Success_Measure").text('');
+        $("#Staff_Comments").text('');
+        $("#Supervisor_Comment").text('');
+    }
+    function DeleteAppraisalLine(element,entryNo) {
+        if (confirm("Are you sure you want to delete this line ?")){
+           $.ajax({
+               type: 'GET',
+               url: '@Url.Action("DeleteAppraisalLine")',
+               data: {no:entryNo , DocNo: '@ViewBag.no'},
+               dataType: 'json',
+               success: function (result) {
+                   if (result.success){
+                         $(element).closest("tr").remove();
+                       Swal.fire("success","Deleted Successfully","success");
+                   }
+                   else Swal.fire("error",result.message,"error");
+               },
+               error: function (xhr, errorType, exception) {
+                   Swal.fire("error",xhr.responseText,"error");
+               }
+           }) 
+        }
+    }
+   
+</script>

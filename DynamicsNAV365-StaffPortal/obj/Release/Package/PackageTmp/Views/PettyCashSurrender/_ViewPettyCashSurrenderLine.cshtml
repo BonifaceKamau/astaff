@@ -1,0 +1,105 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.PettyCashSurrender.PettyCashSurrenderLineModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="TableContainer" class="table-responsive">
+            <div id="PettyCashSurrenderAjaxLoader" class="text-center">
+                @*Loading PettyCash surrender Lines*@
+                @*<img src="~/Content/images/ajax-loader.gif" alt="Loading PettyCash surrender Lines..." style="width:15px; height:15px;" />*@
+            </div>
+            <table id="PettyCashSurrenderLineTbl" class="table table-striped table-bordered table-hidden">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Account No.</th>
+                        <th>Account Name</th>
+                        <th>Description</th>
+                        <th>Region</th>
+                        <th>Teams</th>
+                        <th>Department</th>
+                        @*<th>Geography</th>
+                        <th>Component</th>
+                        <th>Intervention</th>
+                        <th>Program Area</th>
+                        <th>Beneficiary</th>
+                        <th>Amount</th>
+                        <th>Actual Spent</th>*@
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="PettyCashSurrenderLineModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PettyCashSurrenderLineModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 id="PettyCashSurrenderLineModalLabel" class="modal-title">PettyCash Surrender Line</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "PettyCashSurrenderLineForm", @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.HiddenFor(model => model.LineNo)
+                            @Html.HiddenFor(model => model.DocumentNo)
+
+                            @*<div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.ReceiptNo, htmlAttributes: new { @id = "ReceiptNoLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.ReceiptNo, Model.ReceiptNos, "", new { @class = "form-control", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.ReceiptNo, "", new { @id = "ReceiptNoError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.PettyCashTransactionType, htmlAttributes: new { @id = "PettyCashTransactionTypeLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.PettyCashTransactionType, Model.PettyCashTransactionTypes, "", new { @class = "form-control", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.PettyCashTransactionType, "", new { @id = "PettyCashTransactionTypeError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineDescriptionLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineDescriptionError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-static">
+                                        @Html.LabelFor(model => model.LineAmount, htmlAttributes: new { @id = "LineAmountLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.LineAmount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        @Html.ValidationMessageFor(model => model.LineAmount, "", new { @id = "LineAmountError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineActualAmount, htmlAttributes: new { @id = "LineActualAmountLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.LineActualAmount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.LineActualAmount, "", new { @id = "LineActualAmountError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

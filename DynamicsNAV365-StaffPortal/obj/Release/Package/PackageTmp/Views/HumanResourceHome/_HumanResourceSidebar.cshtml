@@ -1,0 +1,150 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Account.EmployeeProfileModel
+<aside class="left-side sidebar-offcanvas">
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <a href="@Url.Action("EmployeeProfile", "Account")">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    @if (Model != null && Model.PassportAttached == true)
+                    {
+                        <img src="~/EmployeeData/@Model.EmployeePassportPath" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/photo_placeholder.png" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                </div>
+                <div class="pull-left info">
+                    <p>@Session["OPT"]</p>
+                    <div class="online-status" style="font-size: 10px;">
+                        <span class="fa fa-circle text-success" style="vertical-align: middle;"></span>
+                        <span class="status-text" style="vertical-align: middle;">Online</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Sidebar menu -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li id="HumanResourceInfo">
+                <a href="@Url.Action("HumanResourceInfo", "HumanResourceHome")">
+                    <i class="fa fa-briefcase"></i> <span>HR Services</span>
+                </a>
+            </li>
+            <li id="LeaveApplicationHistory">
+                <a href="@Url.Action("LeaveApplicationHistory", "LeaveApplication")">
+                    <i class="fa fa-bed"></i> <span>Leave Applications</span>
+                </a>
+            </li>
+        <li id="LeaveAcknowledgment">
+            <a href="@Url.Action("LeaveAcknowledgment", "LeaveApplication")">
+                <i class="fa fa-anchor"></i> <span> Leave Acknowledgment(s)</span>
+            </a>
+        </li>
+        <li id="LeaveAcknowledgment">
+            <a href="@Url.Action("RecruitmentNeeds", "RecruitmentNeeds")">
+                <i class="fa fa-user-plus"></i> <span> Recruitment Need(s)</span>
+            </a>
+        </li>
+        
+            @*<li id="SupervisorTimesheet">
+                <a href="@Url.Action("SupervisorTimesheet", "TimeSheet")">
+                    <i class="fa fa-calendar"></i> <span> Supervisor TimeSheets</span>
+                </a>
+            </li>
+            <li id="ApprovedTimesheet" class="@(ViewBag.ActiveTab == "ApprovedTimesheet" ? "active" : "")">
+                <a href="@Url.Action("ApprovedTimesheet", "TimeSheet")">
+                    <i class="fa fa-calendar-minus-o"></i> <span> Approved TimeSheets</span>
+                </a>
+            </li>
+        </ul>
+            <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("Index", "FleetMgt")">
+                <i class="fa fa-car"></i> <span>Vehicle Log Records</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiseeEvaluationHistory", "AppraiseeEvaluation")">
+                <i class="fa fa-calculator"></i> <span>Self Appraisal</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraiserEvaluationHistory", "AppraiserEvaluation")">
+                <i class="fa fa-calendar-check-o"></i> <span>Supervisor Appraisal</span>
+            </a>
+        </li>
+
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EndYearEvaluationHistory", "EndYearEvaluation")">
+                <i class="fa fa-info-circle"></i> <span>End Year/HR Appraisal</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("CompleteAppraiseeAppraisal", "CompleteAppraisal")">
+                <i class="fa fa-calendar-check-o"></i> <span>Closed Appraisal</span>
+            </a>
+        </li>*@
+
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("ModeratedAppraisalHistory", "ModeratedAppraisal")">
+                <i class="fa fa-calculator"></i> <span>Moderated Evaluation</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("CompleteAppraisalHistory", "CompleteAppraisal")">
+                <i class="fa fa-briefcase"></i> <span>Closed Appraiser Appraisal</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EmployeePerformanceTargetHistory", "PerformanceTarget")">
+                <i class="fa fa-calendar"></i> <span>Appraiser Evaluation</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("LeaveReimbursementHistory", "LeaveReimbursement")">
+                <i class="fa fa-wheelchair-alt"></i> <span>Leave Recall</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("EmployeeAppraisalHistory", "EmployeeAppraisal")">
+                <i class="fa fa-google-wallet"></i> <span>Individual PC-Target Setting</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("AppraisalEvaluationHistory", "EmployeeEvaluation")">
+                <i class="fa fa-info-circle"></i> <span>Appraisal Evaluation</span>
+            </a>
+        </li>*@
+            <ul class="sidebar-menu">
+            <li>
+                <a href="@Url.Action("TrainingNeedsHistory", "EmployeeTraining")">
+                    <i class="fa fa-pencil"></i> <span>Training Needs Identification</span>
+                </a>
+            </li>
+            @*<li>
+                <a href="@Url.Action("TrainingRequest", "EmployeeTraining")">
+                    <i class="fa fa-briefcase"></i> <span>Training Request</span>
+                </a>
+            </li>*@
+            <li>
+                <a href="@Url.Action("TrainingSurvey", "EmployeeTraining")">
+                    <i class="fa fa-book"></i> <span>Training Survey</span>
+                </a>
+            </li>
+        </ul>
+            @*</ul>
+        <ul class="sidebar-menu">*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("StaffRequisitionHistory", "StaffRequisition")">
+                <i class="fa fa-plus-square"></i> <span>Staff Requisitions</span>
+            </a>
+        </li>*@
+    </section>
+</aside>
+
+

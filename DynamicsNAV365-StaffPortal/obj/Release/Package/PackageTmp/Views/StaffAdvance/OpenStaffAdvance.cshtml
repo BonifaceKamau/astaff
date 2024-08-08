@@ -1,0 +1,112 @@
+@using DynamicsNAV365_StaffPortal.Models.Finance.StaffAdvance
+@model IEnumerable<DynamicsNAV365_StaffPortal.Models.Finance.StaffAdvance.RequestHeader>
+
+@{
+    ViewBag.Title = "Open Staff Advance";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{ Html.RenderAction("_FinanceSidebar", "FinanceHome"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Open Staff Advance</i>
+                                    </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewStaffAdvance")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Staff Advance
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>@Html.DisplayNameFor(model => model.No)</th>
+                                                <th>@Html.DisplayNameFor(model => model.RequestDate)</th>
+                                                <th>@Html.DisplayNameFor(model => model.GlobalDimension2Code)</th>
+                                                <th>@Html.DisplayNameFor(model => model.ImprestAmount)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Balance)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var requestHeader in Model)
+                                            {
+                                                <tr>
+                                                    <td>@requestHeader.No</td>
+                                                    <td>@requestHeader.RequestDate</td>
+                                                    <td>@requestHeader.GlobalDimension2Code</td>
+                                                    <td>@requestHeader.ImprestAmount</td>
+                                                    <td>@requestHeader.Balance</td>
+                                                    <td>@requestHeader.Status</td>
+                                                    <td>
+                                                        @if (requestHeader.Status == "Open" || requestHeader.Status == "Rejected")
+                                                        {
+                                                            <a href="@Url.Action("OnBeforeEdit", new {DocumentNo = requestHeader.No})" class="">
+                                                                <b>Edit</b>
+                                                            </a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("ViewStaffAdvance", new {DocumentNo = requestHeader.No})" class="">
+                                                            <b>View</b>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Approvals", "Approval", new { DocumentNo = requestHeader.No})" style="color:red" class="fa fa-check">
+                                                            <b>Approval Worksflow</b>
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#OpenStaffAdvance").addClass("active");
+
+            $("#PettyCashSurrenderListTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,136 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectManagementModel>
+
+@{
+    ViewBag.Title = "PM Projects";}
+    <!--Render Human Resource Sidebar-->   
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="title" style="text-align:center">Projects (Project Manager)</h4>
+                                </div>                              
+                                <div class="col-md-6">
+                                    @{ string closureListUrl = Url.Action("ProjectsClosure", "Projects"); } 
+                                    <a href="@closureListUrl" class="btn btn-success btn-xs pull-right"><b>Project Closure</b></a>
+                                </div>
+
+                                    @*<a class="btn btn-white btn-xs pull-right" href="@Url.Action("", "")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            Button One
+                                        </strong>
+                                    </a>*@
+                             
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">                               
+                                <div class="col-md-12">      
+                                    <p>You have been Assigned the following projects as a Project Manager</p>                             
+                                        <table id="ManagerProjectsTbl" class="table">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Cost </th>
+                                                    <th>Status</th>                                                    
+                                                    <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
+                                                    <th>Benefits & Risks</th>
+                                                    @*<th>&nbsp;</th>
+                                                    <th>&nbsp;</th>*@
+                                                    @*<th>&nbsp;</th>*@
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{  
+                                                    string teamUrl = "";
+                                                    string editUrl = "";
+                                                    string viewUrl = "";
+                                                    string benefitsUrl = "";
+                                                    string risksUrl = "";
+                                                    string manageUrl = "";
+                                                    string projectplanUrl = "";
+                                                    //string approverUrl = "";
+                                                    for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        teamUrl = Url.Action("ViewTeamMembers", "Projects") + "?ProjectManagementTeam=" + Model[i].ProjectManagementTeam;
+                                                        risksUrl = Url.Action("ProjectRisks", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                        viewUrl = Url.Action("ViewProjectDetails", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                        benefitsUrl = Url.Action("ProjectBenefits", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                        manageUrl = Url.Action("ManageProject", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                        projectplanUrl = Url.Action("ProjectPlan", "Projects") + "?ProjectNo=" + Model[i].Code;
+
+                                                        <tr>
+                                                            <td>@Model[i].Description</td>
+                                                            <td>@Model[i].StartDate</td>
+                                                            @{if (@Model[i].EndDate == "01/01/0001")
+                                                            {
+                                                                    <td>-------</td>
+
+                                                                }
+                                                            else
+                                                            {
+                                                                    <td>@Model[i].EndDate</td>
+                                                                }
+                                                        }
+                                                            @*<td>@Model[i].EndDate</td>*@
+                                                            <td>@Model[i].Cost</td>
+                                                            <td>@Model[i].Status</td>
+                                                            <td>
+                                                                <a href="@teamUrl" class=""><b>Team</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                                            </td>                                                           
+
+                                                            <td>
+                                                                <a href="@projectplanUrl" class=""><b>Workplan</b></a> |
+                                                                <a href="@viewUrl" class=""><b>Activities</b></a> 
+                                                              
+                                                            </td> 
+                                                            <td>
+                                                                <a href="@benefitsUrl" class=""><b>Benefits</b></a> | 
+                                                                <a href="@risksUrl" class=""><b>Risks</b></a>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                @*@if (@Model[i].Status == "Open" || @Model[i].Status == "Declined with amendments")
+                                                                {*@
+                                                                <a href="@manageUrl" class=""><b>Manage</b></a>
+                                                                @*}*@
+                                                            </td>                                                           
+                                                        </tr>}
+                                                }
+                                            </tbody>
+                                        </table>                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+       $(document).ready(function() {
+       $('#ManagerProjectsTbl').DataTable( {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+        }
+    } );
+} );
+    </script>
+}
+
+
+

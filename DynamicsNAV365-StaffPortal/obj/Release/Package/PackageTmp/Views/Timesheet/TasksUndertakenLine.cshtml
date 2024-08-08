@@ -1,0 +1,50 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.TimeSheets.TimeSheetLinesList
+<div class="table-responsive">
+    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap">
+        <thead>
+            <tr>
+                <th>Program Code</th>
+                <th>Tasks</th>
+                <th>Hours</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.ListOfTimeSheetTasks != null && Model.ListOfTimeSheetTasks.Count() > 0)
+                {
+                    foreach (var item in Model.ListOfTimeSheetTasks)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dimension2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TasksUndertaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoursWorked)
+                            </td>
+                           @if (item.ApprovalStatus == "Employee")
+                           {
+                            <td style="text-align:right" class="tdAction">
+                                 <a href="javascript:void(0);" class="mr-3 text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="DeleteItem('@item.LineNo','@item.DocNo', '@item.Month', '@item.Year');"><i class="fa fa-remove"></i> Remove Entry</a>
+                            </td>
+                           }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" style="color:red">
+                            No Records Found
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+

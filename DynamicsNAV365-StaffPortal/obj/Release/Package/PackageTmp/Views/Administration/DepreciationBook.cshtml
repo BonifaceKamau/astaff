@@ -1,0 +1,105 @@
+@model DynamicsNAV365_StaffPortal.Models.Finance.FixedAssetDepreciationBook
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            @using (Html.BeginForm("DepreciationBook", "Administration", FormMethod.Post, new {@class = ""}))
+            {
+                @Html.AntiForgeryToken()
+                <div class="card-header" data-background-color="company_card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="title">
+                                <i>Depreciation Book</i>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.FA_No, htmlAttributes: new {@id = "", @class = "control-label"})
+                                        @Html.EditorFor(model => model.FA_No, new {htmlAttributes = new {@class = "form-control", @readonly = true}})
+                                        @Html.ValidationMessageFor(model => model.FA_No, "", new {@id = "NoError", @class = "text-danger"})
+                                    </div>
+                                    <input type="hidden" name="FA_No" value="@ViewBag.no" >
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Depreciation_Starting_Date, htmlAttributes: new {@id = "EmployeeNameLbl", @class = "control-label"})
+                                        @Html.EditorFor(model => model.Depreciation_Starting_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Depreciation_Starting_Date, "", new {@id = "EmployeeNameError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.No_of_Depreciation_Years, htmlAttributes: new {@id = "EmployeeNameLbl", @class = "control-label"})
+                                        @Html.EditorFor(model => model.No_of_Depreciation_Years, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.No_of_Depreciation_Years, "", new {@id = "EmployeeNameError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Depreciation_Ending_Date, htmlAttributes: new {@id = "EmployeeNameLbl", @class = "control-label"})
+                                        @Html.EditorFor(model => model.Depreciation_Ending_Date, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Depreciation_Ending_Date, "", new {@id = "EmployeeNameError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Depreciation_Method, htmlAttributes: new {@id = "DescriptionLbl", @class = "control-label"})
+                                        @Html.DropDownListFor(model => model.Depreciation_Method, Model.Depreciation_Method_Select, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Depreciation_Method, "", new {@id = "DescriptionError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.FA_Posting_Group, htmlAttributes: new {@id = "DescriptionLbl", @class = "control-label"})
+                                        @Html.DropDownListFor(model => model.FA_Posting_Group, Model.FA_Posting_Group_Select, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.FA_Posting_Group, "", new {@id = "DescriptionError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Depreciation_Book_Code, htmlAttributes: new {@id = "", @class = "control-label"})
+                                        @Html.DropDownListFor(model => model.Depreciation_Book_Code, Model.Depreciation_Book_Code_Select, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Depreciation_Book_Code, "", new {@id = "NoError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Depreciation_Table_Code, htmlAttributes: new {@id = "", @class = "control-label"})
+                                        @Html.DropDownListFor(model => model.Depreciation_Table_Code, Model.Depreciation_Table_Code_Select, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Depreciation_Table_Code, "", new {@id = "NoError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Use_Half_Year_Convention, htmlAttributes: new {@id = "", @class = "control-label"})
+                                        @Html.EditorFor(model => model.Use_Half_Year_Convention, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.Use_Half_Year_Convention, "", new {@id = "NoError", @class = "text-danger"})
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success btn-xs pull-right ladda-button" value="Save Changes"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@model OdataRef.RecruitmentNeedsSkills
+
+<div class="bg-soft-dark" style="color:black">
+    <form id="SkillsModalForm">
+        <div class="row">
+            @Html.HiddenFor(model => model.Recruitment_Need_Code)
+            @Html.HiddenFor(model => model.Line_No)
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Remarks, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Mandatory, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Mandatory, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Mandatory, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+
+            <div align="center">
+                <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="CreateOrUpdateSkillsLine();"/>
+            </div>
+        </div> 
+    </form>
+    
+</div>

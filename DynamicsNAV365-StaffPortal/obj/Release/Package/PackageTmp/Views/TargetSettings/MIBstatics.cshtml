@@ -1,0 +1,79 @@
+@model System.Collections.Generic.List<OdataRef.MIBstatistics>
+
+@{
+    ViewBag.Title = "Target Settings"; 
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>MIB Statistics</i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th>Employee No.</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Monthly Target</th>
+                                                    <th>MIB Achieved</th>
+                                                    <th>Month Start Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var MIBstatistics in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@MIBstatistics.Code</td>
+                                                        <td>@MIBstatistics.Name</td>
+                                                        <td>@String.Format("{0:N2}",MIBstatistics.Monthly_Target)</td>
+                                                        <td>@String.Format("{0:N2}", MIBstatistics.MIB_Achieved)</td>
+                                                        <td>@String.Format("{0:MM/dd/yyyy}" ,MIBstatistics.Month_Start_Date)</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ActiveTab = '@ViewBag.ActiveTab';
+            console.log(ActiveTab);
+            ////Add CSS Classes
+            if (ActiveTab === 'MIBstatics') $("#TargetSettings").addClass("active");
+            if (ActiveTab === 'ApprovedTargetSetting') $("#ApprovedTargetSetting").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,88 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.FundsClaim.FundsClaimLineModel
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#FundsClaimLineModal" onclick="ClearFundsClaimLineModal();">
+			<i class="fa fa-plus"></i>
+			Add Funds Claim Line
+		</button><br />
+		<div id="TableContainer" class="table-responsive">
+			<table id="FundsClaimLineTbl" class="table table-striped table-bordered" style="display:none;">
+				<thead class="text-primary">
+					<tr>
+						<th>Funds Claim Code</th>
+						<th>Description</th>
+						<th>Amount Claimed</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div id="FundsClaimLineModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="FundsClaimLineModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+						<h4 id="FundsClaimLineModalLabel" class="modal-title" style="text-align:center">Funds Claim Line</h4>
+					</div>
+					<div class="modal-body">
+						@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "FundsClaimLineForm", @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+
+							if (Model != null && Model.LineErrorStatus == true)
+							{
+								<div class="alert alert-danger">
+									<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.LineErrorMessage))
+								</div>
+							}
+							@Html.HiddenFor(model => model.LineNo)
+							@Html.HiddenFor(model => model.DocumentNo)
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.ImprestCode, htmlAttributes: new { @id = "ImprestCodeLbl", @class = "control-label" })
+										@Html.DropDownListFor(model => model.ImprestCode, Model.ImprestCodes, "", new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.ImprestCode, "", new { @id = "ImprestCodeError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.LineAmount, htmlAttributes: new { @id = "LineActualAmountLbl", @class = "control-label" })
+										@Html.EditorFor(model => model.LineAmount, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.LineAmount, "", new { @id = "LineActualAmountError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										@Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineSurrenderDescriptionLbl", @class = "control-label" })
+										@Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineSurrenderDescriptionError", @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+					<div class="modal-footer">
+						<button id="CreateFundsClaimLineBtn" class="btn btn-primary btn-xs" type="button" onclick="CreateFundsClaimLine();"><i class="fa fa-plus"></i>Save</button>
+						<button id="ModifyFundsClaimLineBtn" class="btn btn-primary btn-xs" type="button" onclick="ModifyFundsClaimLine();"><i class="fa fa-adjust"></i>Update Changes</button>
+						<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts{
+
+}
+
+
+
+

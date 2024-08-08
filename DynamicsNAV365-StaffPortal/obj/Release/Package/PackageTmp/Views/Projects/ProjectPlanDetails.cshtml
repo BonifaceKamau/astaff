@@ -1,0 +1,219 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectPlanModel
+
+@{
+    ViewBag.Title = "Manage Project";}
+<!--Render Human Resource Sidebar-->
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="title" style="text-align:center">Project Plan</h4>
+                            </div>
+
+                            <div class="col-md-2">
+                                @*<a href="" class="btn btn-success btn-xs pull-right" onclick="return BeginProject();"><b> Begin Project</b></a>*@
+
+                            </div>
+                            <div class="col-md-2">
+                                @*<a href="" class="btn btn-success btn-xs pull-right" onclick="return CompleteProject();"><b> Complete Project</b></a>*@
+
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" class="btn btn-success btn-xs pull-right" onclick="return SendPlanApproval('@Model.ProjectNumber');"><b> Send Approval Request</b></a>
+
+                            </div>
+                            <div class="col-md-2">
+                                @{   string backUrl = @Url.Action("ProjectPlan", "Projects") + "?ProjectNo=" + Model.ProjectNumber;}
+                                <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                    <strong style="color:white">
+                                        <i class=""></i>
+                                        Close
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <input id="ProjectNoItem" value="@TempData["ManagerProjectNo"]" hidden="hidden">
+                            <div class="col-md-12">
+                                @*<div class="row">
+                                    <div class="col-lg-3">
+                                        @{ string addtaskUrl = Url.Action("AddProjectTask", "Projects") + "?ProjectNo=" + @ViewBag.ManagerProjectNumber; }
+                                        <a class="btn btn-info btn-xs pull-left" href="@addtaskUrl">
+                                            <strong style="color:white">
+                                                <i class=""></i>
+                                                Add Project Task
+                                            </strong>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <a class="btn btn-sm pull-left" style="background-color:white;">
+                                            <strong style="color:black;">
+                                                <i class=""></i>
+                                                Project Status:  @ViewBag.ProjectStatus
+                                            </strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    
+
+                                    </div>
+                                </div>*@
+                                <div class="col-lg-12">  
+                                    <div class="row">
+                                          @Html.HiddenFor(model => model.Code)
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ProjectNumber, htmlAttributes: new { @id = "ProjectNumberLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.ProjectNumber, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.ProjectNumber, "", new { @id = "ProjectNumberError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @id = "StatusLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.Status, "", new { @id = "StatusError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @id = "StartDateLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.StartDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @id = "StartDateError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @id = "EndDateLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.EndDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @id = "EndDateError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ApprovalStatus, htmlAttributes: new { @id = "ApprovalStatusLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.ApprovalStatus, new { htmlAttributes = new { @class = "form-control", @readonly = true,@style="font-weight:bold;color:black; font-size:18px; text-transform:uppercase;" } })
+                                                @Html.ValidationMessageFor(model => model.ApprovalStatus, "", new { @id = "ApprovalStatusError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @id = "ProjectNameLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.ProjectName, "", new { @id = "ProjectNameError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12"> 
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                    <div class="col-lg-12">
+                                        @{Html.RenderAction("_ProjectPlanActivities", "Projects", new { ProjectNo = Model.ProjectNumber });}
+                                    </div>                               
+                                </div>
+                              
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ProjectsBenefitsTbl').DataTable({
+                order: [[2, 'asc']],
+                rowGroup: {
+                    dataSrc: 2
+                }
+            });
+        });
+    </script>
+}
+
+<script>
+$(document).ready(function () {
+window.setTimeout(function() {
+    $("#successalert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove();
+    });
+}, 4000);
+
+});
+
+
+
+
+//Send Plan Approval
+function SendPlanApproval(ProjectNumber) {
+       debugger;
+        var ProjectNumber = ProjectNumber;
+        var frmData = new FormData();
+        frmData.append("ProjectNumber", ProjectNumber);
+      //Block UI
+        $.blockUI();
+	var ans = confirm("Are you sure you want to Send an Approval Request?");
+	if (ans) {
+
+		$.ajax({
+			url: "/Projects/SendPlanApproval",
+			type: "POST",
+			dataType: "json",
+			data:frmData,
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            async: true,
+			cache: false,
+			success: function (result) {
+                if(result.message=="approved"){
+                location.reload();
+                alert("Failed, this  Plan has already been approved");
+                location.reload();
+                $.unblockUI();
+                }
+                else if(result.message=="done"){
+                //location.reload();
+                alert("Approval Request Sent Successfully");
+                location.reload();
+                $.unblockUI();
+                }
+                else{
+                //location.reload();
+                alert("Failed, An error Occurred");
+                location.reload();
+                $.unblockUI();
+                }
+			},
+			error: function (errormessage) {
+				alert("An Error occurred, Please try again later");
+			}
+		});
+	}
+}
+
+</script>
+
+
+

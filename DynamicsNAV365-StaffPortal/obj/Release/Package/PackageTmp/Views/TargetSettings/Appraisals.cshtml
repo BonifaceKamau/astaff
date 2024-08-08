@@ -1,0 +1,109 @@
+@model System.Collections.Generic.List<OdataRef.Staff_Appraisal_Header>
+
+@{
+    ViewBag.Title = "Approved Appraisal";
+    bool? ApprovedAppraisals = ViewBag.ApprovedAppraisals;
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">
+                                        <i>Approved Appraisal</i>
+                                    </h4>
+                                </div>
+                                @if(ApprovedAppraisals ==false || ApprovedAppraisals == null){
+                                <div class="col-md-8">
+                                    <a class="btn btn-white btn-xs pull-right" href="@Url.Action("NewAppraisal")" data-background-color="login_card">
+                                        <strong style="color:white">
+                                            <i class="fa fa-plus"></i>
+                                            New Appraisal
+                                        </strong>
+                                    </a>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="TableContainer" class="table-responsive table-condensed table-striped">
+                                        <table id="TimeSheetsTbl" class="stripe">
+                                            <thead class="text-primary">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Workplan Date</th>
+                                                <th>Staff No</th>
+                                                <th>Period</th>
+                                                <th>Directorate</th>
+                                                <th>Staff Department</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var staffTargetObjectives in Model)
+                                            {
+                                                <tr>
+                                                    <td>@staffTargetObjectives.No</td>
+                                                    <td>@staffTargetObjectives.Created_On</td>
+                                                    <td>@staffTargetObjectives.Staff_No</td>
+                                                    <td>@staffTargetObjectives.Period</td>
+                                                    <td>@staffTargetObjectives.Directorate</td>
+                                                    <td>@staffTargetObjectives.Department</td>
+                                                    <td>
+                                                        @if (ViewBag.Editable == null || ViewBag.Editable == true)
+                                                        {
+                                                            <a href="@Url.Action("ViewAppraisal", new { no = staffTargetObjectives.No, ediatable= ApprovedAppraisals })" class="">
+                                                                <b>View</b>
+                                                            </a>
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            //$("#Appraisals").addClass("active");
+             var ActiveTab = '@ViewBag.ActiveTab';
+            console.log(ActiveTab);
+            ////Add CSS Classes
+            if (ActiveTab === 'Appraisals') $("#Appraisals").addClass("active");
+            if (ActiveTab === 'ApprovedAppraisals') $("#ApprovedAppraisals").addClass("active");
+
+            $("#TimeSheetsTbl").dataTable({
+                "order": [[0, "No"]],
+                "columnDefs": [ {
+                    "targets": [1,2,3,4,5,6,7,8,9,10],
+                    "orderable": false,
+                }],
+
+                "fixedColumns": true
+            });
+        });
+    </script>
+}

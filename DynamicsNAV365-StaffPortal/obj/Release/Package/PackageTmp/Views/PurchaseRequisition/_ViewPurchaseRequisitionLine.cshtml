@@ -1,0 +1,118 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Procurement.PurchaseRequistion.PurchaseRequisitionLineModel
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="ViewPurchaseRequisitionLineAjaxLoader" class="">
+					Loading Purchase Requisition Lines
+					<img src="~/Content/images/ajax-loader.gif" alt="Loading Purchase Requisition Lines..." style="width:15px;height:15px;" />
+				</div>
+				<div id="TableContainer" class="table-responsive">
+					<table id="PurchaseRequisitionLineTbl" class="table table-striped table-bordered" style="display:none;">
+						<thead class="text-primary">
+							<tr>
+                                <th>Procurement Plan</th>
+                                <th>Procurement Plan Item</th>
+                                <th>Type</th>
+                                <th>No</th>
+                                <th>Description</th>
+                                <th>Unit Of Measure</th>
+                                <th>Quantity</th>
+                                <th>Unit Cost</th>
+                                <th>Total Cost</th>
+                                <th>Region</th>
+                                <th>Program</th>
+                                <th>Geography</th>
+                                <th>Component</th>
+                                <th>Intervention</th>
+                                <th>Program Area</th>
+                                <th>Beneficiary</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+				<div id="PurchaseRequisitionLineModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PurchaseRequisitionLineModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="PurchaseRequisitionLineModalLabel" class="modal-title">Purchase Requisition Line</h4>
+							</div>
+							<div class="modal-body">
+								@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "PurchaseRequisitionLineForm", @class = "" }))
+								{
+									@Html.AntiForgeryToken()
+
+									if (Model != null && Model.LineErrorStatus == true)
+									{
+										<div class="alert alert-danger">
+											<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.LineErrorMessage))
+										</div>
+									}
+									@Html.HiddenFor(model => model.LineNo)
+									@Html.HiddenFor(model => model.DocumentNo)
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												@Html.LabelFor(model => model.RequisitionType, htmlAttributes: new { @id = "RequisitionTypeLbl", @class = "control-label" })
+												@Html.DropDownListFor(model => model.RequisitionType, Model.RequisitionTypes, "", new { @class = "form-control", @disabled = "disabled" })
+												@Html.ValidationMessageFor(model => model.RequisitionType, "", new { @id = "RequisitionTypeError", @class = "text-danger" })
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												@Html.LabelFor(model => model.RequisitionCode, htmlAttributes: new { @id = "RequisitionCodeLbl", @class = "control-label" })
+												@Html.DropDownListFor(model => model.RequisitionCode, Model.RequisitionCodes, "", new { @class = "form-control", @disabled = "disabled" })
+												@Html.ValidationMessageFor(model => model.RequisitionCode, "", new { @id = "RequisitionCodeError", @class = "text-danger" })
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group label-static">
+												@Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineDescriptionLbl", @class = "control-label" })
+												@Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+												@Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineDescriptionError", @class = "text-danger" })
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-static">
+												@Html.LabelFor(model => model.Quantity, htmlAttributes: new { @id = "QuantityLbl", @class = "control-label" })
+												@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+												@Html.ValidationMessageFor(model => model.Quantity, "", new { @id = "QuantityError", @class = "text-danger" })
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												@Html.LabelFor(model => model.UOM, htmlAttributes: new { @id = "UOMLbl", @class = "control-label" })
+												@Html.DropDownListFor(model => model.UOM, Model.UOMs, "", new { @class = "form-control", @disabled = "disabled" })
+												@Html.ValidationMessageFor(model => model.UOM, "", new { @id = "UOMError", @class = "text-danger" })
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-static">
+												@Html.LabelFor(model => model.UnitCost, htmlAttributes: new { @id = "UnitCostLbl", @class = "control-label" })
+												@Html.EditorFor(model => model.UnitCost, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+												@Html.ValidationMessageFor(model => model.UnitCost, "", new { @id = "UnitCostError", @class = "text-danger" })
+											</div>
+										</div>
+									</div>
+								}
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

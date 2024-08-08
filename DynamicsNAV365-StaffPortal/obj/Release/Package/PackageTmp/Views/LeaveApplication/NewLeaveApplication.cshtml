@@ -1,0 +1,310 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.LeaveApplicationModels.LeaveApplicationModel
+
+@{
+    ViewBag.Title = "New Leave Application";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        @using (Html.BeginForm("NewLeaveApplication", "LeaveApplication", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>New Leave Application</i></h4>
+                                    </div>
+                                    @*<div class="col-md-3">
+                                            <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                        </div>*@
+                                    @*<div class="col-md-2">
+                                            <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingToReliever", new { no = Model.No})">
+                                                <i class="fa fa-mail-forward"></i>
+                                                Notify Acknowledger
+                                            </a>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                        </div>*@   @*<div class="col-md-2">
+                                            <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingToReliever", new { no = Model.No})">
+                                                <i class="fa fa-mail-forward"></i>
+                                                Notify Acknowledger
+                                            </a>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                        </div>*@
+                                        <div class="col-md-1">
+                                            <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("LeaveApplicationHistory", "LeaveApplication")">
+                                                <i class="fa fa-close"></i>
+                                                Close
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="card-header" data-background-color="company_card">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="title"><i>New Leave Application</i></h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                            </div>
+                                            <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingToReliever", new { no = Model.No})">
+                                                <i class="fa fa-mail-forward"></i>
+                                                Notify Acknowdledger
+                                            </a>
+                                            <div class="col-md-2">
+                                                <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("LeaveApplicationHistory", "LeaveApplication")">
+                                                    <i class="fa fa-close"></i>
+                                                    Close
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="card-content">
+                                    @if (Model != null && Model.ErrorStatus == true)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                        </div>
+                                    }
+
+                                    @Html.HiddenFor(model => model.EmployeeNo)
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.LeaveType, htmlAttributes: new { @id = "LeaveTypeLbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.LeaveType, Model.LeaveTypes, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.LeaveType, "", new { @id = "LeaveTypeError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.LeaveStartDate, htmlAttributes: new { @id = "LeaveStartDateLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.LeaveStartDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.LeaveStartDate, "", new { @id = "LeaveStartDateError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Duration</label>
+                                            <select class="form-control" name="duration" id="duration">
+                                                <option value="Full Day" selected="selected">Full Day</option>-->
+                                        @*<option value="Half Day">Half Day</option>*@
+                                        <!--</select>
+                                            </div>
+                                        </div>-->
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.DaysApplied, htmlAttributes: new { @id = "DaysAppliedLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.DaysApplied, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DaysApplied, "", new { @id = "DaysAppliedError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-static">
+                                                @Html.LabelFor(model => model.LeaveEndDate, htmlAttributes: new { @id = "LeaveEndDateLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.LeaveEndDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.LeaveEndDate, "", new { @id = "LeaveEndDateError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-static">
+                                                @Html.LabelFor(model => model.LeaveReturnDate, htmlAttributes: new { @id = "LeaveReturnDateLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.LeaveReturnDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.LeaveReturnDate, "", new { @id = "LeaveReturnDateError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.SubstituteEmployeeNo, htmlAttributes: new { @id = "SubstituteEmployeeNoLbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.SubstituteEmployeeNo, Model.Employees, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.SubstituteEmployeeNo, "", new { @id = "SubstituteEmployeeNoError", @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group label-floating">
+                                                <label class="control-label" for="RelieverAcknowledgement">Reliever Acknowledgement</label>
+                                                <div>
+                                                    <input type="checkbox" id="RelieverAcknowledgement" name="RelieverAcknowledgement" @(Model.RelieverAcknowledgement ? "checked disabled" : "disabled") style="border-color: #2196F3;" />
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.RelieverAcknowledgement, htmlAttributes: new { @id = "RelieverAcknowledgementLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.RelieverAcknowledgement, new { @class = "form-control", @disabled = "true" })
+                                                    @Html.ValidationMessageFor(model => model.RelieverAcknowledgement, "", new { @id = "RelieverAcknowledgementError", @class = "text-danger" })
+                                                </div>*@
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ReasonForLeave, htmlAttributes: new { @id = "ReasonForLeaveLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.ReasonForLeave, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ReasonForLeave, "", new { @id = "ReasonForLeaveError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_employeeSplittedLeaveBalance", "LeaveApplication"); }
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @{Html.RenderAction("_employeeSplittedLeaveBalance", "LeaveApplication");}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">Document Attachment</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @{Html.RenderAction("_LeaveApplicationDocument", "LeaveApplication", new { LeaveApplicationNo = Model.No });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--Render Employee Leave Balance Widget-->
+                    @{Html.RenderAction("_EmployeeLeaveBalanceWidget", "HumanResourceHome");}
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+
+<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn close" type="button" data-dismiss="modal">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ApplicationDocumentForm", @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.No)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="errorMessage" class="alert alert-info" role="alert">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input id="ApplicationDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-8">
+                    <button id="UploadLeaveApplicationDocumentBtn" class="btn btn-primary btn-xs" type="button" onclick="UploadLeaveApplicationDocument();"><i class="fa fa-adjust" style="align-content:center"></i>Upload Document</button>
+                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            //Add CSS Classes
+            InitializeLeaveApplication();
+
+            $('#SubstituteEmployeeNo').change(function () {
+                location.reload();
+            });
+
+
+            $("#LeaveType").change(function () {
+
+                var selectedLeaveNo = $("#No").val();
+                var selectedLeaveType = $("#LeaveType").val()
+   
+                console.log('Leave No', selectedLeaveNo);
+                console.log('LeaveType', selectedLeaveType);
+
+               $.ajax({
+                    url: '@Url.Action("ModifyNewLeave")',
+                    type: 'POST',
+                    data: {
+                        LeaveAppNo: selectedLeaveNo,
+                        LeaveType: selectedLeaveType
+
+                    },
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error modifying leave application:', error);
+                    }
+                 });
+
+            });
+
+
+        });
+
+
+
+
+
+    </script>
+}

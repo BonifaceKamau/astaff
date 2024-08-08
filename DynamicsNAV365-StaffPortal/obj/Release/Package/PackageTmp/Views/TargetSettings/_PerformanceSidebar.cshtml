@@ -1,0 +1,253 @@
+@model DynamicsNAV365_StaffPortal.Models.Account.EmployeeProfileModel
+<aside class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <a href="@Url.Action("EmployeeProfile", "Account")">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    @if (Model != null && Model.PassportAttached == true)
+                    {
+                        <img src="~/EmployeeData/@Model.EmployeePassportPath" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/photo_placeholder.png" class="img-circle" alt="User Image" style="width: 103.5%;" />
+                    }
+                </div>
+                <div class="pull-left info">
+                    <p>@HttpContext.Current.User.Identity.Name</p>
+                    <div class="online-status" style="font-size: 10px;">
+                        <span class="fa fa-circle text-success" style="vertical-align: middle;"></span>
+                        <span class="status-text" style="vertical-align: middle;">Online</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li id="TargetSettings" class="@(ViewBag.ActiveTab == "TargetSetting" ? "active" : "")">
+                <a href="@Url.Action("TargetSetting", "TargetSettings")">
+                    <i class="fa fa-tag"></i> <span> Markteters Target Setting</span>
+                </a>
+            </li>
+            <li id="PillarsTargetSettings" class="@(ViewBag.ActiveTab == "PillarsTargetSettings" ? "active" : "")">
+                <a href="@Url.Action("PillarsTargetSettings", "TargetSettings")">
+                    <i class="fa fa-tag"></i> <span> Pillars Target Setting</span>
+                </a>
+            </li>
+            <li id="AppraiseeTargets" class="@(ViewBag.ActiveTab == "AppraiseeTargets" ? "active" : "")">
+                <a href="@Url.Action("AppraiseeTargets", "TargetSettings")">
+                    <i class="fa fa-tag"></i> <span>Employee Target Settings</span>
+                </a>
+            </li>
+            <li class="dropdown show">
+                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-superpowers"></i> <span> Employee Stats</span>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li id="MIBstatics">
+                        <a href="@Url.Action("MIBstatics", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> MIB Statistics</span>
+                        </a>
+                    </li>
+                    <li id="Salesstatics">
+                        <a href="@Url.Action("Salesstatics", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Sales Acrrual Statistics</span>
+                        </a>
+                    </li>
+                    <li id="SalesInstallment">
+                        <a href="@Url.Action("SalesInstallment", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Sales Installment Statistics</span>
+                        </a>
+                    </li>
+                    <li id="SignedSales">
+                        <a href="@Url.Action("SignedSales", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Signed Sales Statistics</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*@if (Model.IsHr)
+        {
+            <li class="dropdown show">
+                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-superpowers"></i> <span> HR View Target Setting</span>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li id="HRSApprovedTargetSetting">
+                        <a href="@Url.Action("SupervisorEmpApprovedTargetSetting", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Supervisor Approved Pending Target Setting</span>
+                        </a>
+                    </li>
+                    <li id="HRSPendingTargetSetting">
+                        <a href="@Url.Action("SupervisorEmpPendingTargetSetting", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Supervisor Pending Target Setting</span>
+                        </a>
+                    </li>
+                    <li id="HREAcceptTargetSetting">
+                        <a href="@Url.Action("HREAcceptedTargetSetting", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Employee Accepted Target Setting</span>
+                        </a>
+                    </li>
+                    <li id="HREAcceptTargetSetting">
+                        <a href="@Url.Action("HREPendingTargetSetting", "TargetSettings")">
+                            <i class="fa fa-tag"></i> <span> Employee Pending Acknowledgement</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }*@
+            @*<li id="TargetSettings" class="@(ViewBag.ActiveTab == "TargetSetting" ? "active" : "")">
+            <a href="@Url.Action("TargetSetting", "TargetSettings")">
+                <i class="fa fa-tag"></i> <span> Target Setting</span>
+            </a>
+        </li>*@
+            @*<li id="SupervisorApprovedTargetSetting">
+            <a href="@Url.Action("SupervisorApprovedTargetSetting", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Target Appraisal </span>
+            </a>
+        </li>
+        <li id="SupervisorApprovedMidAppraisals">
+            <a href="@Url.Action("SupervisorApprovedMidAppraisals", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Mid Year Appraisal </span>
+            </a>
+        </li>
+        <li id="SupervisorApprovedAppraisals">
+            <a href="@Url.Action("SupervisorApprovedAppraisals", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Supervisor Appraisal </span>
+            </a>
+        </li>*@
+            @*<li id="ApprovedTargetSetting" class="@(ViewBag.ActiveTab == "ApprovedTargetSetting" ? "active" : "")">
+            <a href="@Url.Action("ApprovedTargetSetting", "TargetSettings")">
+                <i class="fa fa-address-book"></i> <span> Approved Target Setting</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("StaffTargetObjectivesList", "TargetSettings")">
+                <i class="fa fa-calendar-check-o"></i> <span> Staff Target Objectives</span>
+            </a>
+        </li>*@
+            @*<li id="TargetSettings" class="@ViewBag.TargetSetting">
+            <a href="@Url.Action("TargetSetting", "TargetSettings")">
+                <i class="fa fa-tag"></i> <span> Target Setting</span>
+            </a>
+        </li>*@
+            @*<li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("CorporateWorkplanList", "TargetSettings")">
+                <i class="fa fa-address-book"></i> <span> Corporate Workplan</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("DirectorateWorkplan", "TargetSettings")">
+                <i class="fa fa-address-book"></i> <span> Directorate Workplan</span>
+            </a>
+        </li>
+        <li id="HumanResourceInfoMenuItem">
+            <a href="@Url.Action("DepartmentWorkplans", "TargetSettings")">
+                <i class="fa fa-bank"></i> <span> Department Workplans</span>
+            </a>
+        </li>*@
+            @*<li id="ApprovedTargetSetting" class="@ViewBag.ApprovedTargetSetting">
+            <a href="@Url.Action("ApprovedTargetSetting", "TargetSettings")">
+                <i class="fa fa-address-book"></i> <span> Approved Target Setting.</span>
+            </a>
+        </li>*@
+            @*<li id="SupervisorTargetSetting">
+            <a href="@Url.Action("SupervisorTargetSetting", "TargetSettings")">
+                <i class="fa fa-superpowers"></i> <span> Supervisor Target Approval</span>
+            </a>
+        </li>*@
+            @*<li id="SupervisorMidYearAppraisals">
+            <a href="@Url.Action("SupervisorMidYearAppraisals", "TargetSettings")">
+                <i class="fa fa-superpowers"></i> <span> Supervisor Mid Year Comment</span>
+            </a>
+        </li>*@
+            @*<li id="SupervisorAppraisals">
+            <a href="@Url.Action("SupervisorAppraisals", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span>Supervisor Appraisal </span>
+            </a>
+        </li>*@
+            @*<li class="dropdown show">
+            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-superpowers"></i> <span> Supervisor Section</span>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li id="SupervisorTargetSetting">
+                    <a href="@Url.Action("SupervisorTargetSetting", "TargetSettings")">
+                        <i class="fa fa-tag"></i> <span> Supervisor Target Approval</span>
+                    </a>
+                </li>
+                <li id="SupervisorMidYearAppraisals">
+                    <a href="@Url.Action("SupervisorMidYearAppraisals", "TargetSettings")">
+                        <i class="fa fa-superpowers"></i> <span> Supervisor Mid Year Comment</span>
+                    </a>
+                </li>
+                <li id="SupervisorAppraisals">
+                    <a href="@Url.Action("SupervisorAppraisals", "TargetSettings")">
+                        <i class="fa fa-arrow-circle-o-up"></i> <span>Supervisor Appraisal </span>
+                    </a>
+                </li>
+                <li id="SupervisorApprovedTargetSetting">
+                    <a href="@Url.Action("SupervisorApprovedTargetSetting", "TargetSettings")">
+                        <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Target Appraisal </span>
+                    </a>
+                </li>
+                <li id="SupervisorApprovedMidAppraisals">
+                    <a href="@Url.Action("SupervisorApprovedMidAppraisals", "TargetSettings")">
+                        <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Mid Year Appraisal </span>
+                    </a>
+                </li>
+                <li id="SupervisorApprovedAppraisals">
+                    <a href="@Url.Action("SupervisorApprovedAppraisals", "TargetSettings")">
+                        <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Supervisor Appraisal </span>
+                    </a>
+                </li>
+            </ul>
+        </li>*@
+            @*<li id="ProbationAppraisals">
+            <a href="@Url.Action("ProbationAppraisals", "TargetSettings")">
+                <i class="fa fa-id-badge"></i> <span>Probation Appraisals</span>
+            </a>
+        </li>*@
+            @*<li id="MidYearAppraisals">
+            <a href="@Url.Action("MidYearAppraisals", "TargetSettings")">
+                <i class="fa fa-battery-half"></i> <span>Mid Year Appraisals</span>
+            </a>
+        </li>
+        <li id="ApprovedMidYearAppraisals">
+            <a href="@Url.Action("ApprovedMidYearAppraisals", "TargetSettings")">
+                <i class="fa fa-battery-half"></i> <span>Approved Mid Year Appraisals</span>
+            </a>
+        </li>
+        <li id="PeerAppraisals">
+            <a href="@Url.Action("PeerAppraisals", "TargetSettings")">
+                <i class="fa fa-superpowers"></i> <span> Peer Appraisal selection</span>
+            </a>
+        </li>
+        <li id="EmployeePeerAppraisal">
+            <a href="@Url.Action("EmployeePeerAppraisal", "TargetSettings")">
+                <i class="fa fa-superpowers"></i> <span> Peer Appraisal Review</span>
+            </a>
+        </li>
+        <li id="Appraisals" class="@(ViewBag.ActiveTab == "Appraisals" ? "active" : "")">
+            <a href="@Url.Action("Appraisals", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span> Appraisals</span>
+            </a>
+        </li>
+        <li id="ApprovedAppraisals" class="@(ViewBag.ActiveTab == "ApprovedAppraisals" ? "active" : "")">
+            <a href="@Url.Action("ApprovedAppraisals", "TargetSettings")">
+                <i class="fa fa-arrow-circle-o-up"></i> <span>Approved Appraisal </span>
+            </a>
+        </li>*@
+        </ul>
+</section>
+</aside>

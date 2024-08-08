@@ -1,0 +1,237 @@
+@model DynamicsNAV365_StaffPortal.Models.HumanResource.Appraisal
+
+@{
+    ViewBag.title = "Appraisal Header";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ViewAppraisal", "TargetSettings", FormMethod.Post, new {@class = "forns"}))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h4 class="title">
+                                            <i>View/Edit Appraisal</i>
+                                        </h4>
+                                    </div>
+                                    @if (Model.Sent_to_Supervisor == null || Model.Sent_to_Supervisor == false)
+                                    {
+                                        <div class="col-md-2">
+                                            <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("AppraisalReport", new {no = Model?.No})">
+                                                <i class="fa fa-file"></i>
+                                                Appraisal Report
+                                            </a>
+                                        </div>
+                                    }
+                                    <div class="col-md-2">
+                                        <a class="btn btn-danger btn-xs pull-right" target="_blank" href="@Url.Action("AppraisalSendToSupervisor", new {no = Model?.No})">
+                                            <i class="fa fa-send-o"></i>
+                                            Send To Supervisor
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("Appraisals")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.errorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new {@id = "NoLbl", @class = "control-label"})
+                                                    @Html.EditorFor(model => model.No, new {htmlAttributes = new {@class = "form-control", @readonly = true}})
+                                                    @Html.ValidationMessageFor(model => model.No, "", new {@id = "NoError", @class = "text-danger"})
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => model.No)
+                                        @Html.HiddenFor(model => model.Supervisor)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Staff_No, htmlAttributes: new {@id = "EmployeeNoLbl", @class = "control-label"})
+                                                    @Html.EditorFor(model => model.Staff_No, new {htmlAttributes = new {@class = "form-control", @readonly = true}})
+                                                    @Html.ValidationMessageFor(model => model.Staff_No, "", new {@id = "EmployeeNoError", @class = "text-danger"})
+                                                </div>
+                                            </div>
+                                            @Html.HiddenFor(c => c.Staff_No)
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Period, htmlAttributes: new {@id = "GlobalDimension2CodeLbl", @class = "control-label"})
+                                                    @Html.DropDownListFor(model => model.Period, Model?.PeriodSelect, "", new {@class = "form-control", required = "required"})
+                                                    @Html.ValidationMessageFor(model => model.Period, "", new {@id = "GlobalDimension2CodeError", @class = "text-danger"})
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Type, htmlAttributes: new {@id = "GlobalDimension2CodeLbl", @class = "control-label"})
+                                                    @Html.DropDownListFor(model => model.Type, Model?.TypeSelect, "", new {@class = "form-control", required = "required"})
+                                                    @Html.ValidationMessageFor(model => model.Type, "", new {@id = "GlobalDimension2CodeError", @class = "text-danger"})
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Directorate, htmlAttributes: new {@id = "AmountLbl", @class = "control-label"})
+                                                    @Html.EditorFor(model => model.Directorate, new {htmlAttributes = new {@class = "form-control"}})
+                                                    @Html.ValidationMessageFor(model => model.Directorate, "", new {@id = "AmountError", @class = "text-danger"})
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        @if (Model.Sent_to_Supervisor == null || Model.Sent_to_Supervisor == false)
+                                        {
+                                            <div class="col-md-12">
+                                                <input type="submit" class="btn btn-success btn-xs pull-right ladda-button" value="Save Header"/>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLines", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineManagementReviews", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineJobKnowledgeReviews", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineProblemSolvings", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineCommunicationAndTeamWork", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineLearningGoals", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineEmployeeComments", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @{ Html.RenderAction("_AppraisalLineSuperVisorComments", new { no = Model?.No, editable = Model?.Sent_to_Supervisor == false }); }
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn close" type="button" data-dismiss="modal">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">check in agenda</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "ApplicationDocumentForm", @class = ""}))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="errorMessage" class="alert alert-info" role="alert">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input id="ImprestDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Finance/ImprestRequestScripts/ImprestRequest.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        	//Initialize Imprest Scripts
+            InitializeImprestRequest();
+
+            var docNo = $("#No").val();
+
+        });
+
+        /*function UpdateHeader() {
+            var Description = $("#PurposeOfImprest").val();
+            var CreatePV = $("#CreatePV").is(':checked')
+            var GlobalDimension2Code = $("#GlobalDimension2Code").val();
+            var DocNo = $("#No").val();
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("UpdateHeader")",
+                data: JSON.stringify({ Description: Description, CreatePV: CreatePV, GlobalDimension2Code: GlobalDimension2Code, DocNo: DocNo }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    LoadImprestLines(DocNo);
+                    LoadImprestDocuments(DocNo);
+                    Swal.fire({
+                        title: data.message,
+                        //text: 'Do you want to continue',
+                        icon: 'info',
+                        confirmButtonText: 'Ok'
+                    })
+
+                    //window.alert(data.message);
+                    window.reload();
+                }
+            });
+        }*/
+        
+        
+	</script>
+}

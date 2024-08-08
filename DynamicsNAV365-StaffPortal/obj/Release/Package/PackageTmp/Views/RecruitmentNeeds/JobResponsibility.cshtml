@@ -1,0 +1,149 @@
+@model IEnumerable<OdataRef.RecruitmentNeedsKPA>
+
+<div class="row">
+	<h4>Job Responsibility</h4>
+	<div class="col-md-12">
+		<div class="row" id="AddLine" style="">
+			<div class="col-md-12">
+				<button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AcademicProffessionalLineModal" onclick="AddJobResponsibility('@ViewBag.Id');">
+					<i class="fa fa-plus"></i> Add Job Responsibility
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="TableContainer" class="table-responsive">
+					<table id="JobResponsibilityTbl" class="table table-striped table-bordered">
+						<thead class="text-primary">
+						<tr>
+							<th>Responsibility</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						@{
+							Html.RenderPartial("_ResponsibilityModel",Model);
+						}
+						</tbody>
+					</table>
+				</div>
+				<div id="JobResponsibilityModal" class="modal fade" role="dialog" aria-labelledby="JobResponsibilityModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="JobResponsibilityModalLabel" class="modal-title">Job Responsibility Line</h4>
+							</div>
+							<div class="modal-body" id="JobResponsibilityModalBody">
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add/Edit button click handlers -->
+<script>
+    function ClearAcademicProffessionalLineModal() {
+        // Clear the form fields or perform other initialization
+    }
+
+    function EditJobResponsibilityLine(element,lineNo,NeedId) {
+        // Populate the form fields with existing data for editing
+        //console.log(JSON.stringify({id: NeedId,lineNo:lineNo}));
+        $.ajax({
+			async: true,
+			type: "Post",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({jobId: NeedId,lineNo:lineNo}),
+
+			url: '@Url.Action("AddJobResponsibility")',
+			success: function (data) {
+				$("#JobResponsibilityModalBody").html(data);
+				$("#JobResponsibilityModal").modal("show");
+				$("#JobResponsibilityModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+    }
+	function DeleteJobResponsibilityLine(element, lineNo) {
+	  $.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({Id:lineNo}),
+  
+			url: '@Url.Action("DeleteJobResponsibility")',
+			success: function (data) {
+				if(data.success){
+					// Refresh the table data
+					RefreshTableJobResponsibility();
+				}else {
+					alert("error: "+data.message);
+				}
+			}
+		});
+	}
+
+    function CreateOrUpdateJobResponsibilityLine() {
+        // Serialize the form data
+        var formData = $("#JobResponsibilityModalForm").serialize();
+
+        // Make an AJAX POST request to add or edit the data
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveJobResponsibility")", // Specify the URL for your form submission
+            data: formData,
+            success: function (response) {
+                if(response.success){
+                $("#JobResponsibilityModal").modal("hide");
+
+                // Refresh the table data
+                RefreshTableJobResponsibility();
+				}else {
+					alert("error: "+response.message);
+				}
+            },
+            error: function (error) {
+                // Handle error
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    function RefreshTableJobResponsibility() {
+        // Perform an AJAX request to reload the table data
+        $.get("@Url.Action("JobResponsibilityModels", new {id = ViewBag.Id})", function (data) {
+            // Update the table with the new data
+            $("#JobResponsibilityTbl tbody").html(data);
+        });
+    }
+	var AddJobResponsibility = function (DocNo) {
+		console.log(34)
+		$.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({jobId: DocNo}),
+
+			url: '@Url.Action("AddJobResponsibility")',
+			success: function (data) {
+				$("#JobResponsibilityModalBody").html(data);
+				$("#JobResponsibilityModal").modal("show");
+				$("#JobResponsibilityModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+	};
+	$('select').select2();
+</script>

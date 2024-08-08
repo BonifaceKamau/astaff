@@ -1,0 +1,268 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Procurement.PurchaseRequistion.PurchaseRequisitionHeaderModel
+
+@{
+    ViewBag.Title = "Edit Purchase Requisition";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render procurement sidebar-->
+    @{Html.RenderAction("_ProcurementSidebar", "ProcurementHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditPurchaseRequisition", "PurchaseRequisition", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>Edit Purchase Requisition</i></h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="button" class="btn btn-warning btn-xs pull-right ladda-button" value="Requisition Report" onclick="GenerateReport('@Model.No');" />
+                                    </div>
+                                    @*<div class="col-md-2">
+                                        <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                    </div>*@
+                                    <div class="col-md-2">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("PurchaseRequisitionHistory", "PurchaseRequisition")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+
+                                @Html.HiddenFor(model => model.EmployeeNo)
+                                @Html.HiddenFor(model => model.Status)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.RequestedReceiptDate, htmlAttributes: new { @id = "RequestedReceiptDateLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.RequestedReceiptDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.RequestedReceiptDate, "", new { @id = "RequestedReceiptDateError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*<div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.SharedType, htmlAttributes: new { @id = "SharedTypeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.SharedType, Model.SharedTypes, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.SharedType, "", new { @id = "SharedTypeError", @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        <div class="row" id="shared" style="display:none">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.ProcurementPlan, htmlAttributes: new { @id = "ProcurementPlanLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.ProcurementPlan, Model.ProcurementPlans, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ProcurementPlan, "", new { @id = "ProcurementPlanError", @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.ProcurementPlanItem, htmlAttributes: new { @id = "ProcurementPlanItemLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.ProcurementPlanItem, Model.ProcurementPlanItems, "", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ProcurementPlanItem, "", new { @id = "ProcurementPlanItemError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="button" class="btn btn-success btn-xs pull-right ladda-button" value="Update Header" onclick="UpdateHeader()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    }
+                        <div class="card-footer">
+                           
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render purchase requisition line partial view-->
+                                    @{Html.RenderAction("_PurchaseRequisitionLine", "PurchaseRequisition", new { PurchaseRequisitionNo = Model.No });}
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="divAttachDocs"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@*//////////////////////Modal View Doc////////////////////////////*@
+<div class="modal fade" id="myModalAttachment" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content bg-white">
+            <div class="modal-header">
+                <h4 class="modal-title">Attachment</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalAttachmentBody" style="width:100%;height:450px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger waves-effect " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ApplicationDocumentForm", @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.No)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="errorMessage" class="alert alert-info" role="alert">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input id="ApplicationDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                                        </div>
+                                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-8">
+                    <button id="UploadPurchaseRequisitionDocumentBtn" class="btn btn-warning btn-xs" type="button" onclick="UploadPurchaseRequsitionDocuments();"><i class="fa fa-adjust" style="align-content:center"></i>Upload Document</button>
+                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/Procurement/PurchaseRequisitionScripts/PurchaseRequisition.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	$("#PurchaseRequisitionHistoryMenuItem").addClass("active");
+
+        	//Initialize Purchase  Scripts
+        	InitializePurchaseRequisition();
+
+        	var DocumentNo = $("#No").val();
+        	LoadPurchaseRequisitionLines(DocumentNo);
+        	LoadPurchaseRequisitionDocuments(DocumentNo);
+        	GetDimension1();
+
+        });
+
+        var GenerateReport = function (DocNo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: "json",
+                contentType: "application/json; charset = utf-8",
+                processData: false,
+                data: JSON.stringify({ DocNo: DocNo}),
+
+                url: '/PurchaseRequisition/GenerateReport',
+                success: function (data) {
+                    window.open(data.message, '_blank').focus();
+                    //window.alert(data.message);
+                    //window.location.reload();
+                },
+                error: function () {
+                    window.alert(data.message);
+                }
+            });
+        };
+
+        function UpdateHeader() {
+            var Description = $("#Description").val();
+            var SharedType = "";
+            var ProcurementPlan = "";
+            var ProcurementPlanItem = "";
+            var Amount = "";
+            var DocNo = $("#No").val();
+
+
+            $.ajax({
+                type: "POST",
+                url: "/PurchaseRequisition/UpdateHeader",
+                data: JSON.stringify({ Description: Description, SharedType: SharedType, ProcurementPlan: ProcurementPlan, ProcurementPlanItem: ProcurementPlanItem, Amount: Amount, DocNo: DocNo}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    LoadPurchaseRequisitionLines(documentNo);
+                    Swal.fire({
+                        title: data.message,
+                        //text: 'Do you want to continue',
+                        icon: 'info',
+                        confirmButtonText: 'Ok'
+                    })
+
+                    //window.alert(data.message);
+                    //window.reload();
+                }
+            });
+        }
+    </script>
+}

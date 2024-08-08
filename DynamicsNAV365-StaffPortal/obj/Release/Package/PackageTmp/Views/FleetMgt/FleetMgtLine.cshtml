@@ -1,0 +1,125 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.HumanResource.FleetMgt.FleetLinesList
+
+@{
+    //var dcodataServices = new BCODATAServices("");
+    //var employeesList = dcodataServices.BCOData.Employees.ToList();
+}
+<div class="table-responsive">
+    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>RegNo.</th>
+            <th>Staff Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Odo. Start</th>
+            <th>Odo. End</th>
+            <th>Distance(KM)</th>
+            <th>Litres</th>
+            <th>Amount</th>
+            <th>Region</th>
+            <th>Program</th>
+            <th>Geography</th>
+            <th>Component</th>
+            <th>Intervention</th>
+            <th>Program Area</th>
+            <th>Beneficiary</th>
+            <th>Purpose of travel</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            if (Model.ListofFleetLines != null && Model.ListofFleetLines.Any())
+            {
+                foreach (var item in Model.ListofFleetLines)
+                {
+                    var startTime = !string.IsNullOrEmpty(item.StartTime) ? Convert.ToDateTime(item.StartTime).ToString("t") : "";
+                    var endTime = !string.IsNullOrEmpty(item.EndTime) ? Convert.ToDateTime(item.EndTime).ToString("t") : "";
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VehicleNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.From)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.To)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => startTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => endTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OdometerStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OdometerEnd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DistanceCovered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Litres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension4)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension5)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension6)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dimension7)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Purpose)
+                        </td>
+                        @if (item.Status == "Open")
+                        {
+                            <td style="text-align:right" class="tdAction">
+                                <a href="javascript:void(0);" class="mr-3 text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="EditItem('@item.EntryNo','@item.No');"><i class="fa fa-edit"></i> Edit</a>|
+                                <a href="javascript:void(0);" class="mr-3 text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="DeleteItem('@item.EntryNo','@item.No',this);"><i class="fa fa-remove"></i> Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="15" style="color:red">
+                        No Records Found
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>
+<hr/>

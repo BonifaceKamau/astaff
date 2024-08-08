@@ -1,0 +1,90 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.Approvals.ApprovalEntryModel>
+
+@{
+	ViewBag.Title = "Approvers";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render Approval Sidebar-->
+	@{Html.RenderAction("_ApprovalSidebar", "Approval");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header" data-background-color="company_card">
+							<div class="row">
+								<div class="col-md-4">
+									<h4 class="title"><i>Approval Workflow</i></h4>
+								</div>
+								<div class="col-md-8">
+									<a class="btn btn-danger btn-xs pull-right" href="@Url.Action("Index", "Home")">
+										<i class="fa fa-close"></i>
+										Close
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="card-content">
+							<div class="row">
+								<div class="col-md-12">
+									<div id="TableContainer" class="table-responsive">
+										<table id="ApprovalTbl" class="stripe">
+											<thead class="text-primary">
+												<tr>
+													<th>Document No.</th>
+													<th>Sequence No.</th>
+													<th>Approver Name </th>
+													<th>Status</th>
+													<th>Date Sent for Approval</th>
+												</tr>
+											</thead>
+											<tbody>
+												@{				
+													string viewUrl = "";
+													for (int i = 0; i < Model.Count; i++)
+													{
+														viewUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].DocumentNo;
+														<tr>
+															<td>@Model[i].DocumentNo</td>
+															<td>@Model[i].SequenceNo</td>
+															<td>@Model[i].ApproverID</td>
+															<td>@Model[i].Status</td>
+															<td>@Model[i].DateTimeSentforApproval</td>
+														</tr>		
+													}
+												}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+
+</div>
+@section scripts{
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#RequestsToApprovalMenuItem").addClass("active");
+
+            $("#ApprovalTbl").dataTable({
+            	"order": [[0, "DocumentNo"]],
+            	"columnDefs": [{
+            		"targets": [1,2,3,4],
+            		"orderable": false,
+            	}],
+
+            	"fixedColumns": true
+            });
+        });
+	</script>
+}
+

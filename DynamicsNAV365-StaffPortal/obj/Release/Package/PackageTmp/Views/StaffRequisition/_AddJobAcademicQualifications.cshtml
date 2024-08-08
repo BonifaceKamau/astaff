@@ -1,0 +1,81 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.StaffRequisition.AcademicRequirements
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-briefcase fa-fw"></i> 1). Minimum Academic Requirements
+            </div>
+            <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#JobAcademicRequirementsModal" onclick="ClearJobAcademicRequirementsModal();">
+                <i class="fa fa-plus"></i>
+                Add Academic Requirement
+            </button><br />
+            <table id="AcademicRequirementsTbl" class="table table-striped table-responsive table-condensed">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+        <div id="JobAcademicRequirementsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="JobAcademicRequirementsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 id="JobAcademicRequirementsModalLabel" class="modal-title">Minimum Academic Requirements</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "JobAcademicRequirementsModalForm", @class = "" })) 
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model != null && Model.LineErrorStatus == true)
+                            {
+                                <div class="col-md-12">
+                                    <div id="errorMessage" class="alert alert-danger" role="alert">
+                                    </div>
+                                </div>
+                            }
+
+                            @Html.HiddenFor(model => model.LineNo)
+                            @Html.HiddenFor(model => model.DocumentNo)
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Code, htmlAttributes: new { @id = "CodeLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Code, Model.AcademicLevels, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Code, "", new { @id = "CodeError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Description1, htmlAttributes: new { @id = "Description1Lbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.Description1, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description1, "", new { @id = "Description1Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CreateJobAcademicBtn" class="btn btn-xs btn-primary" type="button" onclick="CreateJobAcademicRequirement();"><i class="fa fa-plus"></i>Save</button>
+                        <button id="ModifyJobAcademicBtn" class="btn btn-xs btn-primary" type="button" onclick="ModifyJobAcademicRequirement();"><i class="fa fa-adjust"></i>Update</button>
+                        <button class="btn btn-xs btn-danger" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

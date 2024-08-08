@@ -1,0 +1,158 @@
+@model System.Linq.IQueryable<OdataRef.AcademicRequirements>
+
+<div class="row">
+	<h4>ACADEMIC & PROFFESSIONAL QUALIFICATION</h4>
+	<div class="col-md-12">
+		<div class="row" id="AddLine" style="">
+			<div class="col-md-12">
+				<button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AcademicProffessionalLineModal" onclick="AddAcademicQualification('@ViewBag.Need_Id');">
+					<i class="fa fa-plus"></i> Add ACADEMIC & PROFFESSIONAL QUALIFICATION
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="TableContainer" class="table-responsive">
+					<table id="AcademicRequirementsTbl" class="table table-striped table-bordered">
+						<thead class="text-primary">
+						<tr>
+							<th>Qualification_Type</th>
+							@*<th>Education_Level_Id</th>*@
+							<th>Education_Level_Name</th>
+							@*<th>Course_Id</th>*@
+							<th>Course_Name</th>
+							@*<th>Grade_Id</th>
+							<th>Grade_Name</th>*@
+							<th>Mandatory</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						@{
+							Html.RenderPartial("_academicRequirementsModels",Model);
+						}
+						</tbody>
+					</table>
+				</div>
+				<div id="PROFFESSIONALLineModal" class="modal fade" @*tabindex="-1"*@ role="dialog" ke aria-labelledby="myModalLogs" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0" id="myModalLabel">Add ACADEMIC & PROFFESSIONAL QUALIFICATION</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="PROFFESSIONALLineModalBody">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add/Edit button click handlers -->
+<script>
+    function ClearAcademicProffessionalLineModal() {
+        // Clear the form fields or perform other initialization
+    }
+
+    function EditAcademicProffessionalLine(element,lineNo,NeedId) {
+        // Populate the form fields with existing data for editing
+        //console.log(JSON.stringify({id: NeedId,lineNo:lineNo}));
+        $.ajax({
+			async: true,
+			type: "Post",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: NeedId,lineNo:lineNo}),
+
+			url: '@Url.Action("AddAcademicQualification")',
+			success: function (data) {
+				$("#PROFFESSIONALLineModalBody").html(data);
+				$("#PROFFESSIONALLineModal").modal("show");
+				$("#PROFFESSIONALLineModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+    }
+	function DeleteAcademicProffessionalLine(element, lineNo) {
+	  $.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({lineNo:lineNo}),
+  
+			url: '@Url.Action("DeleteAcademicQualification")',
+			success: function (data) {
+				if(data.success){
+					// Refresh the table data
+					RefreshTableQualifications();
+				}else {
+					alert("error: "+data.message);
+				}
+			}
+		});
+	}
+
+    function CreateOrUpdateAcademicProffessionalLine() {
+        // Serialize the form data
+        var formData = $("#AcademicQualificationsForm").serialize();
+
+        // Make an AJAX POST request to add or edit the data
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveAcademicQualifications")", // Specify the URL for your form submission
+            data: formData,
+            success: function (response) {
+                if(response.success){
+                $("#PROFFESSIONALLineModal").modal("hide");
+
+                // Refresh the table data
+                RefreshTableQualifications();
+				}else {
+					alert("error: "+response.message);
+				}
+            },
+            error: function (error) {
+                // Handle error
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    function RefreshTableQualifications() {
+        // Perform an AJAX request to reload the table data
+        $.get("@Url.Action("academicRequirementsModels", new {id =ViewBag.Need_Id})", function (data) {
+            // Update the table with the new data
+            $("#AcademicRequirementsTbl tbody").html(data);
+        });
+    }
+	var AddAcademicQualification = function (DocNo) {
+		console.log(34)
+		$.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: DocNo}),
+
+			url: '@Url.Action("AddAcademicQualification")',
+			success: function (data) {
+				$("#PROFFESSIONALLineModalBody").html(data);
+				$("#PROFFESSIONALLineModal").modal("show");
+				$("#PROFFESSIONALLineModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+	};
+	$('select').select2();
+</script>

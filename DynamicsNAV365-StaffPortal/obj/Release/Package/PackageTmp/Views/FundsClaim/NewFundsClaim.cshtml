@@ -1,0 +1,120 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.FundsClaim.FundsClaimHeaderModel
+
+@{
+	ViewBag.Title = "New Funds Claim";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render Finance Sidebar-->
+	@{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						@using (Html.BeginForm("NewFundsClaim", "FundsClaim", FormMethod.Post, new { @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="card-header" data-background-color="company_card">
+								<div class="row">
+									<div class="col-md-4">
+										<h4 class="title"><i>New Funds Claim Request</i></h4>
+									</div>
+									<div class="col-md-8">
+										<a class="btn btn-danger btn-xs pull-right" href="@Url.Action("FundsClaimHistory", "FundsClaim")">
+											<i class="fa fa-close"></i>
+											Close
+										</a>
+										<input id="submitBtn" class="btn btn-white btn-xs pull-right ladda-button" type="submit" value="Submit For Approval" data-style="slide-right" data-background-color="login_card" />
+									</div>
+								</div>
+							</div>
+							<div class="card-content">
+								@if (Model != null && Model.ErrorStatus == true)
+								{
+									<div class="alert alert-danger">
+										<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+									</div>
+								}
+								<div class="row">
+									<div class="col-md-6">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#">General Details</a></li>
+										</ul>
+										<br />
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+													@Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group label-floating">
+													@Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", } })
+													@Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group label-static">
+													@Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+													@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+													@Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#">Required Documents</a></li>
+										</ul>
+										<br />
+										<div class="row">
+											<div class="col-md-12">
+												<!--Render Required Documents Partial View-->
+												@{Html.RenderAction("_UploadDocumentLine", "FundsClaim", new { DocumentNo = Model.No });}
+											</div>
+										</div>
+										<br /><br />
+									</div>
+								</div>
+							</div>
+													}
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-12">
+									<!--Render funds claim line partial view-->
+									@{Html.RenderAction("_FundsClaimLine", "FundsClaim", new { ImprestNo = Model.No });}
+								</div>
+							</div>
+							<div class="row"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+	<script src="~/Scripts/Finance/FundsClaimScripts/FundsClaimScripts.js"></script>
+	<script type="text/javascript">
+
+        $(document).ready(function () {
+        	//Add CSS Classes
+        	$("#ImprestRequestHistoryMenuItem").addClass("active");
+
+        	var DocumentNo = $("#No").val();
+        	LoadAttachedDocuments(DocumentNo);
+        	LoadFundsClaimLines(DocumentNo);
+
+        	//Initialize Funds claim Scripts
+        	InitializeFundsClaimScripts();
+
+        });
+	</script>
+}

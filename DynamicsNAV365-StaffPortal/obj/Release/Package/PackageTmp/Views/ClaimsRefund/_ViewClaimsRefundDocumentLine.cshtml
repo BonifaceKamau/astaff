@@ -1,0 +1,72 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.DocumentMgmt.DocumentMgmtModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="TableContainer" class="table-responsive">
+                    <table id="ClaimsRefundDocumentsTbl" class="table table-striped table-bordered" style="display:none;">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>Document Description</th>
+                                @*<th>Document Attached</th>*@
+                                <th style="color:red">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div id="ClaimsRefundDocumentModal" class="modal fade" role="dialog" aria-labelledby="ClaimsRefundDocumentModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                <h4 id="ClaimsRefundDocumentModalLabel" class="modal-title" style="text-align:center"></h4>
+                            </div>
+                            <div class="modal-body">
+
+                                @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ClaimsRefundDocumentForm", @class = "" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    @Html.HiddenFor(model => model.DocumentNo)
+                                    @Html.HiddenFor(model => model.DocumentCode)
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="errorMessage" class="alert alert-danger" role="alert">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-static">
+                                                @Html.LabelFor(model => model.DocumentDescription, htmlAttributes: new { @id = "DocumentDescriptionLbl", @class = "control-label" })
+                                                @Html.EditorFor(model => model.DocumentDescription, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.DocumentDescription, "", new { @id = "DocumentDescriptionError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input id="ApplicationDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-md-8">
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

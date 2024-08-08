@@ -1,0 +1,144 @@
+@model DynamicsNAV365_StaffPortal.Models.Finance.StaffAdvance.RequestHeader
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("NewStaffAdvance", "StaffAdvance", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>New Staff Adavance</i></h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("OpenStaffAdvance" )">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            @*<div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.RequestDate, htmlAttributes: new { @id = "DateFromLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.RequestDate, new { htmlAttributes = new { @class = "form-control" ,@readonly = true} })
+                                                    @Html.ValidationMessageFor(model => model.RequestDate, "", new { @id = "DateFromError", @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.PurposeOfImprest, htmlAttributes: new { @id = "DateToLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.PurposeOfImprest, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.PurposeOfImprest, "", new { @id = "DateToError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.CreatePV, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.CreatePV, new { htmlAttributes = new { @class = "form-control" } })
+                                                    <input type="hidden" value="False" name="CreatePV">
+                                                    @Html.ValidationMessageFor(model => model.CreatePV, "", new { @id = "AmountError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">Required Documents</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!--Render Application Documents Partial View-->
+                                                @{Html.RenderAction("_AdvanceDocumentLine", new { DocumentNo = Model.No });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render imprest line partial view-->
+                                    @{Html.RenderAction("_AdvanceLine", new { ImprestNo = Model.No });}
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/Finance/ImprestRequestScripts/ImprestRequest.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //Initialize Imprest Scripts
+            InitializeImprestRequest();
+
+			var docNo = $("#No").val();
+            LoadImprestLines(docNo);
+            LoadImprestDocuments(docNo);
+            GetImprestAmount(docNo);
+
+        });
+    </script>
+}

@@ -1,0 +1,153 @@
+@model IEnumerable<OdataRef.RecruitmentNeedsSkills>
+
+<div class="row">
+	<h4>Skills</h4>
+	<div class="col-md-12">
+		<div class="row" id="AddLine" style="">
+			<div class="col-md-12">
+				<button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AcademicProffessionalLineModal" onclick="AddSkills('@ViewBag.Id');">
+					<i class="fa fa-plus"></i> Add Skills
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="TableContainer" class="table-responsive">
+					<table id="SkillsTbl" class="table table-striped table-bordered">
+						<thead class="text-primary">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Remarks</th>
+							<th>Mandatory</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						@{
+							Html.RenderPartial("_SkillModel",Model);
+						}
+						</tbody>
+					</table>
+				</div>
+				<div id="SkillsModal" class="modal fade" role="dialog" aria-labelledby="SkillsModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="SkillsModalLabel" class="modal-title">Skill Line</h4>
+							</div>
+							<div class="modal-body" id="SkillsModalBody">
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add/Edit button click handlers -->
+<script>
+    function ClearAcademicProffessionalLineModal() {
+        // Clear the form fields or perform other initialization
+    }
+
+    function EditSkillsLine(element,lineNo,NeedId) {
+        // Populate the form fields with existing data for editing
+        //console.log(JSON.stringify({id: NeedId,lineNo:lineNo}));
+        $.ajax({
+			async: true,
+			type: "Post",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: NeedId,lineNo:lineNo}),
+
+			url: '@Url.Action("AddSkill")',
+			success: function (data) {
+				$("#SkillsModalBody").html(data);
+				$("#SkillsModal").modal("show");
+				$("#SkillsModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+    }
+	function DeleteSkillsLine(element, lineNo) {
+	  $.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({Id:lineNo}),
+  
+			url: '@Url.Action("DeleteSkills")',
+			success: function (data) {
+				if(data.success){
+					// Refresh the table data
+					RefreshTableSkills();
+				}else {
+					alert("error: "+data.message);
+				}
+			}
+		});
+	}
+
+    function CreateOrUpdateSkillsLine() {
+        // Serialize the form data
+        var formData = $("#SkillsModalForm").serialize();
+
+        // Make an AJAX POST request to add or edit the data
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveSkills")", // Specify the URL for your form submission
+            data: formData,
+            success: function (response) {
+                if(response.success){
+                $("#SkillsModal").modal("hide");
+
+                // Refresh the table data
+                RefreshTableSkills();
+				}else {
+					alert("error: "+response.message);
+				}
+            },
+            error: function (error) {
+                // Handle error
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    function RefreshTableSkills() {
+        // Perform an AJAX request to reload the table data
+        $.get("@Url.Action("SkillsModels", new {id = ViewBag.Id})", function (data) {
+            // Update the table with the new data
+            $("#SkillsTbl tbody").html(data);
+        });
+    }
+	var AddSkills = function (DocNo) {
+		console.log(34)
+		$.ajax({
+			async: true,
+			type: "POST",
+			datatype: "json",
+			contentType: "application/json; charset = utf-8",
+			processData: false,
+			data: JSON.stringify({id: DocNo}),
+
+			url: '@Url.Action("AddSkill")',
+			success: function (data) {
+				//console.log(data)
+				$("#SkillsModalBody").html(data);
+				$("#SkillsModal").modal("show");
+				$("#SkillsModalBody").find("select").select2(); // Find and reset select elements
+			}
+		});
+	};
+	$('select').select2();
+</script>

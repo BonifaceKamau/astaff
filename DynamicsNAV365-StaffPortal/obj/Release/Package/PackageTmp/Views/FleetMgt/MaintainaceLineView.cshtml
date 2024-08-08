@@ -1,0 +1,238 @@
+@model IEnumerable<OdataRef.Maintanance_and_repair_CardService_and_Repair_Lines>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#MidYearLineModal" onclick="ClearLineModal();">
+                    <i class="fa fa-shopping-cart"></i> Add service and repair line
+                </button>
+            </div>
+        </div>
+        <div id="" class="table-responsive">
+            <table id="LineTbl" class="table table-striped table-bordered">
+                <thead class="text-primary">
+                <tr>
+                    <th>Description.</th>
+                    <th>Amount</th>
+                    <th>.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var Repair_Line in Model)
+                {
+                    <tr>
+                        <td>@Repair_Line.Description</td>
+                        <td class="LineCost">@Repair_Line.Cost</td>
+                        <td>
+                            @if (ViewBag.editable == true)
+                            {
+                                <a onclick="return EditMaintainanceLine(this,'@Repair_Line.Line_No','@Repair_Line.Description','@Repair_Line.Cost')">Edit</a><span>|</span>
+                                <a onclick = "DeleteMaintainanceLine(this,'@Repair_Line.Line_No')" >Delete</a>
+                            }
+                            
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="MidYearLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "MiddleYearLineForm", @class = ""}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn close" type="button" data-dismiss="modal">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <h4 id="StoreRequisitionLineModalLabel" class="modal-title">service and repair line</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Header_No" value="@ViewBag.no"/>
+                                    <input type="hidden" name="Line_No" id="Modal_No" value=""/>
+                                    <input type="hidden" name="Command" id="command" value="create"/>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Description</label>
+                                                <input type="text" class="form-control" name="Description" id="Modal_Description">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Cost</label>
+                                                <input type="text" class="form-control" name="Cost" id="Modal_Cost">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button id="CreateMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateMidYearLine(this);"><i class="fa fa-plus"></i>Add Line</button>*@
+                                    <button id="ModifyMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyMaintainanceLine(this);"><i class="fa fa-adjust"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalLogs" class="modal fade" tabindex="-1" role="dialog" ke aria-labelledby="myModalLogs" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Add Entry</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBodyLogs">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    $("select").select2();
+	function EditMaintainanceLine(element, No,description,cost) {
+	  $("#Modal_No").val(No);
+	  $("#Modal_Description").val(description);
+	  $("#Modal_Cost").val(cost);
+      $('#command').val("edit");
+	  $("#MidYearLineModal").modal("show");
+	}
+    
+	function ModifyMaintainanceLine(element) {
+	  var data = $(element).closest("form").serialize();
+	  console.log(data)
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("ModifyMaintainanceLine")',
+			data: data,
+			dataType: 'json',
+			success: function (result) {
+				if (result.success){
+                    $("#MidYearLineModal").modal("hide");
+                    $("#MidYearLineConcernModal").modal("hide");
+                    $("#MidYearAgreedActionsLineModal").modal("hide");
+                    LoadMidyearLines(result.entryNo)
+					Swal.fire("success","Saved Successfully","success");
+				}
+				else Swal.fire("error",result.message,"error");
+			},
+			error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+		})
+	}
+    
+    function LoadMidyearLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadMaintainancelines")',
+            type: "GET",
+            dataType: "json",
+            data: { DocNo: '@ViewBag.no' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+    
+                $.each(Lines, function (i, Line) {
+                    $("#AddReqLine").css("display", "block");
+                    let row = `
+                        <tr>
+                            <td>${Line.Description}</td>
+                            <td class="LineCost">${Line.Cost}</td>
+                            <td>
+                                <a href="#" onclick="EditMaintainanceLine(this, '${Line.Line_No}', '${Line.Description}', '${Line.Cost}')">Edit</a> |
+                                <a href="#" onclick="DeleteMaintainanceLine(this,'${Line.Line_No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+    
+                // remove existing table rows
+                $("#LineTbl tbody tr").remove();
+    
+                // add new table rows
+                $("#LineTbl tbody").append(rows);
+                //calculate header amount
+                SumLineNos();
+            },
+            error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+        });
+    }
+    function ClearLineModal() {
+      $("#Modal_No").val("");
+      $("#Modal_Description").val("");
+      $("#Modal_Cost").val("");
+      $("#Modal_No").val("");
+        $("#Modal_Description").text('');
+        $("#Modal_Cost").text('');
+      $('#command').val("create");
+    }
+    function DeleteMaintainanceLine(element,entryNo) {
+      $.ajax({
+            type: 'GET',
+            url: '@Url.Action("DeleteMaintainanceLine")',
+            data: {No:entryNo},
+            dataType: 'json',
+            success: function (result) {
+                if (result.success){
+                      $(element).closest("tr").remove();
+                    Swal.fire("success","Deleted Successfully","success");
+                }
+                else Swal.fire("error",result.message,"error");
+                //calculate header amount
+                SumLineNos();
+            },
+            error: function (xhr, errorType, exception) {
+                Swal.fire("error",xhr.responseText,"error");
+            }
+        })
+    }
+    function SumLineNos() {
+      var total = 0;
+      $(document).find('.LineCost').each(function() {
+        var value = parseFloat($(this).text());
+        if (!isNaN(value)) {
+          total += value;
+        }
+      });
+      $(".HeaderAmount").val(total);
+      $.ajax({
+                  url: '@Url.Action("UpdateMaintainanceHeader")',
+                  type: "GET",
+                  dataType: "json",
+                  data: { DocNo: '@ViewBag.no', amount: total },
+                  cache: false,
+                  success: function (Lines) {
+                      if (Lines.success){
+                          
+                      }else{
+                          Swal.fire("error",Lines.message,"error");
+                      }
+                      console.log(Lines);
+                  },
+                  error: function (xhr, errorType, exception) {
+                                  Swal.fire("error",xhr.responseText,"error");
+                              }
+              });
+    }
+    SumLineNos();
+   
+</script>

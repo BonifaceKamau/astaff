@@ -1,0 +1,238 @@
+@model System.Collections.Generic.List<OdataRef.MidYear_Appraisal_Lines>
+
+@{
+    bool? editable = ViewBag.editable;
+    bool? isSupervisor =ViewBag.isSupervisor;
+    var supervisorComment = isSupervisor == false ? "readonly" : "";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            @if (editable == true)
+            {
+                if (isSupervisor == null || isSupervisor == false)
+                {
+                    <div class="col-md-12">
+                        <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#MidYearLineModal" onclick="ClearLineModal();">
+                            <i class="fa fa-shopping-cart"></i> Add quartaly check-in agenda
+                        </button>
+                    </div>
+                }
+            }
+            
+            
+        </div>
+        <div id="" class="table-responsive">
+            <table id="LineTbl" class="table table-striped table-bordered">
+                <thead class="text-primary">
+                <tr>
+                    <th>ItemDescription.</th>
+                    <th>success measure</th>
+                    <th>achievements</th>
+                    <th>Supervisor Comment</th>
+                    <th>.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var midYearAppraisalLines in Model)
+                {
+                    <tr>
+                        <td>@midYearAppraisalLines.Items_Description</td>
+                        <td>@midYearAppraisalLines.Success_Measure</td>
+                        <td>@midYearAppraisalLines.Staff_Comments</td>
+                        <td>@midYearAppraisalLines.Supervisor_Comments</td>
+                        <td>
+                            @if (ViewBag.editable == true)
+                            {
+                                <a onclick="return EditMidYearLine(this,`@midYearAppraisalLines.Entry_No`,`@midYearAppraisalLines.Items_Description`,`@midYearAppraisalLines.Success_Measure`,`@midYearAppraisalLines.Staff_Comments`,`@midYearAppraisalLines.Supervisor_Comments`)">Edit</a><span>|</span>
+                                @*<a onclick = "DeleteMidYearLine(this,'@midYearAppraisalLines.Entry_No')" >Delete</a>*@
+                            }
+                            
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="MidYearLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "MiddleYearLineForm", @class = ""}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn close" type="button" data-dismiss="modal">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <h4 id="StoreRequisitionLineModalLabel" class="modal-title">quartaly check-in agenda</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Doc_No" value="@ViewBag.no"/>
+                                    <input type="hidden" name="Entry_No" id="Entry_No" value=""/>
+                                    <input type="hidden" name="Type" id="Type" value="2"/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Item/Description</label>
+                                                <input type="text" class="form-control" name="Items_Description" id="Items_Description">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">success measure</label>
+                                                <input type="text" class="form-control" name="Success_Measure" id="Success_Measure">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">achievements</label>
+                                                <input type="text" class="form-control" name="Staff_Comments" id="Staff_Comments">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Supervisor Comment</label>
+                                                <input type="text" class="form-control" name="Supervisor_Comments" @supervisorComment id="Supervisor_Comment">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button id="CreateMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateMidYearLine(this);"><i class="fa fa-plus"></i>Add Line</button>*@
+                                    <button id="ModifyMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyMidYearLine(this);"><i class="fa fa-adjust"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    /*function CreateMidYearLine(element) {
+		var data = $(element).closest("form").serialize();
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("SaveLine")',
+			data: data,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data)
+				$('#Inventory').val(data.AvailableInventory);
+			},
+			error: function () {
+				Swal.fire("error","","error");
+			}
+		})
+    }*/
+	function EditMidYearLine(element, entryNo,description,measure,staffComment,SuperVisorComment) {
+	  $("#Entry_No").val(entryNo);
+	  $("#Items_Description").val(description);
+	  $("#Success_Measure").val(measure);
+	  $("#Staff_Comments").val(staffComment);
+	  $("#Supervisor_Comment").val(SuperVisorComment);
+	  $("#MidYearLineModal").modal("show");
+	}
+    
+	function ModifyMidYearLine(element) {
+	  var data = $(element).closest("form").serialize();
+	  console.log(data)
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("ModifyMidYearLine")',
+			data: data,
+			dataType: 'json',
+			success: function (result) {
+				if (result.success){
+                    $("#MidYearLineModal").modal("hide");
+                    $("#MidYearLineConcernModal").modal("hide");
+                    $("#MidYearAgreedActionsLineModal").modal("hide");
+                    LoadMidyearLines(result.entryNo)
+					Swal.fire("success","Saved Successfully","success");
+				}
+				else Swal.fire("error",result.message,"error");
+			},
+			error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+		})
+	}
+    
+    function LoadMidyearLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadMidYearlines")',
+            type: "GET",
+            dataType: "json",
+            data: { DocumentNo: '@ViewBag.no' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+    
+                $.each(Lines, function (i, Line) {
+                    $("#AddReqLine").css("display", "block");
+                    let row = `
+                        <tr>
+                            <td>${Line.Items_Description}</td>
+                            <td>${Line.Success_Measure}</td>
+                            <td>${Line.Staff_Comments}</td>
+                            <td>${Line.Supervisor_Comments}</td>
+                            <td>
+                                <a href="#" onclick="EditMidYearLine(this, "${Line.Entry_No}", "${Line.Items_Description}", "${Line.Success_Measure}", "${Line.Staff_Comments}", "${Line.Supervisor_Comments}")">Edit</a> |
+                                <a href="#" onclick="DeleteMidYearLine(this,'${Line.Entry_No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+    
+                // remove existing table rows
+                $("#LineTbl tbody tr").remove();
+    
+                // add new table rows
+                $("#LineTbl tbody").append(rows);
+            },
+            error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+        });
+    }
+    function ClearLineModal() {
+      $("#Entry_No").val("");
+        console.log($("#Entry_No").val())
+      $("#Items_Description").val("");
+      $("#Success_Measure").val("");
+      $("#Staff_Comments").val("");
+      $("#Supervisor_Comment").val("");
+        $("#Items_Description").text('');
+        $("#Success_Measure").text('');
+        $("#Staff_Comments").text('');
+        $("#Supervisor_Comment").text('');
+    }
+    function DeleteMidYearLine(element,entryNo) {
+        if (confirm("Are you sure you want to delete this line ?")){
+          $.ajax({
+                type: 'GET',
+                url: '@Url.Action("DeleteMidYearLine")',
+                data: {entryNo:entryNo},
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success){
+                          $(element).closest("tr").remove();
+                        Swal.fire("success","Deleted Successfully","success");
+                    }
+                    else Swal.fire("error",result.message,"error");
+                },
+                error: function (xhr, errorType, exception) {
+                    Swal.fire("error",xhr.responseText,"error");
+                }
+            })
+      }
+    }
+   
+</script>

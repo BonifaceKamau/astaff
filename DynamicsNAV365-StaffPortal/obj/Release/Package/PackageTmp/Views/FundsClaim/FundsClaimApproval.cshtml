@@ -1,0 +1,130 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.FundsClaim.FundsClaimHeaderModel
+
+@{
+	ViewBag.Title = "View Funds Claim Request";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render Finance Sidebar-->
+	@{Html.RenderAction("_FinanceSidebar", "FinanceHome");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						@using (Html.BeginForm("FundsClaimApproval", "FundsClaim", FormMethod.Post, new { @class = "" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="card-header" data-background-color="company_card">
+								<div class="row">
+									<div class="col-md-4">
+										<h5 class="title"><i><strong>Approve/Reject Funds Claim Request</strong></i></h5>
+									</div>
+									<div class="col-md-8">
+										<div class="pull-right">
+											<button type="submit" id="btnApprove" name="Command" value="Approve" class="btn btn-success btn-xs ladda-button" data-style="slide-right">
+												<span class="ladda-label">
+													<i class="fa fa-check-circle"></i>
+													Approve
+												</span>
+											</button>
+											<button type="submit" id="btnReject" name="Command" value="Reject" class="btn btn-danger btn-xs ladda-button" data-style="slide-right">
+												<span class="ladda-label">
+													<i class="fa fa-close"></i>
+													Reject
+												</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-content">
+								@if (Model != null && Model.ErrorStatus == true)
+								{
+									<div class="alert alert-danger">
+										<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+									</div>
+								}
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group label-floating">
+											@Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+											@Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+											@Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											@Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @id = "EmployeeNoLbl", @class = "control-label" })
+											@Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+											@Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @id = "EmployeeNoError", @class = "text-danger" })
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											@Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+											@Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+											@Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											@Html.LabelFor(model => model.Amount, htmlAttributes: new { @id = "AmountLbl", @class = "control-label" })
+											@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+											@Html.ValidationMessageFor(model => model.Amount, "", new { @id = "AmountError", @class = "text-danger" })
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											@Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+											@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+											@Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+										</div>
+									</div>
+								</div>
+							</div>
+						}
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-12">
+									<!--Render imprest line partial view-->
+									@{Html.RenderAction("_ViewFundsClaimLine", "FundsClaim", new { FundsClaimNo = Model.No });}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<a class="btn btn-danger pull-right" href="@Url.Action("RequestsToApprove", "Approval")">
+										<i class="fa fa-close"></i>
+										Close
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+</div>
+@section scripts{
+	<script src="~/Scripts/Finance/ImprestRequestScripts/ImprestRequest.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#ImprestRequestHistoryMenuItem").addClass("active");
+
+        	//Load dimensions
+          //  LoadDimensionValues();
+
+        	//Initialize Imprest Scripts
+            InitializeImprestRequest();
+
+            var DocumentNo = $("#No").val();
+            ViewImprestLines(DocumentNo);
+
+        });
+	</script>
+}

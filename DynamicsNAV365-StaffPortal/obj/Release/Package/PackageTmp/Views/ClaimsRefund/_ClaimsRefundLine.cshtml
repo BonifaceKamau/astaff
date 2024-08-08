@@ -1,0 +1,158 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Finance.ClaimsRefund.ClaimsRefundLineModel
+
+<div class="row">
+    <div class="col-md-12">
+        @*<button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#ClaimsRefundLineModal" onclick="ValidateClaimsRefundHeader();">
+            <i class="fa fa-plus"></i>
+            Add Claims/Refund Line
+        </button><br />*@
+        <div id="TableContainer" class="table-responsive">
+            <table id="ClaimsRefundLineTbl" class="table table-striped table-bordered" style="display:none;">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Transaction Type</th>
+                        <th>Amount</th>
+                        <th>Actual spent</th>
+                        <th>Description</th>
+                        <th>Region</th>
+                        <th>Teams</th>
+                        <th>Geography</th>
+                        <th>Component</th>
+                        <th>Intervention</th>
+                        <th>Program Area</th>
+                        <th>Beneficiary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="ClaimsRefundLineModal" class="modal fade" role="dialog" aria-labelledby="ClaimsRefundLineModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 id="ClaimsRefundLineModalLabel" class="modal-title">Claims/Refund Line</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "ClaimsRefundLineForm", @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            if (Model != null && Model.LineErrorStatus == true)
+                            {
+                                <div class="col-md-12">
+                                    <div id="errorMessage" class="alert alert-danger" role="alert">
+                                    </div>
+                                </div>
+                            }
+
+                            @Html.HiddenFor(model => model.LineNo)
+                            @Html.HiddenFor(model => model.DocumentNo)
+                            @*<h5>Dimension Values</h5>
+                            <hr />*@
+                            @*<div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Dimension1, htmlAttributes: new { @id = "Dimension1Lbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Dimension1, Model.Dimension1s, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Dimension1, "", new { @id = "Dimension1Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Dimension2, htmlAttributes: new { @id = "Dimension2Lbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Dimension2, Model.Dimension2s, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Dimension2, "", new { @id = "Dimension2Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Dimension3, htmlAttributes: new { @id = "Dimension3Lbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Dimension3, Model.Dimension3s, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Dimension3, "", new { @id = "Dimension3Error", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                                    @*<div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension4, htmlAttributes: new { @id = "Dimension4Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension4, Model.Dimension4s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension4, "", new { @id = "Dimension4Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension5, htmlAttributes: new { @id = "Dimension5Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension5, Model.Dimension5s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension5, "", new { @id = "Dimension5Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension6, htmlAttributes: new { @id = "Dimension6Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension6, Model.Dimension6s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension6, "", new { @id = "Dimension6Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension7, htmlAttributes: new { @id = "Dimension7Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension7, Model.Dimension7s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension7, "", new { @id = "Dimension7Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5>Details</h5>
+                                    <hr />*@
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.TransactionType, htmlAttributes: new { @id = "TransactionTypeLbl", @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.TransactionType, Model.TransactionTypes, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.TransactionType, "", new { @id = "TransactionTypeError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-static">
+                                        @Html.LabelFor(model => model.LineAmount, htmlAttributes: new { @id = "LineAmountLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.LineAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LineAmount, "", new { @id = "LineAmountError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group label-static">
+                                        @Html.LabelFor(model => model.ActualSpent, htmlAttributes: new { @id = "LineActualSpentLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.ActualSpent, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ActualSpent, "", new { @id = "LineAmountError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineDescriptionLbl", @class = "control-label" })
+                                        @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineDescriptionError", @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CreateClaimsRefundLineBtn" class="btn btn-xs btn-primary" type="button" onclick="CreateClaimsRefundLine();"><i class="fa fa-plus"></i>Add Line</button>
+                        <button id="ModifyClaimsRefundLineBtn" class="btn btn-xs btn-primary" type="button" onclick="ModifyClaimsRefundLine();"><i class="fa fa-adjust"></i>Update Line</button>
+                        <button class="btn btn-xs btn-danger" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

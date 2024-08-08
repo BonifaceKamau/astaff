@@ -1,0 +1,47 @@
+@model OdataRef.TrainingAnalysisProgrammes
+
+
+<div class="bg-soft-dark" style="color:black">
+    <form id="TrainingProgrammesModalForm">
+        <div class="row">
+            @Html.HiddenFor(model => model.Training_Need_No)
+            @Html.HiddenFor(model => model.Line_No)
+            @*<div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Code, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger"})
+                </div>
+            </div>*@
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Programme, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Programme, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Programme, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Trainer, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Trainer, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Trainer, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Venue, htmlAttributes: new { @class = "control-label"})
+                    @Html.EditorFor(model => model.Venue, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Venue, "", new { @class = "text-danger"})
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+
+            <div align="center">
+                <input type="button" class="btn btn-primary waves-effect waves-light" value="Submit" onclick="CreateOrUpdateTrainingProgrammesLine();"/>
+            </div>
+        </div> 
+    </form>
+    
+</div>

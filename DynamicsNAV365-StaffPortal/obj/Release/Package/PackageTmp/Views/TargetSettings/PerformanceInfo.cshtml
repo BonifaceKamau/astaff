@@ -1,0 +1,35 @@
+@{
+	ViewBag.Title = "Performance Management";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!--Render procurement sidebar-->
+	@{Html.RenderAction("_PerformanceSidebar");}
+	<aside class="right-side">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header text-center" data-background-color="company_card">
+							<h4 class="title">Performance management</h4>
+						</div>
+						<div class="card-content">
+
+						</div>
+						<div class="card-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</aside>
+
+</div>
+@section scripts{
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+            $("#PerformanceInfoMenuItem").addClass("active");
+        });
+	</script>
+}

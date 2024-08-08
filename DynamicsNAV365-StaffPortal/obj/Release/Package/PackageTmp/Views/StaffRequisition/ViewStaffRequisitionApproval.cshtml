@@ -1,0 +1,142 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.StaffRequisition.StaffRequisition
+
+@{
+    ViewBag.Title = "Staff Requisition Approval";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("ViewStaffRequisition", "StaffRequisition", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>Staff Requisition Approval</i></h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("StaffRequisitionHistory", "StaffRequisition")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.No, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.No, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.JobNo, htmlAttributes: new { @id = "JobNoLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.JobNo, Model.Establishments, "", new { @class = "form-control", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.JobNo, "", new { @id = "JobNoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.RequisitionType, htmlAttributes: new { @id = "RequisitionTypeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.RequisitionType, Model.RequisitionTypes, "", new { @class = "form-control", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.RequisitionType, "", new { @id = "RequisitionTypeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.PositionType, htmlAttributes: new { @id = "PositionTypeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.PositionType, Model.PositionTypes, "", new { @class = "form-control", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.PositionType, "", new { @id = "PositionTypeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.AppointmentType, htmlAttributes: new { @id = "AppointmentTypeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.AppointmentType, Model.AppointmentTypes, "", new { @class = "form-control", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.AppointmentType, "", new { @id = "AppointmentTypeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Positions, htmlAttributes: new { @id = "PositionsLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Positions, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Positions, "", new { @id = "PositionsError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">Required Documents</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!--Render Application Documents Partial View-->
+                                                @{Html.RenderAction("_ViewJobDescriptionDocument", "StaffRequisition", new { DocumentNo = Model.No });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/StaffRequisitionScripts/StaffRequisitionScript.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            InitializeStaffRequisitionScripts();
+
+            var documentNo = $("#No").val();
+            LoadJobDescriptionDocumentsView(documentNo);
+        });
+    </script>
+}

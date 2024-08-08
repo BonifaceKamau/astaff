@@ -1,0 +1,130 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.AppraisalResultsModel
+
+@{
+    ViewBag.Title = "Decline mid-year Results";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("DeclineResults", "AppraisalResults", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title">Decline mid Year Results</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @*<input type="submit" id="submitBtn" name="Command" value="Submit For Approval" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="green" />*@
+                                        <input type="submit" id="submitbtn" name="command" value="SUBMIT" class="btn btn-white btn-xs pull-right " data-style="slide-right" data-background-color="green" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        @*<input type="submit" formtarget="_blank" id="submitBtn" name="Command" value="View Attachment" class="btn btn-white btn-xs pull-right ladda-button" data-style="slide-right" data-background-color="login_card" />*@
+
+                                    </div>
+                                    <div class="col-md-3"> 
+                                        @{
+                                            string backUrl = "";
+                                            backUrl = Url.Action("AppraisalResultsHome", "PerformanceHome");
+                                        }
+                                        <a class="btn btn-danger btn-xs pull-right" href="@backUrl">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AppraisalNo, htmlAttributes: new { @id = "AppraisalNoLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisalNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.AppraisalNo, "", new { @id = "AppraisalNo", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AppraisalPeriod, htmlAttributes: new { @id = "AppraisalPeriodLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisalPeriod, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.AppraisalPeriod, "", new { @id = "AppraisalPeriodError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AppraisalStage, htmlAttributes: new { @id = "AppraisalStageLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisalStage, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.AppraisalStage, "", new { @id = "AppraisalPeriodError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AppraisedNarration, htmlAttributes: new { @id = "AppraisedNarrationLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisedNarration, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.AppraisedNarration, "", new { @id = "AppraisedNarrationError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AppraisedScore, htmlAttributes: new { @id = "AppraisedScoreLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.AppraisedScore, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.AppraisedScore, "", new { @id = "AppraisedScoreError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.ScoreGrading, htmlAttributes: new { @id = "ScoreGradingLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.ScoreGrading, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                            @Html.ValidationMessageFor(model => model.ScoreGrading, "", new { @id = "ScoreGradingError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.DeclineReason, htmlAttributes: new { @id = "DeclineReasonLbl", @class = "control-label" })
+                                            @Html.EditorFor(model => model.DeclineReason, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DeclineReason, "", new { @id = "DeclineReasonError", @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                            }
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/HumanResource/LeaveApplicationScripts/LeaveApplication.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Add CSS Classes
+        	InitializeLeaveApplication();
+
+        	var LeaveApplicationNo = $("#No").val();
+        	LoadLeaveApplicationDocuments(LeaveApplicationNo);
+        });
+    </script>
+}

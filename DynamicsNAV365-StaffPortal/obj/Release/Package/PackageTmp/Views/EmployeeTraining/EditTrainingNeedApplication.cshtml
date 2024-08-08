@@ -1,0 +1,211 @@
+﻿
+@model DynamicsNAV365_StaffPortal.Models.EmployeeTraining.EmployeeTrainingNeedModel
+
+@{
+    ViewBag.Title = "Edit Training need Application";
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Finance Sidebar-->
+    @{Html.RenderAction("_HumanResourceSidebar", "HumanResourceHome");}
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("EditTrainingNeedApplication", "EmployeeTraining", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="title"><i>Edit Training Need Application</i></h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <a class="btn btn-danger btn-xs pull-right" type="button" href="@Url.Action("TrainingNeedsHistory", "EmployeeTraining")">
+                                            <i class="fa fa-close"></i>
+                                            Close
+                                        </a>
+                                        <input id="submitBtn" class="btn btn-white btn-xs pull-right ladda-button" type="submit" value="Submit For Approval" data-style="slide-right" data-background-color="login_card" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.ErrorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">General Details</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.ApplicationNo, htmlAttributes: new { @id = "ApplicationNoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ApplicationNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.ApplicationNo, "", new { @id = "ApplicationNoError", @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.DevelopmentNeed, htmlAttributes: new { @id = "DevelopmentNeedLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.DevelopmentNeed, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DevelopmentNeed, "", new { @id = "DevelopmentNeedError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.TrainingLocation, htmlAttributes: new { @id = "TrainingLocationLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.TrainingLocation, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.TrainingLocation, "", new { @id = "TrainingLocationError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Objectives, htmlAttributes: new { @id = "ObjectivesLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Objectives, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.Objectives, "", new { @id = "ObjectivesError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.InterventionRequired, htmlAttributes: new { @id = "InterventionRequiredLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.InterventionRequired, Model.InterventionsRequired, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.InterventionRequired, "", new { @id = "InterventionRequiredError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.InterventionRequiredOther, htmlAttributes: new { @id = "InterventionRequiredOtherLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.InterventionRequiredOther, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.InterventionRequiredOther, "", new { @id = "InterventionRequiredOtherError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.TrainingType, htmlAttributes: new { @id = "TrainingTypeLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.TrainingType, Model.TrainingTypes, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.TrainingType, "", new { @id = "TrainingTypeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.CalenderYear, htmlAttributes: new { @id = "YearLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.CalenderYear, Model.YearCodes, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CalenderYear, "", new { @id = "YearError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.TrainingScheduledDate, htmlAttributes: new { @id = "TrainingScheduledDateLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.TrainingScheduledDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.TrainingScheduledDate, "", new { @id = "TrainingScheduledDateError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.TrainingScheduledDateTo, htmlAttributes: new { @id = "TrainingScheduledDateToLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.TrainingScheduledDateTo, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.TrainingScheduledDateTo, "", new { @id = "TrainingScheduledDateToError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.ProposedPeriod, htmlAttributes: new { @id = "ProposedPeriodLbl", @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.ProposedPeriod, Model.ProposedPeriods, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ProposedPeriod, "", new { @id = "ProposedPeriodError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.ProposedTrainingProvider, htmlAttributes: new { @id = "ProposedTrainingProviderLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ProposedTrainingProvider, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.ProposedTrainingProvider, "", new { @id = "ProposedTrainingProviderError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.CPDPoints, htmlAttributes: new { @id = "CPDPointsLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.CPDPoints, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.CPDPoints, "", new { @id = "CPDPointsError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.EstimatedCost, htmlAttributes: new { @id = "EstimatedCostLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.EstimatedCost, new { htmlAttributes = new { @class = "form-control", } })
+                                                    @Html.ValidationMessageFor(model => model.EstimatedCost, "", new { @id = "EstimatedCostError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#">Required Document</a></li>
+                                        </ul>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @{Html.RenderAction("_EmployeeTrainingNeedDocumentLine", "EmployeeTraining", new { EmpTrainingNeedNo = Model.ApplicationNo });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    }
+                        <div class="card-footer">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@section scripts{
+
+    <script src="~/Scripts/HumanResource/EmployeeTrainingScripts/EmployeeTrainingNeed.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Add CSS Classes
+            InitializeTrainingNeedRequest();
+
+            var EmpTrainingNeedNo = $("#ApplicationNo").val();
+            LoadTrainingNeedDocuments(EmpTrainingNeedNo);
+
+            });
+    </script>
+}
+

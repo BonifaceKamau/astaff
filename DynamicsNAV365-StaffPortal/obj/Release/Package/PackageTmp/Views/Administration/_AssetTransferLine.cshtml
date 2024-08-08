@@ -1,0 +1,255 @@
+@model System.Collections.Generic.IEnumerable<OdataRef.Asset_Transfer_Header_IssueAsset_Transfer_Line>
+
+@{
+    var editable = ViewBag.editable;
+    BCODATAServices _dcodataServices = new BCODATAServices("");
+    var assetsPools  = _dcodataServices.BCOData.Fixed_Assets_Pool.Execute();
+    var assetsPoolsSelect = assetsPools.Select(c=> 
+        new SelectListItem
+        {
+            Text = $"{c.No}:{c.Description}",
+            Value = c.No.ToString(),
+        });
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#AppraisalLineModal" onclick="ClearAppraisalLineModal();">
+                    <i class="fa fa-shopping-cart"></i> Add asset transfer line
+                </button>
+            </div>
+        </div>
+        <div id="" class="table-responsive">
+            <table id="operationalLineTbl" class="table table-striped table-bordered">
+                <thead class="text-primary">
+                <tr>
+                    <th>Asset_No.</th>
+                    <th>Asset_Description.</th>
+                    <th>Current_Holder_No.</th>
+                    <th>Current_Holder_Name.</th>
+                    <th>Curent_Department.</th>
+                    <th>Employee_No.</th>
+                    <th>Employee_Name.</th>
+                    <th>New_Department.</th>
+                    <th>Remark.</th>
+                    <th>.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var transferLine in Model)
+                {
+                    <tr>
+                        <td>@transferLine.Asset_No</td>
+                        <td>@transferLine.Asset_Description</td>
+                        <td>@transferLine.Current_Holder_No</td>
+                        <td>@transferLine.Current_Holder_Name</td>
+                        <td>@transferLine.Curent_Department</td>
+                        <td>@transferLine.Employee_No</td>
+                        <td>@transferLine.Employee_Name</td>
+                        <td>@transferLine.New_Department</td>
+                        <td>@transferLine.Remark</td>
+                        
+                            <td>
+                                <a onclick="return EditLine(this,'@transferLine.Line_No','@transferLine.Asset_No','@transferLine.Asset_Description',
+                                                        '@transferLine.Current_Holder_No','@transferLine.Current_Holder_Name','@transferLine.Curent_Department','@transferLine.Employee_No','@transferLine.Employee_Name'
+                                                        ,'@transferLine.New_Department','@transferLine.Remark')">Edit</a>|
+                                <a onclick="DeleteLine(this,'@transferLine.Line_No')">Delete</a>
+                            </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="AppraisalLineModal" class="modal fade" role="dialog" aria-labelledby="MidYearLineModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "AppraisalLineForm", @class = ""}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn close" type="button" data-dismiss="modal">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <h4 id="" class="modal-title">transfer Line</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Transfer_No" value="@ViewBag.no"/>
+                                    <input type="hidden" name="Line_No" id="Line_No" value=""/>
+                                    <input type="hidden" name="Command" id="Command" class="Command" value="create">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Asset_No</label>
+                                                @Html.DropDownList("Asset_No",assetsPoolsSelect, new{ @id="Asset_No"})
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Current_Holder_No</label>
+                                                <input type="text" class="form-control" name="Current_Holder_No" id="Current_Holder_No">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">Employee_No</label>
+                                                <input type="text" class="form-control" name="Employee_No" id="Employee_No">
+                                            </div>
+                                        </div>
+                                        @*<div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">New_Department</label>
+                                                <input type="number" class="form-control" name="New_Department" id="New_Department">
+                                            </div>
+                                        </div>*@
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label for="">remarks</label>
+                                                <input type="text" class="form-control" name="Remark" id="Remark">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button id="CreateMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="CreateMidYearLine(this);"><i class="fa fa-plus"></i>Add Line</button>*@
+                                    <button id="ModifyMidYearLineBtn" style="align-content:center" class="btn btn-primary btn-xs" type="button" onclick="ModifyAssetTransferLine(this);"><i class="fa fa-adjust"></i>Save</button>
+                                    <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+	function EditLine(element, Line_No, Asset_No, Asset_Description, Current_Holder_No, Current_Holder_Name, Current_Department, Employee_No, Employee_Name, New_Department, Remark) {
+        // Set the values of the inputs in the AppraisalLineModal modal
+        console.log(Asset_Description)
+        $('#Line_No').val(Line_No);
+        $('#Asset_No').val(Asset_No).trigger("change");
+        $('#Asset_Description').val(Asset_Description);
+        $('#Current_Holder_No').val(Current_Holder_No);
+        $('#Current_Holder_Name').val(Current_Holder_Name);
+        $('#Current_Department').val(Current_Department);
+        $('#Employee_No').val(Employee_No);
+        $('#Employee_Name').val(Employee_Name);
+        $('#New_Department').val(New_Department);
+        $('#Remark').val(Remark);
+        $('.Command').val("edit");
+	    $("#AppraisalLineModal").modal("show");
+	}
+    
+	function ModifyAssetTransferLine(element) {
+	  var data = $(element).closest("form").serialize();
+	  console.log(data)
+		$.ajax({
+			type: 'GET',
+			url: '@Url.Action("ModifyAssetTransferLine")',
+			data: data,
+			dataType: 'json',
+			success: function (result) {
+				if (result.success){
+                    $("#AppraisalLineModal").modal("hide");
+                    LoadAppraisalLines(result.entryNo)
+					Swal.fire("success","Saved Successfully","success");
+				}
+				else Swal.fire("error",result.message,"error");
+			},
+			error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+		})
+	}
+    
+    function LoadAppraisalLines(DocumentNo) {
+        $.ajax({
+            url: '@Url.Action("LoadAssetTransferLines")',
+            type: "GET",
+            dataType: "json",
+            data: { no: '@ViewBag.no' },
+            cache: false,
+            success: function (Lines) {
+                var rows = "";
+                console.log(Lines)
+    
+                $.each(Lines, function (i, Line) {
+                    $("#AddReqLine").css("display", "block");
+                    let row = `
+                        <tr>
+                            <td>${Line.Asset_No}</td>
+                            <td>${Line.Asset_Description}</td>
+                            <td>${Line.Current_Holder_No}</td>
+                            <td>${Line.Current_Holder_Name}</td>
+                            <td>${Line.Curent_Department}</td>
+                            <td>${Line.Employee_No}</td>
+                            <td>${Line.Employee_Name}</td>
+                            <td>${Line.Supervisor_Remarks}</td>
+                            <td>${Line.New_Department}</td>
+                            <td>${Line.Remark}</td>
+                            <td>
+                                <a href="#" onclick="EditLine(
+                                    this, 
+                                    '${Line.Asset_No}', 
+                                    '${Line.Asset_Description}', 
+                                    '${Line.Current_Holder_No}', 
+                                    '${Line.Current_Holder_Name}', 
+                                    '${Line.Curent_Department}', 
+                                    '${Line.Employee_No}', 
+                                    '${Line.Employee_Name}', 
+                                    '${Line.New_Department}', 
+                                    '${Line.Remark}')">Edit</a> |
+                                <a href="#" onclick="DeleteLine(this,'${Line.Line_No}')">Delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    rows += row;
+                });
+    
+                // remove existing table rows
+                $("#operationalLineTbl tbody tr").remove();
+    
+                // add new table rows
+                $("#operationalLineTbl tbody").append(rows);
+            },
+            error: function (xhr, errorType, exception) {
+                            Swal.fire("error",xhr.responseText,"error");
+                        }
+        });
+    }
+    function ClearAppraisalLineModal() {
+      $("#Line_No").val("");
+      $('.Command').val("create");
+      //$("#Asset_No").val("");
+      $("#Current_Holder_No").val("");
+      $("#Employee_No").val("");
+      $("#Remark").val("");
+      $("#Remark").text('');
+    }
+    function DeleteLine(element,entryNo) {
+      $.ajax({
+            type: 'GET',
+            url: '@Url.Action("DeleteAssetTransferLine")',
+            data: {no:entryNo , DocNo: '@ViewBag.no'},
+            dataType: 'json',
+            success: function (result) {
+                if (result.success){
+                      $(element).closest("tr").remove();
+                    Swal.fire("success","Deleted Successfully","success");
+                }
+                else Swal.fire("error",result.message,"error");
+            },
+            error: function (xhr, errorType, exception) {
+                Swal.fire("error",xhr.responseText,"error");
+            }
+        })
+    }
+   
+</script>

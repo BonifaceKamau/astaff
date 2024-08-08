@@ -1,0 +1,103 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.PerformanceManagement.PeerAppraisalsModel>
+@{
+    ViewBag.Title = "Peer Appraisals";
+}
+@{
+    var MarksList = new SelectList(
+          new List<SelectListItem>
+          {
+            new SelectListItem {Text = "----Select----", Value = "  "},
+            new SelectListItem {Text = "Weight  1", Value = "1"},
+            new SelectListItem {Text = "Weight  2", Value = "2"},
+            new SelectListItem {Text = "Weight  3", Value = "3"},
+            new SelectListItem {Text = "Weight  4", Value = "4"},
+            new SelectListItem {Text = "Weight  5", Value = "5"},
+
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @*@{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}*@
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title" style="text-align:left;margin-left:20px;">Appraise as a Peer</h4>
+                        </div>      
+                        <br>       
+                        <p style="margin-left:20px; font-size:14px; color:black;">You have been assigned the following appraisees. Appraise them as a peer</p>         
+                        <table id="PeersTable" class="table">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Employee Name</th>
+                                    <th>Designation</th>
+                                    <th>Department</th>
+                                    <th>Appraisal Period</th>
+                                    <th>Appraisal Stage</th>
+                                    <th>Assigned To</th>
+                                    <th>Appraisal Status</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    string peerformUrl = "";
+                                    string editUrl = "";
+                                    string viewUrl = "";
+                                    string benefitsUrl = "";
+                                    string risksUrl = "";
+                                    string manageUrl = "";
+                                    //string approverUrl = "";
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        peerformUrl = Url.Action("SinglePeerForm", "PeerAppraisals") + "?AppraisalNo=" + Model[i].AppraisalNo;
+
+                                        <tr>
+                                            @{
+                                                if (Model[i].Appeal == true)
+                                                {
+                                                    <td style="color:Red;">Appeal</td>
+                                                }
+                                                if (Model[i].Appeal == false)
+                                                {
+                                                    <td><p></p>  </td>
+                                                }
+                                            }
+                                            <td>@Model[i].EmployeeName</td>
+                                            <td>@Model[i].Designation</td>
+                                            <td>@Model[i].Department</td>
+                                            <td>@Model[i].AppraisalPeriod</td>
+                                            <td>@Model[i].AppraisalStage</td>
+                                            <td>@Model[i].PeerNumber</td>
+                                            <td>@Model[i].AppraisalStatus</td>
+
+                                            <td>
+                                                <a href="@peerformUrl" class=""><b>Edit</b></a>                                                                @*<a href="@viewUrl" class=""><b>Activities</b></a>*@
+                                            </td>
+                                        </tr>}
+                                }
+                            </tbody>
+                        </table>                      
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#PeersTable').DataTable({
+                order: [[2, 'asc']],
+                rowGroup: {
+                    dataSrc: 2
+                }
+            });
+        });
+    </script>
+}
+

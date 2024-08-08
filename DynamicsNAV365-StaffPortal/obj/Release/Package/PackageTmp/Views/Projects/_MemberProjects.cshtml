@@ -1,0 +1,122 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectManagementModel>
+
+@{
+    ViewBag.Title = "Member Projects";}
+<!--Render Human Resource Sidebar-->
+<aside class="right-side">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="company_card">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4 class="title" style="text-align:center">You are a Member of the following projects</h4>
+                            </div>
+                            @*<div class="col-md-4">
+                                <a class="btn btn-white btn-xs pull-right" href="@Url.Action("", "")" data-background-color="login_card">
+                                    <strong style="color:white">
+                                        <i class="fa fa-plus"></i>
+                                        Button One
+                                    </strong>
+                                </a>
+                            </div>*@
+                        </div>
+                    </div>                  
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @*<h4>You are a Member of the following projects</h4>*@
+                                <table id="ManagerProjectsTbl" class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Cost </th>
+                                            <th>Status</th>
+                                            <th>Your Role</th>
+                                            <th>&nbsp;</th>
+                                            @*<th>&nbsp;</th>
+                                            <th>&nbsp;</th>*@                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            string teamUrl = "";
+                                            string editUrl = "";
+                                            string viewUrl = "";
+                                            string benefitsUrl = "";
+                                            string tasksUrl = "";
+                                            //string approverUrl = "";
+                                            for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                //teamUrl = Url.Action("ViewTeamMembers", "Projects") + "?ProjectManagementTeam=" + Model[i].ProjectManagementTeam;
+                                                tasksUrl = Url.Action("ProjectMemberTasks", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                //viewUrl = Url.Action("ViewProjectDetails", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                //benefitsUrl = Url.Action("ProjectBenefits", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                <tr>
+                                                    <td>@Model[i].Description</td>
+                                                    <td>@Model[i].StartDate</td>
+                                                    @{if (@Model[i].EndDate == "01/01/0001")
+                                                        {
+                                                            <td>-------</td>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@Model[i].EndDate</td>
+                                                        }
+                                                    }
+                                                    @*<td>@Model[i].EndDate</td>*@
+                                                    <td>@Model[i].Cost</td>
+                                                    <td>@Model[i].Status</td>
+                                                    <td>@Model[i].MemberRole</td> 
+
+                                                    @*<td>
+                                                        <a href="" class=""><b>Team Members</b></a>                  
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="" class=""><b>Activities</b></a>
+                                                    </td>*@                                                    
+
+                                                    <td>                                                      
+                                                        <a href="@tasksUrl" class=""><b>Assigned Tasks</b></a>
+                                                      
+                                                    </td>
+                                                </tr>}
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+       $(document).ready(function() {
+       $('#ManagerProjectsTbl').DataTable( {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+        }
+    } );
+} );
+    </script>
+}
+
+
+
+
+

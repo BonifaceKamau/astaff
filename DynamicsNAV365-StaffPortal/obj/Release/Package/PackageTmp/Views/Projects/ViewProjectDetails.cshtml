@@ -1,0 +1,94 @@
+﻿@model IList<DynamicsNAV365_StaffPortal.Models.ProjectManagement.ProjectManagementModel>
+
+@{
+    ViewBag.Title = "View Project Details";}
+    <!--Render Human Resource Sidebar-->
+@{Html.RenderAction("_ProjectManagementSidebar", "ProjectHome");}  
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title" style="text-align:center">Project Activities</h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <a class="btn btn-danger btn-xs pull-right" href="@Url.Action("ProjectInfo", "ProjectHome")">
+                                        <strong style="color:white">
+                                            <i class=""></i>
+                                            Close
+                                        </strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="ManagerProjectsTbl" class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                @*<th>Activity</th>*@
+                                                @*<th>Start Date</th>
+                                                <th>End Date</th>*@                                               
+                                                @*<th>Assigned To</th>*@
+                                                <th>Strategy</th>
+                                                <th>Objective Number</th>
+                                                <th>Strategic Objective</th>  
+                                                <th>Status </th>                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{  string editUrl = "";
+                                                string viewUrl = "";
+                                                //string approverUrl = "";
+                                                for (int i = 0; i < Model.Count; i++)
+                                                {
+                                                    //editUrl = Url.Action("OnBeforeEdit", "LeaveApplication") + "?LeaveApplicationNo=" + Model[i].No;
+                                                    //viewUrl = Url.Action("ViewProjectDetails", "Projects") + "?ProjectNo=" + Model[i].Code;
+                                                    //approverUrl = Url.Action("Approvals", "Approval") + "?DocumentNo=" + Model[i].No;
+                                                    <tr>
+                                                        @*<td>@Model[i].Activity</td>
+                                                        <td>@Model[i].ActivityStartDate</td>
+                                                        <td>@Model[i].ActivityEndDate</td>                                                      
+                                                        <td>@Model[i].AssignedTo</td>*@
+                                                        <td>@Model[i].StrategyCode</td>
+                                                        <td>@Model[i].ObjectiveCode</td>
+                                                        <td>@Model[i].StrategicObjective</td>
+                                                        <td>@Model[i].ActivityStatus</td>
+                                                        
+                                                    </tr>}
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@section scripts{
+    <script type="text/javascript">
+       $(document).ready(function() {
+       $('#ManagerProjectsTbl').DataTable( {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+        }
+    } );
+} );
+    </script>
+}
+
+
+

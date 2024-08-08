@@ -1,0 +1,328 @@
+@model DynamicsNAV365_StaffPortal.Models.HumanResource.StaffTargetObjectives
+
+@{
+    ViewBag.title = "Workplan Header";
+    var sentToSupervisor = Model.SentToSupervisor;
+    var isHR = Model.isHr;
+    var acceptedByStaff = Model.AcceptedByStaff;
+    var AcknowledgedbyStaff = Model.Acknowledged;
+    var AcceptedbySupervisor = Model.AcceptedbySupervisor;
+    var disabled = sentToSupervisor == false ? "disabled" : "";
+    var currentUser = ViewBag.CurrentEmployee;
+
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    @{ Html.RenderAction("_PerformanceSidebar", "TargetSettings"); }
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        @using (Html.BeginForm("NewTargetSetting", "TargetSettings", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="card-header" data-background-color="company_card">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h4 class="title">
+                                            <i>Edit/View Target Settings</i>
+                                        </h4>
+                                    </div>
+                                    @*<div class="col-md-4 text-right">
+                                            <p>Sent to HR: <span>@sentToSupervisor</span></p>
+                                            <p>Accepted By Employee: <span>@approvedBySupervisor</span></p>
+                                        </div>*@
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+
+                                      
+                                        <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSetting")">
+                                            <i class="fa fa-close"></i> Close
+                                        </a>
+                            </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card-content">
+                                @if (Model != null && Model.ErrorStatus == true)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.errorMessage))
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.Number, htmlAttributes: new { @id = "NoLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.Number, "", new { @id = "NoError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    @Html.LabelFor(model => model.StaffName, "  Employee Name", htmlAttributes: new { @id = "EmployeeNameLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.StaffName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.StaffName, "", new { @id = "EmployeeNameError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            @Html.HiddenFor(model => model.StaffNo)
+                                            @*@Html.HiddenFor(model => model.StaffName)*@
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+
+                                                    @Html.LabelFor(model => model.PeriodDesc, "Period", htmlAttributes: new { @id = "GlobalDimension2CodeLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.PeriodDesc, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.PeriodDesc, "", new { @id = "GlobalDimension2CodeError", @class = "text-danger" })
+
+                                                    @*@Html.LabelFor(model => model.Period, htmlAttributes: new { @id = "GlobalDimension2CodeLbl", @class = "control-label" })
+
+                                                        @if (sentToSupervisor == false)
+                                                        {
+                                                            @Html.DropDownListFor(model => model.Period, Model?.PeriodSelect, "", new { @class = "form-control", required = "required" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.EditorFor(model => model.Period, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                        }
+
+                                                        @Html.ValidationMessageFor(model => model.Period, "", new { @id = "GlobalDimension2CodeError", @class = "text-danger" })*@
+                                                </div>
+                                            </div>
+
+
+                                            @*@if (sentToSupervisor == false)
+                                                {
+                                                    <div class="col-md-6">
+                                                        <div class="form-group label-static">
+                                                            @Html.LabelFor(model => model.Staff, htmlAttributes: new { @id = "GlobalDimension2CodeLbl", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.Staff, Model?.EmpManagers, "", new { @class = "form-control",})
+                                                            @Html.ValidationMessageFor(model => model.Staff, "", new { @id = "GlobalDimension2CodeError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                }*@
+
+                                            @*@if (sentToSupervisor == true)
+                                                {*@
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.StaffNo, " Staff No", htmlAttributes: new { @id = "GlobalDimension2CodeLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.StaffNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.StaffNo, "", new { @id = "GlobalDimension2CodeError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            @* }*@
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+
+                                                    @Html.LabelFor(model => model.Department, "Staff Department", htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.Department, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+
+                                                    @Html.LabelFor(model => model.Supervisor, "Supervisor No", htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Supervisor, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                    @Html.ValidationMessageFor(model => model.Supervisor, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*@if (Model.Status == "Close")
+                                            {
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group label-floating">
+
+                                                            @Html.LabelFor(model => model.SupervisorComment, "Supervisor Comment", htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+
+                                                            @if (currentUser == Model.Supervisor)
+                                                            {
+                                                                @Html.EditorFor(model => model.SupervisorComment, new { htmlAttributes = new { @class = "form-control" } })
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(model => model.SupervisorComment)
+                                                            }
+
+                                                            @Html.ValidationMessageFor(model => model.SupervisorComment, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group label-floating">
+
+                                                            @Html.LabelFor(model => model.StaffComment, "Staff Comment", htmlAttributes: new { @id = "DescriptionLbl", @class = "control-label" })
+
+                                                            @if (currentUser == Model.StaffNo)
+                                                            {
+                                                                @Html.EditorFor(model => model.StaffComment, new { htmlAttributes = new { @class = "form-control" } })
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(model => model.StaffComment)
+                                                            }
+
+                                                            @Html.ValidationMessageFor(model => model.StaffComment, "", new { @id = "DescriptionError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }*@
+                                        @Html.HiddenFor(model => model.Number)
+                                        @Html.HiddenFor(model => model.Supervisor)
+                                        @if (AcceptedbySupervisor == false)
+                                        {
+                                            @*<div class="col-md-12">
+                                                    <input type="submit" class="btn btn-success btn-xs pull-right ladda-button" value="Save Header" />
+                                                </div>*@
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--Render imprest line partial view-->
+
+                                    @{ Html.RenderAction("_TargetSettingLine", new { no = Model?.Number, period = Model?.Period, staff = Model.StaffNo, status = Model.HRApprovalStatus, editable = Model?.SentToSupervisor == false }); }
+
+                                    @*<div class="col-md-3 text-right">
+                                        @if (sentToSupervisor == false && isHR)
+                                        {
+                                            <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingToSuperVisor", new {no = Model.Number, staff = Model.StaffNo})">
+                                                <i class="fa fa-mail-forward"></i>
+                                                Send to Supervisor
+                                            </a>
+                                        }
+                                        </div>*@
+
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+
+                                    @if (AcceptedbySupervisor == false && AcknowledgedbyStaff == true && currentUser == Model.Supervisor)
+                                    {
+                                        <a class="btn btn-success btn-xs" href="@Url.Action("TargetSettingApprovetargerts", new {no = Model.Number, staff = Model.StaffNo})">
+                                            <i class="fa fa-tag"></i>
+                                            Approve appraisal
+                                        </a>
+
+                                        <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingRejecttargerts", new {no = Model.Number, staff = Model.StaffNo})">
+                                            <i class="fa fa-tag"></i>
+                                            Reject appraisal
+                                        </a>
+                                    }
+
+                                    @if (AcceptedbySupervisor == true && AcknowledgedbyStaff == true && isHR && Model.ApprovalStatus == "Pending")
+                                    {
+                                        <a class="btn btn-success btn-xs" href="@Url.Action("TargetSettingHRApproveTargerts", new {no = Model.Number})">
+                                            <i class="fa fa-tag"></i>
+                                            Approve appraisal
+                                        </a>
+
+                                        <a class="btn btn-danger btn-xs" href="@Url.Action("TargetSettingHRRejecttargerts", new {no = Model.Number})">
+                                            <i class="fa fa-tag"></i>
+                                            Reject appraisal
+                                        </a>
+
+                                    }
+
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+@*<div id="ApplicationDocumentModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn close" type="button" data-dismiss="modal">
+                        <i class="fa fa-close"></i>
+                    </button>
+                    <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center">Upload Document</h4>
+                </div>
+                <div class="modal-body">
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new {@id = "ApplicationDocumentForm", @class = ""}))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="errorMessage" class="alert alert-info" role="alert">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input id="ImprestDocumentFile" style="width:560px;border:2px solid dashed;background-color:lightblue" type="file" name="files">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@section scripts{
+    <script src="~/Scripts/Finance/ImprestRequestScripts/ImprestRequest.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        	//Initialize Imprest Scripts
+            InitializeImprestRequest();
+
+            var docNo = $("#No").val();
+
+       @*$('#Staff').change(function () {
+           var targetNumber = $('#Number').val();
+            var staffValue = $(this).val();
+
+           console.log("here");
+            $.ajax({
+                url: '@Url.Action("SaveHeader", "TargetSettings")',
+                type: 'POST',
+                data: {
+                    Number: targetNumber,
+                    Staff: staffValue
+                },
+                success: function (data) {
+                    console.log('Leave application modified successfully.');
+                    // Optionally, you can handle the response data here
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error modifying leave application:', error);
+                }
+            });
+        });
+
+        });*@
+
+
+    </script>
+}

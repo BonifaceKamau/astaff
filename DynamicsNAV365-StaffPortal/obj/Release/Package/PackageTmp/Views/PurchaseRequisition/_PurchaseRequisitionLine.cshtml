@@ -1,0 +1,173 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.Procurement.PurchaseRequistion.PurchaseRequisitionLineModel
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="row" id="AddReqLine" style="display:none">
+			<div class="col-md-12">
+				<button class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target="#PurchaseRequisitionLineModal" onclick="ClearPurchaseRequisitionLineModal();">
+					<i class="fa fa-plus"></i> Add Purchase Requisition Line
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="TableContainer" class="table-responsive">
+					<table id="PurchaseRequisitionLineTbl" class="table table-striped table-bordered" style="display:none;">
+						<thead class="text-primary">
+							<tr>
+								<th>Procurement Plan</th>
+                                <th>Procurement Plan Item</th>
+                                <th>Type</th>
+                                <th>No</th>
+                                <th>Description</th>
+                                <th>Unit Of Measure</th>
+                                <th>Quantity</th>
+                                <th>Unit Cost</th>
+                                <th>Total Cost</th>
+                                <th>Region</th>
+                                <th>Program</th>
+                                <th>Geography</th>
+                                <th>Component</th>
+                                <th>Intervention</th>
+                                <th>Program Area</th>
+                                <th>Beneficiary</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+				<div id="PurchaseRequisitionLineModal" class="modal fade" role="dialog" aria-labelledby="PurchaseRequisitionLineModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+								<h4 id="PurchaseRequisitionLineModalLabel" class="modal-title">Purchase Requisition Line</h4>
+							</div>
+							<div class="modal-body">
+								@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "PurchaseRequisitionLineForm", @class = "" }))
+								{
+									@Html.AntiForgeryToken()
+
+									if (Model != null && Model.LineErrorStatus == true)
+									{
+										<div class="alert alert-danger">
+											<strong>Error! </strong>@Html.Raw(HttpUtility.HtmlDecode(Model.LineErrorMessage))
+										</div>
+									}
+									@Html.HiddenFor(model => model.LineNo)
+									@Html.HiddenFor(model => model.DocumentNo)
+                                    
+                                    <div id="shared1" class="row">
+                                        <h5>Dimension Values</h5>
+                                        <hr />
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension1, htmlAttributes: new { @id = "Dimension1Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension1, Model.Dimension1s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension1, "", new { @id = "Dimension1Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension2, htmlAttributes: new { @id = "Dimension2Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension2, Model.Dimension2s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension2, "", new { @id = "Dimension2Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension3, htmlAttributes: new { @id = "Dimension3Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension3, Model.Dimension3s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension3, "", new { @id = "Dimension3Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="shared2" class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension4, htmlAttributes: new { @id = "Dimension4Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension4, Model.Dimension4s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension4, "", new { @id = "Dimension4Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension5, htmlAttributes: new { @id = "Dimension5Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension5, Model.Dimension5s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension5, "", new { @id = "Dimension5Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension6, htmlAttributes: new { @id = "Dimension6Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension6, Model.Dimension6s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension6, "", new { @id = "Dimension6Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Dimension7, htmlAttributes: new { @id = "Dimension7Lbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.Dimension7, Model.Dimension7s, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Dimension7, "", new { @id = "Dimension7Error", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5>Items</h5>
+                                    <hr />
+                                    <div id="shared3" class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ProcurementPlanLns, htmlAttributes: new { @id = "ProcurementPlanLnsLbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.ProcurementPlanLns, Model.ProcurementPlansLns, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ProcurementPlanLns, "", new { @id = "ProcurementPlanLnsError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ProcurementPlanItemLns, htmlAttributes: new { @id = "ProcurementPlanItemLnsLbl", @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.ProcurementPlanItemLns, Model.ProcurementPlanItemsLns, "", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ProcurementPlanItemLns, "", new { @id = "ProcurementPlanItemLnsError", @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @id = "QuantityLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @id = "QuantityError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.UnitCost, htmlAttributes: new { @id = "UnitCostLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.UnitCost, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.UnitCost, "", new { @id = "UnitCostError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-static">
+                                                    @Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @id = "LineDescriptionLbl", @class = "control-label" })
+                                                    @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.LineDescription, "", new { @id = "LineDescriptionError", @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        }
+                                    </div>
+							<div class="modal-footer">
+								<button id="CreatePurchaseRequisitionLineBtn" class="btn btn-primary btn-xs" type="button" onclick="CreatePurchaseRequisitionLine();"><i class="fa fa-plus"></i>Add Line</button>
+								<button id="ModifyPurchaseRequisitionLineBtn" class="btn btn-primary btn-xs" type="button" onclick="ModifyPurchaseRequisitionLine();"><i class="fa fa-adjust"></i>Update Line</button>
+								<button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

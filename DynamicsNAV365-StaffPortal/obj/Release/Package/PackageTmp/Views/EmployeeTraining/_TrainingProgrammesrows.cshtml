@@ -1,0 +1,16 @@
+@model System.Collections.Generic.List<OdataRef.TrainingAnalysisProgrammes>
+
+
+@foreach (var trainingAnalysisTrainingProgrammes in Model)
+{
+    <tr>
+        @*<td>@trainingAnalysisTrainingProgrammes.Code</td>*@
+        <td>@trainingAnalysisTrainingProgrammes.Programme</td>
+        <td>@trainingAnalysisTrainingProgrammes.Trainer</td>
+        <td>@trainingAnalysisTrainingProgrammes.Venue</td>
+        <td>
+            <a onclick="EditTrainingProgrammesLine(this,@trainingAnalysisTrainingProgrammes.Line_No,'@trainingAnalysisTrainingProgrammes.Training_Need_No')">edit</a>|
+            <a onclick="DeleteTrainingProgrammesLine(this,@trainingAnalysisTrainingProgrammes.Line_No)">delete</a>
+        </td>
+    </tr>
+}

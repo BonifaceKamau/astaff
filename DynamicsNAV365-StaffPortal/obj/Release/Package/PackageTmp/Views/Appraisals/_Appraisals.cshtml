@@ -1,0 +1,615 @@
+﻿@model DynamicsNAV365_StaffPortal.Models.PerformanceManagement.AppraisalsModel
+@{
+    ViewBag.Title = "Appraisals";
+}
+@{
+    var MarksListpt = new SelectList(
+          new List<SelectListItem>
+          {
+              new SelectListItem {Text = "1", Value = "1"},
+              new SelectListItem {Text = "2", Value = "2"},
+              new SelectListItem {Text = "3", Value = "3"},
+              new SelectListItem {Text = "4", Value = "4"},
+              new SelectListItem {Text = "5", Value = "5"},
+
+          }, "Value", "Text");
+}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title">Appraisals</h4>
+                        </div>
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <button class="btn btn-success btn-sm" type="button" data-toggle="modal" onclick="CreateAppraisalHeader();" style=" color:white; font-weight:bold; font-size:14px; float:left; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px; ">
+                                    Get Started
+                                </button>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <button class="btn btn-success btn-sm" type="button" data-toggle="modal" id="SendSupervisor" onclick="SendTargetToSupervisor();" style=" color:white; font-weight:bold; font-size:14px; float:left; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px;">
+                                    Send to Supervisor
+                                </button>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="One" id="Status" style="">
+                                    Stage: <input id="AppraisalStatusItem" readonly="readonly">
+                                </div>
+                            </div>
+                            @*<input id="LineNoItem" value="@Model.LineNo" hidden="hidden">*@
+                            <input id="UserIdItem" value="@Model.UserId" hidden="hidden">
+                            @*<input id="LineNoItem" value="@Model.LineNo">*@
+
+                        </div>
+                        <hr>
+                        <p style="margin-left:20px; font-size:14px; color:red;"><i>You cannot edit the form  at Supervisor Stage</i></p>
+                        <p style="margin-left:20px; font-size:16px; color:black;">[A]. CORE PERFORMANCE TARGETS</p>
+                        <div id="TableContainer" class="table-responsive">
+                            <table id="ApplicationDocumentsTbl" class="table table-condensed" style="font-size:small;">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Perspective</th>
+                                        <th>Objective</th>
+                                        @*<th>Project</th>*@                                       
+                                        <th>Activity</th>
+                                        @*<th>Targets</th>*@
+                                        <th>Mid-Yr Self Score</th>
+                                        <th>Appraisee Comments</th>
+                                        <th>End-Yr Self Score</th>
+                                        <th>End-Yr Comments</th>
+                                        <th>Target Score</th>
+                                        <th>Action</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
+                        @*Mid Year Start*@
+                        <div id="AppraisalsModalMid" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                        <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center;color:white;font-family:'Times New Roman';font-size:18px">Filling in Targets - Mid Year</h4>
+                                        <div class="col-md-12">
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-content">
+                                            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <p style="color:red;"><i>All Fields are Required</i></p>
+                                                <div class="row">
+                                                    <input id="LineNoItemMid" value="@Model.LineNo" hidden="hidden">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.TargetScore, htmlAttributes: new { @id = "TargetScoreLblMid", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.TargetScore, new { htmlAttributes = new { @class = "form-control", @id = "TargetScoreItemMid", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.TargetScore, "", new { @id = "TargetScoreErrorMid", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.SelfAssessmentScore, htmlAttributes: new { @id = "SelfScoreLblMid", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.SelfAssessmentScore, MarksListpt,new { @class = "form-control", @id = "SelfScoreItemMid" })
+                                                            @Html.ValidationMessageFor(model => model.SelfAssessmentScore, "", new { @id = "SelfScoreErrorMid", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.AppraiseeComments, htmlAttributes: new { @id = "AppOneCommentsLblMid", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.AppraiseeComments, new { htmlAttributes = new { @class = "form-control", @id = "AppOneCommentsItemMid" } })
+                                                            @Html.ValidationMessageFor(model => model.AppraiseeComments, "", new { @id = "AppOneCommentsErrorMid", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                  
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-8">
+
+                                                <button id="ModifyBtn" class="btn btn-success btn-xs" type="button" onclick="ModifyAppLineMid();"><i class="fa fa-adjust" style="align-content:center"></i>Save</button>
+                                                <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+                        </div>
+                        @*Mid Year End*@
+
+                        <div id="AppraisalsModal" class="modal fade" role="dialog" aria-labelledby="ApplicationDocumentModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                                        <h4 id="ApplicationDocumentModalLabel" class="modal-title" style="text-align:center;color:white;font-family:'Times New Roman';font-size:18px">Filling in Targets -End Year</h4>
+                                        <div class="col-md-12">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-content">
+                                            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <p style="color:red;"><i>All Fields are Required</i></p>
+                                                <div class="row">
+                                                    <input id="LineNoItem" value="@Model.LineNo" hidden="hidden">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.TargetScore, htmlAttributes: new { @id = "TargetScoreLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.TargetScore, new { htmlAttributes = new { @class = "form-control", @id = "TargetScoreItem", @readonly = "true" } })
+                                                            @Html.ValidationMessageFor(model => model.TargetScore, "", new { @id = "TargetScoreError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="col-md-8">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.SelfAssessmentScore, htmlAttributes: new { @id = "SelfScoreLbl", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.SelfAssessmentScore,MarksList, new{ @class = "form-control", @id = "SelfScoreItem" })
+                                                            @Html.ValidationMessageFor(model => model.SelfAssessmentScore, "", new { @id = "SelfScoreError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>*@
+                                                    @*<div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.AppraiseeComments, htmlAttributes: new { @id = "AppOneCommentsLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.AppraiseeComments, new { htmlAttributes = new { @class = "form-control", @id = "AppOneCommentsItem" } })
+                                                            @Html.ValidationMessageFor(model => model.AppraiseeComments, "", new { @id = "AppOneCommentsError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>*@                                                   
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.EndYearSelfScore, htmlAttributes: new { @id = "EndYearSelfScoreLbl", @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.EndYearSelfScore, MarksListpt,new { @class = "form-control", @id = "EndYearSelfScoreItem" })
+                                                            @Html.ValidationMessageFor(model => model.EndYearSelfScore, "", new { @id = "EndYearSelfScoreError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.EndYearAppraiseeComments, htmlAttributes: new { @id = "AppTwoCoomentsLbl", @class = "control-label" })
+                                                            @Html.EditorFor(model => model.EndYearAppraiseeComments, "", new { htmlAttributes = new { @class = "form-control", @id = "AppTwoCommentsItem" } })
+                                                            @Html.ValidationMessageFor(model => model.EndYearAppraiseeComments, "", new { @id = "AppTwoCommentsError", @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    
+
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-8">
+                                              
+                                                <button id="ModifyBtn" class="btn btn-success btn-xs" type="button" onclick="ModifyAppLine();"><i class="fa fa-adjust" style="align-content:center"></i>Save</button>
+                                                <button class="btn btn-danger btn-xs" type="button" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div> 
+                        </div>
+
+
+                        @*Render Core Competencies Appraisals View*@
+                       
+                        @{Html.RenderAction("_CoreCompetencies", "Appraisals");}
+                       
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    //Load Scripts
+    $(document).ready(function () {
+    LoadAppraisalLines();
+    });
+
+
+
+//Load Appraisal Lines
+    function LoadAppraisalLines() {
+    debugger;
+     var TestVar = "TestId";
+	$.ajax({
+		url: "/Appraisals/GetAppraisalLines",
+		type: "post",
+		dataType: "json",
+        contentType: false,
+		processData: false,
+		data: {TestVar:TestVar},
+		cache: false,
+		success: function (results) {
+			var rows = "";
+			$.each(results, function (i, result) {
+				rows += "<tr>";
+				rows += "<td>" + result.Perspective + "</td>";
+				rows += "<td>" + result.Objective + "</td>";
+				//rows += "<td>" + result.Project + "</td>";
+				rows += "<td>" + result.Activity + "</td>";
+                rows += "<td>" + result.SelfAssessmentScore + "</td>";
+                rows += "<td>" + result.AppraiseeComments + "</td>";
+                rows += "<td>" + result.EndYearSelfScore + "</td>";
+                rows += "<td>" + result.EndYearAppraiseeComments + "</td>";
+                rows += "<td>" + result.TargetScore + "</td>";
+                $("#AppraisalStatusItem").val(result.AppraisalStatus);
+                if(result.AppraisalStatus=="Supervisor"){
+                    $("#SendSupervisor").css("display", "none");
+                }
+                //rows += "<td>" + result.LineNo + "</td>";
+
+				rows += '<td><a href="#" onclick="return EditAppraisalLine(\'' + result.LineNo + '\');"><b class="" style="color:blue; font-weight:bold; font-size:16px; text-decoration:underline;" aria-hidden="true"><strong>EndYear</strong></b></a> <a href="#" onclick="return EditAppraisalLineMidYr(\'' + result.LineNo + '\');"><b class="" style="color:blue;font-weight:bold; font-size:16px; text-decoration:underline; " aria-hidden="true"><strong>MidYear</strong></i></b></td>';
+				rows += "</tr>";
+			});
+			$("#ApplicationDocumentsTbl tbody").html(rows);
+
+			$("#AjaxLoader").css("display", "none");
+
+			$("#ApplicationDocumentsTbl").css("display", "block");
+		},
+		error: function (xhr, status, error) {
+		}
+	});
+}
+
+
+
+
+ //Edit A Single Appraisal  Line
+    function EditAppraisalLine(LineNo) {
+
+    debugger;
+	$.ajax({
+		url: "/Appraisals/GetAppLineForEdit",
+		type: "post",
+		dataType: "json",
+		data: { LineNo: LineNo },
+		cache: false,
+		success: function (result) {
+			$("#LineNoItem").val(result.LineNo);
+            $("#TargetScoreItem").val(result.TargetScore);
+			//$("#SelfScoreItem").val(result.SelfAssessmentScore);
+			//$("#AppOneCommentsItem").val(result.AppraiseeComments);
+			$("#EndYearSelfScoreItem").val(result.EndYearSelfScore);
+			$("#AppTwoCommentsItem").val(result.EndYearAppraiseeComments);
+			$('#errorMessage').hide();
+			$("#AppraisalsModal").modal("show");
+			//$("#UploadBtn").hide();
+			$("#ModifyBtn").show();
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+	return false;
+}
+
+    //Validate App Fields - End Year
+    function ValidateAppFields() {
+	var isValid = true;
+	var label = "";
+
+	if ($("#AppTwoCommentsItem").val().trim() == "") {
+		$("#AppTwoCommentsError").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#AppTwoCommentsError").text("");
+	}
+    if ($("#EndYearSelfScoreItem").val().trim() == "") {
+		$("#EndYearSelfScoreError").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#EndYearSelfScoreError").text("");
+	}
+ 	return isValid;
+}
+
+
+
+//Modify Selected Appraisal Line
+    function ModifyAppLine() {
+	var validLine = ValidateAppFields();
+	if (validLine == false) {
+		return false;
+	}
+    var LineNo = $("#LineNoItem").val();
+	//var SelfAssessmentScore = $("#SelfScoreItem").val();
+    //var AppraiseeComments = $("#AppOneCommentsItem").val();
+	var EndYearSelfScore = $("#EndYearSelfScoreItem").val();
+    var EndYearAppraiseeComments = $("#AppTwoCommentsItem").val();
+
+    var frmData = new FormData();
+
+	frmData.append("LineNo", LineNo);
+	//frmData.append("SelfAssessmentScore", SelfAssessmentScore);
+    //frmData.append("AppraiseeComments", AppraiseeComments);
+	frmData.append("EndYearSelfScore", EndYearSelfScore);
+    frmData.append("EndYearAppraiseeComments", EndYearAppraiseeComments);
+
+	//Block UI
+	$.blockUI();
+
+	$.ajax({
+		url: "/Appraisals/ModifyAppLine",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			if (result.message=="success") {
+				$('#AppraisalsModal').modal('hide');
+				$('#errorMessage').hide();
+                alert("Target saved successfully");
+				LoadAppraisalLines();
+				$.unblockUI();
+			}
+          else if (result.message=="supervisor") {
+            alert("Failed, the form is at supervisor stage and cannot be edited.");
+            $('#AppraisalsModal').modal('hide');
+                LoadAppraisalLines();
+				$.unblockUI();
+         }
+         else {
+                alert("An error Ocurred, please try again later");
+                LoadAppraisalLines();
+				//$('#errorMessage').html(result.message);
+				//$('#errorMessage').show();
+				$.unblockUI();
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			$('#AppraisalsModal').modal('show');
+			//$('#errorMessage').html(err.statusText);
+			//$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+
+ //Edit A Single Appraisal  Line -Mid Yr
+    function EditAppraisalLineMidYr(LineNo) {
+	$.ajax({
+		url: "/Appraisals/GetAppLineForEditMidYr",
+		type: "post",
+		dataType: "json",
+		data: { LineNo: LineNo },
+		cache: false,
+		success: function (result) {
+			$("#LineNoItemMid").val(result.LineNo);
+            $("#TargetScoreItemMid").val(result.TargetScore);
+			$("#SelfScoreItemMid").val(result.SelfAssessmentScore);
+			$("#AppOneCommentsItemMid").val(result.AppraiseeComments);
+			$('#errorMessage').hide();
+			$("#AppraisalsModalMid").modal("show");
+			//$("#UploadBtn").hide();
+			$("#ModifyBtn").show();
+		},
+		error: function (xhr, status, error) {
+
+		}
+	});
+	return false;
+}
+
+
+      //Validate App Fields Mid
+    function ValidateAppFieldsMid() {
+	var isValid = true;
+	var label = "";
+
+	if ($("#AppOneCommentsItemMid").val().trim() == "") {
+		$("#AppOneCommentsErrorMid").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#AppOneCommentsErrorMid").text("");
+	}
+    if ($("#SelfScoreItemMid").val().trim() == "") {
+		$("#SelfScoreErrorMid").text("This Field is required");
+		isValid = false;
+	}
+	else {
+		$("#SelfScoreErrorMid").text("");
+	}
+ 	return isValid;
+}
+
+
+
+//Modify Selected Appraisal Line _ Mid Year
+    function ModifyAppLineMid() {
+    var validLine = ValidateAppFieldsMid();
+	if (validLine == false) {
+		return false;
+	}
+    var LineNo = $("#LineNoItemMid").val();
+	var SelfAssessmentScore = $("#SelfScoreItemMid").val();
+    var AppraiseeComments = $("#AppOneCommentsItemMid").val();
+
+
+    var frmData = new FormData();
+
+	frmData.append("LineNo", LineNo);
+	frmData.append("SelfAssessmentScore", SelfAssessmentScore);
+    frmData.append("AppraiseeComments", AppraiseeComments);
+
+	//Block UI
+	$.blockUI();
+
+	$.ajax({
+		url: "/Appraisals/ModifyAppLineMid",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			if (result.message=="success") {
+				$('#AppraisalsModalMid').modal('hide');
+				$('#errorMessage').hide();
+                alert("Target saved successfully");
+				LoadAppraisalLines();
+				$.unblockUI();
+			}
+          else if (result.message=="supervisor") {
+            alert("Failed, the form is at supervisor stage and cannot be edited.");
+            $('#AppraisalsModalMid').modal('hide');
+                LoadAppraisalLines();
+				$.unblockUI();
+         }
+         else {
+                alert("An error Ocurred, please try again later");
+                LoadAppraisalLines();
+				//$('#errorMessage').html(result.message);
+				//$('#errorMessage').show();
+				$.unblockUI();
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			$('#AppraisalsModalMid').modal('show');
+			//$('#errorMessage').html(err.statusText);
+			//$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+//Send Targets to supervisor
+    function SendTargetToSupervisor() {
+    debugger;
+    var Test = "Test";
+	//Block UI
+	$.blockUI();
+
+	$.ajax({
+		url: "/Appraisals/SendTargetToSupervisor",
+		type: "post",
+		data: {Test:Test},
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			$('#txtMessage').html(result.message);
+			if (result.message=="donebefore") {
+                alert("You have already sent the form to your supervisor.Please wait for feedback");
+				LoadAppraisalLines();
+				$.unblockUI();
+			} else if (result.message=="success") {
+                alert("Form sent successfully");
+                LoadAppraisalLines();
+				$.unblockUI();
+			}
+            else{
+             alert("An error Occurred, please try again later");
+             LoadAppraisalLines();
+
+            }
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			//$('#AppraisalsModal').modal('show');
+			//$('#errorMessage').html(err.statusText);
+			//$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+
+//Create Appraisal Header
+
+    function CreateAppraisalHeader() {
+    debugger;
+    var UserId = $("#UserIdItem").val();
+    var frmData = new FormData();
+    frmData.append("UserId", UserId);
+	//Block UI
+	$.blockUI();
+
+	$.ajax({
+		url: "/Appraisals/CreateAppraisalHeader",
+		type: "post",
+		data: frmData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		enctype: "multipart/form-data",
+		async: true,
+		cache: false,
+		success: function (result) {
+			if (result.message=="exists") {
+                alert("Failed, you have already Initiated this process, Please check with your supervisor");
+                location.reload();
+				$.unblockUI();
+			}
+            else if(result.message=="managernill"){
+            alert("Failed, A Supervisor has not been assigned. Please Contact your department for assistance");
+            location.reload();
+		    $.unblockUI();
+            }
+             else if(result.message=="notargets"){
+            alert("Failed, your targets have not been set. Please set your targets and send for approval.");
+            location.reload();
+		    $.unblockUI();
+            }
+            else if(result.message=="success"){
+            alert("Loaded Successfully");
+            location.reload();
+		    $.unblockUI();
+            }
+            else {
+            alert("An error Occurred, Please try Later");
+				$.unblockUI();
+			}
+			Ladda.stopAll();
+		},
+		error: function (err) {
+			//$('#AppraisalsModal').modal('show');
+			//$('#errorMessage').html(err.statusText);
+			//$('#errorMessage').show();
+			Ladda.stopAll();
+		}
+	});
+}
+
+
+    </script>

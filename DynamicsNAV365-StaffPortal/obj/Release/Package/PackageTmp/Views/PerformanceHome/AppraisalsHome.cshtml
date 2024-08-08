@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "AppraisalsHome";
+    string midyrUrl = Url.Action("MidAppraisals", "Appraisals");
+    string endyrUrl = Url.Action("EndYearAppraisal", "Appraisals");
+    //midyrUrl = Html.RenderAction("_Appraisals", "Appraisals");
+}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!--Render Human Resource Sidebar-->
+    @{Html.RenderAction("_PerformanceManagementSidebar", "PerformanceHome");}
+
+    @*@{Html.RenderAction("_Appraisals", "Appraisals");}*@
+
+</div>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="right-side">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="company_card">
+                            <h4 class="title">Select Appraisal Type</h4>
+                        </div>
+                        <div class="row" style="margin-top:15px;">
+                            <p style="margin-left:20px; font-size:14px; text-align:center; color:black;"><i>Select the Appraisal type below to proceed</i></p>
+                            <hr>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a class="btn btn-success btn-sm" href="@midyrUrl" style=" color:white; font-weight:bold; font-size:14px; text-align:center; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px; ">
+                                    Mid Year Appraisal
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a class="btn btn-success btn-sm" href="@endyrUrl" style=" color:white; font-weight:bold; font-size:14px; text-align:center; padding:5px; border-radius:0px; padding-left:15px;padding-right:15px; margin-left:20px; ">
+                                    End Year Appraisal
+                                </a>
+                            </div>
+                                                
+                            @*<input id="UserIdItem" value="@Model.UserId" hidden="hidden">*@                           
+
+                        </div>
+                        <hr>
+                        
+                      
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+
+
+
+
